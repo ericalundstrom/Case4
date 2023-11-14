@@ -1,0 +1,43 @@
+body {
+    margin: 0px;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    height: 100vh;
+    align-items: center;
+}
+
+#wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#logo {
+    height: 300px;
+}
+
+#reg {
+    position: relative;
+    bottom: 110px;
+    transform: rotate(180deg);
+}
+
+#reg>div {
+    transform: rotate(180deg);
+}
+
+#reg,
+#login {
+    background-image: url(/images/background.png);
+    height: 200px;
+    width: 200px;
+    background-size: contain;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

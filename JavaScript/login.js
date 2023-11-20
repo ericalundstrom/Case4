@@ -51,9 +51,13 @@ function RenderLoginPage() {
                 // logged in! (adding function later)
                 // renderCategoriesPage()
                 console.log("logged in");
+                RenderHomePage()
+
             }
         } catch (error) { // if something went wrong
             errorMessage.textContent = `Error: ${error.message}`;
         }
     });
 }
+
+

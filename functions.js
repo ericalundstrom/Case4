@@ -8,3 +8,8 @@ async function fetching(URL, method, body) {
 
     return response;
 }
+
+
+function swapStyleSheet(styleSheet) {
+    document.getElementById("styles").setAttribute("href", styleSheet);
+}

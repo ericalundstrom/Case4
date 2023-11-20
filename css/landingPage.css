@@ -1,0 +1,83 @@
+#wrapper {
+    display: grid;
+    grid-template-columns: 80px 2fr;
+    height: 100vh;
+    grid-template-rows: 1fr 2fr 2fr;
+    gap: 20px;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    width: 70px;
+    margin-top: 130px;
+}
+
+header>p {
+    margin-top: 20px;
+}
+
+nav>div {
+    margin: 20px 0px 0px 90px;
+}
+
+nav>div>div {
+    border: 1px solid black;
+    height: 300px;
+    width: 700px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: repeat(4, 1fr);
+}
+
+nav>div>div>#cover {
+    height: 280px;
+    width: 240px;
+    background-size: contain;
+    grid-row: 1/4;
+    margin: 10px;
+}
+
+#description {
+    grid-column: 2;
+}
+
+#likes {
+    grid-column: 2;
+}
+
+#cards {
+    grid-column: 2;
+    border: 1px solid black;
+    width: 240px;
+    height: 300px;
+}
+
+#top {
+    display: flex;
+    justify-content: space-between;
+}
+
+#cards>div>#pic {
+    height: 220px;
+    width: 200px;
+    background-size: contain;
+    margin-left: 20px;
+}
+
+#left {
+    height: 20px;
+    width: 20px;
+    position: relative;
+    bottom: 160px;
+    left: 90%;
+}
+
+#right {
+    height: 20px;
+    width: 20px;
+    position: relative;
+    bottom: 160px;
+    left: 20px;
+    transform: rotate(180deg);
+}

@@ -4,7 +4,7 @@ renderFirstPage();
 
 
 function renderFirstPage() {
-    let wrapper = document.querySelector("#wrapper");
+    let body = document.querySelector("body");
     console.log("hej");
 
     wrapper.innerHTML = `
@@ -22,5 +22,6 @@ function renderFirstPage() {
     document.querySelector("#login").addEventListener("click", () => {
         RenderLoginPage();
     });
+
 
 }

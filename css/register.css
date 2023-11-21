@@ -14,8 +14,6 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* display: grid;
-    grid-template-columns: 1fr 2fr; */
 }
 
 #logo {
@@ -32,16 +30,6 @@ main {
     grid-template-columns: repeat(2, 1fr);
 }
 
-
-/* #LoginOrReg {
-    grid-column: 2/4;
-    grid-row: 1/4;
-    grid-template-columns: 1fr 1fr;
-    display: grid;
-    grid-template-rows: 1fr 4fr;
-    margin-right: 90px;
-} */
-
 #LoginOrReg {
     grid-column: 2/4;
     grid-row: 1/4;
@@ -54,17 +42,6 @@ main {
     margin-right: 200px;
 }
 
-/* #reg,
-#login {
-    background-image: url(/images/background.png);
-    height: 200px;
-    width: 200px;
-    background-size: contain;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-} */
-
 h1 {
     grid-column: 1;
     grid-row: 3;
@@ -72,19 +49,11 @@ h1 {
     /* align-self: center; */
 }
 
-/* #reg {
-    grid-column: 2;
-}
-
-#login {
-    grid-column: 1;
-}
-
-*/
-
 #reg,
-#login {
-    padding: 50px 0px 50px 0px;
+#login,
+#confirm,
+#email {
+    padding: 30px 0px 30px 0px;
     width: 400px;
     display: flex;
     flex-direction: column;
@@ -95,6 +64,12 @@ input {
     background-color: transparent;
     border: none;
     height: 30px;
+}
+
+#confirm>input,
+#email>input {
+    height: 30px;
+    padding: 0px;
 }
 
 .underline {

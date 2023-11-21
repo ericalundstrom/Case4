@@ -47,6 +47,7 @@ function RenderLoginPage() {
 
      </div>
 `;
+    wrapper.querySelector("#box").style.backgroundImage = "url(/images/paper.png)";
 
     //     // go to register
     document.querySelector("h3").addEventListener("click", () => {

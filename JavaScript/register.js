@@ -1,3 +1,4 @@
+"use strict";
 function RenderRegisterPage() {
 
 
@@ -41,7 +42,7 @@ function RenderRegisterPage() {
                 <button id="register" type=submit> Sign Up </button>
                 <p id=message></p>
 
-                <h3>Got an acount? <u>Login here</u></h3>
+                <h3>Got an account? <u>Login here</u></h3>
 
         </form>
         </div>

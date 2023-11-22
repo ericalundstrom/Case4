@@ -1,10 +1,12 @@
 "use strict";
 
-renderFirstPage();
+RenderLoginPage();
 
+if (localStorage.getItem("state")) {
+    RenderHomePage();
+}
 
 function renderFirstPage() {
-    let body = document.querySelector("body");
 
     wrapper.innerHTML = `
 

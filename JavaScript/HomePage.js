@@ -49,9 +49,9 @@ async function RenderHomePage() {
 }
 
 
-function RenderCommunity(params) {
-    console.log("community");
-}
+// function RenderCommunity(params) {
+//     console.log("community");
+// }
 
 
 function RenderTrending(params) {

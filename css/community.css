@@ -1,0 +1,284 @@
+body {
+    margin: 0;
+}
+
+#wrapper {
+    display: grid;
+    grid-template-columns: 80px 2fr 1fr;
+    height: 100vh;
+    grid-template-rows: 40px 1fr 1fr 1fr;
+    gap: 40px;
+}
+
+header {
+    flex-basis: 50px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    width: 100%;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    background-color: rgba(255, 255, 255, 0.574);
+}
+
+header>p {
+    margin-top: 20px;
+}
+
+input {
+    height: 30px;
+    width: 400px;
+    border-radius: 20px;
+    border: 1px solid black;
+    margin-right: 320px;
+    padding-left: 10px;
+    font-style: italic;
+}
+
+#profile {
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    border: 1px solid rgb(88, 88, 88);
+}
+
+nav {
+    width: 70px;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    border-right: 1px solid black;
+    justify-content: center;
+    position: absolute;
+    top: 75px;
+    margin-left: 10px;
+}
+
+nav>p {}
+
+footer {
+    display: flex;
+    justify-content: space-around;
+    height: 60px;
+    background-color: gray;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.stroke {
+    height: 40px;
+    width: 1px;
+    background-color: black;
+}
+
+nav>div>div>#cover {
+    height: 280px;
+    width: 240px;
+    background-size: contain;
+    grid-row: 1/4;
+    margin: 10px;
+}
+
+#description {
+    grid-column: 2;
+}
+
+#likes {
+    grid-column: 2;
+}
+
+#navi {
+    grid-column: 2;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#cards {
+    grid-row: 2;
+    grid-column: 2;
+    width: 240px;
+    height: 300px;
+    grid-template-columns: repeat(4, 1fr);
+    display: grid;
+    gap: 35px;
+    margin-left: 95px;
+}
+
+#top {
+    display: flex;
+    justify-content: space-between;
+}
+
+#cards>div {
+    border: 1px solid black;
+    padding: 8px;
+    height: 340px
+}
+
+#cards>div>#pic {
+    height: 220px;
+    width: 200px;
+    background-size: contain;
+    margin: 10px;
+}
+
+/* #left {
+    height: 20px;
+    width: 20px;
+    position: relative;
+    bottom: 160px;
+    left: 90%;
+}
+
+#right {
+    height: 20px;
+    width: 20px;
+    position: relative;
+    bottom: 160px;
+    left: 20px;
+    transform: rotate(180deg);
+} */
+
+#comunityBox {
+    grid-column: 2;
+    grid-row: 1/5;
+    /* margin-left: 40px; */
+}
+
+#comunityBox>h2 {
+    grid-column: 3;
+}
+
+#box {
+    padding: 10px;
+    background-color: #eacaba;
+    margin-top: 10px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(3, auto);
+    height: 300px;
+}
+
+#box>h2 {
+    grid-row: 2;
+    grid-column: 1/6;
+    margin: 5px 0px 5px 40px;
+    font-size: 20px;
+}
+
+#box>p {
+    grid-column: 1/6;
+    grid-row: 3;
+    margin: 10px 10px 5px 40px;
+}
+
+#date {
+    grid-column: 5;
+    justify-self: end;
+    align-self: center;
+}
+
+#wrapper>button {
+    grid-column: 3;
+    margin-right: 25px;
+}
+
+#tipsbox {
+    grid-column: 3;
+    grid-row: 2;
+    border: 1px solid black;
+    padding: 20px;
+    margin-right: 25px;
+}
+
+.dot {
+    height: 10px;
+    width: 10px;
+    background-color: black;
+    border-radius: 10px;
+}
+
+#dots {
+    display: flex;
+    justify-content: space-evenly;
+    width: 70px;
+    position: relative;
+    top: 40px;
+    left: 150px;
+}
+
+#calender {
+    grid-column: 3;
+    grid-row: 3;
+    border: 1px solid black;
+    margin-right: 25px;
+    margin-top: 50px;
+}
+
+#calender>h2 {
+    text-align: center;
+}
+
+#month {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+#days {
+    display: flex;
+    justify-content: space-around;
+    font-weight: bold;
+}
+
+#dates {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    margin: 20px 0px;
+}
+
+.arrow {
+    margin: 0px 20px;
+}
+
+#dates>div {
+    justify-self: center;
+    margin: 5px;
+}
+
+.number {
+    margin: 15px 0px;
+}
+
+#stroke {
+    border: 1px solid black;
+    margin-top: 10px;
+}
+
+#userAndProfile {
+    display: flex;
+    align-items: center;
+}
+
+#profilePic {
+    height: 40px;
+    width: 40px;
+    border: 1px solid black;
+    border-radius: 30px;
+    margin-right: 10px;
+}
+
+#count {
+    margin-left: 10px;
+}
+
+#comments {
+    display: flex;
+    grid-column: 5;
+    align-self: center;
+    justify-self: center;
+}

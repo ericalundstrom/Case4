@@ -45,9 +45,10 @@ function RenderProfile(params) {
     </div>
 
     <div id="options">
-        <div id="myComics"> My comics </div>
-        <div id="Saved"> Saved comics </div>
+        <div id="myComics" onclick="toggleClass('myComics')">My comics</div>
+        <div id="Saved" onclick="toggleClass('Saved')">Saved comics</div>
     </div>
+
     <button> + Add new comic</button>
     <div id="BigStroke"></div>
 
@@ -59,6 +60,20 @@ function RenderProfile(params) {
     for (let i = 0; i < 6; i++) {
 
         createCard(cardBox);
+    }
+}
+
+function toggleClass(selectedId) {
+    var options = document.getElementById('options').children;
+
+    for (var i = 0; i < options.length; i++) {
+        var option = options[i];
+
+        if (option.id === selectedId) {
+            option.classList.add('selected');
+        } else {
+            option.classList.remove('selected');
+        }
     }
 }
 

@@ -98,7 +98,7 @@ footer {
 }
 
 .notiStroke {
-    width: 90%;
+    width: 100%;
     border: 1px solid black;
     align-self: center;
 }
@@ -152,4 +152,64 @@ footer {
 #edit {
     grid-row: 3;
     grid-column: 2;
+}
+
+#options {
+    grid-column: 2;
+    display: flex;
+    margin-top: 27px;
+    grid-row: 2;
+}
+
+#options>div {
+    margin-left: 10px;
+}
+
+#BigStroke {
+    border: 1px solid black;
+    height: 0px;
+    grid-column: 2/4;
+    width: 100%;
+    grid-row: 2;
+    position: relative;
+    top: 60px;
+    right: 10px;
+    left: 10px;
+}
+
+button {
+    grid-column: 3;
+    grid-row: 2;
+    height: 40px;
+    padding: 10px;
+    width: 140px;
+    border-radius: 10px;
+    border: none;
+    justify-self: end;
+    align-self: auto;
+    margin-top: 15px;
+    margin-right: 10px;
+}
+
+
+#cards {
+    grid-column: 2/4;
+    grid-row: 2;
+    margin-top: 80px;
+    padding-left: 40px;
+    grid-template-columns: repeat(4, 1fr);
+    display: grid;
+    gap: 10px;
+    overflow: scroll;
+    grid-template-rows: 1fr;
+}
+
+.card {
+    display: flex;
+    width: 243px;
+    padding: 11px 0px;
+    align-items: flex-start;
+    align-content: flex-start;
+    gap: var(--responsive-spacing-xs, 6px) 92px;
+    flex-wrap: wrap;
 }

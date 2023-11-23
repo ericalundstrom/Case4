@@ -16,7 +16,7 @@ function swapStyleSheet(styleSheet) {
 }
 
 
-function BasicLayout(params) {
+function BasicLayout() {
     document.querySelector("body").innerHTML = `
         <header>
             <p> Rita </p>
@@ -25,10 +25,10 @@ function BasicLayout(params) {
         </header>
 
         <nav>
-            <p> Profile </p>
-            <p> Home </p>
-            <p> Comunity </p>
-            <p> Trending </p>
+            <p id="userprofile"> Profile </p>
+            <p id="home"> Home </p>
+            <p id="community"> Comunity </p>
+            <p id="trending"> Trending </p>
         </nav>
 
 
@@ -48,4 +48,28 @@ function BasicLayout(params) {
         <div> Contact us </div>
     </footer>
     `;
+
+    document.querySelector("#profile").addEventListener("click", (event) => {
+        event.stopPropagation();
+        RenderProfile();
+    });
+
+    document.querySelector("#userprofile").addEventListener("click", (event) => {
+        event.stopPropagation();
+        RenderProfile();
+    });
+    document.querySelector("#home").addEventListener("click", (event) => {
+        event.stopPropagation();
+        RenderHomePage();
+    });
+    document.querySelector("#community").addEventListener("click", (event) => {
+        event.stopPropagation();
+        RenderCommunity();
+    });
+    document.querySelector("#trending").addEventListener("click", (event) => {
+        event.stopPropagation();
+        RenderTrending();
+    });
 }
+
+

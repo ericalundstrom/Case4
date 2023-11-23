@@ -62,6 +62,7 @@ footer {
     height: 60px;
     background-color: gray;
     align-items: center;
+    margin-top: 40px;
 }
 
 .stroke {
@@ -69,19 +70,6 @@ footer {
     width: 1px;
     background-color: black;
 }
-
-/* nav>div {
-    margin: 20px 0px 0px 90px;
-} */
-
-/* nav>div>div {
-    border: 1px solid black;
-    height: 300px;
-    width: 700px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: repeat(4, 1fr);
-} */
 
 nav>div>div>#cover {
     height: 280px;

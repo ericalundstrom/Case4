@@ -6,6 +6,7 @@ async function RenderHomePage() {
 
     BasicLayout();
 
+
     document.querySelector("#wrapper").innerHTML += `
     <div id="navi">
         <div id="theme"> Theme </div>
@@ -42,5 +43,17 @@ async function RenderHomePage() {
         card.querySelector("#pic").style.backgroundImage = "url(../images/unnamed.png)";
         boxCards.append(card);
     });
+
+
+
 }
 
+
+function RenderCommunity(params) {
+    console.log("community");
+}
+
+
+function RenderTrending(params) {
+    console.log("trending");
+}

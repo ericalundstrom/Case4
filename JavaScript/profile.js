@@ -46,7 +46,7 @@ function RenderProfile(params) {
 
     <div id="options">
         <div id="myComics" onclick="toggleClass('myComics')">My comics</div>
-        <div id="Saved" onclick="toggleClass('Saved')">Saved comics</div>
+        <div id="artist" onclick="toggleClass('Saved')">Artists you follow</div>
     </div>
 
     <button> + Add new comic</button>
@@ -54,6 +54,34 @@ function RenderProfile(params) {
 
     <div id="cards"></div
     `;
+
+    document.querySelector("#follows > #name").addEventListener("click", (event) => {
+        event.stopPropagation();
+        let popUp = document.querySelector("#popUp");
+        console.log(popUp);
+        RenderFollowers(popUp);
+    })
+
+    document.querySelector("#artist").addEventListener("click", (event) => {
+        event.stopPropagation();
+
+        RenderFollowingArtist();
+        console.log(event.target.id);
+        toggleClass(event.target.id)
+    })
+
+    document.querySelector("#myComics").addEventListener("click", (event) => {
+        event.stopPropagation();
+        let card = document.querySelector("#cards");
+        card.innerHTML = ``;
+
+        for (let i = 0; i < 6; i++) {
+
+            createCard(card);
+        }
+        console.log(event.target.id);
+        toggleClass(event.target.id)
+    })
 
     let cardBox = document.querySelector("#cards");
 
@@ -107,4 +135,75 @@ function createCard(parent) {
     `;
 
     parent.append(card);
+}
+
+
+function RenderFollowingArtist() {
+
+    console.log("following");;
+    let cards = document.querySelector("#cards")
+    cards.innerHTML = ``;
+
+    for (let i = 0; i < 3; i++) {
+        RenderArtistCard(cards);
+    }
+}
+
+
+function RenderArtistCard(parent) {
+    let divDom = document.createElement("div");
+    divDom.classList.add("artistBox");
+    divDom.innerHTML = `
+            <div id="artistIcon"></div>
+            <h3> Username </h3>
+            <div id="uploadedComicsBox">
+                <div class="number"> 8 </div>
+                <div id="text"> Uploaded comics </div>
+            </div>
+            <div id="folowerBox">
+                <div class="number"> 1 </div>
+                <div id="text"> Followers </div>
+            </div>
+    `;
+
+    parent.append(divDom);
+}
+
+
+
+function RenderFollowers(popUp) {
+
+    popUp.classList.remove("hidden");
+    popUp.innerHTML = `
+    <div id="popUpBox">
+    <div id="close"> X </div>
+    <h2> Followers </h2>
+    <input type="text" id="searchFollower" name="searchFollower" placeholder="search follower.."/>
+    <div id="followers"> </div>
+    <button> Show more </button>
+    </div>
+    `;
+
+    popUp.querySelector("#close").addEventListener("click", (event) => {
+        event.stopPropagation();
+        let popUp = document.querySelector("#popUp");
+        popUp.classList.add("hidden");
+    })
+    for (let i = 0; i < 5; i++) {
+        let parent = document.querySelector("#followers")
+        RenderFollowersCard(parent)
+
+    }
+}
+
+function RenderFollowersCard(parent) {
+
+    let divDom = document.createElement("div");
+    divDom.classList.add("artistBox");
+    divDom.innerHTML = `
+            <div id="artistIcon"></div>
+            <h3> Username </h3>
+            <button id="Remove">Remove</button>
+    `;
+    parent.append(divDom);
 }

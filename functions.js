@@ -31,6 +31,13 @@ function BasicLayout() {
             <p id="trending"> Trending </p>
         </nav>
 
+        <div id="popUp" class="hidden">
+            <div id="popUpBackground"></div>
+            <div id="popUpWindow">
+                <p id="prompt"></p>
+            </div>
+        </div>
+
 
     <main>
         <div id="wrapper"></div>

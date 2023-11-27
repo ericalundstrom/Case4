@@ -50,11 +50,22 @@ async function RenderProfile(params) {
         <div id="artist" onclick="toggleClass('Saved')">Artists you follow</div>
     </div>
 
-    <button> + Add new comic</button>
+    <button id="addNewComic"> + Add new comic</button>
     <div id="BigStroke"></div>
 
     <div id="cards"></div
     `;
+
+    document.querySelector("#addNewComic").addEventListener("click",() => {
+        renderCreateComic();
+    })
+
+    document.querySelector("#settings").addEventListener("click", () => {
+        let popUp = document.querySelector("#popUp")
+        popUp.classList.remove("hidden");
+        popUp.innerHTML = `
+        <div> </div>`
+    })
 
     document.querySelector("#follows > #name").addEventListener("click", (event) => {
         event.stopPropagation();

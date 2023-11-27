@@ -66,10 +66,7 @@ function RenderLoginPage() {
                 console.log(data.message);
             } else {
                 // add to local storage
-                window.localStorage.setItem("user", JSON.stringify(data));
-
-                let user = data;
-                console.log(user);
+                localStorager.set_item("user", data["email"])
 
                 // logged in! (adding function later)
                 // renderCategoriesPage()

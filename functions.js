@@ -17,33 +17,18 @@ function swapStyleSheet(styleSheet) {
 
 
 function BasicLayout() {
-    document.querySelector("body").innerHTML = `
-        <header>
-            <p> Rita </p>
+    document.querySelector("header").innerHTML = `
+                <p> Rita </p>
             <input type="text" id="search" name="search" placeholder="search for comics, authors etc.."/>
-            <div id="profile"></div>
-        </header>
+            <div id="profile"></div>`
 
-        <nav>
+            document.querySelector("nav").innerHTML = `
             <p id="userprofile"> Profile </p>
             <p id="home"> Home </p>
             <p id="community"> Comunity </p>
-            <p id="trending"> Trending </p>
-        </nav>
+            <p id="trending"> Trending </p>`
 
-        <div id="popUp" class="hidden">
-            <div id="popUpBackground"></div>
-            <div id="popUpWindow">
-                <p id="prompt"></p>
-            </div>
-        </div>
-
-
-    <main>
-        <div id="wrapper"></div>
-    </main>
-
-    <footer>
+document.querySelector("footer").innerHTML = `
         <div> About Rita </div>
         <div class="stroke"></div>
         <div> Change language </div>
@@ -52,9 +37,7 @@ function BasicLayout() {
         <div class="stroke"></div>
         <div> Copyright </div>
         <div class="stroke"></div>
-        <div> Contact us </div>
-    </footer>
-    `;
+        <div> Contact us </div>`;
 
     document.querySelector("#profile").addEventListener("click", (event) => {
         event.stopPropagation();

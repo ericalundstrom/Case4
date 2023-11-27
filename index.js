@@ -2,9 +2,10 @@
 
 RenderLoginPage();
 
-if (localStorage.getItem("state")) {
-    RenderHomePage();
-}
+    const user = localStorager.get_item("user");
+   if ( user !== undefined){
+    RenderHomePage()
+   }
 
 function renderFirstPage() {
 

@@ -1,13 +1,14 @@
 "use strict";
 async function RenderHomePage() {
 
+
     swapStyleSheet("css/landingPage.css");
     let wrapper = document.querySelector("#wrapper");
 
     BasicLayout();
 
 
-    document.querySelector("#wrapper").innerHTML += `
+    document.querySelector("#wrapper").innerHTML = `
     <div id="navi">
         <div id="theme"> Theme </div>
         <div id="material"> Material </div>

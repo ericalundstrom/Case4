@@ -6,7 +6,7 @@ function RenderCommunity() {
     let wrapper = document.querySelector("#wrapper");
 
     BasicLayout();
-    document.querySelector("#wrapper").innerHTML += `
+    document.querySelector("#wrapper").innerHTML = `
         <div id="comunityBox"> 
             <h2> Community </h2>
             <div id="stroke"></div>

@@ -9,7 +9,7 @@ async function RenderProfile(params) {
     let response = await fetch("api/data/comics.json");
     let resource = await response.json();
 
-    document.querySelector("#wrapper").innerHTML += `
+    document.querySelector("#wrapper").innerHTML = `
     <div id="notifications">
         <img>
         <div class="noti">

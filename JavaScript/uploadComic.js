@@ -1,4 +1,6 @@
+
+
 function renderUploadComic(){
-    document.querySelector("wrapper").innerHTML = `
+    document.querySelector("#wrapper").innerHTML = `
     <div> </div>`
 }

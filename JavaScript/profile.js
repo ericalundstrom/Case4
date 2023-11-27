@@ -66,11 +66,16 @@ async function RenderProfile(params) {
         popUp.innerHTML = `
         <div> Do you want to log out? </div>
         <button> Log out</button>
+        <div id="close"> x </div>
         `;
 
         popUp.querySelector("button").addEventListener("click", (event) => {
             event.stopPropagation();
             logout();
+        })
+
+        popUp.querySelector("#close").addEventListener("click", () => {
+            popUp.classList.add("hidden");
         })
     })
 

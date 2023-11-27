@@ -1,4 +1,5 @@
 "use strict";
+
 function RenderLoginPage() {
     console.log("login");
     wrapper.innerHTML = `

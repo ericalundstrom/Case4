@@ -31,6 +31,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             }
         }
     } 
+
+   // if($userIsfound){}
     send_JSON(["message"=>"Wrong username or password"], 404);
 } else {
     send_JSON(["message"=>"Wrong method"], 405);

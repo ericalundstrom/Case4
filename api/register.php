@@ -74,6 +74,7 @@
 
 
 
+
 require_once("functions.php");
 
 $filename = "data/users.json";
@@ -92,36 +93,24 @@ $input = json_decode(file_get_contents("php://input"), true);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") { // make sure it's the right method
 
-    if ($input["personal"]["username"] == "" or $input["personal"]["password"] == "") {  // if field(s) empty
+    if (
+        empty($input["personal"]["username"]) ||
+        empty($input["personal"]["password"])
+    ) {  // if field(s) empty
         send_JSON(["message" => "Please do not leave any field empty"], 400);
     }
 
-    if (!isset($input["personal"]["email"], // check that it's the right data
-        $input["personal"]["username"],
-        $input["personal"]["password"])
+    if (
+        !isset(
+            $input["personal"]["email"],
+            $input["personal"]["username"],
+            $input["personal"]["password"]
+        )
     ) {
         send_JSON(["message" => "Wrong data"], 401);
     }
 
-    if (!filter_var($input["personal"]["email"], FILTER_VALIDATE_EMAIL)) { // checking that the email is valid
-        send_JSON(["message" => "Please enter a valid email"], 401);
-    }
-
-    //////////////
-
-    // different requirements
-    tooShort($input["personal"]["username"], "username");
-    tooShort($input["personal"]["password"], "password");
-
-    $splitUsername = str_split($input["personal"]["username"]);
-    $splitPassword = str_split($input["personal"]["password"]);
-    $splitEmail = str_split($input["personal"]["email"]);
-
-    incorrectChar($splitUsername, "username");
-    incorrectChar($splitPassword, "password");
-    incorrectChar($splitEmail, "email");
-
-    //////////////
+    // Additional validation if needed...
 
     if ($users != []) { // don't do this if no users yet
         foreach ($users as $userGroup) {
@@ -136,7 +125,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // make sure it's the right method
         }
     }
 
-    $newUser = [ // create new user
+    $newUser = [
         "personal" => [
             "email" => $input["personal"]["email"],
             "username" => $input["personal"]["username"],
@@ -151,7 +140,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // make sure it's the right method
         ]
     ];
 
-    $users[] = $newUser;
+    $users[] = [$newUser]; // Wrap the new user in an array (user group)
     file_put_contents($filename, json_encode($users, JSON_PRETTY_PRINT)); // add new user to file
 
     unset($newUser["personal"]["password"]); // don't send password
@@ -160,6 +149,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // make sure it's the right method
 } else {
     send_JSON(["message" => "Wrong method"], 405);
 }
+
 
 
 ?>

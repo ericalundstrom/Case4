@@ -63,396 +63,356 @@
             ]
         }
     ],
-    {
-        "personal": {
-            "email": "john.doe@example.com",
-            "username": "johndoe",
-            "password": "password123"
-        },
-        "comics": [
-            {
-                "title": 0,
-                "likes": 0,
-                "filters": 0
-            }
-        ]
-    },
-    {
-        "personal": {
-            "email": "alice.smith@example.com",
-            "username": "alicesmith",
-            "password": "secret123"
-        },
-        "comics": [
-            {
-                "title": 0,
-                "likes": 0,
-                "filters": 0
-            }
-        ]
-    },
-    {
-        "personal": {
-            "email": "charlie.brown@example.com",
-            "username": "charliebrown",
-            "password": "peanuts456"
-        },
-        "comics": [
-            {
-                "title": 0,
-                "likes": 0,
-                "filters": 0
-            }
-        ]
-    },
-    {
-        "personal": {
-            "email": "emma.jones@example.com",
-            "username": "emmajones",
-            "password": "emma567"
-        },
-        "comics": [
-            {
-                "title": 0,
-                "likes": 0,
-                "filters": 0
-            }
-        ]
-    },
-    {
-        "personal": {
-            "email": "michael.jackson@example.com",
-            "username": "michaeljackson",
-            "password": "thriller789"
-        },
-        "comics": [
-            {
-                "title": 0,
-                "likes": 0,
-                "filters": 0
-            }
-        ]
-    },
-    {
-        "personal": {
-            "email": "susan.white@example.com",
-            "username": "susanwhite",
-            "password": "susan123"
-        },
-        "comics": [
-            {
-                "title": 0,
-                "likes": 0,
-                "filters": 0
-            }
-        ]
-    },
-    {
-        "personal": {
-            "email": "jeffery.white@example.com",
-            "username": "jeffery",
-            "password": "jeffery123"
-        },
-        "comics": [
-            {
-                "title": 0,
-                "likes": 0,
-                "filters": 0
-            }
-        ]
-    },
-    {
-        "personal": {
-            "email": "cher.cher@example.com",
-            "username": "chercher",
-            "password": "chercher"
-        },
-        "comics": [
-            {
-                "title": 0,
-                "likes": 0,
-                "filters": 0
-            }
-        ]
-    },
-    {
-        "personal": {
-            "email": "oliwer.lofgren@example.com",
-            "username": "oliwer",
-            "password": "oliwerlof"
-        },
-        "comics": [
-            {
-                "title": 0,
-                "likes": 0,
-                "filters": 0
-            }
-        ]
-    },
-    {
-        "personal": {
-            "email": "filip@example.com",
-            "username": "filip",
-            "password": "filipfilip"
-        },
-        "comics": [
-            {
-                "title": 0,
-                "likes": 0,
-                "filters": 0
-            }
-        ]
-    },
-    {
-        "personal": {
-            "email": "harryPotter@example.com",
-            "username": "harryPotter",
-            "password": "harryPotter"
-        },
-        "comics": [
-            {
-                "title": 0,
-                "likes": 0,
-                "filters": 0
-            }
-        ]
-    },
-    {
-        "personal": {
-            "email": "Ron@example.com",
-            "username": "ronWeesely",
-            "password": "ronron"
-        },
-        "comics": [
-            {
-                "title": 0,
-                "likes": 0,
-                "filters": 0
-            }
-        ]
-    },
-    {
-        "personal": {
-            "email": "Erik@example.com",
-            "username": "ErikP",
-            "password": "ErikP"
-        },
-        "comics": [
-            {
-                "title": 0,
-                "likes": 0,
-                "filters": 0
-            }
-        ]
-    },
-    {
-        "personal": {
-            "email": "sebbe@example.com",
-            "username": "sebastian",
-            "password": "sebastian"
-        },
-        "comics": [
-            {
-                "title": 0,
-                "likes": 0,
-                "filters": 0
-            }
-        ]
-    },
-    {
-        "personal": {
-            "email": "sofie@example.com",
-            "username": "sofiesofie",
-            "password": "sofie"
-        },
-        "comics": [
-            {
-                "title": 0,
-                "likes": 0,
-                "filters": 0
-            }
-        ]
-    },
-    {
-        "personal": {
-            "email": "theo@example.com",
-            "username": "theoooo",
-            "password": "theoooo"
-        },
-        "comics": [
-            {
-                "title": 0,
-                "likes": 0,
-                "filters": 0
-            }
-        ]
-    },
-    {
-        "personal": {
-            "email": "santa@example.com",
-            "username": "santa",
-            "password": "santa"
-        },
-        "comics": [
-            {
-                "title": 0,
-                "likes": 0,
-                "filters": 0
-            }
-        ]
-    },
-    {
-        "personal": {
-            "email": "charlie@example.com",
-            "username": "charlie",
-            "password": "charlie"
-        },
-        "comics": [
-            {
-                "title": 0,
-                "likes": 0,
-                "filters": 0
-            }
-        ]
-    },
-    {
-        "personal": {
-            "email": "bert@example.com",
-            "username": "bert",
-            "password": "bert"
-        },
-        "comics": [
-            {
-                "title": 0,
-                "likes": 0,
-                "filters": 0
-            }
-        ]
-    },
-    {
-        "personal": {
-            "email": "Stig@example.com",
-            "username": "Stig",
-            "password": "stig"
-        },
-        "comics": [
-            {
-                "title": 0,
-                "likes": 0,
-                "filters": 0
-            }
-        ]
-    },
-    {
-        "personal": {
-            "email": "robert@example.com",
-            "username": "robert",
-            "password": "robert"
-        },
-        "comics": [
-            {
-                "title": 0,
-                "likes": 0,
-                "filters": 0
-            }
-        ]
-    },
-    {
-        "personal": {
-            "email": "alicia@example.com",
-            "username": "aliciaWikander",
-            "password": "alicia"
-        },
-        "comics": [
-            {
-                "title": 0,
-                "likes": 0,
-                "filters": 0
-            }
-        ]
-    },
-    {
-        "personal": {
-            "email": "tom@example.com",
-            "username": "TomCruise",
-            "password": "tomtom"
-        },
-        "comics": [
-            {
-                "title": 0,
-                "likes": 0,
-                "filters": 0
-            }
-        ]
-    },
-    {
-        "personal": {
-            "email": "rebecka@example.com",
-            "username": "rebecka",
-            "password": "rebecka"
-        },
-        "comics": [
-            {
-                "title": 0,
-                "likes": 0,
-                "filters": 0
-            }
-        ]
-    },
-    {
-        "personal": {
-            "email": "Knugen@example.com",
-            "username": "knugen",
-            "password": "knugen"
-        },
-        "comics": [
-            {
-                "title": 0,
-                "likes": 0,
-                "filters": 0
-            }
-        ]
-    },
-    {
-        "personal": {
-            "email": "sylvia@example.com",
-            "username": "sylvia",
-            "password": "sylvia"
-        },
-        "comics": [
-            {
-                "title": 0,
-                "likes": 0,
-                "filters": 0
-            }
-        ]
-    },
-    {
-        "personal": {
-            "email": "ulf@example.com",
-            "username": "UlfKristensson",
-            "password": "Ulfulf"
-        },
-        "comics": [
-            {
-                "title": 0,
-                "likes": 0,
-                "filters": 0
-            }
-        ]
-    },
-    {
-        "personal": {
-            "email": "elvis@example.com",
-            "username": "elvisPresley",
-            "password": "elvis"
-        },
-        "comics": [
-            {
-                "title": 0,
-                "likes": 0,
-                "filters": 0
-            }
-        ]
-    }
+    [
+        {
+            "personal": {
+                "email": "morgan@hej.se",
+                "username": "morgan",
+                "password": "morgan"
+            },
+            "comics": [
+                {
+                    "title": 0,
+                    "likes": 0,
+                    "filters": 0
+                }
+            ]
+        }
+    ],
+    [
+        {
+            "personal": {
+                "email": "elvis@hej.se",
+                "username": "elvis",
+                "password": "elvis"
+            },
+            "comics": [
+                {
+                    "title": 0,
+                    "likes": 0,
+                    "filters": 0
+                }
+            ]
+        }
+    ],
+    [
+        {
+            "personal": {
+                "email": "john.doe@example.com",
+                "username": "johndoe",
+                "password": "password123"
+            },
+            "comics": [
+                {
+                    "title": 0,
+                    "likes": 0,
+                    "filters": 0
+                }
+            ]
+        }
+    ],
+    [
+        {
+            "personal": {
+                "email": "alice.smith@example.com",
+                "username": "alicesmith",
+                "password": "secret123"
+            },
+            "comics": [
+                {
+                    "title": 0,
+                    "likes": 0,
+                    "filters": 0
+                }
+            ]
+        }
+    ],
+    [
+        {
+            "personal": {
+                "email": "charlie.brown@example.com",
+                "username": "charliebrown",
+                "password": "peanuts456"
+            },
+            "comics": [
+                {
+                    "title": 0,
+                    "likes": 0,
+                    "filters": 0
+                }
+            ]
+        }
+    ],
+    [
+        {
+            "personal": {
+                "email": "emma.jones@example.com",
+                "username": "emmajones",
+                "password": "emma567"
+            },
+            "comics": [
+                {
+                    "title": 0,
+                    "likes": 0,
+                    "filters": 0
+                }
+            ]
+        }
+    ],
+    [
+        {
+            "personal": {
+                "email": "michael.jackson@example.com",
+                "username": "michaeljackson",
+                "password": "thriller789"
+            },
+            "comics": [
+                {
+                    "title": 0,
+                    "likes": 0,
+                    "filters": 0
+                }
+            ]
+        }
+    ],
+    [
+        {
+            "personal": {
+                "email": "susan.white@example.com",
+                "username": "susanwhite",
+                "password": "susan123"
+            },
+            "comics": [
+                {
+                    "title": 0,
+                    "likes": 0,
+                    "filters": 0
+                }
+            ]
+        }
+    ],
+    [
+        {
+            "personal": {
+                "email": "jeffery.white@example.com",
+                "username": "jeffery",
+                "password": "jeffery123"
+            },
+            "comics": [
+                {
+                    "title": 0,
+                    "likes": 0,
+                    "filters": 0
+                }
+            ]
+        }
+    ],
+    [
+        {
+            "personal": {
+                "email": "cher.cher@example.com",
+                "username": "chercher",
+                "password": "chercher"
+            },
+            "comics": [
+                {
+                    "title": 0,
+                    "likes": 0,
+                    "filters": 0
+                }
+            ]
+        }
+    ],
+    [
+        {
+            "personal": {
+                "email": "oliwer.lofgren@example.com",
+                "username": "oliwer",
+                "password": "oliwerlof"
+            },
+            "comics": [
+                {
+                    "title": 0,
+                    "likes": 0,
+                    "filters": 0
+                }
+            ]
+        }
+    ],
+    [
+        {
+            "personal": {
+                "email": "filip@example.com",
+                "username": "filip",
+                "password": "filipfilip"
+            },
+            "comics": [
+                {
+                    "title": 0,
+                    "likes": 0,
+                    "filters": 0
+                }
+            ]
+        }
+    ],
+    [
+        {
+            "personal": {
+                "email": "harryPotter@example.com",
+                "username": "harryPotter",
+                "password": "harryPotter"
+            },
+            "comics": [
+                {
+                    "title": 0,
+                    "likes": 0,
+                    "filters": 0
+                }
+            ]
+        }
+    ],
+    [
+        {
+            "personal": {
+                "email": "Ron@example.com",
+                "username": "ronWeesely",
+                "password": "ronron"
+            },
+            "comics": [
+                {
+                    "title": 0,
+                    "likes": 0,
+                    "filters": 0
+                }
+            ]
+        }
+    ],
+    [
+        {
+            "personal": {
+                "email": "Erik@example.com",
+                "username": "ErikP",
+                "password": "ErikP"
+            },
+            "comics": [
+                {
+                    "title": 0,
+                    "likes": 0,
+                    "filters": 0
+                }
+            ]
+        }
+    ],
+    [
+        {
+            "personal": {
+                "email": "sebbe@example.com",
+                "username": "sebastian",
+                "password": "sebastian"
+            },
+            "comics": [
+                {
+                    "title": 0,
+                    "likes": 0,
+                    "filters": 0
+                }
+            ]
+        }
+    ],
+    [
+        {
+            "personal": {
+                "email": "sofie@example.com",
+                "username": "sofiesofie",
+                "password": "sofie"
+            },
+            "comics": [
+                {
+                    "title": 0,
+                    "likes": 0,
+                    "filters": 0
+                }
+            ]
+        }
+    ],
+    [
+        {
+            "personal": {
+                "email": "theo@example.com",
+                "username": "theoooo",
+                "password": "theoooo"
+            },
+            "comics": [
+                {
+                    "title": 0,
+                    "likes": 0,
+                    "filters": 0
+                }
+            ]
+        }
+    ],
+    [
+        {
+            "personal": {
+                "email": "santa@example.com",
+                "username": "santa",
+                "password": "santa"
+            },
+            "comics": [
+                {
+                    "title": 0,
+                    "likes": 0,
+                    "filters": 0
+                }
+            ]
+        }
+    ],
+    [
+        {
+            "personal": {
+                "email": "charlie@example.com",
+                "username": "charlie",
+                "password": "charlie"
+            },
+            "comics": [
+                {
+                    "title": 0,
+                    "likes": 0,
+                    "filters": 0
+                }
+            ]
+        }
+    ],
+    [
+        {
+            "personal": {
+                "email": "bert@example.com",
+                "username": "bert",
+                "password": "bert"
+            },
+            "comics": [
+                {
+                    "title": 0,
+                    "likes": 0,
+                    "filters": 0
+                }
+            ]
+        }
+    ],
+    [
+        {
+            "personal": {
+                "email": "petra@hej.se",
+                "username": "petra",
+                "password": "petra"
+            },
+            "comics": [
+                {
+                    "title": 0,
+                    "likes": 0,
+                    "filters": 0
+                }
+            ]
+        }
+    ]
 ]

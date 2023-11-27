@@ -12,13 +12,13 @@ function RenderLoginPage() {
         <form>
                 <div id="login"> 
                     <label for="username">Username:</label>
-                    <input type="text" id="username" name="username" required minlength="4" maxlength="8" size="10" />
+                    <input type="text" id="username" name="username" />
                     <div class="underline"></div>
                 </div>
 
                 <div id="reg">
                     <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" required minlength="4" maxlength="8" size="10" />
+                    <input type="password" id="password" name="password" />
                     <div class="underline"></div>
                     <p>Forgot password?</p>
                 </div>

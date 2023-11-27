@@ -2,7 +2,7 @@ body {
     margin: 0;
 }
 
-#main{
+#main {
     width: 100%;
     display: flex;
     align-items: center;
@@ -12,7 +12,7 @@ body {
 #wrapper {
     display: grid;
     grid-template-columns: 80px 1fr 1fr;
-    width: 80%;
+    width: 100%;
     height: 100vh;
     grid-template-rows: 250px 1fr;
     gap: 10px;

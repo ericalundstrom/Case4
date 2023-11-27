@@ -18,8 +18,8 @@ header>p {
     margin-top: 20px;
 }
 
-main{
-    width: 80%;
+main {
+    width: 100%;
     display: flex;
 }
 
@@ -32,9 +32,9 @@ nav {
     justify-content: center;
     position: absolute;
     position: sticky;
-    top: 75px; 
+    top: 75px;
     margin-left: 10px;
-} 
+}
 
 footer {
     display: flex;
@@ -47,7 +47,7 @@ footer {
 
 
 #wrapper {
-    width: 80%;
+    width: 100%;
     display: grid;
     grid-template-columns: 80px 2fr;
     height: 100vh;
@@ -170,38 +170,16 @@ nav>div>div>#cover {
     left: 30px;
 }
 
-/* 
-#top {
-    display: flex;
-    justify-content: space-between;
-} */
-
-/* #cards>div {
-    border: 1px solid black;
-    padding: 8px;
-    height: 340px
-} */
-
-/* #cards>div>#pic {
-    height: 220px;
-    width: 200px;
-    background-size: contain;
-    margin: 10px;
-} */
-
-/* #left {
-    height: 20px;
-    width: 20px;
-    position: relative;
-    bottom: 160px;
-    left: 90%;
+.dropDown {
+    display: grid;
+    position: absolute;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    left: 90px;
+    background-color: white;
+    width: 400px;
+    z-index: 1;
 }
 
-#right {
-    height: 20px;
-    width: 20px;
-    position: relative;
-    bottom: 160px;
-    left: 20px;
-    transform: rotate(180deg);
-} */
+.options {
+    padding: 5px;
+}

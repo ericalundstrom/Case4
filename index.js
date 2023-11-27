@@ -2,8 +2,11 @@
 
 RenderLoginPage();
 
-if (localStorage.getItem("state")) {
+if (localStorage.getItem("user")) {
     RenderHomePage();
+    console.log("finns");
+} else {
+    console.log("finns inte");
 }
 
 function renderFirstPage() {

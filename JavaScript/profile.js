@@ -193,10 +193,7 @@ function RenderFollowersCard(parent) {
 
 function logout() {
     localStorage.clear();
-    localStorage.setItem("user", JSON.stringify({
-        "username": "Guest",
-        "guest": true
-    }));
+    localStorage.removeItem("user");
     RenderLoginPage();
     location.reload();
 }

@@ -44,25 +44,33 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 80%;
+    width: 80vw;
+    align-self:flex-end
 }
 
 #wrapper {
-    display: grid;
-    grid-template-columns: 80px 1fr 1fr;
-    height: 100vh;
-    grid-template-rows: 250px 1fr;
-    gap: 10px;
+    
+    width: 80%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
 }
 
+#filters{
+    display: flex;
+    flex-direction: row;
+    width: 30%;
+    gap: 5px;
+}
 
-#contanter{
-    height: 80%;
-    width: 60%;
+.dropDown{
+    padding: 30px;
 }
 
 
 #frontPage{
     height: 20vh;
+    border: 1px solid black;
+    width: 20vw;
 
 }

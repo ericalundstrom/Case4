@@ -25,33 +25,8 @@ async function RenderHomePage() {
     // boxCards.append(card);
 
 
-    resource.forEach(part => {
-        let card = document.createElement("div");
-        console.log(part);
-        card.innerHTML = `
-        <div id="top">
-            <div id="title"> ${part.title} </div>
-            <div id="author"> ${part.author} </div>
-            <div id="time"> ${part.publish} </div>
-        </div>
-            <div id="pic"></div>
-        <div id="bottom">
-            <div id="description"> ${part.description} </div>
-            <div id="likes"> Likes: ${part.likes} </div>
-        </div>
-        `;
-        card.querySelector("#pic").style.backgroundImage = "url(../images/unnamed.png)";
-        boxCards.append(card);
-    });
-
-
-
+    createCard(boxCards, resource);
 }
-
-
-// function RenderCommunity(params) {
-//     console.log("community");
-// }
 
 
 function RenderTrending(params) {

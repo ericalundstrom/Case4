@@ -192,7 +192,7 @@ button {
 }
 
 
-#cards {
+/* #cards {
     grid-column: 2/4;
     grid-row: 2;
     margin-top: 80px;
@@ -212,6 +212,72 @@ button {
     align-content: flex-start;
     gap: var(--responsive-spacing-xs, 6px) 92px;
     flex-wrap: wrap;
+} */
+#cards {
+    grid-column: 2/4;
+    grid-row: 2;
+    margin-top: 80px;
+    padding-left: 40px;
+    grid-template-columns: repeat(5, 1fr);
+    display: grid;
+    gap: 10px;
+    overflow: scroll;
+    grid-template-rows: 1fr;
+}
+
+#cardBox {
+    height: 450px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#cardBox>h2 {
+    margin-bottom: 0px;
+    position: relative;
+    right: 100px;
+}
+
+#cardBox #img {
+    height: 90%;
+    width: 90%;
+    background-image: url("/images/unnamed.png");
+    background-size: contain;
+}
+
+#cardBox #userImg {
+    height: 25px;
+    width: 20px;
+    border: 1px solid black;
+    border-radius: 20px;
+    position: relative;
+    right: 125px;
+    top: 20px;
+}
+
+#cardBox #userName {
+    position: relative;
+    right: 85px;
+    /* bottom: 8px; */
+}
+
+#likesBox {
+    position: relative;
+    left: 100px;
+}
+
+#likeImg {
+    border: 1px solid black;
+    width: 20px;
+    height: 20px;
+    position: relative;
+    bottom: 20px;
+}
+
+#likeImg>div {
+    position: relative;
+    left: 30px;
 }
 
 .selected {
@@ -371,13 +437,10 @@ button {
 }
 
 #close {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 40px 40px 40px 1fr 40px;
-    width: 100%;
     height: 100%;
     grid-column: 3;
     justify-self: end;
+    padding-right: 10px;
 }
 
 #popUpBox>h2 {
@@ -394,13 +457,16 @@ button {
     border-radius: 20px;
     border: 1px solid black;
     margin-right: 0px;
-    padding-left: 0px;
+    /* padding-left: 0px; */
     font-style: italic;
 }
 
 #popUpBox>button {
     grid-column: 2;
     grid-row: 5;
+    align-self: center;
+    justify-self: center;
+    margin-bottom: 30px;
 }
 
 #popUpBox>#followers {
@@ -409,17 +475,16 @@ button {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: auto;
+    width: 95%;
+    gap: 10px;
 }
 
 #popUpBox>#followers>.artistBox {
     height: 220px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(4, 1fr);
+    display: flex;
+    flex-direction: column;
     border-radius: 10px;
     border: 1px solid black;
-    width: 180px;
-    text-align: center;
 }
 
 #popUpBox>#followers>.artistBox>#artistIcon {
@@ -430,5 +495,13 @@ button {
     border: 1px solid black;
     align-self: center;
     margin-top: 10px;
-    margin-left: 40px;
+    margin-left: 0px;
+}
+
+
+#popUpBox>#followers>.artistBox>button {
+
+    position: relative;
+    bottom: 10px;
+    left: 10px;
 }

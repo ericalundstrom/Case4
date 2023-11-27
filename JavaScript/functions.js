@@ -63,6 +63,7 @@ function BasicLayout() {
 
     document.querySelector("#userprofile").addEventListener("click", (event) => {
         event.stopPropagation();
+        console.log("profile");
         RenderProfile();
     });
     document.querySelector("#home").addEventListener("click", (event) => {
@@ -80,3 +81,24 @@ function BasicLayout() {
 }
 
 
+
+
+function createCard(parent, resource) {
+    resource.forEach(part => {
+
+        parent.innerHTML += `
+        <div id="cardBox">
+            <h2> ${part.title}</h2>
+            <div id="img"></div>
+            <div id="userImg"></div>
+            <div id="userName">${part.author}</div>
+            <div id="likesBox">
+                <div id="likeImg"</div>    
+                <div>${part.likes}</div>
+            </div>
+        </div>
+        `;
+
+
+    });
+}

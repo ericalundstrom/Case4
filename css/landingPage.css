@@ -95,33 +95,91 @@ nav>div>div>#cover {
 #cards {
     grid-row: 2;
     grid-column: 2;
-    width: 240px;
-    height: 300px;
+    width: 100%;
     grid-template-columns: repeat(4, 1fr);
     display: grid;
     gap: 35px;
-    margin-left: 95px;
+    height: auto;
+    overflow: scroll;
+    padding-left: 30px;
+    box-sizing: border-box;
 }
 
+#cardBox {
+    height: 450px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#cardBox>h2 {
+    margin-bottom: 0px;
+    position: relative;
+    right: 100px;
+}
+
+#cardBox #img {
+    height: 90%;
+    width: 90%;
+    background-image: url("/images/unnamed.png");
+    background-size: contain;
+}
+
+#cardBox #userImg {
+    height: 25px;
+    width: 20px;
+    border: 1px solid black;
+    border-radius: 20px;
+    position: relative;
+    right: 125px;
+    top: 20px;
+}
+
+#cardBox #userName {
+    position: relative;
+    right: 85px;
+    /* bottom: 8px; */
+}
+
+#likesBox {
+    position: relative;
+    left: 100px;
+}
+
+#likeImg {
+    border: 1px solid black;
+    width: 20px;
+    height: 20px;
+    position: relative;
+    bottom: 20px;
+}
+
+#likeImg>div {
+    position: relative;
+    left: 30px;
+}
+
+/* 
 #top {
     display: flex;
     justify-content: space-between;
-}
+} */
 
-#cards>div {
+/* #cards>div {
     border: 1px solid black;
     padding: 8px;
     height: 340px
-}
+} */
 
-#cards>div>#pic {
+/* #cards>div>#pic {
     height: 220px;
     width: 200px;
     background-size: contain;
     margin: 10px;
-}
+} */
 
-#left {
+/* #left {
     height: 20px;
     width: 20px;
     position: relative;
@@ -136,4 +194,4 @@ nav>div>div>#cover {
     bottom: 160px;
     left: 20px;
     transform: rotate(180deg);
-}
+} */

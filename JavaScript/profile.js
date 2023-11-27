@@ -57,7 +57,7 @@ async function RenderProfile(params) {
     `;
 
     document.querySelector("#addNewComic").addEventListener("click",() => {
-        renderCreateComic();
+        renderUploadComic();
     })
 
     document.querySelector("#settings").addEventListener("click", () => {

@@ -2,12 +2,10 @@
 
 RenderLoginPage();
 
-if (localStorage.getItem("user")) {
-    RenderHomePage();
-    console.log("finns");
-} else {
-    console.log("finns inte");
-}
+    const user = localStorager.get_item("user");
+   if ( user !== undefined){
+    RenderHomePage()
+   }
 
 function renderFirstPage() {
 

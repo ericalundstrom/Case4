@@ -56,7 +56,7 @@ async function RenderProfile(params) {
     <div id="cards"></div
     `;
 
-    document.querySelector("#addNewComic").addEventListener("click",() => {
+    document.querySelector("#addNewComic").addEventListener("click", () => {
         renderUploadComic();
     })
 
@@ -64,7 +64,14 @@ async function RenderProfile(params) {
         let popUp = document.querySelector("#popUp")
         popUp.classList.remove("hidden");
         popUp.innerHTML = `
-        <div> </div>`
+        <div> Do you want to log out? </div>
+        <button> Log out</button>
+        `;
+
+        popUp.querySelector("button").addEventListener("click", (event) => {
+            event.stopPropagation();
+            logout();
+        })
     })
 
     document.querySelector("#follows > #name").addEventListener("click", (event) => {
@@ -182,4 +189,14 @@ function RenderFollowersCard(parent) {
             <button id="Remove">Remove</button>
     `;
     parent.append(divDom);
+}
+
+function logout() {
+    localStorage.clear();
+    localStorage.setItem("user", JSON.stringify({
+        "username": "Guest",
+        "guest": true
+    }));
+    RenderLoginPage();
+    location.reload();
 }

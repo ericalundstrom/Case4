@@ -16,14 +16,6 @@ async function renderUploadComic() {
     let filterData = await response.json();
     const container = document.querySelector("#filters");
 
-<<<<<<< Updated upstream
-    for (const key in filterData) {
-        const dropDownDOM = document.createElement("div");
-        contentButtonDom = document.createElement("button");
-        contentButtonDom.textContent = key;
-        contentButtonDom.addEventListener("click", () => {
-            renderOptions(filterData[key], dropDownDOM);
-=======
 
 for (const key in filterData) {
     const dropDownDOM = document.createElement("div");
@@ -53,44 +45,43 @@ function renderOptions(key, container){
     }
  }
 
-let user = localStorager.get_item("user");
+//let user = localStorager.get_item("user");
+//
+//const title = document.querySelector("input[name='title']");
+//const  description = document.querySelector("input[name='description']");
+//const frontPage = document.querySelector("#frontPage")
+//const form = document.querySelector("form");
 
-const title = document.querySelector("input[name='title']");
-const  description = document.querySelector("input[name='description']");
-const frontPage = document.querySelector("#frontPage")
-const form = document.querySelector("form");
-
-form.addEventListener("submit", async (event) => {
-    event.preventDefault();
-
-    const formData = new FormData(form);
-
-    try {
-        const response = await fetch("api/upload.php/", {
-            method: "POST",
-            body: formData
->>>>>>> Stashed changes
-        });
-        dropDownDOM.classList.add("dropDown");
-        container.append(dropDownDOM);
-        dropDownDOM.append(contentButtonDom);
-
-        function renderOptions(key, container) {
-            key.forEach(value => {
-                const tagDOM = document.createElement("a");
-                tagDOM.textContent = value;
-                container.append(tagDOM);
-            });
-            if (Array.isArray(key)) {
-                key.forEach(value => {
-                    const underTagDOM = document.createElement("a");
-                    underTagDOM.textContent = value;
-                    tagDOM.append(underTagDOM);
-                });
-            }
-        }
-    }
-
+//form.addEventListener("submit", async (event) => {
+//    event.preventDefault();
+//
+//    const formData = new FormData(form);
+//
+//    try {
+//        const response = await fetch("api/upload.php/", {
+//            method: "POST",
+//            body: formData
+//        });
+//        dropDownDOM.classList.add("dropDown");
+//        container.append(dropDownDOM);
+//        dropDownDOM.append(contentButtonDom);
+//
+//        function renderOptions(key, container) {
+//            key.forEach(value => {
+//                const tagDOM = document.createElement("a");
+//                tagDOM.textContent = value;
+//                container.append(tagDOM);
+//            });
+//            if (Array.isArray(key)) {
+//                key.forEach(value => {
+//                    const underTagDOM = document.createElement("a");
+//                    underTagDOM.textContent = value;
+//                    tagDOM.append(underTagDOM);
+//                });
+//            }
+//        }
+//    }
+//
     let user = localStorage.getItem("user");
 
     const title = document.querySelector("input[name='title']");

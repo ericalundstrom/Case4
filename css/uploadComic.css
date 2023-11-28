@@ -40,37 +40,43 @@ footer {
     align-items: center;
     margin-top: 40px;
 }
-#main{
+
+#main {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 80vw;
-    align-self:flex-end
+    align-self: flex-end
 }
 
 #wrapper {
-    
+
     width: 80%;
     height: 100%;
     align-items: center;
     justify-content: center;
 }
 
-#filters{
+#filters {
     display: flex;
     flex-direction: row;
     width: 30%;
     gap: 5px;
 }
 
-.dropDown{
+.dropDown {
     padding: 30px;
 }
 
 
-#frontPage{
+#frontPage {
     height: 20vh;
     border: 1px solid black;
     width: 20vw;
 
+}
+
+#frontPage img {
+    height: 100%;
+    width: 100%;
 }

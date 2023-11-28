@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
     $allowed = ["jpg", "jpeg", "png", "image/jpg","JPG"];
 
     if(in_array($fileExtension, $allowed)) {
-      if($fileSize < 2000000) {
+      if($fileSize < 20000000) {
         if($fileError === 0) {
        
           $destination = "data/comics/".$fileName;

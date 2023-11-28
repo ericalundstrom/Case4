@@ -44,6 +44,10 @@ input {
     font-style: italic;
 }
 
+main{
+    display: flex;
+}
+
 #profile {
     width: 40px;
     height: 40px;

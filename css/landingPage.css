@@ -220,22 +220,13 @@ nav>div>div>#cover {
     padding: 5px;
 }
 
-.Materials .dropDown>div>div:hover,
+.Materials .dropDown>div:hover,
 .Themes .dropDown>div:hover,
 .Styles .dropDown>div:hover,
 .Styles .dropDown>div>div:hover {
     /* height: 20px; */
     background-color: blue;
 }
-
-/* 
-.Materials .dropDown>div>div:target,
-.Themes .dropDown>div:target,
-.Styles .dropDown>div:target,
-.Styles .dropDown>div>div:target {
-    /* height: 20px; */
-/* background-color: yellow;
-} */
 
 .hidden {
     display: none;

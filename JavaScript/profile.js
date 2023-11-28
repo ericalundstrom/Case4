@@ -126,35 +126,43 @@ function toggleClass(selectedId) {
 
 
 
-function RenderFollowingArtist() {
+async function RenderFollowingArtist() {
 
     console.log("following");;
     let cards = document.querySelector("#cards")
     cards.innerHTML = ``;
 
-    for (let i = 0; i < 3; i++) {
-        RenderArtistCard(cards);
-    }
+
+    await RenderArtistCard(cards);
+
 }
 
 
-function RenderArtistCard(parent) {
-    let divDom = document.createElement("div");
-    divDom.classList.add("artistBox");
-    divDom.innerHTML = `
-            <div id="artistIcon"></div>
-            <h3> Username </h3>
-            <div id="uploadedComicsBox">
-                <div class="number"> 8 </div>
-                <div id="text"> Uploaded comics </div>
-            </div>
-            <div id="folowerBox">
-                <div class="number"> 1 </div>
-                <div id="text"> Followers </div>
-            </div>
-    `;
+async function RenderArtistCard(parent) {
 
-    parent.append(divDom);
+    let respons = await fetch("api/data/users.json");
+    let resourse = await respons.json();
+
+    resourse.forEach(user => {
+        console.log(user[0].comics[0].title);
+        let divDom = document.createElement("div");
+        divDom.classList.add("artistBox");
+        divDom.innerHTML = `
+                <div id="artistIcon"></div>
+                <h3> ${user[0].personal.username} </h3>
+                <div id="uploadedComicsBox">
+                    <div class="number"> ${user[0].comics[0].title} </div>
+                    <div id="text"> Uploaded comics </div>
+                </div>
+                <div id="folowerBox">
+                    <div class="number"> ${user[0].comics[0].likes} </div>
+                    <div id="text"> Followers </div>
+                </div>
+        `;
+        parent.append(divDom);
+    })
+
+
 }
 
 

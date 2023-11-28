@@ -22,13 +22,13 @@ function BasicLayout() {
             <input type="text" id="search" name="search" placeholder="search for comics, authors etc.."/>
             <div id="profile"></div>`
 
-            document.querySelector("nav").innerHTML = `
+    document.querySelector("nav").innerHTML = `
             <p id="userprofile"> Profile </p>
             <p id="home"> Home </p>
             <p id="community"> Comunity </p>
             <p id="trending"> Trending </p>`
 
-document.querySelector("footer").innerHTML = `
+    document.querySelector("footer").innerHTML = `
         <div> About Rita </div>
         <div class="stroke"></div>
         <div> Change language </div>
@@ -65,23 +65,31 @@ document.querySelector("footer").innerHTML = `
 
 
 
-
 function createCard(parent, resource) {
     resource.forEach(part => {
+        console.log("hej");
+        const cardBox = document.createElement("div");
+        cardBox.classList.add("cardBox");
 
-        parent.innerHTML += `
-        <div id="cardBox">
-            <h2> ${part.title}</h2>
-            <div id="img"></div>
-            <div id="userImg"></div>
-            <div id="userName">${part.author}</div>
-            <div id="likesBox">
-                <div id="likeImg"</div>    
+        cardBox.innerHTML = `
+            <h2>${part.title}</h2>
+            <div class="imgDiv"></div>
+            <div class="userImg"></div>
+            <div class="userName">${part.author}</div>
+            <div class="likesBox">
+                <div class="likeImg"></div>    
                 <div>${part.likes}</div>
             </div>
-        </div>
         `;
 
+        if (part.cover !== "") {
+            console.log("finns bild");
+            cardBox.querySelector(".imgDiv").style.backgroundImage = `url("api/data/comics/${part.cover}")`;
+        } else {
+            cardBox.querySelector(".imgDiv").style.backgroundImage = `url("/images/unnamed.png")`;
+            console.log("fungerar ej");
+        }
 
+        parent.appendChild(cardBox);
     });
 }

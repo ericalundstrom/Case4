@@ -129,10 +129,10 @@ nav>div>div>#cover {
     right: 100px;
 }
 
-#cardBox #img {
-    height: 90%;
+.imgDiv {
+    height: 75%;
     width: 90%;
-    background-image: url("/images/unnamed.png");
+    /* background-image: url("/images/unnamed.png"); */
     background-size: contain;
 }
 

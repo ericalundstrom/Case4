@@ -105,8 +105,10 @@ async function RenderProfile(params) {
         toggleClass(event.target.id)
     })
 
+    let responseUser = await fetch("api/data/comics.json");
+    let resourceUser = await responseUser.json();
     let cardBox = document.querySelector("#cards");
-    createCard(cardBox, resource);
+    createCard(cardBox, resourceUser);
 
 }
 

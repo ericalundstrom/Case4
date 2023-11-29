@@ -44,7 +44,7 @@ input {
     font-style: italic;
 }
 
-main{
+main {
     display: flex;
 }
 
@@ -267,6 +267,11 @@ button {
     position: relative;
     right: 125px;
     top: 20px;
+}
+
+.imgDiv {
+    height: 80%;
+    background-size: contain;
 }
 
 #cardBox #userName {

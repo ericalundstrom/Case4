@@ -33,47 +33,47 @@ async function renderUploadComic() {
     const container = document.querySelector("#filters");
 
 
-for (const key in filterData) {
-    const dropDownDOM = document.createElement("div");
-    contentButtonDom = document.createElement("button");
-    contentButtonDom.textContent = key;
-    contentButtonDom.addEventListener("click", () => {
-        renderOptions(filterData[key], dropDownDOM);
-    })
-    dropDownDOM.classList.add("dropDown");
-    container.append(dropDownDOM);
-    dropDownDOM.append(contentButtonDom);
+    for (const key in filterData) {
+        const dropDownDOM = document.createElement("div");
+        contentButtonDom = document.createElement("button");
+        contentButtonDom.textContent = key;
+        contentButtonDom.addEventListener("click", () => {
+            renderOptions(filterData[key], dropDownDOM);
+        })
+        dropDownDOM.classList.add("dropDown");
+        container.append(dropDownDOM);
+        dropDownDOM.append(contentButtonDom);
 
 
-function renderOptions(key, container){
-    key.forEach( value => {
-        const tagDOM = document.createElement("href");
-        tagDOM.textContent = value;
-        container.append(tagDOM);
-    })
-    if(Array.isArray(key)){
-        key.forEach(value => {
-        const underTagDOM = document.createElement("href");
-        underTagDOM.textContent = value;
-        tagDOM.append(underTagDOM);
+        function renderOptions(key, container) {
+            key.forEach(value => {
+                const tagDOM = document.createElement("href");
+                tagDOM.textContent = value;
+                container.append(tagDOM);
             })
+            if (Array.isArray(key)) {
+                key.forEach(value => {
+                    const underTagDOM = document.createElement("href");
+                    underTagDOM.textContent = value;
+                    tagDOM.append(underTagDOM);
+                })
+            }
         }
     }
- }
 
- const descriptionInput = document.querySelector('input[name="description"]');
-  const wordCounter = document.querySelector("#wordCounter");
-  const maxLength = parseInt(descriptionInput.getAttribute("maxlength"));
+    const descriptionInput = document.querySelector('input[name="description"]');
+    const wordCounter = document.querySelector("#wordCounter");
+    const maxLength = parseInt(descriptionInput.getAttribute("maxlength"));
 
-  descriptionInput.addEventListener('input', function() {
-    const charactersUsed = descriptionInput.value.length;
-    const charactersLeft = maxLength - charactersUsed;
-    wordCounter.textContent = `Characters left: ${charactersLeft}`
-  });
+    descriptionInput.addEventListener('input', function () {
+        const charactersUsed = descriptionInput.value.length;
+        const charactersLeft = maxLength - charactersUsed;
+        wordCounter.textContent = `Characters left: ${charactersLeft}`
+    });
 
 
     let dataToPublish = {};
-    
+
     let user = localStorage.getItem("user");
     const title = document.querySelector("input[name='title']");
     const description = document.querySelector("input[name='description']");
@@ -95,7 +95,7 @@ function renderOptions(key, container){
 
             let response = await fetch(request);
             const data = await response.json();
-          
+
 
             if (data.error) {
                 console.error(data.error);
@@ -105,7 +105,7 @@ function renderOptions(key, container){
                 const img = document.createElement("img");
                 img.src = `../api/${data}`;
                 frontPage.append(img);
-                
+
             }
         } catch (error) {
             console.error("Error uploading image:", error);
@@ -113,88 +113,88 @@ function renderOptions(key, container){
     });
 
 
-document.querySelector("#buttonLayout").addEventListener("click", () => {
-    if(dataToPublish["img1"] == undefined){
-        frontPage.innerText = "Add a image to continue";
+    document.querySelector("#buttonLayout").addEventListener("click", () => {
+        if (dataToPublish["img1"] == undefined) {
+            frontPage.innerText = "Add a image to continue";
 
-    } else if (title.value === ""){
-        title.innerText = "Add a title";
+        } else if (title.value === "") {
+            title.innerText = "Add a title";
 
-    } else {
-        dataToPublish["user"] = user;
-        dataToPublish["title"] = title.value;
+        } else {
+            dataToPublish["user"] = user;
+            dataToPublish["title"] = title.value;
 
-        if(description.value !== ""){
-            dataToPublish["description"] = description.value;
+            if (description.value !== "") {
+                dataToPublish["description"] = description.value;
+            }
+            renderLayoutPage(dataToPublish);
         }
-        renderLayoutPage(dataToPublish);
-    }
-    
-})
+
+    })
 }
 
-function renderLayoutPage(dataToPublish){
+function renderLayoutPage(dataToPublish) {
     console.log(dataToPublish);
 
     swapStyleSheet("css/uploadComicsLayout.css");
 
     document.querySelector("#wrapper").innerHTML = `
-    <div id="topOfPage"> 
-          <div id="infoIcon">Info</div> 
-          <button id="toggleButton">Toggle Layout</button>
-        </div>
-
-    <div id="firstGrid">
-        <div id="pageLayout">
-        </div>
-        <div id="pageLayout">
-        </div>
-    </div>
-
-    <div id="secondGrid">
-           <div id="pageLayout">
-        </div>
-        <div id="pageLayout">
-        </div>
-               <div id="pageLayout">
-        </div>
-        <div id="pageLayout">
-        </div>
-               <div id="pageLayout">
-        </div>
-        <div id="pageLayout">
-        </div>
-               <div id="pageLayout">
-        </div>
-        <div id="pageLayout">
-        </div>
-    </div>
-    
         <div id="topOfPage"> 
-            <button> Publish</button>
-            <button> Upload more</button>
-        </div>`;
+            <div id="infoIcon">Info</div> 
+            <button id="toggleButton">Toggle Layout</button>
+            </div>
 
-        document.querySelector("#toggleButton").addEventListener("click", () => {
-            const firstGrid= document.querySelector("#firstGrid");
-            const secondGrid = document.querySelector("#secondGrid");
+        <div id="firstGrid">
+            <div id="pageLayout">
+            </div>
+            <div id="pageLayout">
+            </div>
+        </div>
 
-            firstGrid.style.display = (gridContainer.style.display === 'none') ? 'grid' : 'none';
-            secondGrid.style.display = (alternativeGridLayout.style.display === 'none') ? 'grid' : 'none';
-        })
+        <div id="secondGrid">
+            <div id="pageLayout">
+            </div>
+            <div id="pageLayout">
+            </div>
+                <div id="pageLayout">
+            </div>
+            <div id="pageLayout">
+            </div>
+                <div id="pageLayout">
+            </div>
+            <div id="pageLayout">
+            </div>
+                <div id="pageLayout">
+            </div>
+            <div id="pageLayout">
+            </div>
+        </div>
+        
+            <div id="topOfPage"> 
+                <button> Publish</button>
+                <button> Upload more</button>
+            </div>`;
 
-        document.querySelector("#infoIcon").addEventListener("click", () => {
-            let popUp = document.querySelector("dialog");
-            popUp.showModal();
+    document.querySelector("#toggleButton").addEventListener("click", () => {
+        const firstGrid = document.querySelector("#firstGrid");
+        const secondGrid = document.querySelector("#secondGrid");
 
-            popUp.innerHTML = `
+        firstGrid.style.display = (gridContainer.style.display === 'none') ? 'grid' : 'none';
+        secondGrid.style.display = (alternativeGridLayout.style.display === 'none') ? 'grid' : 'none';
+    })
+
+    document.querySelector("#infoIcon").addEventListener("click", () => {
+        let popUp = document.querySelector("dialog");
+        popUp.showModal();
+
+        popUp.innerHTML = `
             <div id="leftSide">
             <h1>${dataToPublish.title}</h1>
             <div id="description"><p></p></div>
             </div>
             <div id="rightSide">
             <img src="${dataToPublish.img1}"</div>`;
-        })
+    })
 
 
 }

@@ -141,8 +141,6 @@ async function renderLayoutPage(dataToPublish){
             let popUp = document.querySelector("dialog");
             popUp.showModal();
 
-        firstGrid.style.display = (gridContainer.style.display === 'none') ? 'grid' : 'none';
-        secondGrid.style.display = (alternativeGridLayout.style.display === 'none') ? 'grid' : 'none';
     })
 
     document.querySelector("#infoIcon").addEventListener("click", () => {

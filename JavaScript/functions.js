@@ -67,7 +67,7 @@ function BasicLayout() {
 
 function createCard(parent, resource) {
     resource.forEach(part => {
-        console.log("hej");
+        //console.log("hej");
         const cardBox = document.createElement("div");
         cardBox.classList.add("cardBox");
 
@@ -83,7 +83,7 @@ function createCard(parent, resource) {
         `;
 
         if (part.cover !== "") {
-            console.log("finns bild");
+            //console.log("finns bild");
             cardBox.querySelector(".imgDiv").style.backgroundImage = `url("api/data/comics/${part.cover}")`;
         } else {
             cardBox.querySelector(".imgDiv").style.backgroundImage = `url("/images/unnamed.png")`;

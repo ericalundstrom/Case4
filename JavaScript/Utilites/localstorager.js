@@ -8,6 +8,9 @@ const localStorager = {
      set_item: (value_name, value) => {
         return localStorage.setItem(value_name, JSON.stringify(value));
      },
+      remove_item: (value_name) => {
+        return localStorage.removeItem(value_name);
+    },
      reset: () => {
         localStorage.clear();
      }

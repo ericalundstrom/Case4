@@ -1,7 +1,6 @@
 "use strict";
 
 RenderLoginPage();
-
     const user = localStorager.get_item("user");
    if ( user !== undefined){
     RenderHomePage()

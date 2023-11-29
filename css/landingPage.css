@@ -225,7 +225,8 @@ nav>div>div>#cover {
 .Styles .dropDown>div:hover,
 .Styles .dropDown>div>div:hover {
     /* height: 20px; */
-    background-color: blue;
+    background-color: rgb(236, 104, 80);
+    color: white;
 }
 
 .hidden {

@@ -58,6 +58,7 @@ async function RenderProfile(params) {
 
     document.querySelector("#addNewComic").addEventListener("click", () => {
         renderUploadComic();
+        //renderLayoutPage()
     })
 
     document.querySelector("#settings").addEventListener("click", () => {
@@ -207,8 +208,8 @@ function RenderFollowersCard(parent) {
 }
 
 function logout() {
-    localStorage.clear();
-    localStorage.removeItem("user");
+    localStorager.clear();
+    //localStorage.removeItem("user");
     RenderLoginPage();
     location.reload();
 }

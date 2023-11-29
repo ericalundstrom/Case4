@@ -136,3 +136,68 @@ input[name="description"]{
     justify-content: space-between;
 }
 
+/* Dropdown menu */ 
+
+.dropDown {
+    display: grid;
+    position: absolute;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    left: 90px;
+    background-color: white;
+    width: 400px;
+    z-index: 1;
+}
+
+.Themes,
+.Styles,
+.Materials {
+    position: relative;
+}
+
+.Themes .dropDown>div {
+    /* height: 20px; */
+    padding: 10px;
+}
+
+.Themes .dropDown {
+    position: absolute;
+    left: -150px;
+}
+
+.Styles .dropDown>div {
+    /* height: 20px; */
+    padding: 10px;
+}
+
+.Styles .dropDown {
+    position: absolute;
+    left: -170px;
+}
+
+.Materials .dropDown>div {
+    /* height: 20px; */
+    padding: 10px;
+}
+
+.Materials .dropDown {
+    position: absolute;
+    left: -170px;
+}
+
+.options {
+    padding: 5px;
+}
+
+.Materials .dropDown>div:hover,
+.Themes .dropDown>div:hover,
+.Styles .dropDown>div:hover,
+.Styles .dropDown>div>div:hover {
+    /* height: 20px; */
+    background-color: rgb(236, 104, 80);
+    color: white;
+}
+
+.hidden {
+    display: none;
+}
+

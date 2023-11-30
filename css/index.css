@@ -7,8 +7,10 @@ body {
 
     @font-face {
         font-family: "ShadowsInToLight";
-        src: url("fonts/ShadowsIntoLight-Regular.ttf");
+        src: url("fonts/ShadowsIntoLight-Regular.ttf") format("truetype");
     }
+
+    font-family: ShadowsInToLight;
 }
 
 main {

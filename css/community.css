@@ -311,3 +311,63 @@ nav>div>div>#cover {
 form {
     margin-left: 20px;
 }
+
+#divForComments>div {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 40px 1px 1fr;
+    margin-top: 20px;
+    background-color: rgb(189, 183, 183);
+    border-radius: 10px;
+    padding: 5px 10px 10px 10px;
+
+}
+
+#divForComments>div>#stroke {
+    height: 0px;
+    width: 95%;
+    grid-column: 1/6;
+    margin-top: 0px;
+    justify-self: center;
+}
+
+#divForComments>div>p {
+    grid-row: 3;
+}
+
+#profilePic {
+    height: 30px;
+    width: 30px;
+}
+
+#addComment {
+    height: 85px;
+    margin-top: 20px;
+    background-color: rgb(189, 183, 183);
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    margin-left: 0px;
+}
+
+#addComment>form {
+    margin-left: 0px;
+    align-self: end;
+
+}
+
+#comment {
+    border: none;
+    height: 100%;
+    width: 90%;
+    margin: 0px;
+    background-color: transparent;
+}
+
+#submitIcon {
+    height: 30px;
+    width: 30px;
+    border-radius: 20px;
+    border: 1px solid black;
+    margin-top: 55px;
+}

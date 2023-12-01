@@ -1,10 +1,23 @@
 [
     {
-        "title": "fergre",
+        "title": "Tryxk på mig",
         "description": "greger",
         "date": "30-11-2023",
         "author": "\"petra\"",
-        "comments": []
+        "comments": [
+            {
+                "title": "fergre",
+                "comment": "Hej från andra sidan",
+                "date": "30-11-2023",
+                "author": "petra"
+            },
+            {
+                "title": "fergre",
+                "comment": "Hej från andra sidan",
+                "date": "30-11-2023",
+                "author": "petra"
+            }
+        ]
     },
     {
         "title": "fergregthtyjyt",

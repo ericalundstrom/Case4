@@ -1,6 +1,6 @@
 "use strict";
 
-function RenderCommunity() {
+async function RenderCommunity() {
 
     swapStyleSheet("css/community.css");
     let wrapper = document.querySelector("#wrapper");
@@ -33,9 +33,12 @@ function RenderCommunity() {
 
     let calender = document.querySelector("#calender");
     let comments = document.querySelector("#commentBox");
-    for (let i = 0; i < 2; i++) {
-        RenderComment(comments);
-    }
+
+    let response = await fetch("api/data/community.json");
+    let resourse = await response.json();
+
+    RenderComment(comments, resourse, true);
+
 
     // wrapper.querySelector("button").addEventListener("click", (event) => {
     //     event.stopPropagation();
@@ -81,36 +84,99 @@ function RenderCalender(parent) {
 }
 
 
-async function RenderComment(parent) {
-    let response = await fetch("api/data/community.json");
-    let resourse = await response.json();
+async function RenderComment(parent, resourse, value) {
+    if (value) {
 
-    resourse.forEach(comment => {
-        console.log(comment);
+        resourse.forEach(comment => {
+            console.log(comment);
+            let commentBox = document.createElement("div");
+            let numberOfComments = comment.comments.length;
+            console.log(numberOfComments);
+
+            commentBox.innerHTML = `
+                <div id="box">
+                        <div id="userAndProfile">
+                            <div id="profilePic"></div>
+                            <p id="username">${comment.author}</p>
+                        </div>
+                        <div id="date">${comment.date}</div>
+            
+                        <h2>${comment.title}</h2>
+                        <p>${comment.description}</p>
+            
+                        <div id="comments">
+                            <div id="icon">icon</div>
+                            <div id="count">${numberOfComments}</div>
+                        </div>
+                </div>
+                <div id="stroke"></div>
+                `;
+
+            commentBox.addEventListener("click", (event) => {
+                RenderPostLayout(comment);
+            })
+
+            parent.append(commentBox);
+        });
+    } else {
+        console.log("inne på en post");
+        console.log(resourse);
+        // resourse.forEach(user => {
+        //     console.log(user);
         let commentBox = document.createElement("div");
+        let numberOfComments = resourse.comments.length;
 
         commentBox.innerHTML = `
-        <div id="box">
-                <div id="userAndProfile">
-                    <div id="profilePic"></div>
-                    <p id="username">${comment.author}</p>
-                </div>
-                <div id="date">${comment.date}</div>
-    
-                <h2>${comment.title}</h2>
-                <p>${comment.description}</p>
-    
-                <div id="comments">
-                    <div id="icon">icon</div>
-                    <div id="count">${comment.comments}</div>
-                </div>
-        </div>
-        <div id="stroke"></div>
-        `;
+                <div id="box">
+                        <div id="userAndProfile">
+                            <div id="profilePic"></div>
+                            <p id="username">${resourse.author}</p>
+                        </div>
+                        <div id="date">${resourse.date}</div>
 
+                        <h2>${resourse.title}</h2>
+                        <p>${resourse.description}</p>
+
+                        <div id="comments">
+                            <div id="icon">icon</div>
+                            <div id="count">${numberOfComments}</div>
+                        </div>
+                </div>
+                <div id="stroke"></div>
+                `;
 
         parent.append(commentBox);
-    });
+
+        document.querySelector("#commentBox").innerHTML += `
+            <div id="divForComments"></div>
+            <form id="addComment" action="api/community.php" method="POST">
+                <input type="text" id="comment" name="comment"placeholder="Skriv en kommentar här..."/>
+                <div id="submitIcon"></div>
+            </form>
+        `;
+
+        if (resourse.comments.length !== 0) {
+
+            for (let i = 0; i < resourse.comments.length; i++) {
+
+                let divDom = document.createElement("div");
+                divDom.innerHTML = `
+                <div id="userAndProfile">
+                <div id="profilePic"></div>
+                <p id="username">${resourse.comments[i].author}</p>
+                </div>
+                <div id="date">${resourse.comments[i].date}</div>
+                <div id="stroke"></div>
+                <p>${resourse.comments[i].comment}</p>
+                `;
+                document.querySelector("#divForComments").append(divDom);
+
+            }
+        } else {
+            console.log("finns inga kommentarer");
+        }
+        // });
+    }
 }
 
 
@@ -185,4 +251,42 @@ function RenderNewCommentPage() {
         }
     });
 
+}
+
+
+function RenderPostLayout(data) {
+    // console.log(data);
+
+    BasicLayout();
+    let wrapper = document.querySelector("#wrapper");
+    wrapper.innerHTML = `
+        <div id="comunityBox"> 
+            <h2> Community </h2>
+            <div id="stroke"></div>
+            <div id="commentBox"></div>
+        </div>
+
+            <button onclick="RenderNewCommentPage()"> Add a post + </button>
+            <div id="tipsbox">
+                <div id="tips">
+                    <h3> Sale on light tables in pennstore </h3>
+                    <div id="SmallStroke"></div>
+                    <p> Models ****** and **** are half price off right now. Sale will be on untill december first </p>
+                    <p id="date">2023-09-11</p>
+                </div>
+                <div id="dots">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+            </div>
+            <div id="calender"></div>
+    `;
+
+    let calender = document.querySelector("#calender");
+    let comments = document.querySelector("#commentBox");
+
+    RenderCalender(calender);
+    RenderComment(comments, data, false);
 }

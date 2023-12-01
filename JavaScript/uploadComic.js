@@ -29,7 +29,6 @@ async function renderUploadComic() {
 
     `;
 
-        let user = localStorager.get_item("user");
     const title = document.querySelector("input[name='title']");
     const description = document.querySelector("input[name='description']");
     const frontPage = document.querySelector("#frontPage")
@@ -53,13 +52,16 @@ async function renderUploadComic() {
   //});
 
 
+    const formData = new FormData(form);
+    let comicFrontPage = await dragAndDrop(frontPage);
+
+
     form.addEventListener("submit", async (event) => {
         event.preventDefault();
 
-        const formData = new FormData(form);
-        let data = await initiateFileUpload(formData, frontPage);
+        data = await initiateFileUpload(formData, frontPage);
     });
-
+        dataToPublish["img1"] = comicFrontPage;
    
 
     document.querySelector("#buttonLayout").addEventListener("click", () => {
@@ -71,7 +73,7 @@ async function renderUploadComic() {
             title.innerText = "Add a title";
 
         } else {
-            dataToPublish["user"] = user;
+            dataToPublish["user"] = localStorager.get_item("user");
             dataToPublish["title"] = title.value;
             dataToPublish["filters"] = localStorager.get_item("filters");
             localStorager.remove_item("filters");
@@ -82,7 +84,6 @@ async function renderUploadComic() {
             renderLayoutPage(dataToPublish);
         }  
     })
-
 }
 
 async function renderLayoutPage(dataToPublish){
@@ -137,12 +138,6 @@ async function renderLayoutPage(dataToPublish){
         })
 
 
-        document.querySelector("#infoIcon").addEventListener("click", () => {
-            let popUp = document.querySelector("dialog");
-            popUp.showModal();
-
-    })
-
     document.querySelector("#infoIcon").addEventListener("click", () => {
         let popUp = document.querySelector("dialog");
         popUp.showModal();
@@ -161,8 +156,7 @@ async function renderLayoutPage(dataToPublish){
     document.querySelector("#publish").addEventListener("click", () => {
         console.log(comicContent);
         dataToPublish["content"] = comicContent;
-        console.log(dataToPublish);
-       // renderPublishComic(dataToPublish);
+        renderPublishComic(dataToPublish);
     })
  
 }
@@ -170,14 +164,15 @@ async function renderLayoutPage(dataToPublish){
 
 async function renderPublishComic(dataToPublish){
     try {
-            const request = request("api/uploadnewComic.php",
+            const request = new Request("api/uploadComic.php",
         {
             method: "POST",
-            body: dataToPublish,
+            body: JSON.stringify(dataToPublish),
         })
 
         let response = await fetch(request);
         const data = await response.json();
+
         if (data.error) {
             console.error(data.error);
         } else {

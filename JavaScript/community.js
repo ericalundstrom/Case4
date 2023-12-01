@@ -6,14 +6,14 @@ function RenderCommunity() {
     let wrapper = document.querySelector("#wrapper");
 
     BasicLayout();
-    document.querySelector("#wrapper").innerHTML = `
+    wrapper.innerHTML = `
         <div id="comunityBox"> 
             <h2> Community </h2>
             <div id="stroke"></div>
             <div id="commentBox"></div>
         </div>
 
-            <button> Add a post + </button>
+            <button onclick="RenderNewCommentPage()"> Add a post + </button>
             <div id="tipsbox">
                 <div id="tips">
                     <h3> Sale on light tables in pennstore </h3>
@@ -36,6 +36,11 @@ function RenderCommunity() {
     for (let i = 0; i < 2; i++) {
         RenderComment(comments);
     }
+
+    // wrapper.querySelector("button").addEventListener("click", (event) => {
+    //     event.stopPropagation();
+    //     RenderNewCommentPage();
+    // })
 
 
     RenderCalender(calender);
@@ -76,28 +81,108 @@ function RenderCalender(parent) {
 }
 
 
-function RenderComment(parent) {
-    let comment = document.createElement("div");
+async function RenderComment(parent) {
+    let response = await fetch("api/data/community.json");
+    let resourse = await response.json();
 
-    comment.innerHTML = `
-    <div id="box">
-            <div id="userAndProfile">
-                <div id="profilePic"></div>
-                <p id="username">Username</p>
-            </div>
-            <div id="date">2023/09/11</div>
+    resourse.forEach(comment => {
+        console.log(comment);
+        let commentBox = document.createElement("div");
 
-            <h2>Vad använder ni för metod när ni bläcklaverar?</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+        commentBox.innerHTML = `
+        <div id="box">
+                <div id="userAndProfile">
+                    <div id="profilePic"></div>
+                    <p id="username">${comment.author}</p>
+                </div>
+                <div id="date">${comment.date}</div>
+    
+                <h2>${comment.title}</h2>
+                <p>${comment.description}</p>
+    
+                <div id="comments">
+                    <div id="icon">icon</div>
+                    <div id="count">${comment.comments}</div>
+                </div>
+        </div>
+        <div id="stroke"></div>
+        `;
 
-            <div id="comments">
-                <div id="icon">icon</div>
-                <div id="count">37</div>
-            </div>
+
+        parent.append(commentBox);
+    });
+}
+
+
+function RenderNewCommentPage() {
+    console.log("add");
+
+    // BasicLayout();
+    document.querySelector("body").innerHTML += `
+    <div id="BackgroundColor" class="hidden">
+        <div id="bigBoxCommunity">
+            <h3> Add a new post</h3>
+
+            <form action="api/community.php" method="POST">
+                <div id="titleBox"> 
+                    <label for="title">Title:</label>
+                    <input type="text" id="title" name="title" />
+                </div>
+
+                <div id="descriptionBox">
+                    <label for="description">Description:</label>
+                    <input type="text" id="description" name="description"/>
+                </div>
+
+                <button type="submit"> Upload to community</button>
+            </form>
+
+            <div id="message"></div>
+            
+            <div id="x"> Close </div>
+        </div>
     </div>
-    <div id="stroke"></div>
     `;
 
+    document.querySelector("#BackgroundColor").classList.remove("hidden");
+    document.querySelector("#x").addEventListener("click", () => {
+        // document.querySelector("#BackgroundColor").classList.add("hidden");
+        document.querySelector("#BackgroundColor").remove();
 
-    parent.append(comment);
+    });
+
+    // document.querySelector("");
+    let form = document.querySelector("form");
+    form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        let title = document.querySelector("#title").value;;
+        let description = document.querySelector("#description").value;
+
+        let user = localStorage.getItem("user");
+        console.log(user);
+        let body = {
+            "title": title,
+            "description": description,
+            "author": user
+        };
+
+        try {
+
+            let respons = await fetching("api/community.php", "POST", body);
+            let resourse = await respons.json();
+
+            if (!resourse.message) {
+                console.log(resourse);
+                document.querySelector("#message").textContent = "Successfully added post!";
+            } else {
+                console.log(resourse.message);
+                document.querySelector("#message").textContent = resourse.message;
+            }
+        } catch (e) {
+            console.log(e);
+            document.querySelector("#message").textContent = e;
+        }
+    });
+
 }

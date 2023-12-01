@@ -160,11 +160,12 @@ function RenderNewCommentPage() {
         let description = document.querySelector("#description").value;
 
         let user = localStorage.getItem("user");
+        let userParse = JSON.parse(user);
         console.log(user);
         let body = {
             "title": title,
             "description": description,
-            "author": user
+            "author": userParse
         };
 
         try {

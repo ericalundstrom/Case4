@@ -85,6 +85,7 @@ function RenderCalender(parent) {
 
 
 async function RenderComment(parent, resourse, value) {
+
     if (value) {
 
         resourse.forEach(comment => {
@@ -116,9 +117,15 @@ async function RenderComment(parent, resourse, value) {
                 RenderPostLayout(comment);
             })
 
+
             parent.append(commentBox);
         });
     } else {
+        document.querySelector("#commentBox").innerHTML += `
+        <div id="goBack"> Go Back </div>
+    `;
+
+        document.querySelector("#goBack").addEventListener("click", RenderCommunity);
         console.log("inne på en post");
         console.log(resourse);
         // resourse.forEach(user => {
@@ -148,12 +155,14 @@ async function RenderComment(parent, resourse, value) {
         parent.append(commentBox);
 
         document.querySelector("#commentBox").innerHTML += `
+        <div id="goBack"> Go Back </div>
             <div id="divForComments"></div>
             <form id="addComment" action="api/community.php" method="POST">
                 <input type="text" id="comment" name="comment"placeholder="Skriv en kommentar här..."/>
                 <div id="submitIcon"></div>
             </form>
         `;
+        document.querySelector("#goBack").addEventListener("click", RenderCommunity);
 
         if (resourse.comments.length !== 0) {
 
@@ -162,8 +171,8 @@ async function RenderComment(parent, resourse, value) {
                 let divDom = document.createElement("div");
                 divDom.innerHTML = `
                 <div id="userAndProfile">
-                <div id="profilePic"></div>
-                <p id="username">${resourse.comments[i].author}</p>
+                    <div id="profilePic"></div>
+                    <p id="username">${resourse.comments[i].author}</p>
                 </div>
                 <div id="date">${resourse.comments[i].date}</div>
                 <div id="stroke"></div>
@@ -175,7 +184,12 @@ async function RenderComment(parent, resourse, value) {
         } else {
             console.log("finns inga kommentarer");
         }
-        // });
+        document.querySelector("#submitIcon").addEventListener("click", (event) => {
+            event.stopPropagation();
+
+
+            addComment(resourse);
+        })
     }
 }
 
@@ -226,11 +240,12 @@ function RenderNewCommentPage() {
         let description = document.querySelector("#description").value;
 
         let user = localStorage.getItem("user");
+        let userParse = JSON.parse(user);
         console.log(user);
         let body = {
             "title": title,
             "description": description,
-            "author": user
+            "author": userParse
         };
 
         try {
@@ -289,4 +304,26 @@ function RenderPostLayout(data) {
 
     RenderCalender(calender);
     RenderComment(comments, data, false);
+}
+
+
+async function addComment(resourse) {
+    let form = document.querySelector("form");
+    let comment = form.querySelector("#comment").value;
+    let user = localStorage.getItem("user");
+    let userParse = JSON.parse(user);
+    let id = resourse.id;
+
+    console.log(comment, userParse, id);
+
+    let body = {
+        "author": userParse,
+        "comment": comment,
+        "id": id
+    };
+
+    let respons = await fetching("api/community.php", "POST", body);
+    let resourseComment = await respons.json();
+
+    console.log(resourseComment);
 }

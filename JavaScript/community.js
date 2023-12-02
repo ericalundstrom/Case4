@@ -155,7 +155,6 @@ async function RenderComment(parent, resourse, value) {
         parent.append(commentBox);
 
         document.querySelector("#commentBox").innerHTML += `
-        <div id="goBack"> Go Back </div>
             <div id="divForComments"></div>
             <form id="addComment" action="api/community.php" method="POST">
                 <input type="text" id="comment" name="comment"placeholder="Skriv en kommentar här..."/>

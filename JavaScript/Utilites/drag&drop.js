@@ -19,7 +19,7 @@ async function dragAndDrop(fileContainers) {
 
             if (files.length > 0) {
                 for (const file of files) {
-                    comic = await initiateFileUpload(file, e.target)
+                    comic = await initiateFileUploadDragAndDrop(file, e.target)
                     if (comic) {
                         comicURL.push(comic)
                     }
@@ -34,7 +34,7 @@ async function dragAndDrop(fileContainers) {
 }
 
 
-async function initiateFileUpload(file, container) {
+async function initiateFileUploadDragAndDrop(file, container) {
     try {
         const formData = new FormData();
         formData.append("comic", file);
@@ -60,31 +60,31 @@ async function initiateFileUpload(file, container) {
 }
 
 //Alla nycklarna är tomma. Använd denna funktion för att inte använda drag and drop.
-// async function initiateFileUpload(file, container) {
-//     console.log(file);
-//     try {
-//         const formData = new FormData();
-//         const comicFile = file.get("comic");
-//         formData.append("comic", comicFile);
+async function initiateFileUpload(file, container) {
+    console.log(file);
+    try {
+        const formData = new FormData();
+        const comicFile = file.get("comic");
+        formData.append("comic", comicFile);
 
-//         console.log(comicFile);
-//         // console.log(comicFile);
-//         console.log(formData);
-//         const request = new Request("api/upload.php", {
-//             method: "POST",
-//             body: formData,
-//         });
-//         let response = await fetch(request);
-//         const data = await response.json();
-//         if (data.error) {
-//             console.error(data.error);
-//         } else {
-//             const img = document.createElement("img");
-//             img.src = `../api/${data}`;
-//             container.append(img);
-//             return data;
-//         }
-//     } catch (error) {
-//         console.error("Error uploading image:", error);
-//     }
-// }
+        console.log(comicFile);
+        // console.log(comicFile);
+        console.log(formData);
+        const request = new Request("api/upload.php", {
+            method: "POST",
+            body: formData,
+        });
+        let response = await fetch(request);
+        const data = await response.json();
+        if (data.error) {
+            console.error(data.error);
+        } else {
+            const img = document.createElement("img");
+            img.src = `../api/${data}`;
+            container.append(img);
+            return data;
+        }
+    } catch (error) {
+        console.error("Error uploading image:", error);
+    }
+}

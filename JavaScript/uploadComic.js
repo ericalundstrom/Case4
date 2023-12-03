@@ -41,35 +41,35 @@ async function renderUploadComic() {
 
 
 
-  //let descriptionInput = document.querySelector("input[name='description']");
-  //const wordCounter = document.querySelector("#wordCounter");
-  //const maxLength = parseInt(descriptionInput.getAttribute("maxlength"));
-//
-  //descriptionInput.addEventListener('input', function() {
-  //  const charactersUsed = descriptionInput.value.length;
-  //  const charactersLeft = maxLength - charactersUsed;
-  //  wordCounter.textContent = `Characters left: ${charactersLeft}`
-  //});
+    //let descriptionInput = document.querySelector("input[name='description']");
+    //const wordCounter = document.querySelector("#wordCounter");
+    //const maxLength = parseInt(descriptionInput.getAttribute("maxlength"));
+    //
+    //descriptionInput.addEventListener('input', function() {
+    //  const charactersUsed = descriptionInput.value.length;
+    //  const charactersLeft = maxLength - charactersUsed;
+    //  wordCounter.textContent = `Characters left: ${charactersLeft}`
+    //});
 
 
-    const formData = new FormData(form);
     let comicFrontPage = await dragAndDrop(frontPage);
 
 
     form.addEventListener("submit", async (event) => {
+        const formData = new FormData(form);
         event.preventDefault();
 
         data = await initiateFileUpload(formData, frontPage);
     });
-        dataToPublish["img1"] = comicFrontPage;
-   
+    dataToPublish["img1"] = comicFrontPage;
+
 
     document.querySelector("#buttonLayout").addEventListener("click", () => {
-         console.log(dataToPublish);
-        if(dataToPublish["img1"] == undefined){
+        console.log(dataToPublish);
+        if (dataToPublish["img1"] == undefined) {
             frontPage.innerText = "Add a image to continue";
 
-        } else if (title.value === ""){
+        } else if (title.value === "") {
             title.innerText = "Add a title";
 
         } else {
@@ -78,15 +78,15 @@ async function renderUploadComic() {
             dataToPublish["filters"] = localStorager.get_item("filters");
             localStorager.remove_item("filters");
 
-            if(description.value !== ""){
+            if (description.value !== "") {
                 dataToPublish["description"] = description.value;
             }
             renderLayoutPage(dataToPublish);
-        }  
+        }
     })
 }
 
-async function renderLayoutPage(dataToPublish){
+async function renderLayoutPage(dataToPublish) {
     console.log(dataToPublish);
 
     swapStyleSheet("css/uploadComicsLayout.css");
@@ -121,21 +121,21 @@ async function renderLayoutPage(dataToPublish){
            <button> Upload more</button>
        </div>`;
 
-        let hiddenElements = document.querySelectorAll(".pageLayout.hidden");
-        let staticElement1 = document.querySelector(".pageOne");
-        let staticElement2 = document.querySelector(".pageTwo");
-        const fileContainers = document.querySelectorAll(".pageLayout");
+    let hiddenElements = document.querySelectorAll(".pageLayout.hidden");
+    let staticElement1 = document.querySelector(".pageOne");
+    let staticElement2 = document.querySelector(".pageTwo");
+    const fileContainers = document.querySelectorAll(".pageLayout");
 
-       let comicContent = await dragAndDrop(fileContainers);
+    let comicContent = await dragAndDrop(fileContainers);
 
-        document.querySelector("#toggleButton").addEventListener("click", () => {
-            
-            hiddenElements.forEach(element => {
+    document.querySelector("#toggleButton").addEventListener("click", () => {
+
+        hiddenElements.forEach(element => {
             element.classList.toggle("hidden");
-                })
-            staticElement1.classList.toggle("pageOne")
-            staticElement2.classList.toggle("pageTwo")
         })
+        staticElement1.classList.toggle("pageOne")
+        staticElement2.classList.toggle("pageTwo")
+    })
 
 
     document.querySelector("#infoIcon").addEventListener("click", () => {
@@ -151,24 +151,24 @@ async function renderLayoutPage(dataToPublish){
             <img src="../images/cross.png">
             <img src="${dataToPublish.img1}"
             </div>`;
-        })
+    })
 
     document.querySelector("#publish").addEventListener("click", () => {
         console.log(comicContent);
         dataToPublish["content"] = comicContent;
         renderPublishComic(dataToPublish);
     })
- 
+
 }
 
 
-async function renderPublishComic(dataToPublish){
+async function renderPublishComic(dataToPublish) {
     try {
-            const request = new Request("api/uploadComic.php",
-        {
-            method: "POST",
-            body: JSON.stringify(dataToPublish),
-        })
+        const request = new Request("api/uploadComic.php",
+            {
+                method: "POST",
+                body: JSON.stringify(dataToPublish),
+            })
 
         let response = await fetch(request);
         const data = await response.json();

@@ -454,6 +454,7 @@ button {
     height: 100%;
     gap: 10px;
     justify-items: center;
+    overflow: scroll;
 }
 
 #close {

@@ -1,5 +1,6 @@
 
-async function RenderProfile(params) {
+async function RenderProfile() {
+
     console.log("profile");
 
     swapStyleSheet("css/profile.css");
@@ -9,6 +10,8 @@ async function RenderProfile(params) {
     let response = await fetch("api/data/comics.json");
     let resource = await response.json();
 
+    let responsUsers = await fetch("api/data/users.json");
+    let resourceUsers = await responsUsers.json();
     document.querySelector("#wrapper").innerHTML = `
     <div id="notifications">
         <img>
@@ -84,7 +87,9 @@ async function RenderProfile(params) {
         event.stopPropagation();
         let popUp = document.querySelector("#popUp");
         console.log(popUp);
-        RenderFollowers(popUp);
+        // let respons = await fetch("api/data/users.json");
+        // let resource = await respons.json();
+        RenderFollowers(popUp, resourceUsers);
     })
 
     document.querySelector("#artist").addEventListener("click", (event) => {
@@ -170,8 +175,9 @@ async function RenderArtistCard(parent) {
 
 
 
-function RenderFollowers(popUp) {
+async function RenderFollowers(popUp, resourceUsers) {
 
+    console.log(resourceUsers);
     popUp.classList.remove("hidden");
     popUp.innerHTML = `
     <div id="popUpBox">
@@ -188,23 +194,37 @@ function RenderFollowers(popUp) {
         let popUp = document.querySelector("#popUp");
         popUp.classList.add("hidden");
     })
-    for (let i = 0; i < 5; i++) {
-        let parent = document.querySelector("#followers")
-        RenderFollowersCard(parent)
+    let parent = document.querySelector("#followers")
+    RenderFollowersCard(parent, resourceUsers)
 
-    }
 }
 
-function RenderFollowersCard(parent) {
+function RenderFollowersCard(parent, resourceUsers) {
+    // console.log(resourceUsers);
 
-    let divDom = document.createElement("div");
-    divDom.classList.add("artistBox");
-    divDom.innerHTML = `
-            <div id="artistIcon"></div>
-            <h3> Username </h3>
-            <button id="Remove">Remove</button>
-    `;
-    parent.append(divDom);
+    // console.log(resource);
+    for (let i = 0; i < resourceUsers.length; i++) {
+
+        let user = resourceUsers[i];
+        user.forEach(part => {
+            console.log(part.personal);
+            let divDom = document.createElement("div");
+            divDom.classList.add("artistBox");
+            divDom.innerHTML = `
+                    <div id="artistIcon"></div>
+                    <h3> ${part.personal.username} </h3>
+                    <button id="Remove">Remove</button>
+            `;
+
+            divDom.setAttribute("id", part.personal.username);
+            divDom.querySelector("h3").setAttribute("id", part.personal.username);
+            divDom.addEventListener("click", (event) => {
+                // console.log(event.target);
+                RenderProfileArtist(event.target);
+            })
+            parent.append(divDom);
+        })
+    }
 }
 
 function logout() {
@@ -212,4 +232,14 @@ function logout() {
     //localStorage.removeItem("user");
     RenderLoginPage();
     location.reload();
+}
+
+async function RenderProfileArtist(user) {
+
+    console.log(user.id);
+
+    let request = new Request(`api/GetUser.php?user=${user.id}`)
+    let response = await fetch(request);
+    let resourse = await response.json();
+    console.log(resourse);
 }

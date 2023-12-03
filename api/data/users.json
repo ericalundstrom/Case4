@@ -6,7 +6,13 @@
                 "username": "Usern",
                 "password": "usern"
             },
-            "comics": []
+            "comics": [
+                {
+                    "title": 0,
+                    "likes": 0,
+                    "filters": 0
+                }
+            ]
         }
     ],
     [

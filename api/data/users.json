@@ -5,6 +5,7 @@
                 "email": "lo.dacke@mail.com",
                 "username": "Usern",
                 "password": "usern",
+                "picture": "",
                 "description": "I am a comic artist based in Sweden, Malm\u00f6. My comics usually revolve around superheros and their adventures. The adventures takes place in the fantacy land of",
                 "added": "",
                 "following": 0,
@@ -19,6 +20,7 @@
                 "email": "ballong@hej.se",
                 "username": "ballong",
                 "password": "hejhej",
+                "picture": "",
                 "description": "I am a comic artist based in Sweden, Malm\u00f6. My comics usually revolve around superheros and their adventures. The adventures takes place in the fantacy land of",
                 "added": "",
                 "following": 0,
@@ -33,6 +35,7 @@
                 "email": "erica@hej",
                 "username": "erica",
                 "password": "erica",
+                "picture": "",
                 "description": "I am a comic artist based in Sweden, Malm\u00f6. My comics usually revolve around superheros and their adventures. The adventures takes place in the fantacy land of",
                 "added": "",
                 "following": 0,
@@ -47,6 +50,7 @@
                 "email": "erica.lundstrom@hotmail.com",
                 "username": "berit",
                 "password": "berit",
+                "picture": "",
                 "description": "",
                 "added": "",
                 "following": 0,
@@ -61,6 +65,7 @@
                 "email": "morgan@hej.se",
                 "username": "morgan",
                 "password": "morgan",
+                "picture": "",
                 "description": "",
                 "added": "",
                 "following": 0,
@@ -75,6 +80,7 @@
                 "email": "elvis@hej.se",
                 "username": "elvis",
                 "password": "elvis",
+                "picture": "",
                 "description": "",
                 "added": "",
                 "following": 0,
@@ -89,6 +95,7 @@
                 "email": "john.doe@example.com",
                 "username": "johndoe",
                 "password": "password123",
+                "picture": "",
                 "description": "",
                 "added": "",
                 "following": 0,
@@ -103,6 +110,7 @@
                 "email": "alice.smith@example.com",
                 "username": "alicesmith",
                 "password": "secret123",
+                "picture": "",
                 "description": "",
                 "added": "",
                 "following": 0,
@@ -117,6 +125,7 @@
                 "email": "charlie.brown@example.com",
                 "username": "charliebrown",
                 "password": "peanuts456",
+                "picture": "",
                 "description": "",
                 "added": "",
                 "following": 0,
@@ -131,6 +140,7 @@
                 "email": "emma.jones@example.com",
                 "username": "emmajones",
                 "password": "emma567",
+                "picture": "",
                 "description": "",
                 "added": "",
                 "following": 0,
@@ -145,6 +155,7 @@
                 "email": "michael.jackson@example.com",
                 "username": "michaeljackson",
                 "password": "thriller789",
+                "picture": "",
                 "description": "",
                 "added": "",
                 "following": 0,
@@ -178,6 +189,7 @@
                 "email": "susan.white@example.com",
                 "username": "susanwhite",
                 "password": "susan123",
+                "picture": "",
                 "description": "",
                 "added": "",
                 "following": 0,
@@ -192,6 +204,7 @@
                 "email": "jeffery.white@example.com",
                 "username": "jeffery",
                 "password": "jeffery123",
+                "picture": "",
                 "description": "",
                 "added": "",
                 "following": 0,
@@ -206,6 +219,7 @@
                 "email": "cher.cher@example.com",
                 "username": "chercher",
                 "password": "chercher",
+                "picture": "",
                 "description": "",
                 "added": "",
                 "following": 0,
@@ -220,6 +234,7 @@
                 "email": "oliwer.lofgren@example.com",
                 "username": "oliwer",
                 "password": "oliwerlof",
+                "picture": "",
                 "description": "",
                 "added": "",
                 "following": 0,
@@ -234,6 +249,7 @@
                 "email": "filip@example.com",
                 "username": "filip",
                 "password": "filipfilip",
+                "picture": "",
                 "description": "",
                 "added": "",
                 "following": 0,
@@ -248,6 +264,7 @@
                 "email": "harryPotter@example.com",
                 "username": "harryPotter",
                 "password": "harryPotter",
+                "picture": "",
                 "description": "",
                 "added": "",
                 "following": 0,
@@ -262,6 +279,7 @@
                 "email": "Ron@example.com",
                 "username": "ronWeesely",
                 "password": "ronron",
+                "picture": "",
                 "description": "",
                 "added": "",
                 "following": 0,
@@ -276,6 +294,7 @@
                 "email": "Erik@example.com",
                 "username": "ErikP",
                 "password": "ErikP",
+                "picture": "",
                 "description": "",
                 "added": "",
                 "following": 0,
@@ -290,6 +309,7 @@
                 "email": "sebbe@example.com",
                 "username": "sebastian",
                 "password": "sebastian",
+                "picture": "",
                 "description": "",
                 "added": "",
                 "following": 0,
@@ -304,6 +324,7 @@
                 "email": "sofie@example.com",
                 "username": "sofiesofie",
                 "password": "sofie",
+                "picture": "",
                 "description": "",
                 "added": "",
                 "following": 0,
@@ -318,6 +339,7 @@
                 "email": "theo@example.com",
                 "username": "theoooo",
                 "password": "theoooo",
+                "picture": "",
                 "description": "",
                 "added": "",
                 "following": 0,
@@ -332,6 +354,7 @@
                 "email": "santa@example.com",
                 "username": "santa",
                 "password": "santa",
+                "picture": "",
                 "description": "",
                 "added": "",
                 "following": 0,
@@ -346,6 +369,7 @@
                 "email": "charlie@example.com",
                 "username": "charlie",
                 "password": "charlie",
+                "picture": "",
                 "description": "",
                 "added": "",
                 "following": 0,
@@ -360,6 +384,7 @@
                 "email": "bert@example.com",
                 "username": "bert",
                 "password": "bert",
+                "picture": "",
                 "description": "",
                 "added": "",
                 "following": 0,
@@ -374,6 +399,7 @@
                 "email": "petra@hej.se",
                 "username": "petra",
                 "password": "petra",
+                "picture": "",
                 "description": "",
                 "added": "",
                 "following": 0,
@@ -407,6 +433,126 @@
                     "likes": []
                 }
             ]
+        }
+    ],
+    [
+        {
+            "personal": {
+                "email": "britta@britta.se",
+                "username": "britta",
+                "password": "britta",
+                "picture": "",
+                "description": "",
+                "added": "04-12-2023 16:27",
+                "following": "0",
+                "followers": "0"
+            },
+            "comics": []
+        }
+    ],
+    [
+        {
+            "personal": {
+                "email": "elliot@elliot.se",
+                "username": "elliot",
+                "password": "elliot",
+                "picture": "",
+                "description": "",
+                "added": "04-12-2023 16:28",
+                "following": "0",
+                "followers": "0"
+            },
+            "comics": []
+        }
+    ],
+    [
+        {
+            "personal": {
+                "email": "theo@theo.se",
+                "username": "theo",
+                "password": "theo",
+                "picture": "",
+                "description": "",
+                "added": "04-12-2023 16:29",
+                "following": "0",
+                "followers": "0"
+            },
+            "comics": []
+        }
+    ],
+    [
+        {
+            "personal": {
+                "email": "morganpasset@hej.se",
+                "username": "morganpasset",
+                "password": "morganpasset",
+                "picture": "",
+                "description": "",
+                "added": "04-12-2023 16:34",
+                "following": "0",
+                "followers": "0"
+            },
+            "comics": []
+        }
+    ],
+    [
+        {
+            "personal": {
+                "email": "annika@hej.se",
+                "username": "annika",
+                "password": "annika",
+                "picture": "",
+                "description": "",
+                "added": "04-12-2023 16:35",
+                "following": "0",
+                "followers": "0"
+            },
+            "comics": []
+        }
+    ],
+    [
+        {
+            "personal": {
+                "email": "ingalill@hej.se",
+                "username": "ingalill",
+                "password": "ingalill",
+                "picture": "",
+                "description": "",
+                "added": "04-12-2023 16:38",
+                "following": "0",
+                "followers": "0"
+            },
+            "comics": []
+        }
+    ],
+    [
+        {
+            "personal": {
+                "email": "thea@hej.se",
+                "username": "thea",
+                "password": "thea",
+                "picture": "images\/profilIcon\/avataaars.png",
+                "description": "",
+                "added": "04-12-2023 16:39",
+                "following": "0",
+                "followers": "0"
+            },
+            "comics": []
+        }
+    ],
+    [
+        {
+            "personal": {
+                "email": "amelie@hej.se",
+                "username": "amelie",
+                "password": "amelie",
+                "picture": true,
+                "description": "",
+                "added": "04-12-2023 16:46",
+                "following": "0",
+                "followers": "0"
+            },
+            "comics": []
         }
     ]
 ]

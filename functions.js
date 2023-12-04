@@ -17,18 +17,20 @@ function swapStyleSheet(styleSheet) {
 
 
 function BasicLayout() {
+    console.log("hej");
     document.querySelector("header").innerHTML = `
-                <p> Rita </p>
+            <p> Rita </p>
             <input type="text" id="search" name="search" placeholder="search for comics, authors etc.."/>
             <div id="profile"></div>`
+        ;
 
-            document.querySelector("nav").innerHTML = `
+    document.querySelector("nav").innerHTML = `
             <p id="userprofile"> Profile </p>
             <p id="home"> Home </p>
             <p id="community"> Comunity </p>
             <p id="trending"> Trending </p>`
 
-document.querySelector("footer").innerHTML = `
+    document.querySelector("footer").innerHTML = `
         <div> About Rita </div>
         <div class="stroke"></div>
         <div> Change language </div>
@@ -38,6 +40,8 @@ document.querySelector("footer").innerHTML = `
         <div> Copyright </div>
         <div class="stroke"></div>
         <div> Contact us </div>`;
+
+
 
     document.querySelector("#profile").addEventListener("click", (event) => {
         event.stopPropagation();
@@ -60,6 +64,7 @@ document.querySelector("footer").innerHTML = `
         event.stopPropagation();
         RenderTrending();
     });
+
 }
 
 

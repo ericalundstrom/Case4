@@ -1,6 +1,21 @@
 
 async function RenderProfile(data) {
 
+
+    let user = localStorage.getItem("user");
+    let response = await getUser(user);
+
+    console.log(response[0].personal.picture);
+    let userPic = response[0].personal.picture;
+
+    if (userPic === "") {
+
+        document.querySelector("#profile").style.backgroundImage = "url(images/userpic.webp)";
+    } else {
+        document.querySelector("#profile").style.backgroundImage = `url(${userPic})`;
+    };
+
+
     if (data) {
 
         // console.log(data[0].comics[0].likes);
@@ -117,35 +132,9 @@ async function RenderProfile(data) {
         let wrapper = document.querySelector("#wrapper");
 
         BasicLayout();
-        // let response = await fetch("api/data/comics.json");
-        // let resource = await response.json();
-
-        let responsUsers = await fetch("api/data/users.json");
-        let resourceUsers = await responsUsers.json();
-        // console.log(resourceUsers);
-        let comics = [];
-        resourceUsers.forEach(user => {
-            let comicOfUser = user[0].comics;
-            console.log(comicOfUser.length);
-            if (comicOfUser.length > 0) {
-
-                comics.push(comicOfUser);
-            }
-        });
-        console.log(comics);
-        let cardBox = document.querySelector("#cards");
 
         let user = localStorage.getItem("user");
         let response = await getUser(user);
-        console.log(response);
-
-        console.log(response[0].comics.length);
-        if (response[0].comics.length) {
-            console.log("finns inga comics");
-        } else {
-
-            createCard(cardBox, comics);
-        }
 
 
         document.querySelector("#wrapper").innerHTML = `
@@ -185,7 +174,7 @@ async function RenderProfile(data) {
             </div>
 
             <div id="options">
-            <div id="myComics" onclick="toggleClass('myComics')">My comics</div>
+            <div id="myComics" class="selected" onclick="toggleClass('myComics')">My comics</div>
             <div id="artist" onclick="toggleClass('Saved')">Artists you follow</div>
         </div>
 
@@ -265,6 +254,36 @@ async function RenderProfile(data) {
         // let resourceUser = await responseUser.json();
         // let cardBox = document.querySelector("#cards");
         // createCard(cardBox, resourceUsers);
+        let responsUsers = await fetch("api/data/users.json");
+        let resourceUsers = await responsUsers.json();
+        // console.log(resourceUsers);
+        let comics = [];
+        resourceUsers.forEach(user => {
+            let comicOfUser = user[0].comics;
+            console.log(comicOfUser.length);
+            if (comicOfUser.length > 0) {
+
+                comics.push(comicOfUser);
+            }
+        });
+        console.log(comics);
+        let cardBox = document.querySelector("#cards");
+
+
+        if (response[0].comics.length === 0) {
+            console.log("finns inga comics");
+        } else {
+
+            let comics = [];
+            for (let i = 0; i < response[0].comics.length; i++) {
+                console.log(response[0].comics[i]);
+                let comic = response[0].comics;
+                comics.push(comic);
+
+                // toggleClass(event.target.id)
+                createCard(cardBox, comics);
+            }
+        }
     }
 }
 

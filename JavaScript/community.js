@@ -31,6 +31,19 @@ async function RenderCommunity() {
             <div id="calender"></div>
     `;
 
+    let user = localStorage.getItem("user");
+    let responseUser = await getUser(user);
+
+    console.log(responseUser[0].personal.picture);
+    let userPic = responseUser[0].personal.picture;
+
+    if (userPic === "") {
+
+        document.querySelector("#profile").style.backgroundImage = "url(images/userpic.webp)";
+    } else {
+        document.querySelector("#profile").style.backgroundImage = `url(${userPic})`;
+    };
+
     let calender = document.querySelector("#calender");
     let comments = document.querySelector("#commentBox");
 
@@ -268,7 +281,7 @@ function RenderNewCommentPage() {
 }
 
 
-function RenderPostLayout(data) {
+async function RenderPostLayout(data) {
     // console.log(data);
 
     BasicLayout();
@@ -297,6 +310,21 @@ function RenderPostLayout(data) {
             </div>
             <div id="calender"></div>
     `;
+
+
+    let user = localStorage.getItem("user");
+    let responseUser = await getUser(user);
+
+    console.log(responseUser[0].personal.picture);
+    let userPic = responseUser[0].personal.picture;
+
+    if (userPic === "") {
+
+        document.querySelector("#profile").style.backgroundImage = "url(images/userpic.webp)";
+    } else {
+        document.querySelector("#profile").style.backgroundImage = `url(${userPic})`;
+    };
+
 
     let calender = document.querySelector("#calender");
     let comments = document.querySelector("#commentBox");

@@ -5,6 +5,19 @@ async function RenderHomePage() {
 
   BasicLayout();
 
+  let user = localStorage.getItem("user");
+  let response = await getUser(user);
+
+  console.log(response[0].personal.picture);
+  let userPic = response[0].personal.picture;
+
+  if (userPic === "") {
+
+    document.querySelector("#profile").style.backgroundImage = "url(images/userpic.webp)";
+  } else {
+    document.querySelector("#profile").style.backgroundImage = `url(${userPic})`;
+  }
+
   document.querySelector("#wrapper").innerHTML = `
     <div id="navi"> </div>
     <div id="cards"></div>

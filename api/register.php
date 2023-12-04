@@ -18,6 +18,41 @@ $input = json_decode(file_get_contents("php://input"), true);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") { // make sure it's the right method
 
+
+
+
+    function getRandomProfilePicture() {
+        // Path to the folder containing profile pictures
+        $folderPath = '../images/profileIcon/';
+
+        // Get a list of image files in the folder
+        $imageFiles = glob($folderPath . '*.png'); // Change the file extension if your images have a different extension
+
+        var_dump($imageFiles);
+        // Check if there are any images in the folder
+        if (empty($imageFiles)) {
+            return ''; // No images found
+        }
+
+        // Randomly select an image from the list
+        $allFiles = scandir($folderPath);
+
+        $randomImage = $folderPath . $imageFiles[array_rand($imageFiles)];
+
+        // Return the selected image path
+        return $randomImage;
+
+    }
+
+    // Example usage
+    $userProfilePicture = getRandomProfilePicture();
+
+    var_dump($userProfilePicture);
+
+// Output the HTML with the user profile picture
+
+
+
     if (
         empty($input["personal"]["username"]) ||
         empty($input["personal"]["password"])
@@ -53,11 +88,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // make sure it's the right method
     $time=time();
     $timestamp = date('d-m-Y H:i');
 
+    $directory = "/images/profileIcon/";
+    $img = glob($directory . "*.png");
+    $profileIcon = shuffle($img);
+    var_dump($profileIcon);
+
     $newUser = [
         "personal" => [
             "email" => $input["personal"]["email"],
             "username" => $input["personal"]["username"],
             "password" => $input["personal"]["password"],
+            "picture" => $profileIcon,
             "description" => "",
             "added" => $timestamp,
             "following" => "0",

@@ -133,8 +133,10 @@ nav>div>div>#cover {
 .imgDiv {
     height: 75%;
     width: 90%;
-    /* background-image: url("/images/unnamed.png"); */
+    /* background-image: url("/images/unnamed.png"); 
+    background-size: contain; */
     background-size: contain;
+    background-repeat: no-repeat;
 }
 
 #cardBox #userImg {

@@ -13,33 +13,65 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
     $dataREQUEST = json_decode($jsonREQUEST, true);
 
     $title = $dataREQUEST["title"];
-    $currentUser = $dataREQUEST["user"];
+    $user = $dataREQUEST["user"];
+    $currentUser = trim($user, '"');
     $frontPage = $dataREQUEST["img1"][0];
     $content = $dataREQUEST["content"];
+    $stringRepresentation = $dataREQUEST["filters"];
+
+    $stringRepresentation = str_replace(['\\'], '', $stringRepresentation);
+
+    $time=time();
+    $timestamp = date('d-m-Y H:i');
+
+    
     $filters = $dataREQUEST["filters"];
     $description = $dataREQUEST["description"];
 
-        $comic = [
+        // $comic = [
+        // "title" => $title,
+        // "description" => $description,
+        // "filters" => $stringRepresentation,
+        // "frontPage" => $frontPage,
+        // "content" => $content,
+        // "time" => $timestamp,
+        // "likes" => [],
+        // ];
+
+        // ... (previous code)
+
+    $comic = [
         "title" => $title,
+        "author" => $user,
         "description" => $description,
-        "filters" => $filters,
-        "frontPage" => $frontPage,
-        "content" => $content,
+        "filters" => str_replace('\\', '', $stringRepresentation), // Remove backslashes from filters
+        "frontPage" => str_replace('\\', '/', $frontPage), // Replace backslashes with forward slashes in frontPage
+        "content" => array_map(function ($item) {
+            return str_replace('\\', '/', $item); // Replace backslashes with forward slashes in content
+        }, $content),
+        "time" => date("d/m/Y"), // Assuming you want to store the current date
         "likes" => [],
-        ];
+    ];
+
+// ... (rest of the code)
 
 
-    foreach($users as $user){
-        var_dump($user["personal"]);
-        if($user["personal"]["email"] === $currentUser){
-            $user["comics"] = $comic;
+
+    foreach($users as &$user){
+        // var_dump($user[0]["personal"]["username"]);
+        // var_dump($currentUser);
+        if($user[0]["personal"]["username"] === $currentUser){
+            $user[0]["comics"][] = $comic;
             break;
-        };
-    }
-
+        }
+    };
+    
+    // $erica = ["message" => "fel här"];
+    // send_JSON($erica,400);
     $data = json_encode($users, JSON_PRETTY_PRINT);
     file_put_contents($fileName, $data);
-     send_JSON($comic, 200);
+
+    send_JSON($comic);
 }
 
 

@@ -4,15 +4,13 @@
             "personal": {
                 "email": "lo.dacke@mail.com",
                 "username": "Usern",
-                "password": "usern"
+                "password": "usern",
+                "description": "I am a comic artist based in Sweden, Malm\u00f6. My comics usually revolve around superheros and their adventures. The adventures takes place in the fantacy land of",
+                "added": "",
+                "following": 0,
+                "followers": 0
             },
-            "comics": [
-                {
-                    "title": 0,
-                    "likes": 0,
-                    "filters": 0
-                }
-            ]
+            "comics": []
         }
     ],
     [
@@ -20,15 +18,13 @@
             "personal": {
                 "email": "ballong@hej.se",
                 "username": "ballong",
-                "password": "hejhej"
+                "password": "hejhej",
+                "description": "I am a comic artist based in Sweden, Malm\u00f6. My comics usually revolve around superheros and their adventures. The adventures takes place in the fantacy land of",
+                "added": "",
+                "following": 0,
+                "followers": 0
             },
-            "comics": [
-                {
-                    "title": 0,
-                    "likes": 0,
-                    "filters": 0
-                }
-            ]
+            "comics": []
         }
     ],
     [
@@ -36,15 +32,13 @@
             "personal": {
                 "email": "erica@hej",
                 "username": "erica",
-                "password": "erica"
+                "password": "erica",
+                "description": "I am a comic artist based in Sweden, Malm\u00f6. My comics usually revolve around superheros and their adventures. The adventures takes place in the fantacy land of",
+                "added": "",
+                "following": 0,
+                "followers": 0
             },
-            "comics": [
-                {
-                    "title": 0,
-                    "likes": 0,
-                    "filters": 0
-                }
-            ]
+            "comics": []
         }
     ],
     [
@@ -52,15 +46,13 @@
             "personal": {
                 "email": "erica.lundstrom@hotmail.com",
                 "username": "berit",
-                "password": "berit"
+                "password": "berit",
+                "description": "",
+                "added": "",
+                "following": 0,
+                "followers": 0
             },
-            "comics": [
-                {
-                    "title": 0,
-                    "likes": 0,
-                    "filters": 0
-                }
-            ]
+            "comics": []
         }
     ],
     [
@@ -68,15 +60,13 @@
             "personal": {
                 "email": "morgan@hej.se",
                 "username": "morgan",
-                "password": "morgan"
+                "password": "morgan",
+                "description": "",
+                "added": "",
+                "following": 0,
+                "followers": 0
             },
-            "comics": [
-                {
-                    "title": 0,
-                    "likes": 0,
-                    "filters": 0
-                }
-            ]
+            "comics": []
         }
     ],
     [
@@ -84,15 +74,13 @@
             "personal": {
                 "email": "elvis@hej.se",
                 "username": "elvis",
-                "password": "elvis"
+                "password": "elvis",
+                "description": "",
+                "added": "",
+                "following": 0,
+                "followers": 0
             },
-            "comics": [
-                {
-                    "title": 0,
-                    "likes": 0,
-                    "filters": 0
-                }
-            ]
+            "comics": []
         }
     ],
     [
@@ -100,15 +88,13 @@
             "personal": {
                 "email": "john.doe@example.com",
                 "username": "johndoe",
-                "password": "password123"
+                "password": "password123",
+                "description": "",
+                "added": "",
+                "following": 0,
+                "followers": 0
             },
-            "comics": [
-                {
-                    "title": 0,
-                    "likes": 0,
-                    "filters": 0
-                }
-            ]
+            "comics": []
         }
     ],
     [
@@ -116,15 +102,13 @@
             "personal": {
                 "email": "alice.smith@example.com",
                 "username": "alicesmith",
-                "password": "secret123"
+                "password": "secret123",
+                "description": "",
+                "added": "",
+                "following": 0,
+                "followers": 0
             },
-            "comics": [
-                {
-                    "title": 0,
-                    "likes": 0,
-                    "filters": 0
-                }
-            ]
+            "comics": []
         }
     ],
     [
@@ -132,15 +116,13 @@
             "personal": {
                 "email": "charlie.brown@example.com",
                 "username": "charliebrown",
-                "password": "peanuts456"
+                "password": "peanuts456",
+                "description": "",
+                "added": "",
+                "following": 0,
+                "followers": 0
             },
-            "comics": [
-                {
-                    "title": 0,
-                    "likes": 0,
-                    "filters": 0
-                }
-            ]
+            "comics": []
         }
     ],
     [
@@ -148,15 +130,13 @@
             "personal": {
                 "email": "emma.jones@example.com",
                 "username": "emmajones",
-                "password": "emma567"
+                "password": "emma567",
+                "description": "",
+                "added": "",
+                "following": 0,
+                "followers": 0
             },
-            "comics": [
-                {
-                    "title": 0,
-                    "likes": 0,
-                    "filters": 0
-                }
-            ]
+            "comics": []
         }
     ],
     [
@@ -164,13 +144,30 @@
             "personal": {
                 "email": "michael.jackson@example.com",
                 "username": "michaeljackson",
-                "password": "thriller789"
+                "password": "thriller789",
+                "description": "",
+                "added": "",
+                "following": 0,
+                "followers": 0
             },
             "comics": [
                 {
-                    "title": 0,
-                    "likes": 0,
-                    "filters": 0
+                    "title": "opvask",
+                    "author": "michaeljackson",
+                    "description": "dfewfef",
+                    "filters": "[\"Identity\"]",
+                    "frontPage": "data\/comics\/opvask-6sider.png",
+                    "content": [
+                        "data\/comics\/opvask-6sider 2.png",
+                        "data\/comics\/opvask-6sider 3.png",
+                        "data\/comics\/opvask-6sider 4.png",
+                        "data\/comics\/opvask-6sider 5.png",
+                        "data\/comics\/opvask-6sider 6.png",
+                        "data\/comics\/opvask-6sider 7.png",
+                        "data\/comics\/opvask-6sider 8.png"
+                    ],
+                    "time": "04\/12\/2023",
+                    "likes": []
                 }
             ]
         }
@@ -180,15 +177,13 @@
             "personal": {
                 "email": "susan.white@example.com",
                 "username": "susanwhite",
-                "password": "susan123"
+                "password": "susan123",
+                "description": "",
+                "added": "",
+                "following": 0,
+                "followers": 0
             },
-            "comics": [
-                {
-                    "title": 0,
-                    "likes": 0,
-                    "filters": 0
-                }
-            ]
+            "comics": []
         }
     ],
     [
@@ -196,15 +191,13 @@
             "personal": {
                 "email": "jeffery.white@example.com",
                 "username": "jeffery",
-                "password": "jeffery123"
+                "password": "jeffery123",
+                "description": "",
+                "added": "",
+                "following": 0,
+                "followers": 0
             },
-            "comics": [
-                {
-                    "title": 0,
-                    "likes": 0,
-                    "filters": 0
-                }
-            ]
+            "comics": []
         }
     ],
     [
@@ -212,15 +205,13 @@
             "personal": {
                 "email": "cher.cher@example.com",
                 "username": "chercher",
-                "password": "chercher"
+                "password": "chercher",
+                "description": "",
+                "added": "",
+                "following": 0,
+                "followers": 0
             },
-            "comics": [
-                {
-                    "title": 0,
-                    "likes": 0,
-                    "filters": 0
-                }
-            ]
+            "comics": []
         }
     ],
     [
@@ -228,15 +219,13 @@
             "personal": {
                 "email": "oliwer.lofgren@example.com",
                 "username": "oliwer",
-                "password": "oliwerlof"
+                "password": "oliwerlof",
+                "description": "",
+                "added": "",
+                "following": 0,
+                "followers": 0
             },
-            "comics": [
-                {
-                    "title": 0,
-                    "likes": 0,
-                    "filters": 0
-                }
-            ]
+            "comics": []
         }
     ],
     [
@@ -244,15 +233,13 @@
             "personal": {
                 "email": "filip@example.com",
                 "username": "filip",
-                "password": "filipfilip"
+                "password": "filipfilip",
+                "description": "",
+                "added": "",
+                "following": 0,
+                "followers": 0
             },
-            "comics": [
-                {
-                    "title": 0,
-                    "likes": 0,
-                    "filters": 0
-                }
-            ]
+            "comics": []
         }
     ],
     [
@@ -260,15 +247,13 @@
             "personal": {
                 "email": "harryPotter@example.com",
                 "username": "harryPotter",
-                "password": "harryPotter"
+                "password": "harryPotter",
+                "description": "",
+                "added": "",
+                "following": 0,
+                "followers": 0
             },
-            "comics": [
-                {
-                    "title": 0,
-                    "likes": 0,
-                    "filters": 0
-                }
-            ]
+            "comics": []
         }
     ],
     [
@@ -276,15 +261,13 @@
             "personal": {
                 "email": "Ron@example.com",
                 "username": "ronWeesely",
-                "password": "ronron"
+                "password": "ronron",
+                "description": "",
+                "added": "",
+                "following": 0,
+                "followers": 0
             },
-            "comics": [
-                {
-                    "title": 0,
-                    "likes": 0,
-                    "filters": 0
-                }
-            ]
+            "comics": []
         }
     ],
     [
@@ -292,15 +275,13 @@
             "personal": {
                 "email": "Erik@example.com",
                 "username": "ErikP",
-                "password": "ErikP"
+                "password": "ErikP",
+                "description": "",
+                "added": "",
+                "following": 0,
+                "followers": 0
             },
-            "comics": [
-                {
-                    "title": 0,
-                    "likes": 0,
-                    "filters": 0
-                }
-            ]
+            "comics": []
         }
     ],
     [
@@ -308,15 +289,13 @@
             "personal": {
                 "email": "sebbe@example.com",
                 "username": "sebastian",
-                "password": "sebastian"
+                "password": "sebastian",
+                "description": "",
+                "added": "",
+                "following": 0,
+                "followers": 0
             },
-            "comics": [
-                {
-                    "title": 0,
-                    "likes": 0,
-                    "filters": 0
-                }
-            ]
+            "comics": []
         }
     ],
     [
@@ -324,15 +303,13 @@
             "personal": {
                 "email": "sofie@example.com",
                 "username": "sofiesofie",
-                "password": "sofie"
+                "password": "sofie",
+                "description": "",
+                "added": "",
+                "following": 0,
+                "followers": 0
             },
-            "comics": [
-                {
-                    "title": 0,
-                    "likes": 0,
-                    "filters": 0
-                }
-            ]
+            "comics": []
         }
     ],
     [
@@ -340,15 +317,13 @@
             "personal": {
                 "email": "theo@example.com",
                 "username": "theoooo",
-                "password": "theoooo"
+                "password": "theoooo",
+                "description": "",
+                "added": "",
+                "following": 0,
+                "followers": 0
             },
-            "comics": [
-                {
-                    "title": 0,
-                    "likes": 0,
-                    "filters": 0
-                }
-            ]
+            "comics": []
         }
     ],
     [
@@ -356,15 +331,13 @@
             "personal": {
                 "email": "santa@example.com",
                 "username": "santa",
-                "password": "santa"
+                "password": "santa",
+                "description": "",
+                "added": "",
+                "following": 0,
+                "followers": 0
             },
-            "comics": [
-                {
-                    "title": 0,
-                    "likes": 0,
-                    "filters": 0
-                }
-            ]
+            "comics": []
         }
     ],
     [
@@ -372,15 +345,13 @@
             "personal": {
                 "email": "charlie@example.com",
                 "username": "charlie",
-                "password": "charlie"
+                "password": "charlie",
+                "description": "",
+                "added": "",
+                "following": 0,
+                "followers": 0
             },
-            "comics": [
-                {
-                    "title": 0,
-                    "likes": 0,
-                    "filters": 0
-                }
-            ]
+            "comics": []
         }
     ],
     [
@@ -388,15 +359,13 @@
             "personal": {
                 "email": "bert@example.com",
                 "username": "bert",
-                "password": "bert"
+                "password": "bert",
+                "description": "",
+                "added": "",
+                "following": 0,
+                "followers": 0
             },
-            "comics": [
-                {
-                    "title": 0,
-                    "likes": 0,
-                    "filters": 0
-                }
-            ]
+            "comics": []
         }
     ],
     [
@@ -404,13 +373,38 @@
             "personal": {
                 "email": "petra@hej.se",
                 "username": "petra",
-                "password": "petra"
+                "password": "petra",
+                "description": "",
+                "added": "",
+                "following": 0,
+                "followers": 0
             },
             "comics": [
                 {
-                    "title": 0,
-                    "likes": 0,
-                    "filters": 0
+                    "title": "hej",
+                    "author": "petra",
+                    "description": "hejhej",
+                    "filters": "[\"Mystery\",\"Slice of life\"]",
+                    "frontPage": "data\/comics\/wonderful-christmas.png",
+                    "content": [
+                        "data\/comics\/wonderful-christmas.2.png",
+                        "data\/comics\/wonderful-christmas.3.png"
+                    ],
+                    "time": "04\/12\/2023",
+                    "likes": []
+                },
+                {
+                    "title": "ffewfe",
+                    "author": "petra",
+                    "description": "fewfewf",
+                    "filters": "[\"Mystery\",\"Manga\"]",
+                    "frontPage": "data\/comics\/jegkanikkeblinke.png",
+                    "content": [
+                        "data\/comics\/jegkanikkeblinke 2.png",
+                        "data\/comics\/jegkanikkeblinke 3.png"
+                    ],
+                    "time": "04\/12\/2023",
+                    "likes": []
                 }
             ]
         }

@@ -67,7 +67,7 @@ function RenderLoginPage() {
             } else {
                 // add to local storage
                 // window.localStorage.setItem("user", JSON.stringify(data));
-                localStorager.set_item("user", JSON.stringify(data.personal.email))
+                localStorager.set_item("user", data.personal.username);
                 let user = data;
                 console.log(user.personal.username);
 

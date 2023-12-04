@@ -1,121 +1,271 @@
 
-async function RenderProfile() {
+async function RenderProfile(data) {
 
-    console.log("profile");
+    if (data) {
 
-    swapStyleSheet("css/profile.css");
-    let wrapper = document.querySelector("#wrapper");
+        // console.log(data[0].comics[0].likes);
+        document.querySelector("#wrapper").innerHTML = `
+            <div id="notifications">
+                <img>
+                <div class="noti">
+                <p>Elin liked your comment</p> 
+                </div>
+                <div class="notiStroke"></div>
+                <div class="noti">
+                <p>Elin liked your comment</p> 
+            </div>
+                <div class="notiStroke"></div>
+                <div class="noti">
+                <p>Elin liked your comment</p> 
+                </div>
+            </div>
+        
+            <div id="user">
+                <img>
+                <div id="profileIcon"></div>
+                <div id="edit">
+                    <img>
+                </div>
+                <div id="username">${data[0].personal.username}</div>
+                <div id="date">Member since: ${data[0].personal.added}</div>
+                <div id="settings">settings</div>
+                <div id="description">${data[0].personal.description} </div>
+                <div id="insta">
+                    <div id="icon"></div>
+                    <div id="name">@Torkel</div>
+                </div>
+                <div id="follows">
+                    <div id="name">34people follow</div>
+                    <div id="icon"></div>
+                </div>
+            </div>
+        
+            <div id="options">
+                <div id="myComics" onclick="toggleClass('myComics')">${data[0].personal.username} comics</div>
+            </div>
+        
+            <button id="addNewComic"> + Add new comic</button>
+            <div id="BigStroke"></div>
+        
+            <div id="cards"></div
+        `;
 
-    BasicLayout();
-    let response = await fetch("api/data/comics.json");
-    let resource = await response.json();
+        // let popUp = document.querySelector("#popUp")
+        // popUp.addEventListener("click", () => {
 
-    let responsUsers = await fetch("api/data/users.json");
-    let resourceUsers = await responsUsers.json();
-    document.querySelector("#wrapper").innerHTML = `
-    <div id="notifications">
-        <img>
-        <div class="noti">
-         <p>Elin liked your comment</p> 
-        </div>
-        <div class="notiStroke"></div>
-        <div class="noti">
-        <p>Elin liked your comment</p> 
-       </div>
-        <div class="notiStroke"></div>
-        <div class="noti">
-         <p>Elin liked your comment</p> 
-        </div>
-    </div>
+        //     popUp.classList.add("hidden");
+        // })
+        // popUp.querySelector("button").addEventListener("click", (event) => {
+        //     event.stopPropagation();
+        //     logout();
+        // })
+        // document.querySelector("#follows > #name").addEventListener("click", (event) => {
+        //     event.stopPropagation();
+        //     let popUp = document.querySelector("#popUp");
+        //     console.log(popUp);
+        //     // let respons = await fetch("api/data/users.json");
+        //     // let resource = await respons.json();
+        //     RenderFollowers(popUp, resourceUsers);
+        // })
 
-    <div id="user">
-        <img>
-        <div id="profileIcon"></div>
-        <div id="edit">
+        // document.querySelector("#artist").addEventListener("click", (event) => {
+        //     event.stopPropagation();
+
+        //     RenderFollowingArtist();
+        //     console.log(event.target.id);
+        //     toggleClass(event.target.id)
+        // })
+
+        document.querySelector("#myComics").addEventListener("click", (event) => {
+            event.stopPropagation();
+            let card = document.querySelector("#cards");
+            card.innerHTML = ``;
+
+            createCard(card, data);
+
+            console.log(event.target.id);
+            toggleClass(event.target.id)
+        })
+
+        let comics = data[0].comics[0].title;
+        if (comics !== 0) {
+
+            // let responseUser = await fetch("api/data/users.json");
+            // let resourceUser = await responseUser.json();
+
+            let user = data[0].personal.username;
+
+            let comics = data[0].comics;
+
+            comics.forEach(comic => {
+                console.log(comic);
+                let cardBox = document.querySelector("#cards");
+                createCard(cardBox, comic, user);
+            })
+
+            // console.log(resourceUser);
+            console.log("Användaren har comics");
+        } else {
+            console.log("Användaren har inga comics");
+        }
+    } else {
+
+
+        console.log("profile");
+
+        swapStyleSheet("css/profile.css");
+        let wrapper = document.querySelector("#wrapper");
+
+        BasicLayout();
+        // let response = await fetch("api/data/comics.json");
+        // let resource = await response.json();
+
+        let responsUsers = await fetch("api/data/users.json");
+        let resourceUsers = await responsUsers.json();
+        // console.log(resourceUsers);
+        let comics = [];
+        resourceUsers.forEach(user => {
+            let comicOfUser = user[0].comics;
+            console.log(comicOfUser.length);
+            if (comicOfUser.length > 0) {
+
+                comics.push(comicOfUser);
+            }
+        });
+        console.log(comics);
+        let cardBox = document.querySelector("#cards");
+
+        let user = localStorage.getItem("user");
+        let response = await getUser(user);
+        console.log(response);
+
+        console.log(response[0].comics.length);
+        if (response[0].comics.length) {
+            console.log("finns inga comics");
+        } else {
+
+            createCard(cardBox, comics);
+        }
+
+
+        document.querySelector("#wrapper").innerHTML = `
+            <div id="notifications">
             <img>
+            <div class="noti">
+            <p>Elin liked your comment</p> 
+            </div>
+            <div class="notiStroke"></div>
+            <div class="noti">
+            <p>Elin liked your comment</p> 
         </div>
-        <div id="username">Username</div>
-        <div id="date">Member since:</div>
-        <div id="settings">settings</div>
-        <div id="description">I am a comic artist based in Sweden, Malmö. My comics usually revolve around superheros and their adventures. The adventures takes place in the fantacy land of </div>
-        <div id="insta">
-            <div id="icon"></div>
-            <div id="name">@Torkel</div>
+            <div class="notiStroke"></div>
+            <div class="noti">
+            <p>Elin liked your comment</p> 
+            </div>
+            </div>
+
+            <div id="user">
+            <img>
+            <div id="profileIcon"></div>
+            <div id="edit">
+                <img>
+            </div>
+            <div id="username">${response[0].personal.username}</div>
+            <div id="date">Member since:${response[0].personal.added}</div>
+            <div id="settings">settings</div>
+            <div id="description">${response[0].personal.description}</div>
+            <div id="insta">
+                <div id="icon"></div>
+                <div id="name">@Torkel</div>
+            </div>
+            <div id="follows">
+                <div id="name">36 people follow</div>
+                <div id="icon"></div>
+            </div>
+            </div>
+
+            <div id="options">
+            <div id="myComics" onclick="toggleClass('myComics')">My comics</div>
+            <div id="artist" onclick="toggleClass('Saved')">Artists you follow</div>
         </div>
-        <div id="follows">
-            <div id="name">36 people follow</div>
-            <div id="icon"></div>
-        </div>
-    </div>
 
-    <div id="options">
-        <div id="myComics" onclick="toggleClass('myComics')">My comics</div>
-        <div id="artist" onclick="toggleClass('Saved')">Artists you follow</div>
-    </div>
+            <button id="addNewComic"> + Add new comic</button>
+            <div id="BigStroke"></div>
 
-    <button id="addNewComic"> + Add new comic</button>
-    <div id="BigStroke"></div>
+            <div id="cards"></div
+        `;
 
-    <div id="cards"></div
-    `;
+        document.querySelector("#addNewComic").addEventListener("click", () => {
+            renderUploadComic();
+            //renderLayoutPage()
+        })
 
-    document.querySelector("#addNewComic").addEventListener("click", () => {
-        renderUploadComic();
-        //renderLayoutPage()
-    })
-
-    document.querySelector("#settings").addEventListener("click", () => {
-        let popUp = document.querySelector("#popUp")
-        popUp.classList.remove("hidden");
-        popUp.innerHTML = `
+        document.querySelector("#settings").addEventListener("click", () => {
+            let popUp = document.querySelector("#popUp")
+            popUp.classList.remove("hidden");
+            popUp.innerHTML = `
         <div> Do you want to log out? </div>
         <button> Log out</button>
         <div id="close"> x </div>
         `;
 
-        popUp.querySelector("button").addEventListener("click", (event) => {
+            popUp.querySelector("button").addEventListener("click", (event) => {
+                event.stopPropagation();
+                logout();
+            })
+
+            popUp.querySelector("#close").addEventListener("click", () => {
+                popUp.classList.add("hidden");
+            })
+        })
+
+        document.querySelector("#follows > #name").addEventListener("click", (event) => {
             event.stopPropagation();
-            logout();
+            let popUp = document.querySelector("#popUp");
+            console.log(popUp);
+            // let respons = await fetch("api/data/users.json");
+            // let resource = await respons.json();
+            RenderFollowers(popUp, resourceUsers);
         })
 
-        popUp.querySelector("#close").addEventListener("click", () => {
-            popUp.classList.add("hidden");
+        document.querySelector("#artist").addEventListener("click", (event) => {
+            event.stopPropagation();
+
+            RenderFollowingArtist();
+            console.log(event.target.id);
+            toggleClass(event.target.id)
         })
-    })
 
-    document.querySelector("#follows > #name").addEventListener("click", (event) => {
-        event.stopPropagation();
-        let popUp = document.querySelector("#popUp");
-        console.log(popUp);
-        // let respons = await fetch("api/data/users.json");
-        // let resource = await respons.json();
-        RenderFollowers(popUp, resourceUsers);
-    })
+        document.querySelector("#myComics").addEventListener("click", (event) => {
+            event.stopPropagation();
+            let card = document.querySelector("#cards");
+            // console.log(card);
+            card.innerHTML = ``;
 
-    document.querySelector("#artist").addEventListener("click", (event) => {
-        event.stopPropagation();
+            // createCard(card, resourceUsers);
 
-        RenderFollowingArtist();
-        console.log(event.target.id);
-        toggleClass(event.target.id)
-    })
 
-    document.querySelector("#myComics").addEventListener("click", (event) => {
-        event.stopPropagation();
-        let card = document.querySelector("#cards");
-        card.innerHTML = ``;
+            if (response[0].comics.length === 0) {
+                console.log("finns inga comics");
+            } else {
 
-        createCard(card, resource);
+                let comics = [];
+                for (let i = 0; i < response[0].comics.length; i++) {
+                    console.log(response[0].comics[i]);
+                    let comic = response[0].comics;
+                    comics.push(comic);
 
-        console.log(event.target.id);
-        toggleClass(event.target.id)
-    })
+                    toggleClass(event.target.id)
+                    createCard(card, comics);
+                }
+            }
+        })
 
-    let responseUser = await fetch("api/data/comics.json");
-    let resourceUser = await responseUser.json();
-    let cardBox = document.querySelector("#cards");
-    createCard(cardBox, resourceUser);
-
+        // let responseUser = await fetch("api/data/comics.json");
+        // let resourceUser = await responseUser.json();
+        // let cardBox = document.querySelector("#cards");
+        // createCard(cardBox, resourceUsers);
+    }
 }
 
 function toggleClass(selectedId) {
@@ -150,6 +300,7 @@ async function RenderArtistCard(parent) {
 
     let respons = await fetch("api/data/users.json");
     let resourse = await respons.json();
+    console.log(resourse);
 
     resourse.forEach(user => {
         console.log(user[0].comics[0].title);
@@ -228,7 +379,7 @@ function RenderFollowersCard(parent, resourceUsers) {
 }
 
 function logout() {
-    localStorager.clear();
+    localStorager.reset();
     //localStorage.removeItem("user");
     RenderLoginPage();
     location.reload();
@@ -236,10 +387,27 @@ function logout() {
 
 async function RenderProfileArtist(user) {
 
+
+    let popUp = document.querySelector("#popUp")
+    popUp.addEventListener("click", () => {
+
+        popUp.classList.add("hidden");
+    })
     console.log(user.id);
 
     let request = new Request(`api/GetUser.php?user=${user.id}`)
     let response = await fetch(request);
     let resourse = await response.json();
     console.log(resourse);
+
+    RenderProfile(resourse);
+}
+
+
+async function getUser(user) {
+    let request = new Request(`api/GetUser.php?user=${user}`)
+    let response = await fetch(request);
+    let resourse = await response.json();
+
+    return resourse;
 }

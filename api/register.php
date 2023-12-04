@@ -50,19 +50,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // make sure it's the right method
         }
     }
 
+    $time=time();
+    $timestamp = date('d-m-Y H:i');
+
     $newUser = [
         "personal" => [
             "email" => $input["personal"]["email"],
             "username" => $input["personal"]["username"],
-            "password" => $input["personal"]["password"]
+            "password" => $input["personal"]["password"],
+            "description" => "",
+            "added" => $timestamp,
+            "following" => "0",
+            "followers" => "0"
         ],
-        "comics" => [
-            [
-                "title" => 0,
-                "likes" => 0,
-                "filters" => 0
-            ]
-        ]
+        "comics" => []
     ];
 
     $users[] = [$newUser]; // Wrap the new user in an array (user group)

@@ -324,5 +324,10 @@ async function addComment(resourse) {
     let respons = await fetching("api/community.php", "POST", body);
     let resourseComment = await respons.json();
 
-    console.log(resourseComment);
+    if (resourseComment) {
+
+        console.log(resourseComment);
+        RenderCommunity();
+
+    }
 }

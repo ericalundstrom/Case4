@@ -20,39 +20,36 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     if (isset($_GET["user"])) {
 
         $username = $_GET["user"];
+        $title = trim($username, '"');
         
         foreach($users as $user){
             // send_JSON($users);
             // $userPersonal = $user["personal"];
             foreach($user as $part){
 
-                // send_JSON($part);
                 $userPersonal = $part["personal"];
                 $userName = $userPersonal["username"];
-                // send_JSON($userPersonal["username"]);
-                // send_JSON($username);
-                if ($userName === $username) {
-                    
-                    // if (in_array($recipe, $user['idMeal'])) {  // if the recipe exist in the users favourites
-                    //     send_JSON(true);
-                    // }else{
-                    //     send_JSON(false); // if it doesn't
-                    // }
+                // var_dump($userName);
+                // var_dump($title);
+               
+                if ($userName === $title) {
     
                     send_JSON($user);
-                }else{
-                    $error = ["error" => "Hittar ingen user"];
-                    send_JSON($user, 400);
                 }
             };
 
 
-        send_JSON($_GET["user"]);
+        // send_JSON($_GET["user"]);
         }
+        $error = ["error" => "Fel fel"];
+        send_JSON($error, 400);
+    }else{
+        $error = ["error" => "Fel nyckel"];
+        send_JSON($error, 400);
     }
 }else{
     $error = ["error" => "Fel här"];
-    send_JSON($error);
+    send_JSON($error, 400);
 }
 
 ?>

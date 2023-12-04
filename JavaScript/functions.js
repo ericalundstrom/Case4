@@ -65,31 +65,70 @@ function BasicLayout() {
 
 
 
-function createCard(parent, resource) {
-    resource.forEach(part => {
+function createCard(parent, resource, user) {
+
+    // console.log(resource[0]);
+    // console.log(user);
+    if (user) {
         //console.log("hej");
         const cardBox = document.createElement("div");
         cardBox.classList.add("cardBox");
 
         cardBox.innerHTML = `
-            <h2>${part.title}</h2>
-            <div class="imgDiv"></div>
-            <div class="userImg"></div>
-            <div class="userName">${part.author}</div>
-            <div class="likesBox">
-                <div class="likeImg"></div>    
-                <div>${part.likes}</div>
-            </div>
-        `;
+                <h2>${resource.title}</h2>
+                <div class="imgDiv"></div>
+                <div class="userImg"></div>
+                <div class="userName">${user}</div>
+                <div class="likesBox">
+                    <div class="likeImg"></div>    
+                    <div>likes</div>
+                </div>
+            `;
 
-        if (part.cover !== "") {
+        if (resource.frontPage !== "") {
             //console.log("finns bild");
-            cardBox.querySelector(".imgDiv").style.backgroundImage = `url("api/data/comics/${part.cover}")`;
+            cardBox.querySelector(".imgDiv").style.backgroundImage = `url("api/${resource.frontPage}")`;
         } else {
             cardBox.querySelector(".imgDiv").style.backgroundImage = `url("/images/unnamed.png")`;
             console.log("fungerar ej");
         }
 
         parent.appendChild(cardBox);
-    });
+    } else {
+
+        if (resource[0].lenght == 1) {
+            console.log("inne här");
+        }
+
+        console.log(resource[0]);
+        resource.forEach(part => {
+            //console.log("hej");
+            console.log(part);
+            const cardBox = document.createElement("div");
+            cardBox.classList.add("cardBox");
+
+            cardBox.innerHTML = `
+                <h2>${part[0].title}</h2>
+                <div class="imgDiv"></div>
+                <div class="userImg"></div>
+                <div class="userName">${part[0].author}</div>
+                <div class="likesBox">
+                    <div class="likeImg"></div>    
+                    <div>${part[0].likes}</div>
+                </div>
+            `;
+
+            if (part.cover !== "") {
+                //console.log("finns bild");
+                cardBox.querySelector(".imgDiv").style.backgroundImage = `url("api/${part[0].frontPage}")`;
+            } else {
+                cardBox.querySelector(".imgDiv").style.backgroundImage = `url("/images/unnamed.png")`;
+                console.log("fungerar ej");
+            }
+
+            console.log(cardBox);
+            parent.appendChild(cardBox);
+        });
+    }
+
 }

@@ -37,7 +37,8 @@ async function renderUploadComic() {
 
     const container = document.querySelector("#filters");
     dragAndDrop(frontPage);
-    createFilterDropdowns(container, false)
+    let filters = await createFilterDropdowns(container, false)
+    console.log(filters);
 
 
 
@@ -73,9 +74,11 @@ async function renderUploadComic() {
             title.innerText = "Add a title";
 
         } else {
+            console.log(filters);
             dataToPublish["user"] = localStorager.get_item("user");
             dataToPublish["title"] = title.value;
             dataToPublish["filters"] = localStorager.get_item("filters");
+            console.log(dataToPublish);
             localStorager.remove_item("filters");
 
             if (description.value !== "") {

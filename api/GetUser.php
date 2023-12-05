@@ -43,9 +43,56 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         }
         $error = ["error" => "Fel fel"];
         send_JSON($error, 400);
-    }else{
-        $error = ["error" => "Fel nyckel"];
-        send_JSON($error, 400);
+    }
+    // else{
+    //     $error = ["error" => "Fel nyckel"];
+    //     send_JSON($error, 400);
+    // }
+
+    if (isset($_GET["userPic"])) {
+
+        $username = $_GET["userPic"];
+
+        foreach($users as $user){
+            $userPersonal = $user["personal"];
+            $userName = $userPersonal["username"];
+            
+            if ($userName === $username) {
+                $userPicture = $userPersonal["picture"];
+                send_JSON($userPicture);
+            }
+        }
+
+        $error = ["error" => "User not found"];
+        send_JSON($error, 404);
+    } 
+    // else {
+    //     $error = ["error" => "Invalid key"];
+    //     send_JSON($error, 400);
+    // }
+
+    if (isset($_GET["userSearch"])) {
+        
+        $search = $_GET["userSearch"];
+        // $title = trim($username, '"');
+        
+        foreach($users as $user){
+            // send_JSON($users);
+            // $userPersonal = $user["personal"];
+            foreach($user as $part){
+
+                $userPersonal = $part["personal"];
+                $userName = $userPersonal["username"];
+                // var_dump($userName);
+                // var_dump($title);
+               
+                if ($userName === $search) {
+    
+                    send_JSON($user);
+                }
+            };
+        }
+
     }
 }else{
     $error = ["error" => "Fel här"];

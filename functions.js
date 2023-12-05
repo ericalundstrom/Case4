@@ -18,10 +18,13 @@ function swapStyleSheet(styleSheet) {
 
 function BasicLayout() {
     console.log("hej");
+    let profile = localStorage.getItem("#profilePic");
+    console.log(profile);
     document.querySelector("header").innerHTML = `
             <p> Rita </p>
             <input type="text" id="search" name="search" placeholder="search for comics, authors etc.."/>
-            <div id="profile"></div>`
+            <img id="profile" src="${profile}">
+            `
         ;
 
     document.querySelector("nav").innerHTML = `
@@ -43,6 +46,7 @@ function BasicLayout() {
 
 
 
+    document.querySelector("#profile").style.backgroundImage = profile;
     document.querySelector("#profile").addEventListener("click", (event) => {
         event.stopPropagation();
         RenderProfile();

@@ -66,69 +66,165 @@ function BasicLayout() {
 
 
 function createCard(parent, resource, user) {
-
-    // console.log(resource[0]);
-    // console.log(user);
-    if (user) {
-        //console.log("hej");
+    function createSingleCard(data) {
         const cardBox = document.createElement("div");
         cardBox.classList.add("cardBox");
 
+        console.log(data);
+
         cardBox.innerHTML = `
-                <h2>${resource.title}</h2>
-                <div class="imgDiv"></div>
-                <div class="userImg"></div>
-                <div class="userName">${user}</div>
-                <div class="likesBox">
-                    <div class="likeImg"></div>    
-                    <div>likes</div>
+            <h2>${data.title}</h2>
+            <div class="imgDiv"></div>
+            <div class="userImg"></div>
+            <div class="userName">${data.author}</div>
+            <div class="likesBox">
+                <div class="likeImg"></div>    
+            </div>
+        `;
+
+        cardBox.setAttribute("id", data.title);
+        cardBox.addEventListener("click", () => {
+            ReadComic(data);
+        });
+
+        cardBox.addEventListener("mouseenter", () => {
+            let divDom = document.createElement("div");
+            let filters = data.filters.replace(/[\[\]"]+/g, ' ');
+            divDom.innerHTML = `
+                <div>
+                    ${data.description}
+                </div>
+                <div id="filters">
+                    ${filters}
                 </div>
             `;
+            cardBox.append(divDom);
+            divDom.classList.add("description");
+        });
 
-        if (resource.frontPage !== "") {
-            //console.log("finns bild");
-            cardBox.querySelector(".imgDiv").style.backgroundImage = `url("api/${resource.frontPage}")`;
+        cardBox.addEventListener("mouseleave", () => {
+            document.querySelector(".description").remove();
+        });
+
+        if (data.frontPage !== "") {
+            cardBox.querySelector(".imgDiv").style.backgroundImage = `url("api/${data.frontPage}")`;
         } else {
             cardBox.querySelector(".imgDiv").style.backgroundImage = `url("/images/unnamed.png")`;
             console.log("fungerar ej");
         }
 
         parent.appendChild(cardBox);
-    } else {
-
-        if (resource[0].lenght == 1) {
-            console.log("inne här");
-        }
-
-        console.log(resource[0]);
-        resource.forEach(part => {
-            //console.log("hej");
-            console.log(part);
-            const cardBox = document.createElement("div");
-            cardBox.classList.add("cardBox");
-
-            cardBox.innerHTML = `
-                <h2>${part[0].title}</h2>
-                <div class="imgDiv"></div>
-                <div class="userImg"></div>
-                <div class="userName">${part[0].author}</div>
-                <div class="likesBox">
-                    <div class="likeImg"></div>    
-                    <div>${part[0].likes}</div>
-                </div>
-            `;
-
-            if (part.cover !== "") {
-                //console.log("finns bild");
-                cardBox.querySelector(".imgDiv").style.backgroundImage = `url("api/${part[0].frontPage}")`;
-            } else {
-                cardBox.querySelector(".imgDiv").style.backgroundImage = `url("/images/unnamed.png")`;
-                console.log("fungerar ej");
-            }
-
-            console.log(cardBox);
-            parent.appendChild(cardBox);
-        });
     }
 
+    if (user) {
+        console.log(user);
+        createSingleCard(resource);
+        console.log(resource);
+    } else {
+        console.log(resource.length);
+        if (resource.length === 1) {
+            createSingleCard(resource[0]);
+            console.log(resource[0]);
+        } else {
+            resource.forEach(part => {
+                part.forEach(comic => {
+
+                    createSingleCard(comic);
+                    console.log(comic);
+                })
+            });
+        }
+    }
+}
+
+
+
+
+
+
+
+function ReadComic(comic) {
+    console.log(comic);
+    let readBox = document.createElement("div");
+    document.querySelector("body").append(readBox);
+    readBox.classList.add("readBox");
+    readBox.innerHTML = `
+        <div id="close"> X </div>
+        <div id="leftArrow"> < </div>
+        <div id="left" class="comic"></div>
+        <div id="right" class="comic"></div>
+        <div id="rightArrow"> > </div>
+    `;
+
+    let filters = comic.filters.replace(/[\[\]"]+/g, ' ');
+    readBox.querySelector("#left").innerHTML = `
+        <div id="title">${comic.title}</div>
+        <div id="time">${comic.time}</div>
+        <div id="description">${comic.description}</div>
+        <div id="filter">${filters}</div>
+        <div id="author">${comic.author}</div>
+    `;
+
+    readBox.querySelector("#right").style.backgroundImage = `url("api/${comic.frontPage}")`;
+    readBox.querySelector("#right").style.backgroundSize = "cover";
+    readBox.querySelector("#right").style.backgroundRepeat = "no-repeat";
+    readBox.querySelector("#left").style.backgroundImage = "";
+    readBox.querySelector("#left").style.backgroundSize = "cover";
+    readBox.querySelector("#left").style.backgroundRepeat = "no-repeat";
+
+    readBox.querySelector("#close").addEventListener("click", () => {
+        readBox.remove();
+    });
+
+    let content = comic.content;
+    let currentIndex = -2;
+
+    function updateImages() {
+        readBox.querySelector("#left").innerHTML = "";
+        readBox.querySelector("#left").style.backgroundImage = `url("api/${content[currentIndex]}")`;
+        readBox.querySelector("#right").style.backgroundImage = `url("api/${content[currentIndex + 1]}")`;
+    }
+
+    function resetInfo() {
+        let filters = comic.filters.replace(/[\[\]"]+/g, ' ');
+        readBox.querySelector("#left").style.backgroundImage = "";
+        readBox.querySelector("#left").innerHTML = `
+            <div id="title">${comic.title}</div>
+            <div id="time">${comic.time}</div>
+            <div id="description">${comic.description}</div>
+            <div id="filter">${filters}</div>
+            <div id="author">${comic.author}</div>
+        `;
+        readBox.querySelector("#right").style.backgroundImage = `url("api/${comic.frontPage}")`;
+        currentIndex = -2;
+    }
+
+    // Attach click event listeners after initial setup
+    readBox.querySelector("#rightArrow").addEventListener("click", () => {
+        if (currentIndex + 2 < content.length) {
+            currentIndex += 2;
+            updateImages();
+        } else {
+            console.log("Reached the end of the content array");
+            console.log(currentIndex);
+            // Handle end of the array
+            resetInfo();
+        }
+    });
+
+    readBox.querySelector("#leftArrow").addEventListener("click", () => {
+        if (currentIndex >= 2) {
+            currentIndex -= 2;
+            updateImages();
+        } else {
+            console.log("Reached the beginning of the content array");
+            readBox.querySelector("#left").style.backgroundImage = "";
+            currentIndex = -2;
+            // Handle beginning of the array
+            resetInfo();
+        }
+    });
+
+    // Initial setup without calling updateImages
+    resetInfo();
 }

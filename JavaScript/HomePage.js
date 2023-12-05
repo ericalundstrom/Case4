@@ -15,8 +15,11 @@ async function RenderHomePage() {
 
     document.querySelector("#profile").style.backgroundImage = "url(images/userpic.webp)";
   } else {
-    document.querySelector("#profile").style.backgroundImage = `url(${userPic})`;
+    document.querySelector("#profile").style.backgroundImage = `url(api/${userPic})`;
   }
+
+  let profilePic = localStorage.getItem("profilePic");
+  document.querySelector("#profile").style.backgroundImage = `url(api/${profilePic})`;
 
   document.querySelector("#wrapper").innerHTML = `
     <div id="navi"> </div>

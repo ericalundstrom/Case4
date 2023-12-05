@@ -68,6 +68,7 @@ function RenderLoginPage() {
                 // add to local storage
                 // window.localStorage.setItem("user", JSON.stringify(data));
                 localStorager.set_item("user", data.personal.username);
+                localStorage.setItem("profilePic", data.personal.picture);
                 let user = data;
                 console.log(user.personal.username);
 

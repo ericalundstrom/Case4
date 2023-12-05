@@ -134,6 +134,12 @@ footer {
     background-repeat: no-repeat; */
 }
 
+#profileIcon>img {
+    height: 100%;
+    width: 100%;
+    border-radius: 50px;
+}
+
 #description {
     grid-column: 2/9;
     grid-row: 5;
@@ -276,6 +282,7 @@ button {
 .imgDiv {
     height: 80%;
     background-size: contain;
+    width: 90%;
 }
 
 #cardBox #userName {
@@ -529,4 +536,64 @@ button {
     position: relative;
     bottom: 10px;
     left: 10px;
+}
+
+
+
+.description {
+    /* height: 50%; */
+    width: 100%;
+    background-color: #6e6e797d;
+    position: relative;
+    bottom: 200px;
+    justify-content: center;
+    display: flex;
+    align-items: end;
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.readBox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #808080b2;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.comic {
+    height: 80%;
+    width: 40%;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+
+}
+
+.readBox>#close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+
+}
+
+#left {
+    display: flex;
+    justify-content: end;
+    /* align-items: end; */
+    flex-direction: column;
+}
+
+#left>div {
+    justify-content: space-around;
+    padding: 10px;
+    margin: 10px;
+    background-color: gray;
+    border-radius: 10px;
+    width: 100px;
 }

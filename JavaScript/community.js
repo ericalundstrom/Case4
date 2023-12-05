@@ -33,8 +33,9 @@ async function RenderCommunity() {
 
     let user = localStorage.getItem("user");
     let responseUser = await getUser(user);
+    // console.log(responseUser);
 
-    console.log(responseUser[0].personal.picture);
+    // console.log(responseUser[0].personal.picture);
     let userPic = responseUser[0].personal.picture;
 
     if (userPic === "") {
@@ -99,18 +100,19 @@ function RenderCalender(parent) {
 
 async function RenderComment(parent, resourse, value) {
 
+
     if (value) {
 
-        resourse.forEach(comment => {
-            console.log(comment);
+        resourse.forEach(async comment => {
+
             let commentBox = document.createElement("div");
             let numberOfComments = comment.comments.length;
-            console.log(numberOfComments);
+
 
             commentBox.innerHTML = `
                 <div id="box">
                         <div id="userAndProfile">
-                            <div id="profilePic"></div>
+                            <img id="profilePic" src="${comment.picture}">
                             <p id="username">${comment.author}</p>
                         </div>
                         <div id="date">${comment.date}</div>
@@ -139,17 +141,16 @@ async function RenderComment(parent, resourse, value) {
     `;
 
         document.querySelector("#goBack").addEventListener("click", RenderCommunity);
-        console.log("inne på en post");
-        console.log(resourse);
-        // resourse.forEach(user => {
-        //     console.log(user);
+
+
         let commentBox = document.createElement("div");
         let numberOfComments = resourse.comments.length;
+        console.log(resourse.picture);
 
         commentBox.innerHTML = `
                 <div id="box">
                         <div id="userAndProfile">
-                            <div id="profilePic"></div>
+                            <img id="profilePic" src="${resourse.picture}">
                             <p id="username">${resourse.author}</p>
                         </div>
                         <div id="date">${resourse.date}</div>
@@ -165,6 +166,7 @@ async function RenderComment(parent, resourse, value) {
                 <div id="stroke"></div>
                 `;
 
+        commentBox.querySelector("#profilePic").style.backgroundImage = `url(${resourse.picture})`;
         parent.append(commentBox);
 
         document.querySelector("#commentBox").innerHTML += `
@@ -183,7 +185,7 @@ async function RenderComment(parent, resourse, value) {
                 let divDom = document.createElement("div");
                 divDom.innerHTML = `
                 <div id="userAndProfile">
-                    <div id="profilePic"></div>
+                <img id="profilePic" src="${resourse.comments[i].picture}">
                     <p id="username">${resourse.comments[i].author}</p>
                 </div>
                 <div id="date">${resourse.comments[i].date}</div>
@@ -207,7 +209,7 @@ async function RenderComment(parent, resourse, value) {
 
 
 function RenderNewCommentPage() {
-    console.log("add");
+    // console.log("add");
 
     // BasicLayout();
     document.querySelector("body").innerHTML += `
@@ -250,6 +252,7 @@ function RenderNewCommentPage() {
 
         let title = document.querySelector("#title").value;;
         let description = document.querySelector("#description").value;
+        let profilePic = localStorage.getItem("profilePic");
 
         let user = localStorage.getItem("user");
         let userParse = JSON.parse(user);
@@ -257,7 +260,8 @@ function RenderNewCommentPage() {
         let body = {
             "title": title,
             "description": description,
-            "author": userParse
+            "author": userParse,
+            "picture": profilePic
         };
 
         try {
@@ -315,6 +319,9 @@ async function RenderPostLayout(data) {
     let user = localStorage.getItem("user");
     let responseUser = await getUser(user);
 
+    console.log(responseUser);
+
+
     console.log(responseUser[0].personal.picture);
     let userPic = responseUser[0].personal.picture;
 
@@ -341,10 +348,13 @@ async function addComment(resourse) {
     let userParse = JSON.parse(user);
     let id = resourse.id;
 
-    console.log(comment, userParse, id);
+    let profilePic = localStorage.getItem("profilePic");
+    console.log(comment, userParse, id, profilePic);
+
 
     let body = {
         "author": userParse,
+        "picture": profilePic,
         "comment": comment,
         "id": id
     };
@@ -354,8 +364,17 @@ async function addComment(resourse) {
 
     if (resourseComment) {
 
-        console.log(resourseComment);
+        // console.log(resourseComment);
         RenderCommunity();
 
     }
+}
+
+
+async function getUserPic(user) {
+    let userpro = await fetch(`api/data/users.json?userPic=${user}`);
+    let userPic = await userpro.json();
+    // console.log(userPic);
+
+    return userPic;
 }

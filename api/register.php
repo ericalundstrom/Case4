@@ -90,8 +90,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // make sure it's the right method
 
     $directory = "/images/profileIcon/";
     $img = glob($directory . "*.png");
-    $profileIcon = shuffle($img);
-    var_dump($profileIcon);
+    // $profileIcon = shuffle($img);
+    // var_dump($profileIcon);
+
+    $profileIcon = shuffle($img)[0];
 
     $newUser = [
         "personal" => [

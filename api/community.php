@@ -26,12 +26,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             send_JSON($error);
         }
 
+        // var_dump($post["picture"]);
         $newPost = [
             "id" => uniqid(),
             "title" => $post["title"],
             "description" => $post["description"],
             "date" => $timestamp,
             "author" => $post["author"],
+            "picture" => $post["picture"],
             "comments" =>[]
         ];
         
@@ -40,35 +42,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         send_JSON($newPost);
     }
 
-    // if (isset($post["comment"])) {
-
-
-    //     $id = $post["id"];
-
-    //     $newComment = [
-    //         "user"=> $post["user"],
-    //         "id" => $post["id"],
-    //         "comment" => $post["comment"]
-    //     ];
-    //     // $comment = $post["comment"];
-    //     foreach($communityPost as $comment){
-    //         if($id === $comment["id"]){
-
-    //             $comment["comment"][] = $newComment;
-
-    //             file_put_contents($filename, json_encode($communityPost, JSON_PRETTY_PRINT));
-
-    //             send_JSON($comment); 
-    //             // check so username and password is correct
-    //         }
-    //     }
-
-    //     // send_JSON($post);
-    // }
     if (isset($post["comment"])) {
         $id = $post["id"];
         $newComment = [
             "author" => $post["author"],
+            "picture" => $post["picture"],
             "id" => $post["id"],
             "comment" => $post["comment"],
             "date" => $timestamp

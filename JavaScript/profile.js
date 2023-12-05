@@ -433,37 +433,40 @@ function RenderSettings(params) {
     let popUp = document.querySelector("#popUp")
     popUp.classList.remove("hidden");
     popUp.innerHTML = `
-    <div> settings</div>
-    <div class="stroke"></div>
-    <form>
-        <div id="notifications">
-            <div></div>
-            <div></div>
-            <div></div>
-        
-        </div>
-        <div id="general">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" />
-
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" />
-
-        </div>
-        <div id="password">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" />
+        <div> settings</div>
+        <div class="stroke"></div>
+        <form>
+            <div id="notifications">
+                <h3>Notifications</h3>
+                <div></div>
+                <div></div>
+                <div></div>
             
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" />
-            
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" />
-        </div>
-            <button> Log out</button>
-            <div id="close"> x </div>
-    </form>
-    `;
+            </div>
+            <div id="general"> 
+                <h3>General</h3>
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email" />
+
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" />
+
+            </div>
+            <div id="password">
+                <h3>Password</h3>
+                <label for="currentPassword">Current password:</label>
+                <input type="password" id="currentPassword" name="currentPassword" />
+                
+                <label for="newPassword">New password:</label>
+                <input type="password" id="newPassword" name="newPassword" />
+                
+                <label for="repeatPassword">Repeat password:</label>
+                <input type="password" id="repeatPassword" name="repeatPassword" />
+            </div>
+                <button> Log out</button>
+                <div id="close"> x </div>
+        </form>
+        `;
 
     popUp.querySelector("button").addEventListener("click", (event) => {
         event.stopPropagation();

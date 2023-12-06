@@ -7,9 +7,9 @@
                 "password": "usern",
                 "picture": "images\/profilIcon\/avataaars(7).png",
                 "description": "I am a comic artist based in Sweden, Malm\u00f6. My comics usually revolve around superheros and their adventures. The adventures takes place in the fantacy land of",
-                "added": "",
-                "following": 0,
-                "followers": 0
+                "added": "04-12-2023 16:27",
+                "following": [],
+                "followers": []
             },
             "comics": []
         }
@@ -22,9 +22,16 @@
                 "password": "hejhej",
                 "picture": "images\/profilIcon\/avataaars(3).png",
                 "description": "I am a comic artist based in Sweden, Malm\u00f6. My comics usually revolve around superheros and their adventures. The adventures takes place in the fantacy land of",
-                "added": "",
-                "following": 0,
-                "followers": 0
+                "added": "04-12-2023 16:27",
+                "following": [
+                    "alicesmith",
+                    "petra",
+                    "annika",
+                    "heidi"
+                ],
+                "followers": [
+                    "petra"
+                ]
             },
             "comics": []
         }
@@ -37,9 +44,9 @@
                 "password": "erica",
                 "picture": "images\/profilIcon\/avataaars(4).png",
                 "description": "I am a comic artist based in Sweden, Malm\u00f6. My comics usually revolve around superheros and their adventures. The adventures takes place in the fantacy land of",
-                "added": "",
-                "following": 0,
-                "followers": 0
+                "added": "04-12-2023 16:27",
+                "following": [],
+                "followers": []
             },
             "comics": []
         }
@@ -52,9 +59,9 @@
                 "password": "berit",
                 "picture": "images\/profilIcon\/avataaars(14).png",
                 "description": "",
-                "added": "",
-                "following": 0,
-                "followers": 0
+                "added": "04-12-2023 16:27",
+                "following": [],
+                "followers": []
             },
             "comics": []
         }
@@ -67,9 +74,9 @@
                 "password": "morgan",
                 "picture": "images\/profilIcon\/avataaars(13).png",
                 "description": "",
-                "added": "",
-                "following": 0,
-                "followers": 0
+                "added": "04-12-2023 16:27",
+                "following": [],
+                "followers": []
             },
             "comics": []
         }
@@ -82,9 +89,9 @@
                 "password": "elvis",
                 "picture": "images\/profilIcon\/avataaars(12).png",
                 "description": "",
-                "added": "",
-                "following": 0,
-                "followers": 0
+                "added": "04-12-2023 16:27",
+                "following": [],
+                "followers": []
             },
             "comics": []
         }
@@ -97,9 +104,9 @@
                 "password": "password123",
                 "picture": "images\/profilIcon\/avataaars(11).png",
                 "description": "",
-                "added": "",
-                "following": 0,
-                "followers": 0
+                "added": "04-12-2023 16:27",
+                "following": [],
+                "followers": []
             },
             "comics": []
         }
@@ -112,9 +119,11 @@
                 "password": "secret123",
                 "picture": "images\/profilIcon\/avataaars(10).png",
                 "description": "",
-                "added": "",
-                "following": 0,
-                "followers": 0
+                "added": "04-12-2023 16:27",
+                "following": [],
+                "followers": [
+                    "ballong"
+                ]
             },
             "comics": []
         }
@@ -127,9 +136,9 @@
                 "password": "peanuts456",
                 "picture": "images\/profilIcon\/avataaars(2).png",
                 "description": "",
-                "added": "",
-                "following": 0,
-                "followers": 0
+                "added": "04-12-2023 16:27",
+                "following": [],
+                "followers": []
             },
             "comics": []
         }
@@ -142,9 +151,11 @@
                 "password": "emma567",
                 "picture": "images\/profilIcon\/avataaars(8).png",
                 "description": "",
-                "added": "",
-                "following": 0,
-                "followers": 0
+                "added": "04-12-2023 16:27",
+                "following": [],
+                "followers": [
+                    "petra"
+                ]
             },
             "comics": []
         }
@@ -157,9 +168,9 @@
                 "password": "thriller789",
                 "picture": "images\/profilIcon\/avataaars(7).png",
                 "description": "",
-                "added": "",
-                "following": 0,
-                "followers": 0
+                "added": "04-12-2023 16:27",
+                "following": [],
+                "followers": []
             },
             "comics": [
                 {
@@ -191,9 +202,9 @@
                 "password": "susan123",
                 "picture": "images\/profilIcon\/avataaars(6).png",
                 "description": "",
-                "added": "",
-                "following": 0,
-                "followers": 0
+                "added": "04-12-2023 16:27",
+                "following": [],
+                "followers": []
             },
             "comics": []
         }
@@ -206,9 +217,9 @@
                 "password": "jeffery123",
                 "picture": "images\/profilIcon\/avataaars(5).png",
                 "description": "",
-                "added": "",
-                "following": 0,
-                "followers": 0
+                "added": "04-12-2023 16:27",
+                "following": [],
+                "followers": []
             },
             "comics": []
         }
@@ -221,9 +232,9 @@
                 "password": "chercher",
                 "picture": "images\/profilIcon\/avataaars(4).png",
                 "description": "",
-                "added": "",
-                "following": 0,
-                "followers": 0
+                "added": "04-12-2023 16:27",
+                "following": [],
+                "followers": []
             },
             "comics": []
         }
@@ -236,9 +247,9 @@
                 "password": "oliwerlof",
                 "picture": "images\/profilIcon\/avataaars(3).png",
                 "description": "",
-                "added": "",
-                "following": 0,
-                "followers": 0
+                "added": "04-12-2023 16:27",
+                "following": [],
+                "followers": []
             },
             "comics": []
         }
@@ -251,9 +262,9 @@
                 "password": "filipfilip",
                 "picture": "images\/profilIcon\/avataaars(2).png",
                 "description": "",
-                "added": "",
-                "following": 0,
-                "followers": 0
+                "added": "04-12-2023 16:27",
+                "following": [],
+                "followers": []
             },
             "comics": []
         }
@@ -266,9 +277,9 @@
                 "password": "harryPotter",
                 "picture": "images\/profilIcon\/avataaars(1).png",
                 "description": "",
-                "added": "",
-                "following": 0,
-                "followers": 0
+                "added": "04-12-2023 16:27",
+                "following": [],
+                "followers": []
             },
             "comics": []
         }
@@ -281,9 +292,9 @@
                 "password": "ronron",
                 "picture": "images\/profilIcon\/avataaars(14).png",
                 "description": "",
-                "added": "",
-                "following": 0,
-                "followers": 0
+                "added": "04-12-2023 16:27",
+                "following": [],
+                "followers": []
             },
             "comics": []
         }
@@ -296,9 +307,9 @@
                 "password": "ErikP",
                 "picture": "images\/profilIcon\/avataaars(3).png",
                 "description": "",
-                "added": "",
-                "following": 0,
-                "followers": 0
+                "added": "04-12-2023 16:27",
+                "following": [],
+                "followers": []
             },
             "comics": []
         }
@@ -311,9 +322,9 @@
                 "password": "sebastian",
                 "picture": "images\/profilIcon\/avataaars(12).png",
                 "description": "",
-                "added": "",
-                "following": 0,
-                "followers": 0
+                "added": "04-12-2023 16:27",
+                "following": [],
+                "followers": []
             },
             "comics": []
         }
@@ -326,9 +337,9 @@
                 "password": "sofie",
                 "picture": "images\/profilIcon\/avataaars(11).png",
                 "description": "",
-                "added": "",
-                "following": 0,
-                "followers": 0
+                "added": "04-12-2023 16:27",
+                "following": [],
+                "followers": []
             },
             "comics": []
         }
@@ -341,9 +352,9 @@
                 "password": "theoooo",
                 "picture": "images\/profilIcon\/avataaars(10).png",
                 "description": "",
-                "added": "",
-                "following": 0,
-                "followers": 0
+                "added": "04-12-2023 16:27",
+                "following": [],
+                "followers": []
             },
             "comics": []
         }
@@ -356,9 +367,9 @@
                 "password": "santa",
                 "picture": "images\/profilIcon\/avataaars(9).png",
                 "description": "",
-                "added": "",
-                "following": 0,
-                "followers": 0
+                "added": "04-12-2023 16:27",
+                "following": [],
+                "followers": []
             },
             "comics": []
         }
@@ -369,11 +380,11 @@
                 "email": "charlie@example.com",
                 "username": "charlie",
                 "password": "charlie",
-                "picture": "",
+                "picture": "images\/profilIcon\/avataaars(8).png",
                 "description": "",
-                "added": "images\/profilIcon\/avataaars(8).png",
-                "following": 0,
-                "followers": 0
+                "added": "04-12-2023 16:27",
+                "following": [],
+                "followers": []
             },
             "comics": []
         }
@@ -385,10 +396,10 @@
                 "username": "bert",
                 "password": "bert",
                 "picture": "images\/profilIcon\/avataaars(7).png",
-                "description": "",
+                "description": "04-12-2023 16:27",
                 "added": "",
-                "following": 0,
-                "followers": 0
+                "following": [],
+                "followers": []
             },
             "comics": []
         }
@@ -401,9 +412,15 @@
                 "password": "petra",
                 "picture": "images\/profilIcon\/avataaars(6).png",
                 "description": "",
-                "added": "",
-                "following": 0,
-                "followers": 0
+                "added": "04-12-2023 16:27",
+                "following": [
+                    "ballong",
+                    "heidi",
+                    "emmajones"
+                ],
+                "followers": [
+                    "ballong"
+                ]
             },
             "comics": [
                 {
@@ -444,8 +461,8 @@
                 "picture": "images\/profilIcon\/avataaars(5).png",
                 "description": "",
                 "added": "04-12-2023 16:27",
-                "following": "0",
-                "followers": "0"
+                "following": [],
+                "followers": []
             },
             "comics": []
         }
@@ -459,8 +476,8 @@
                 "picture": "images\/profilIcon\/avataaars(4).png",
                 "description": "",
                 "added": "04-12-2023 16:28",
-                "following": "0",
-                "followers": "0"
+                "following": [],
+                "followers": []
             },
             "comics": []
         }
@@ -474,8 +491,8 @@
                 "picture": "images\/profilIcon\/avataaars(4).png",
                 "description": "",
                 "added": "04-12-2023 16:29",
-                "following": "0",
-                "followers": "0"
+                "following": [],
+                "followers": []
             },
             "comics": []
         }
@@ -489,8 +506,8 @@
                 "picture": "images\/profilIcon\/avataaars(3).png",
                 "description": "",
                 "added": "04-12-2023 16:34",
-                "following": "0",
-                "followers": "0"
+                "following": [],
+                "followers": []
             },
             "comics": []
         }
@@ -504,8 +521,10 @@
                 "picture": "images\/profilIcon\/avataaars(2).png",
                 "description": "",
                 "added": "04-12-2023 16:35",
-                "following": "0",
-                "followers": "0"
+                "following": [],
+                "followers": [
+                    "ballong"
+                ]
             },
             "comics": []
         }
@@ -519,8 +538,8 @@
                 "picture": "images\/profilIcon\/avataaars(1).png",
                 "description": "",
                 "added": "04-12-2023 16:38",
-                "following": "0",
-                "followers": "0"
+                "following": [],
+                "followers": []
             },
             "comics": []
         }
@@ -534,8 +553,8 @@
                 "picture": "images\/profilIcon\/avataaars.png",
                 "description": "",
                 "added": "04-12-2023 16:39",
-                "following": "0",
-                "followers": "0"
+                "following": [],
+                "followers": []
             },
             "comics": []
         }
@@ -549,8 +568,8 @@
                 "picture": "images\/profilIcon\/avataaars(5).png",
                 "description": "",
                 "added": "04-12-2023 16:46",
-                "following": "0",
-                "followers": "0"
+                "following": [],
+                "followers": []
             },
             "comics": []
         }
@@ -564,8 +583,8 @@
                 "picture": "images\/profilIcon\/avataaars(2).png",
                 "description": "",
                 "added": "05-12-2023 16:01",
-                "following": "0",
-                "followers": "0"
+                "following": [],
+                "followers": []
             },
             "comics": []
         }
@@ -579,8 +598,11 @@
                 "picture": "images\/profilIcon\/avataaars(10).png",
                 "description": "",
                 "added": "05-12-2023 16:07",
-                "following": "0",
-                "followers": "0"
+                "following": [],
+                "followers": [
+                    "petra",
+                    "ballong"
+                ]
             },
             "comics": [
                 {
@@ -611,6 +633,36 @@
                     "likes": []
                 }
             ]
+        }
+    ],
+    [
+        {
+            "personal": {
+                "email": "g",
+                "username": "g",
+                "password": "g",
+                "picture": "..\/images\/profilIcon\/avataaars.png",
+                "description": "",
+                "added": "06-12-2023 12:50",
+                "following": [],
+                "followers": []
+            },
+            "comics": []
+        }
+    ],
+    [
+        {
+            "personal": {
+                "email": "d",
+                "username": "d",
+                "password": "d",
+                "picture": "..\/images\/profilIcon\/avataaars(6).png",
+                "description": "",
+                "added": "06-12-2023 12:51",
+                "following": [],
+                "followers": []
+            },
+            "comics": []
         }
     ]
 ]

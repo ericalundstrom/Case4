@@ -1,8 +1,12 @@
 
-async function RenderProfile(data) {
+async function RenderProfile(data, value) {
+    console.log(data);
+    console.log(value);
 
     let user = localStorage.getItem("user");
     let response = await getUser(user);
+
+    let followers = response[0].personal.following;
 
     let userPic = response[0].personal.picture;
 
@@ -40,15 +44,14 @@ async function RenderProfile(data) {
                 <div id="edit"></div>
                 <div id="username">${data[0].personal.username}</div>
                 <div id="date">Member since: ${data[0].personal.added}</div>
-                <div id="settings">settings</div>
                 <div id="description">${data[0].personal.description} </div>
                 <div id="insta">
                     <div id="icon"></div>
                     <div id="name">@Torkel</div>
                 </div>
                 <div id="follows">
-                    <div id="name"></div>
-                    <div id="icon"></div>
+                    <div id="follow"> Follow</div>
+                    <div id="icon"> </div>
                 </div>
             </div>
         
@@ -62,11 +65,27 @@ async function RenderProfile(data) {
             <div id="cards"></div
         `;
 
+        if (followers.includes(data[0].personal.username)) {
+            console.log("följer");
+            document.querySelector("#follow").textContent = "following";
+            document.querySelector("#follow").addEventListener("click", () => {
+                document.querySelector("#follow").textContent = "follow";
+                unfollow(data);
+            })
+        } else {
+
+            document.querySelector("#follow").addEventListener("click", () => {
+                document.querySelector("#follow").textContent = "following";
+                followUser(data);
+            })
+        }
+
         document.querySelector("#followers").addEventListener("click", (event) => {
             event.stopPropagation();
             let popUp = document.querySelector("#popUp");
             RenderFollowers(popUp, resourceUsers);
         })
+
 
 
         document.querySelector("#myComics").addEventListener("click", (event) => {
@@ -78,13 +97,6 @@ async function RenderProfile(data) {
 
             toggleClass(event.target.id)
         })
-
-        document.querySelector("#follows > #name").addEventListener("click", (event) => {
-            event.stopPropagation();
-            let popUp = document.querySelector("#popUp");
-            RenderFollowers(popUp, resourceUsers);
-        })
-
 
         if (data[0].comics.length !== 0) {
 
@@ -113,8 +125,12 @@ async function RenderProfile(data) {
 
         BasicLayout();
 
+
         let user = localStorage.getItem("user");
+
         let response = await getUser(user);
+
+        console.log(response[0].personal.followers.length);
 
         document.querySelector("#wrapper").innerHTML = `
             <div id="notifications">
@@ -147,7 +163,7 @@ async function RenderProfile(data) {
                 <div id="name">@Torkel</div>
             </div>
             <div id="follows">
-                <div id="name">36 people follow</div>
+                <div id="name">${response[0].personal.followers.length} Followers </div>
                 <div id="icon"></div>
             </div>
             </div>
@@ -163,6 +179,10 @@ async function RenderProfile(data) {
             <div id="cards"></div
         `;
 
+        if (response[0].personal.followers.length === 1) {
+            console.log("en följare");
+            document.querySelector(" #follows > #name").textContent = ` ${response[0].personal.followers.length} Follower`;
+        }
         document.querySelector("#addNewComic").addEventListener("click", () => {
             renderUploadComic();
             //renderLayoutPage()
@@ -170,22 +190,6 @@ async function RenderProfile(data) {
 
         document.querySelector("#settings").addEventListener("click", () => {
             RenderSettings();
-            // let popUp = document.querySelector("#popUp")
-            // popUp.classList.remove("hidden");
-            // popUp.innerHTML = `
-            // <div> Do you want to log out? </div>
-            // <button> Log out</button>
-            // <div id="close"> x </div>
-            // `;
-
-            // popUp.querySelector("button").addEventListener("click", (event) => {
-            //     event.stopPropagation();
-            //     logout();
-            // })
-
-            // popUp.querySelector("#close").addEventListener("click", () => {
-            //     popUp.classList.add("hidden");
-            // })
         })
 
         document.querySelector("#follows > #name").addEventListener("click", (event) => {
@@ -196,11 +200,23 @@ async function RenderProfile(data) {
             RenderFollowers(popUp, resourceUsers);
         })
 
-        document.querySelector("#artist").addEventListener("click", (event) => {
+        document.querySelector("#artist").addEventListener("click", async (event) => {
             event.stopPropagation();
+            let cards = document.querySelector("#cards")
+            cards.innerHTML = ``;
 
-            RenderFollowingArtist();
+            let user = localStorage.getItem("user");
+            userParse = JSON.parse(user);
+            let resourse = await getUser(user);
+
+            let followers = resourse[0].personal.following;
+            for (const user of followers) {
+                let data = await getUser(user);
+                console.log(data);
+                RenderFollowingArtist(data, false);
+            }
             toggleClass(event.target.id)
+            console.log(resourse[0].personal.following[1]);
         })
 
         document.querySelector("#myComics").addEventListener("click", (event) => {
@@ -214,12 +230,11 @@ async function RenderProfile(data) {
 
                 let comics = [];
                 for (let i = 0; i < response[0].comics.length; i++) {
-                    let comic = response[0].comics;
-                    comics.push(comic);
-
-                    toggleClass(event.target.id)
-                    createCard(card, comics);
+                    let comic = response[0].comics[i];
+                    comics.push([comic]); // Wrap each comic in an array
                 }
+
+                createCard(cardBox, comics);
             }
         })
 
@@ -246,12 +261,14 @@ async function RenderProfile(data) {
 
             let comics = [];
             for (let i = 0; i < response[0].comics.length; i++) {
-                let comic = response[0].comics;
-                comics.push(comic);
+                let comic = response[0].comics[i];
+                comics.push([comic]); // Wrap each comic in an array
 
                 // toggleClass(event.target.id)
-                createCard(cardBox, comics);
             }
+
+            createCard(cardBox, comics);
+
         }
     }
 }
@@ -272,43 +289,69 @@ function toggleClass(selectedId) {
 
 
 
-async function RenderFollowingArtist() {
+async function RenderFollowingArtist(data, value) {
+    console.log(value);
 
     let cards = document.querySelector("#cards")
-    cards.innerHTML = ``;
+    // cards.innerHTML = ``;
 
 
-    await RenderArtistCard(cards);
+    await RenderArtistCard(cards, data, value);
 
 }
 
 
-async function RenderArtistCard(parent) {
+async function RenderArtistCard(parent, data, value) {
 
-    let respons = await fetch("api/data/users.json");
-    let resourse = await respons.json();
+    if (value) {
 
-    resourse.forEach(user => {
-        let divDom = document.createElement("div");
-        divDom.classList.add("artistBox");
-        divDom.innerHTML = `
-                <img id="artistIcon" src="${user[0].personal.picture}">
-                <h3> ${user[0].personal.username} </h3>
-                <div id="uploadedComicsBox">
-                    <div class="number"> ${user[0].comics.length} </div>
-                    <div id="text"> Uploaded comics </div>
-                </div>
-                <div id="folowerBox">
-                    <div class="number"> </div>
+        let respons = await fetch("api/data/users.json");
+        let resourse = await respons.json();
+
+        resourse.forEach(user => {
+            let divDom = document.createElement("div");
+            divDom.classList.add("artistBox");
+            divDom.innerHTML = `
+            <img id="artistIcon" src="${user[0].personal.picture}">
+            <h3> ${user[0].personal.username} </h3>
+            <div id="uploadedComicsBox">
+            <div class="number"> ${user[0].comics.length} </div>
+            <div id="text"> Uploaded comics </div>
+            </div>
+            <div id="folowerBox">
+            <div class="number"> </div>
                     <div id="text"> Followers </div>
-                </div>
-        `;
-        parent.append(divDom);
+                    </div>
+                    `;
+            parent.append(divDom);
 
-        divDom.addEventListener("click", () => {
-            RenderProfile(user);
+            divDom.addEventListener("click", () => {
+                RenderProfile(user, false);
+            })
         })
-    })
+    } else {
+        data.forEach(user => {
+            let divDom = document.createElement("div");
+            divDom.classList.add("artistBox");
+            divDom.innerHTML = `
+            <img id="artistIcon" src="${user.personal.picture}">
+            <h3> ${user.personal.username} </h3>
+            <div id="uploadedComicsBox">
+            <div class="number"> ${user.comics.length} </div>
+            <div id="text"> Uploaded comics </div>
+            </div>
+            <div id="folowerBox">
+            <div class="number"> ${user.personal.followers.length}</div>
+                    <div id="text"> Followers </div>
+                    </div>
+                    `;
+            parent.append(divDom);
+
+            divDom.addEventListener("click", () => {
+                RenderProfile([user], true);
+            })
+        })
+    }
 
 
 }
@@ -331,6 +374,7 @@ async function RenderFollowers(popUp, resourceUsers) {
     let searchField = popUp.querySelector("input");
     searchField.addEventListener("keyup", e => {
 
+        e.stopPropagation();
         if (e.key == "Enter") {
             findUser(e.target.value);
         }
@@ -477,3 +521,43 @@ function RenderSettings(params) {
         popUp.classList.add("hidden");
     })
 };
+
+
+
+
+async function followUser(user) {
+    console.log(user[0].personal.username);
+    let usersUsername = user[0].personal.username;
+    let currentUser = localStorage.getItem("user");
+    parseUser = JSON.parse(currentUser);
+    console.log(currentUser);
+
+    let body = {
+        "user": usersUsername,
+        "currentUser": parseUser
+    };
+
+    let response = await fetching("api/following.php", "POST", body);
+    let resourse = await response.json();
+
+    console.log(resourse);
+}
+
+
+async function unfollow(user) {
+    // console.log(user);
+
+    console.log(user[0].personal.username);
+    let usersUsername = user[0].personal.username;
+    let currentUser = localStorage.getItem("user");
+    parseUser = JSON.parse(currentUser);
+    console.log(currentUser);
+
+    let body = {
+        "user": usersUsername,
+        "currentUser": parseUser
+    };
+
+    let response = await fetching("api/following.php", "DELETE", body);
+    let resourse = await response.json();
+}

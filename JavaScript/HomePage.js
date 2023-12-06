@@ -49,7 +49,3 @@ async function RenderHomePage() {
   createCard(boxCards, comics);
 }
 
-function RenderTrending(params) {
-  console.log("trending");
-}
-

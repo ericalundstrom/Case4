@@ -26,7 +26,7 @@ function BasicLayout() {
             <p id="userprofile"> Profile </p>
             <p id="home"> Home </p>
             <p id="community"> Comunity </p>
-            <p id="trending"> Trending </p>`
+            `
 
     document.querySelector("footer").innerHTML = `
         <div> About Rita </div>
@@ -56,10 +56,6 @@ function BasicLayout() {
     document.querySelector("#community").addEventListener("click", (event) => {
         event.stopPropagation();
         RenderCommunity();
-    });
-    document.querySelector("#trending").addEventListener("click", (event) => {
-        event.stopPropagation();
-        RenderTrending();
     });
 }
 
@@ -117,20 +113,14 @@ function createCard(parent, resource, user) {
     }
 
     if (user) {
-        console.log(user);
         createSingleCard(resource);
-        console.log(resource);
     } else {
-        console.log(resource.length);
         if (resource.length === 1) {
             createSingleCard(resource[0]);
-            console.log(resource[0]);
         } else {
             resource.forEach(part => {
                 part.forEach(comic => {
-
                     createSingleCard(comic);
-                    console.log(comic);
                 })
             });
         }

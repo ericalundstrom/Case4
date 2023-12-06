@@ -1,10 +1,11 @@
 "use strict";
 
 RenderLoginPage();
-    const user = localStorager.get_item("user");
-   if ( user !== undefined){
+const user = localStorager.get_item("user");
+console.log(user);
+if (user !== undefined) {
     RenderHomePage()
-   }
+}
 
 function renderFirstPage() {
 

@@ -21,33 +21,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // make sure it's the right method
 
 
 
-    function getRandomProfilePicture() {
-        // Path to the folder containing profile pictures
-        $folderPath = '../images/profileIcon/';
+    // function getRandomProfilePicture() {
+    //     // Path to the folder containing profile pictures
+    //     $folderPath = '../images/profileIcon/';
 
-        // Get a list of image files in the folder
-        $imageFiles = glob($folderPath . '*.png'); // Change the file extension if your images have a different extension
+    //     // Get a list of image files in the folder
+    //     $imageFiles = glob($folderPath . '*.png'); // Change the file extension if your images have a different extension
 
-        var_dump($imageFiles);
-        // Check if there are any images in the folder
-        if (empty($imageFiles)) {
-            return ''; // No images found
-        }
+    //     var_dump($imageFiles);
+    //     // Check if there are any images in the folder
+    //     if (empty($imageFiles)) {
+    //         return ''; // No images found
+    //     }
 
-        // Randomly select an image from the list
-        $allFiles = scandir($folderPath);
+    //     // Randomly select an image from the list
+    //     $allFiles = scandir($folderPath);
 
-        $randomImage = $folderPath . $imageFiles[array_rand($imageFiles)];
+    //     $randomImage = $folderPath . $imageFiles[array_rand($imageFiles)];
 
-        // Return the selected image path
-        return $randomImage;
+    //     // Return the selected image path
+    //     return $randomImage;
 
-    }
+    // }
 
-    // Example usage
-    $userProfilePicture = getRandomProfilePicture();
+    // // Example usage
+    // $userProfilePicture = getRandomProfilePicture();
 
-    var_dump($userProfilePicture);
+    // var_dump($userProfilePicture);
 
 // Output the HTML with the user profile picture
 
@@ -88,12 +88,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // make sure it's the right method
     $time=time();
     $timestamp = date('d-m-Y H:i');
 
-    $directory = "/images/profileIcon/";
+    $directory = "../images/profilIcon/";
     $img = glob($directory . "*.png");
-    // $profileIcon = shuffle($img);
+    // $img = glob("../images/*");
+    // var_dump($img);
+    shuffle($img);
+    // var_dump($profileIcon);
     // var_dump($profileIcon);
 
-    $profileIcon = shuffle($img)[0];
+    $profileIcon = $img[0];
+    // $profileIcon = shuffle($img)[0];
 
     $newUser = [
         "personal" => [
@@ -103,8 +107,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // make sure it's the right method
             "picture" => $profileIcon,
             "description" => "",
             "added" => $timestamp,
-            "following" => "0",
-            "followers" => "0"
+            "following" => [],
+            "followers" => []
         ],
         "comics" => []
     ];

@@ -46,7 +46,9 @@
                 "description": "I am a comic artist based in Sweden, Malm\u00f6. My comics usually revolve around superheros and their adventures. The adventures takes place in the fantacy land of",
                 "added": "04-12-2023 16:27",
                 "following": [],
-                "followers": []
+                "followers": [
+                    "berit"
+                ]
             },
             "comics": []
         }
@@ -54,13 +56,15 @@
     [
         {
             "personal": {
-                "email": "erica.lundstrom@hotmail.com",
+                "email": "ingmar@hej.se",
                 "username": "berit",
-                "password": "berit",
+                "password": "hej",
                 "picture": "images\/profilIcon\/avataaars(14).png",
                 "description": "",
                 "added": "04-12-2023 16:27",
-                "following": [],
+                "following": [
+                    "erica"
+                ],
                 "followers": []
             },
             "comics": []

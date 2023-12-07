@@ -492,54 +492,89 @@ async function findUser(value) {
 }
 
 
-function RenderSettings(params) {
-    let popUp = document.querySelector("#popUp")
-    popUp.classList.remove("hidden");
-    popUp.innerHTML = `
-        <div> settings</div>
-        <div class="stroke"></div>
-        <form>
-            <div id="notifications">
-                <h3>Notifications</h3>
-                <div></div>
-                <div></div>
-                <div></div>
-            
-            </div>
-            <div id="general"> 
-                <h3>General</h3>
-                <label for="email">Email:</label>
-                <input type="text" id="email" name="email" />
+// function RenderSettings(params) {
+//     let popUp = document.querySelector("#popUp")
+//     popUp.classList.remove("hidden");
+//     popUp.innerHTML = `
+//         <div> settings</div>
+//         <div class="stroke"></div>
+//         <form>
+//             <div id="noti">
+//                 <h3>Notifications</h3>
+//                 <div>
+//                     <p> Notifications for likes </p>
 
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" />
+//                     <div>
+//                     <div style="width: 27px; height: 18px; color: #939393; font-size: 16px; font-family: Urbanist; font-weight: 400; word-wrap: break-word">Off</div>
+//                     <div style="width: 36px; height: 16px; position: relative">
+//                         <div style="width: 36px; height: 16px; left: 0px; top: 0px; position: absolute; background: #D9D9D9; border-radius: 20px"></div>
+//                         <div style="width: 18px; height: 16px; left: 16.80px; top: 0px; position: absolute; background: #464545; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 9999px"></div>
+//                     </div>
+//                     <div style="width: 27px; height: 18px; color: black; font-size: 16px; font-family: Urbanist; font-weight: 400; word-wrap: break-word">On</div>
+//                     </div>
+//                     </div>
+//                 <div>
+//                     <p> Notifications from publication </p>
+//                     <div>
+//                     <div style="width: 27px; height: 18px; color: #939393; font-size: 16px; font-family: Urbanist; font-weight: 400; word-wrap: break-word">Off</div>
+//                     <div style="width: 36px; height: 16px; position: relative">
+//                         <div style="width: 36px; height: 16px; left: 0px; top: 0px; position: absolute; background: #D9D9D9; border-radius: 20px"></div>
+//                         <div style="width: 18px; height: 16px; left: 16.80px; top: 0px; position: absolute; background: #464545; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 9999px"></div>
+//                     </div>
+//                     <div style="width: 27px; height: 18px; color: black; font-size: 16px; font-family: Urbanist; font-weight: 400; word-wrap: break-word">On</div>
+//                     </div>
+//                 </div>
+//                 <div>
+//                     <p> Notifications from comments </p>
+//                     <div>
+//                     <div style="width: 27px; height: 18px; color: #939393; font-size: 16px; font-family: Urbanist; font-weight: 400; word-wrap: break-word">Off</div>
+//                     <div style="width: 36px; height: 16px; position: relative">
+//                         <div style="width: 36px; height: 16px; left: 0px; top: 0px; position: absolute; background: #D9D9D9; border-radius: 20px"></div>
+//                         <div style="width: 18px; height: 16px; left: 16.80px; top: 0px; position: absolute; background: #464545; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 9999px"></div>
+//                     </div>
+//                     <div style="width: 27px; height: 18px; color: black; font-size: 16px; font-family: Urbanist; font-weight: 400; word-wrap: break-word">On</div>
+//                     </div>
+//                 </div>
 
-            </div>
-            <div id="password">
-                <h3>Password</h3>
-                <label for="currentPassword">Current password:</label>
-                <input type="password" id="currentPassword" name="currentPassword" />
-                
-                <label for="newPassword">New password:</label>
-                <input type="password" id="newPassword" name="newPassword" />
-                
-                <label for="repeatPassword">Repeat password:</label>
-                <input type="password" id="repeatPassword" name="repeatPassword" />
-            </div>
-                <button> Log out</button>
-                <div id="close"> x </div>
-        </form>
-        `;
+//             </div>
+//             <div id="general"> 
+//                 <h3>General</h3>
+//                 <label for="email">Email:</label>
+//                 <input type="text" id="email" name="email" />
 
-    popUp.querySelector("button").addEventListener("click", (event) => {
-        event.stopPropagation();
-        logout();
-    })
+//                 <label for="username">Username:</label>
+//                 <input type="text" id="username" name="username" />
 
-    popUp.querySelector("#close").addEventListener("click", () => {
-        popUp.classList.add("hidden");
-    })
-};
+//             </div>
+//             <div id="password">
+//                 <h3>Password</h3>
+//                 <label for="currentPassword">Current password:</label>
+//                 <input type="password" id="currentPassword" name="currentPassword" />
+
+//                 <label for="newPassword">New password:</label>
+//                 <input type="password" id="newPassword" name="newPassword" />
+
+//                 <label for="repeatPassword">Repeat password:</label>
+//                 <input type="password" id="repeatPassword" name="repeatPassword" />
+//             </div>
+//             <button> Save settings </button>
+//             </form>
+//             <div class="stroke"></div>
+//         <button> Log out</button>
+//         <div id="close"> x </div>
+//         `;
+
+//     popUp.querySelector("button").addEventListener("click", (event) => {
+//         event.stopPropagation();
+//         logout();
+//     })
+
+//     popUp.querySelector("#close").addEventListener("click", () => {
+//         popUp.classList.add("hidden");
+//     })
+
+
+// };
 
 
 

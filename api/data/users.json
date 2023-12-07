@@ -26,11 +26,11 @@
                 "following": [
                     "alicesmith",
                     "petra",
-                    "annika",
-                    "heidi"
+                    "annika"
                 ],
                 "followers": [
-                    "petra"
+                    "petra",
+                    "heidi"
                 ]
             },
             "comics": []
@@ -600,8 +600,7 @@
                 "added": "05-12-2023 16:07",
                 "following": [],
                 "followers": [
-                    "petra",
-                    "ballong"
+                    "petra"
                 ]
             },
             "comics": [

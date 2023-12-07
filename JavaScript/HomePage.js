@@ -30,6 +30,20 @@ async function RenderHomePage() {
 
   createFilterDropdowns(container, true);
 
+  let searchField = document.querySelector("input");
+  searchField.addEventListener("keyup", e => {
+
+    // let popUp = document.querySelector("#popUp");
+    e.stopPropagation();
+    if (e.key == "Enter") {
+
+      console.log(e.target.value);
+      // RenderFollowers(popUp, resourceUsers);
+      // findUser(e.target.value);
+    }
+  });
+
+
 
   let responseComics = await fetch("api/data/users.json");
   let resource = await responseComics.json();

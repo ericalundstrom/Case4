@@ -192,12 +192,19 @@ async function RenderProfile(data, value) {
             RenderSettings();
         })
 
-        document.querySelector("#follows > #name").addEventListener("click", (event) => {
+        document.querySelector("#follows > #name").addEventListener("click", async (event) => {
             event.stopPropagation();
             let popUp = document.querySelector("#popUp");
             // let respons = await fetch("api/data/users.json");
             // let resource = await respons.json();
-            RenderFollowers(popUp, resourceUsers);
+            // response[0].personal.followers;
+            let followers = response[0].personal.followers;
+            let arrayOfFollowers = [];
+            for (const user of followers) {
+                let userInfo = await getUser(user);
+                arrayOfFollowers.push(userInfo);
+            }
+            RenderFollowers(popUp, arrayOfFollowers);
         })
 
         document.querySelector("#artist").addEventListener("click", async (event) => {
@@ -209,8 +216,8 @@ async function RenderProfile(data, value) {
             userParse = JSON.parse(user);
             let resourse = await getUser(user);
 
-            let followers = resourse[0].personal.following;
-            for (const user of followers) {
+            let following = resourse[0].personal.following;
+            for (const user of following) {
                 let data = await getUser(user);
                 console.log(data);
                 RenderFollowingArtist(data, false);
@@ -386,12 +393,12 @@ async function RenderFollowers(popUp, resourceUsers) {
         popUp.classList.add("hidden");
     })
     let parent = document.querySelector("#followers")
-    RenderFollowersCard(parent, resourceUsers)
+    RenderFollowersCard(parent, resourceUsers, true)
 
 }
 
-function RenderFollowersCard(parent, resourceUsers) {
-    // console.log(resourceUsers);
+function RenderFollowersCard(parent, resourceUsers, value) {
+    console.log(resourceUsers);
 
     for (let i = 0; i < resourceUsers.length; i++) {
         let user = resourceUsers[i];
@@ -406,22 +413,33 @@ function RenderFollowersCard(parent, resourceUsers) {
             let divDom = document.createElement("div");
             divDom.classList.add("artistBox");
             divDom.innerHTML = `
-                    <img id="artistIcon" src="${part.personal.picture}">
-                    <h3> ${part.personal.username} </h3>
-                    <button id="Remove">Remove</button>
-            `;
+                <img id="artistIcon" src="${part.personal.picture}">
+                <h3> ${part.personal.username} </h3>
+                `;
 
             // divDom.querySelector("#artistIcon").style.backgroundImage = `url('${part.personal.picture}')`;
             // divDom.querySelector("#artistIcon").style.backgroundSize = "cover";
             // divDom.querySelector("#artistIcon").style.backgroundRepeat = "no-repeat";
+            // if (value === false) {
+            //     let button = document.createElement("button");
+            //     divDom.append(button);
+            //     divDom.querySelector("button").remove();
+            // }
             divDom.setAttribute("id", part.personal.username);
             divDom.querySelector("h3").setAttribute("id", part.personal.username);
             divDom.addEventListener("click", (event) => {
                 RenderProfileArtist(event.target);
             })
+
+            // divDom.querySelector("button").addEventListener("click", (e) => {
+            //     e.target.textContent = "Follow";
+            //     console.log(part.personal.username);
+            //     unfollow([part]);
+            // })
             parent.append(divDom);
         })
     }
+
 }
 
 function logout() {
@@ -434,7 +452,8 @@ function logout() {
 async function RenderProfileArtist(user) {
 
     let popUp = document.querySelector("#popUp")
-    popUp.addEventListener("click", () => {
+    popUp.addEventListener("click", (e) => {
+        e.stopPropagation();
 
         popUp.classList.add("hidden");
     })
@@ -467,7 +486,7 @@ async function findUser(value) {
     let searchUserRespons = await searchUser.json();
 
     if (searchUserRespons) {
-        RenderFollowersCard(parent, searchUserRespons)
+        RenderFollowersCard(parent, searchUserRespons, false)
     }
 
 }
@@ -545,7 +564,7 @@ async function followUser(user) {
 
 
 async function unfollow(user) {
-    // console.log(user);
+    console.log(user);
 
     console.log(user[0].personal.username);
     let usersUsername = user[0].personal.username;
@@ -560,4 +579,5 @@ async function unfollow(user) {
 
     let response = await fetching("api/following.php", "DELETE", body);
     let resourse = await response.json();
+    console.log(resourse);
 }

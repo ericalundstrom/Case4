@@ -56,14 +56,15 @@
     [
         {
             "personal": {
-                "email": "ingmar@hej.se",
+                "email": "ingemar@hej.se",
                 "username": "berit",
                 "password": "hej",
                 "picture": "images\/profilIcon\/avataaars(14).png",
                 "description": "",
                 "added": "04-12-2023 16:27",
                 "following": [
-                    "erica"
+                    "erica",
+                    "heidi"
                 ],
                 "followers": []
             },
@@ -604,7 +605,8 @@
                 "added": "05-12-2023 16:07",
                 "following": [],
                 "followers": [
-                    "petra"
+                    "petra",
+                    "berit"
                 ]
             },
             "comics": [

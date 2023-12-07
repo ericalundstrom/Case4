@@ -130,9 +130,12 @@ async function ChangeSettings(data) {
     // console.log(body);
     let response = await fetching("api/settings.php", "PATCH", body);
     let resourse = await response.json();
-    console.log(resourse);
+    console.log(resourse.personal.username);
+    localStorager.set_item("user", resourse.personal.username);
 
-    if (resourse.ok) {
-        document.querySelector("#message").textContent = "Changes has been made and saved!";
+    if (resourse) {
+        document.querySelector("#message").innerHTML = `Changes has been made and saved!`;
+        // RenderProfile([resourse]);
+        // location.reload();
     }
 }

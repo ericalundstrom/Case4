@@ -127,12 +127,6 @@ function createCard(parent, resource, user) {
     }
 }
 
-
-
-
-
-
-
 function ReadComic(comic) {
     console.log(comic);
     let readBox = document.createElement("div");
@@ -217,4 +211,15 @@ function ReadComic(comic) {
 
     // Initial setup without calling updateImages
     resetInfo();
+}
+
+
+async function findComic(value) {
+    console.log(value);
+    let request = new Request(`api/GetUser.php?comic=${value}`)
+    let response = await fetch(request);
+    let resourse = await response.json();
+
+    // console.log(resourse);
+    return resourse;
 }

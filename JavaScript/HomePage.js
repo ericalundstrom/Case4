@@ -26,22 +26,11 @@ async function RenderHomePage() {
     <div id="cards"></div>
   `;
 
+  let parentCards = document.querySelector("#cards");
   const container = document.querySelector("#navi");
 
   createFilterDropdowns(container, true);
 
-  let searchField = document.querySelector("input");
-  searchField.addEventListener("keyup", e => {
-
-    // let popUp = document.querySelector("#popUp");
-    e.stopPropagation();
-    if (e.key == "Enter") {
-
-      console.log(e.target.value);
-      // RenderFollowers(popUp, resourceUsers);
-      // findUser(e.target.value);
-    }
-  });
 
 
 
@@ -61,5 +50,34 @@ async function RenderHomePage() {
   });
   // console.log(comics);
   createCard(boxCards, comics);
+
+
+  let searchField = document.querySelector("input");
+  searchField.addEventListener("keyup", async (e) => {
+
+    // let popUp = document.querySelector("#popUp");
+    e.stopPropagation();
+    if (e.key == "Enter") {
+
+      if (e.target.value === "") {
+        parentCards.innerHTML = ``;
+        createCard(boxCards, comics);
+      } else {
+
+
+        // console.log(e.target.value);
+        let comics = await findComic(e.target.value);
+
+        if (comics) {
+
+          parentCards.innerHTML = ``;
+          createCard(parentCards, [comics])
+        }
+        console.log(comics);
+        // RenderFollowers(popUp, resourceUsers);
+        // findUser(e.target.value);
+      }
+    }
+  });
 }
 

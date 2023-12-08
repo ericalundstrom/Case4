@@ -44,10 +44,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $error = ["error" => "Fel fel"];
         send_JSON($error, 400);
     }
-    // else{
-    //     $error = ["error" => "Fel nyckel"];
-    //     send_JSON($error, 400);
-    // }
 
     if (isset($_GET["userPic"])) {
 
@@ -66,10 +62,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $error = ["error" => "User not found"];
         send_JSON($error, 404);
     } 
-    // else {
-    //     $error = ["error" => "Invalid key"];
-    //     send_JSON($error, 400);
-    // }
 
     if (isset($_GET["userSearch"])) {
         
@@ -94,6 +86,38 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         }
 
     }
+
+    if (isset($_GET["comic"])) {
+
+        $titleOfComic = $_GET["comic"];
+
+        foreach($users as $user){
+            foreach($user as $part){
+                if ($titleOfComic === "") {
+               // If titleOfComic is empty, send all users back
+                   send_JSON($part["comics"]);    
+               }
+                $userComicArray = $part["comics"];
+                
+                foreach ( $userComicArray as $comic){
+                    $comicTitle = $comic["title"];
+                    
+                    $similarityPercentage = 70;
+                    
+                    // Check if the titles are at least 70% similar
+                    if (strstr($comicTitle, $titleOfComic)) {
+                        send_JSON($comic);
+                    }
+                }
+                
+            };
+        }
+
+        $error = ["error" => "Hittade ingen matchande"];
+        send_JSON($error, 400);
+        
+    }
+
 }else{
     $error = ["error" => "Fel här"];
     send_JSON($error, 400);

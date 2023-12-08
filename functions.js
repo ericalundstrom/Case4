@@ -31,7 +31,7 @@ function BasicLayout() {
             <p id="userprofile"> Profile </p>
             <p id="home"> Home </p>
             <p id="community"> Comunity </p>
-            <p id="trending"> Trending </p>`
+            `
 
     document.querySelector("footer").innerHTML = `
         <div> About Rita </div>
@@ -64,11 +64,13 @@ function BasicLayout() {
         event.stopPropagation();
         RenderCommunity();
     });
-    document.querySelector("#trending").addEventListener("click", (event) => {
-        event.stopPropagation();
-        RenderTrending();
-    });
 
+    document.querySelector("#search").addEventListener("keyup", (e) => {
+        e.stopPropagation();
+        if (e.key == "Enter") {
+            findComic(e.target.value);
+        }
+    });
 }
 
 

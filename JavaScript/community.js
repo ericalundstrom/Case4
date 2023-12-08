@@ -14,28 +14,13 @@ async function RenderCommunity() {
         </div>
 
             <button onclick="RenderNewCommentPage()"> Add a post + </button>
-            <div id="tipsbox">
-                <div id="tips">
-                    <h3> Sale on light tables in pennstore </h3>
-                    <div id="SmallStroke"></div>
-                    <p> Models ****** and **** are half price off right now. Sale will be on untill december first </p>
-                    <p id="date">2023-09-11</p>
-                </div>
-                <div id="dots">
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-                </div>
-            </div>
+            <div id="tipsbox"></div>
             <div id="calender"></div>
     `;
 
     let user = localStorage.getItem("user");
     let responseUser = await getUser(user);
-    // console.log(responseUser);
 
-    // console.log(responseUser[0].personal.picture);
     let userPic = responseUser[0].personal.picture;
 
     if (userPic === "") {
@@ -47,21 +32,99 @@ async function RenderCommunity() {
 
     let calender = document.querySelector("#calender");
     let comments = document.querySelector("#commentBox");
+    let tips = document.querySelector("#tipsbox");
 
     let response = await fetch("api/data/community.json");
     let resourse = await response.json();
 
+    tipsBox(tips);
+
     RenderComment(comments, resourse, true);
-
-
-    // wrapper.querySelector("button").addEventListener("click", (event) => {
-    //     event.stopPropagation();
-    //     RenderNewCommentPage();
-    // })
-
 
     RenderCalendar(calender);
 
+}
+
+
+function tipsBox(parent) {
+    let currentTipIndex = 0;
+    let timer;
+
+    const tipsArray = [
+        {
+            title: "Sale on light tables in pennstore",
+            description: "Models ****** and **** are half price off right now. Sale will be on until December first.",
+            date: "2023-09-11"
+        },
+        {
+            title: "Special discounts at Art Haven",
+            description: "Art Haven is offering a 20% discount on all painting supplies this weekend. Don't miss out!",
+            date: "2023-09-15"
+        },
+        {
+            title: "Tech Extravaganza at Gadget Galaxy",
+            description: "Explore the latest gadgets and enjoy exclusive discounts at Gadget Galaxy. Limited stock available!",
+            date: "2023-09-20"
+        }
+    ];
+
+    function updateTip() {
+        const tip = tipsArray[currentTipIndex];
+        const tipsContainer = document.getElementById("tips");
+        tipsContainer.innerHTML = `
+            <h3>${tip.title}</h3>
+            <div id="SmallStroke"></div>
+            <p>${tip.description}</p>
+            <p id="date">${tip.date}</p>
+        `;
+
+        // Update dots based on the currentTipIndex
+        const dotsContainer = document.getElementById("dots");
+        dotsContainer.innerHTML = tipsArray.map((_, index) => `<div class="dot ${index === currentTipIndex ? 'active' : ''}"></div>`).join('');
+    }
+
+    function nextTip() {
+        currentTipIndex = (currentTipIndex + 1) % tipsArray.length;
+        updateTip();
+    }
+
+    function prevTip() {
+        currentTipIndex = (currentTipIndex - 1 + tipsArray.length) % tipsArray.length;
+        updateTip();
+    }
+
+    function startTimer() {
+        timer = setInterval(nextTip, 3000); // Change tip every 3 seconds
+    }
+
+    function stopTimer() {
+        clearInterval(timer);
+    }
+
+    parent.innerHTML = `
+        <div id="leftArrow"> < </div>
+        <div id="bigBox">
+            <div id="tips"></div>
+            <div id="dots"></div>
+        </div>
+        <div id="rightArrow"> > </div>
+    `;
+
+    parent.addEventListener("mouseenter", () => {
+        stopTimer()
+    })
+    parent.addEventListener("mouseleave", () => {
+        startTimer();
+    })
+    parent.querySelector("#leftArrow").addEventListener("click", () => {
+        prevTip()
+    });
+    parent.querySelector("#rightArrow").addEventListener("click", () => {
+        nextTip()
+    });
+
+    updateTip();
+    startTimer();
 }
 
 
@@ -258,9 +321,6 @@ function RenderCalendar(parent) {
 
     updateCalendar();
 }
-
-// Example usage:
-// RenderCalendar(document.getElementById("calendarContainer"));
 
 
 async function RenderComment(parent, resourse, value) {

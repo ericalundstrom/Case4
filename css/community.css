@@ -173,12 +173,94 @@ nav>div>div>#cover {
 #tipsbox {
     grid-column: 3;
     grid-row: 2;
+}
+
+#bigBox {
     border: 1px solid black;
     padding: 20px;
     margin-right: 25px;
+
+    position: relative;
+}
+
+/* #bigBox {
+    width: 300px; /* Adjust the width as needed 
+    overflow: hidden;
+} */
+
+#tips {
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.5s ease-in-out;
+}
+
+#tips p,
+#tips h3,
+#tips #date {
+    margin: 0;
+}
+
+#leftArrow,
+#rightArrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#leftArrow {
+    bottom: 40px;
+    right: 310px;
+}
+
+#rightArrow {
+    right: 0;
+    bottom: 40px;
+}
+
+#dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
 }
 
 .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ccc;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.dot.active {
+    background-color: #333;
+}
+
+@keyframes changeTip {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-100%);
+    }
+
+    50% {
+        transform: translateX(-200%);
+    }
+
+    75% {
+        transform: translateX(-300%);
+    }
+}
+
+
+
+/* .dot {
     height: 10px;
     width: 10px;
     background-color: black;
@@ -192,7 +274,7 @@ nav>div>div>#cover {
     position: relative;
     top: 40px;
     left: 150px;
-}
+} */
 
 #calender {
     grid-column: 3;

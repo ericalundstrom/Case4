@@ -1,6 +1,12 @@
-body {
-    margin: 10px;
-    font-family: ShadowsInToLight;
+/* Static content */
+@font-face {
+    font-family: Urbanista;
+    src: url("../fonts/Shadows_Into_Light/fonts/Urbanist/static/Urbanist-Regular.ttf");
+}
+
+ body {
+    margin: 3%;
+    font-family: Urbanista;
 }
 
 header {

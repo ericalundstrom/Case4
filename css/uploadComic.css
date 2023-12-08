@@ -1,5 +1,13 @@
+/* static content */
+
+@font-face {
+    font-family: Urbanista;
+    src: url("../fonts/Shadows_Into_Light/fonts/Urbanist/static/Urbanist-Regular.ttf");
+}
+
 body {
-    margin: 20px;
+    margin: 3%;
+    font-family: Urbanista;
 }
 
 header {
@@ -47,8 +55,9 @@ main {
 }
 
 #wrapper {
+    margin: 0px;
     height: 100vh;
-    margin: 5%;
+    margin: 0px;
     width: 90%;
     align-items: center;
     display: flex;
@@ -57,9 +66,19 @@ main {
 
 #container{
     display: flex;
-    height: 70%;
+    height: 85%;
     align-items: center;   
     gap: 5%;
+}
+
+h1{
+    font-size: 25pz;
+}
+
+#bigStroke{
+     border: 0.5px solid black;
+    width: 80%;
+    margin-bottom: 5%;
 }
 
 #leftSide{
@@ -70,14 +89,9 @@ main {
     justify-content: center;
 }
 
-form{
-    margin-top: 5px;
-    display: flex;
-    gap: 8px;
-}
 
 #rightSide{
-    height: 90%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     margin-top: 8%;
@@ -90,12 +104,34 @@ form{
     gap: 5px;
 }
 
-input[name="description"]{
-    height: 30vh;
+#rightSide > input[name="title"]:focus, #rightSide > input[name="title"]:required {
+    outline: none;
+    font-family: Urbanista;
+    transform: translateY(-24px);
+    transition-duration: 1s;
+    font-size: 17px;
+    transform-style: smooth;
+    /*padding: 0 10px; */
+}
+
+#rightSide >  input[name="title"]{
+    transition-duration: 1s;
+    transform-style: smooth;
+    border-style: none;
+    font-size: 20px;
+    font-family: Urbanista;
     border-bottom: 1px solid black;
+}
+
+#rightSide > textarea{
+    outline: none;
+    font-family: Urbanista;
+    height: 30vh;
+    border: 1px solid black;
     border-radius: 5px;
-    padding: 0px; 
-    box-sizing: border-box; 
+    box-sizing: border-box;
+    padding: 2%;
+    resize: none;
 }
 
 #wordCounter {
@@ -105,12 +141,6 @@ input[name="description"]{
     font-size: 12px;
 }
 
-#rightSide > input{
-    padding: 5px;
-    width: 100%;
-    border-bottom: 1px solid black;
-    border-radius: 5px;
-}
 
 .dropDown {
     padding: 30px;
@@ -118,22 +148,32 @@ input[name="description"]{
 
 
 #frontPage {
-    height: 79vh;
+    width: 310px;
+    height: 463px;
     border: 1px solid black;
-    width: 29vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  justify-content: center;
 }
 
 #frontPage img {
     height: 100%;
     width: 100%;
+    size: contain;
+}
+
+#hidden{
+    display: none;
 }
 
 #buttons{
-    width: 100%;
-    gap: 5%;
+   width: 90%;
+    gap: 2%;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    justify-content: center;
 }
 
 /* Dropdown menu */ 

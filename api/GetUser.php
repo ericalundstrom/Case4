@@ -78,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                 // var_dump($userName);
                 // var_dump($title);
                
-                if ($userName === $search) {
+                if (strstr($userName, $search)) {
     
                     send_JSON($user);
                 }

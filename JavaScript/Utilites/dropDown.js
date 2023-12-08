@@ -1,190 +1,4 @@
 
-// async function createFilterDropdowns(container, value) {
-//     const response = await fetch("api/data/filters.json");
-//     let filterData = await response.json();
-
-//     // Create an array to store matching comics
-//     let matchingComics = [];
-
-//     for (const key in filterData) {
-//         const dropDownDOM = document.createElement("div");
-//         dropDownDOM.classList.add("dropDown");
-//         dropDownDOM.classList.add("hidden");
-
-//         let contentButtonDom = document.createElement("div");
-//         contentButtonDom.textContent = key;
-//         contentButtonDom.classList.add(key);
-//         contentButtonDom.classList.add("filterButton");
-//         container.append(contentButtonDom);
-
-//         if (Array.isArray(filterData[key])) {
-//             filterData[key].forEach(option => {
-//                 const optionDOM = document.createElement("div");
-//                 if (typeof option === "string") {
-//                     optionDOM.textContent = option;
-//                     optionDOM.addEventListener("click", async (event) => {
-//                         event.target.classList.toggle("filter");
-//                         // filterFunction(event);
-//                         let filter = filterFunction(event);
-//                         let respons = await fetch("api/data/users.json");
-//                         let resourse = await respons.json();
-
-//                         // Reset matchingComics array for each option click
-//                         matchingComics = [];
-
-//                         resourse.forEach(user => {
-//                             if (user[0].comics.length >= 1) {
-//                                 // Move the comics array outside the loop to avoid re-initialization
-//                                 let comics = [];
-
-//                                 for (let i = 0; i < user[0].comics.length; i++) {
-//                                     comics.push(user[0].comics[i]);
-//                                 }
-
-//                                 for (let j = 0; j < comics.length; j++) {
-//                                     let filtersInComic = comics[j].filters.replace(/[\[\]"]+/g, ' ').trim();
-//                                     console.log("Filters in Comic:", filtersInComic);
-
-//                                     // Split filtersInComic into an array of individual filters
-//                                     let filtersInComicArray = filtersInComic.split(',').map(filter => filter.trim());
-
-//                                     // Check if at least one filter in filter array is present in filtersInComicArray
-//                                     if (filter.some(filterItem => filtersInComicArray.some(comicFilter => comicFilter.toLowerCase().indexOf(filterItem.toLowerCase()) !== -1))) {
-//                                         console.log("Found at least one similar filter");
-//                                         console.log(comics[j]); // Log the matching comic
-
-//                                         // Push the matching comic into the array
-//                                         matchingComics.push(comics[j]);
-//                                     } else {
-//                                         console.log("Filters not found");
-//                                     }
-//                                 }
-//                             }
-//                         });
-
-//                         // Now, you can use the matchingComics array as needed
-//                         console.log("Matching Comics:", matchingComics);
-//                     });
-//                 } else if (typeof option === "object" && option !== null) {
-//                     for (const subCategory in option) {
-//                         const subCategoryDOM = document.createElement("div");
-//                         subCategoryDOM.textContent = subCategory;
-//                         subCategoryDOM.addEventListener("click", async (event) => {
-//                             event.target.classList.toggle("filter");
-//                             // filterFunction(event);
-//                             let filter = filterFunction(event);
-
-//                             let respons = await fetch("api/data/users.json");
-//                             let resourse = await respons.json();
-
-//                             // Reset matchingComics array for each subcategory click
-//                             matchingComics = [];
-
-//                             resourse.forEach(user => {
-//                                 if (user[0].comics.length >= 1) {
-//                                     // Move the comics array outside the loop to avoid re-initialization
-//                                     let comics = [];
-
-//                                     for (let i = 0; i < user[0].comics.length; i++) {
-//                                         comics.push(user[0].comics[i]);
-//                                     }
-
-//                                     for (let j = 0; j < comics.length; j++) {
-//                                         let filtersInComic = comics[j].filters.replace(/[\[\]"]+/g, ' ').trim();
-//                                         console.log("Filters in Comic:", filtersInComic);
-
-//                                         // Split filtersInComic into an array of individual filters
-//                                         let filtersInComicArray = filtersInComic.split(',').map(filter => filter.trim());
-
-//                                         // Check if at least one filter in filter array is present in filtersInComicArray
-//                                         if (filter.some(filterItem => filtersInComicArray.some(comicFilter => comicFilter.toLowerCase().indexOf(filterItem.toLowerCase()) !== -1))) {
-//                                             console.log("Found at least one similar filter");
-//                                             console.log(comics[j]); // Log the matching comic
-
-//                                             // Push the matching comic into the array
-//                                             matchingComics.push(comics[j]);
-//                                         } else {
-//                                             console.log("Filters not found");
-//                                         }
-//                                     }
-//                                 }
-//                             });
-
-//                             // Now, you can use the matchingComics array as needed
-//                             console.log("Matching Comics:", matchingComics);
-//                         });
-//                         dropDownDOM.append(subCategoryDOM);
-
-//                         const subOptions = option[subCategory];
-//                         if (Array.isArray(subOptions)) {
-//                             subOptions.forEach(subOption => {
-//                                 const subOptionDOM = document.createElement("div");
-//                                 subOptionDOM.textContent = subOption;
-//                                 subOptionDOM.addEventListener("click", async (event) => {
-//                                     event.target.classList.toggle("filter");
-//                                     if (value === true) {
-//                                         // filterFunction(event);
-//                                         let filter = filterFunction(event);
-
-//                                         let respons = await fetch("api/data/users.json");
-//                                         let resourse = await respons.json();
-
-//                                         // Reset matchingComics array for each suboption click
-//                                         matchingComics = [];
-
-//                                         resourse.forEach(user => {
-//                                             if (user[0].comics.length >= 1) {
-//                                                 // Move the comics array outside the loop to avoid re-initialization
-//                                                 let comics = [];
-
-//                                                 for (let i = 0; i < user[0].comics.length; i++) {
-//                                                     comics.push(user[0].comics[i]);
-//                                                 }
-
-//                                                 for (let j = 0; j < comics.length; j++) {
-//                                                     let filtersInComic = comics[j].filters.replace(/[\[\]"]+/g, ' ').trim();
-//                                                     console.log("Filters in Comic:", filtersInComic);
-
-//                                                     // Split filtersInComic into an array of individual filters
-//                                                     let filtersInComicArray = filtersInComic.split(',').map(filter => filter.trim());
-
-//                                                     // Check if at least one filter in filter array is present in filtersInComicArray
-//                                                     if (filter.some(filterItem => filtersInComicArray.some(comicFilter => comicFilter.toLowerCase().indexOf(filterItem.toLowerCase()) !== -1))) {
-//                                                         console.log("Found at least one similar filter");
-//                                                         console.log(comics[j]); // Log the matching comic
-
-//                                                         // Push the matching comic into the array
-//                                                         matchingComics.push(comics[j]);
-//                                                     } else {
-//                                                         console.log("Filters not found");
-//                                                     }
-//                                                 }
-//                                             }
-//                                         });
-
-//                                         // Now, you can use the matchingComics array as needed
-//                                         console.log("Matching Comics:", matchingComics);
-//                                     }
-//                                 });
-//                                 dropDownDOM.append(subOptionDOM);
-//                             });
-//                         }
-//                     }
-//                 }
-
-//                 dropDownDOM.append(optionDOM);
-//             });
-//         }
-
-//         contentButtonDom.addEventListener("click", () => {
-//             contentButtonDom.classList.toggle("selected");
-//             dropDownDOM.classList.toggle("hidden");
-//         });
-
-//         contentButtonDom.append(dropDownDOM);
-//     }
-// }
-
 let filter = [];
 
 function filterFunction(target) {
@@ -279,16 +93,23 @@ let filterRight = {
     ]
 }
 
-
+let Sort = [
+    "A to Z",
+    "Z to A",
+    "Most recently added",
+    "Oldest first"
+];
 
 async function createFilterDropdowns(container, value) {
     container.innerHTML = `
-        <div class="stroke"></div>
-        <div id="themes"></div>
-        <div class="stroke"></div>
-        <div id="filterLeft"></div>
-        <div id="filterRight"></div>
-    `;
+    <div class="stroke"></div>
+    <div id="themes"></div>
+    <div class="stroke"></div>
+    <div id="filterLeft"></div>
+    <div id="filterRight">
+        <div id="sortComics">Sort</div>
+    </div>
+`;
 
     Themes.forEach(filter => {
         const divDom = document.createElement("div");
@@ -451,223 +272,105 @@ async function createFilterDropdowns(container, value) {
         });
         mainCategoryDiv.appendChild(dropdownDiv);
     }
-}
 
-async function createFilterDropdowns(container, value) {
-    let n = 0;
 
-    container.innerHTML = `
-        <div class="stroke"></div>
-        <div id="themes"></div>
-        <div class="stroke"></div>
-        <div id="filterLeft"></div>
-        <div id="filterRight"></div>
-    `;
+    const sortDropdownDiv = document.createElement("div");
+    sortDropdownDiv.classList.add("hidden");
+    sortDropdownDiv.classList.add("filterContainer");
 
-    let filtersSelected = false;
+    document.querySelector("#sortComics").appendChild(sortDropdownDiv);
 
-    Themes.forEach(filter => {
-        const divDom = document.createElement("div");
-        divDom.textContent = filter;
-        divDom.setAttribute("id", filter);
-        divDom.addEventListener("click", async (event) => {
-            event.target.classList.toggle("selected");
-
-            if (value === true) {
-                let filter = filterFunction(event);
-                let response = await fetch("api/data/users.json");
-                let resource = await response.json();
-                let matchingComics = [];
-
-                filtersSelected = true;  // Filters are selected
-
-                resource.forEach(user => {
-                    if (user[0].comics.length >= 1) {
-                        let comics = [...user[0].comics];
-
-                        comics.forEach(comic => {
-                            let filtersInComic = comic.filters.replace(/[\[\]"]+/g, ' ').trim();
-                            let filtersInComicArray = filtersInComic.split(',').map(filter => filter.trim());
-
-                            if (filter.some(filterItem => filtersInComicArray.some(comicFilter => comicFilter.toLowerCase().indexOf(filterItem.toLowerCase()) !== -1))) {
-                                console.log("Found at least one similar filter");
-                                console.log(comic);
-                                matchingComics.push(comic);
-                            } else {
-                                console.log("Filters not found");
-                                n++;
-                                console.log(n);
-                            }
-                        });
-                    }
-                });
-
-                console.log(matchingComics.length);
-                let boxCards = document.querySelector("#cards");
-                boxCards.innerHTML = ``;
-                createCard(boxCards, matchingComics);
-                console.log("Matching Comics:", matchingComics);
-            } else {
-                // No filter chosen, send all existing comics
-                filtersSelected = false;  // No filters are selected
-                n++;
-                console.log(n);
-            }
-        });
-
-        document.querySelector("#themes").append(divDom);
+    document.querySelector("#sortComics").addEventListener("click", () => {
+        sortDropdownDiv.classList.toggle("hidden");
+        sortDropdownDiv.innerHTML = ``;
+        sortComics();
     });
 
-    // Add filters for filterLeft
-    for (const key in filterLeft) {
-        const mainCategoryDiv = document.createElement("div");
-        mainCategoryDiv.textContent = `${key} v`;
-        mainCategoryDiv.setAttribute("id", key);
-        mainCategoryDiv.addEventListener("click", toggleDropdown);
-        document.querySelector("#filterLeft").append(mainCategoryDiv);
+    async function sortComics(params) {
 
-        const dropdownDiv = document.createElement("div");
-        dropdownDiv.classList.add("hidden");
-        dropdownDiv.classList.add("filterContainer");
+        const SortOptions = ["A to Z", "Z to A", "Most recently added", "Oldest first"];
 
-        filterLeft[key].forEach(filter => {
-            const div = document.createElement("div");
-            div.textContent = filter;
-            dropdownDiv.append(div);
+        let comics = [];
+        let response = await fetch("api/data/users.json");
+        let resource = await response.json();
+        for (let i = 0; i < resource.length; i++) {
+            if (resource[i][0].comics.length !== 0) {
+                let comic = resource[i][0].comics;
+                comics.push(...comic); // Flatten the nested arrays
+            }
+        }
 
-            div.addEventListener("click", async (event) => {
-                event.target.classList.add("selected");
-
-                if (value === true) {
-                    let filter = filterFunction(event);
-
-                    let response = await fetch("api/data/users.json");
-                    let resource = await response.json();
-
-                    let matchingComics = [];
-
-                    resource.forEach(user => {
-                        if (user[0].comics.length >= 1) {
-                            let comics = [...user[0].comics];
-
-                            comics.forEach(comic => {
-                                let filtersInComic = comic.filters.replace(/[\[\]"]+/g, ' ').trim();
-                                let filtersInComicArray = filtersInComic.split(',').map(filter => filter.trim());
-
-                                if (filter.some(filterItem => filtersInComicArray.some(comicFilter => comicFilter.toLowerCase().indexOf(filterItem.toLowerCase()) !== -1))) {
-                                    console.log("Found at least one similar filter");
-                                    console.log(comic);
-                                    matchingComics.push(comic);
-                                } else {
-                                    console.log("Filters not found");
-                                    n++;
-                                    console.log(n);
-                                }
-                            });
-                        }
-                    });
-
-                    console.log(matchingComics.length);
-                    let boxCards = document.querySelector("#cards");
-                    boxCards.innerHTML = ``;
-                    createCard(boxCards, matchingComics);
-                    console.log("Matching Comics:", matchingComics);
+        SortOptions.forEach((sort, index) => {
+            let div = document.createElement("div");
+            div.textContent = sort;
+            div.setAttribute("id", `sort-${index}`); // Unique ID for each option
+            sortDropdownDiv.append(div);
+            div.addEventListener("click", () => {
+                // Call the appropriate sorting function based on the selected option
+                switch (sort) {
+                    case "A to Z":
+                        sortComicsByTitle(comics, true);
+                        break;
+                    case "Z to A":
+                        sortComicsByTitle(comics, false);
+                        break;
+                    case "Most recently added":
+                        sortComicsByDate(comics, true);
+                        break;
+                    case "Oldest first":
+                        sortComicsByDate(comics, false);
+                        break;
+                    // Add more cases for additional sorting options
                 }
             });
         });
-
-        // Append dropdown directly to the main category
-        mainCategoryDiv.appendChild(dropdownDiv);
     }
 
-    // Add filters for filterRight
-    for (const key in filterRight) {
-        const mainCategoryDiv = document.createElement("div");
-        mainCategoryDiv.textContent = `${key} v`;
-        mainCategoryDiv.setAttribute("id", key);
-        mainCategoryDiv.addEventListener("click", toggleDropdown);
-        document.querySelector("#filterRight").append(mainCategoryDiv);
-
-        const dropdownDiv = document.createElement("div");
-        dropdownDiv.classList.add("hidden");
-        dropdownDiv.classList.add("filterContainer");
-
-        filterRight[key].forEach(filter => {
-            const div = document.createElement("div");
-            div.textContent = filter;
-            dropdownDiv.append(div);
-
-            div.addEventListener("click", async (event) => {
-                event.target.classList.add("selected");
-
-                if (value === true) {
-                    let filter = filterFunction(event);
-
-                    let response = await fetch("api/data/users.json");
-                    let resource = await response.json();
-
-                    let matchingComics = [];
-
-                    resource.forEach(user => {
-                        if (user[0].comics.length >= 1) {
-                            let comics = [...user[0].comics];
-
-                            comics.forEach(comic => {
-                                let filtersInComic = comic.filters.replace(/[\[\]"]+/g, ' ').trim();
-                                let filtersInComicArray = filtersInComic.split(',').map(filter => filter.trim());
-
-                                if (filter.some(filterItem => filtersInComicArray.some(comicFilter => comicFilter.toLowerCase().indexOf(filterItem.toLowerCase()) !== -1))) {
-                                    console.log("Found at least one similar filter");
-                                    console.log(comic);
-                                    matchingComics.push(comic);
-                                } else {
-                                    console.log("Filters not found");
-                                    n++;
-                                    console.log(n);
-                                }
-                            });
-                        }
-                    });
-
-                    if (n === 3) {
-                        let response = await fetch("api/data/users.json");
-                        let resource = await response.json();
-                        let allComics = resource.flatMap(user => user[0].comics);
-                        let boxCards = document.querySelector("#cards");
-                        boxCards.innerHTML = ``;
-                        createCard(boxCards, allComics);
-                    }
-                    console.log(matchingComics.length);
-                    let boxCards = document.querySelector("#cards");
-                    boxCards.innerHTML = ``;
-                    createCard(boxCards, matchingComics);
-                    console.log("Matching Comics:", matchingComics);
-                }
-            });
+    function sortComicsByTitle(comics, ascending) {
+        console.log(comics);
+        // Assuming comics is an array of objects with a 'title' property
+        let sortedComics = comics.slice().sort((a, b) => {
+            const compareResult = a.title.localeCompare(b.title);
+            return ascending ? compareResult : -compareResult;
         });
-
-        // Append dropdown directly to the main category
-        mainCategoryDiv.appendChild(dropdownDiv);
+        displayComics(sortedComics, true);
     }
 
-    console.log(filtersSelected);
-    // If no filters are selected, fetch all comics
-    // if (!filtersSelected) {
-    //     let response = await fetch("api/data/users.json");
-    //     let resource = await response.json();
-    //     let allComics = resource.flatMap(user => user[0].comics);
-    //     let boxCards = document.querySelector("#cards");
-    //     boxCards.innerHTML = ``;
-    //     createCard(boxCards, allComics);
-    // }
+    function sortComicsByDate(comics, newestFirst) {
+        // Assuming comics is an array of objects with a 'time' property in the format "MM/DD/YYYY"
+        let sortedComics = comics.slice().sort((a, b) => {
+            const dateA = parseDate(a.time);
+            const dateB = parseDate(b.time);
+            return newestFirst ? dateB - dateA : dateA - dateB;
+        });
+        displayComics(sortedComics, true);
+    }
 
-    if (n === 3) {
+    function parseDate(dateString) {
+        const [month, day, year] = dateString.split("/");
+        return new Date(`${year}-${month}-${day}`);
+    }
+
+
+}
+
+
+async function displayComics(comics, value) {
+    if (value === false) {
+        // Fetch all comics
         let response = await fetch("api/data/users.json");
         let resource = await response.json();
         let allComics = resource.flatMap(user => user[0].comics);
         let boxCards = document.querySelector("#cards");
         boxCards.innerHTML = ``;
-        createCard(boxCards, allComics);
+
+        createCard(boxCards, allComics)
+    } else {
+        // Display matching comics
+        let boxCards = document.querySelector("#cards");
+        boxCards.innerHTML = ``;
+        createCard(boxCards, comics)
+        // comics.forEach(comic => createCard(boxCards, comic));
     }
 }
 

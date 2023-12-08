@@ -60,20 +60,397 @@ async function RenderCommunity() {
     // })
 
 
-    RenderCalender(calender);
+    RenderCalendar(calender);
 
 }
 
-function RenderCalender(parent) {
+
+
+
+// function RenderCalendar(parent) {
+//     const months = [
+//         "January", "February", "March", "April", "May", "June",
+//         "July", "August", "September", "October", "November", "December"
+//     ];
+
+//     let currentMonthIndex = 0; // Default to January
+//     let currentYear = new Date().getFullYear();
+
+//     function changeMonth(delta) {
+//         currentMonthIndex += delta;
+
+//         // Handle overflow
+//         if (currentMonthIndex < 0) {
+//             currentMonthIndex = 11; // December
+//             currentYear--;
+//         } else if (currentMonthIndex > 11) {
+//             currentMonthIndex = 0; // January
+//             currentYear++;
+//         }
+
+//         updateCalendar();
+//     }
+
+//     function showEventPopup(date) {
+//         // Replace this with your logic to show a pop-up for the selected date
+//         // alert(`Event details for ${months[currentMonthIndex]} ${date}, ${currentYear}`);
+//         let popUp = document.querySelector("#popUp");
+//         popUp.classList.add("popUpCalender");
+//         popUp.classList.remove("hidden");
+//         popUp.innerHTML = `
+//             ${months[currentMonthIndex]} ${date}, ${currentYear}
+//             <div id="close"> x </div>
+//         `;
+
+//         popUp.querySelector("#close").addEventListener("click", (e) => {
+//             e.stopPropagation();
+//             popUp.classList.add("hidden");
+//         })
+//     }
+
+//     function updateCalendar() {
+//         const monthElement = document.getElementById("month");
+//         const datesContainer = document.getElementById("dates");
+
+//         // Clear existing dates
+//         datesContainer.innerHTML = "";
+
+//         const totalDaysInMonth = new Date(currentYear, currentMonthIndex + 1, 0).getDate();
+//         const firstDayOfMonth = new Date(currentYear, currentMonthIndex, 1).getDay();
+
+//         monthElement.children[1].textContent = months[currentMonthIndex];
+
+//         for (let i = 0; i < firstDayOfMonth; i++) {
+//             let emptyDiv = document.createElement("div");
+//             datesContainer.appendChild(emptyDiv);
+//         }
+
+//         for (let i = 1; i <= totalDaysInMonth; i++) {
+//             let dateDiv = document.createElement("div");
+//             dateDiv.classList.add("date");
+//             dateDiv.textContent = i;
+//             dateDiv.style.position = "relative";
+
+//             // Attach click event to each date
+//             dateDiv.addEventListener("click", () => showEventPopup(i));
+
+//             datesContainer.appendChild(dateDiv);
+//         }
+//     }
+
+//     parent.innerHTML = `
+//         <h2> Galagos deadline </h2>
+//         <div id="SmallStroke"></div>
+//         <div id="month">
+//             <div class="arrow" onclick="changeMonth(-1)"> < </div>
+//             <div>${months[currentMonthIndex]}</div>
+//             <div class="arrow" onclick="changeMonth(1)"> > </div>
+//         </div>
+
+//         <div id="days">
+//             <div>S</div>
+//             <div>L</div>
+//             <div>F</div>
+//             <div>T</div>
+//             <div>W</div>
+//             <div>T</div>
+//             <div>M</div>
+//         </div>
+
+//         <div id="dates"></div>
+//     `;
+
+//     updateCalendar();
+// }
+
+// function RenderCalendar(parent) {
+//     const months = [
+//         "January", "February", "March", "April", "May", "June",
+//         "July", "August", "September", "October", "November", "December"
+//     ];
+
+//     let currentMonthIndex = 0; // Default to January
+//     let currentYear = new Date().getFullYear();
+
+//     const events = {
+//         3: "Event on 3rd",
+//         7: "Event on 7th",
+//         15: "Event on 15th",
+//         22: "Event on 22nd",
+//         28: "Event on 28th"
+//     };
+
+//     function changeMonth(delta) {
+//         currentMonthIndex += delta;
+
+//         // Handle overflow
+//         if (currentMonthIndex < 0) {
+//             currentMonthIndex = 11; // December
+//             currentYear--;
+//         } else if (currentMonthIndex > 11) {
+//             currentMonthIndex = 0; // January
+//             currentYear++;
+//         }
+
+//         updateCalendar();
+//     }
+
+//     function showEventPopup(date) {
+//         //  Replace this with your logic to show a pop-up for the selected date
+//         // alert(`Event details for ${months[currentMonthIndex]} ${date}, ${currentYear}`);
+//         let popUp = document.querySelector("#popUp");
+//         popUp.classList.add("popUpCalender");
+//         popUp.classList.remove("hidden");
+//         popUp.innerHTML = `
+//             ${months[currentMonthIndex]} ${date}, ${currentYear}
+//             <div id="close"> x </div>
+//         `;
+
+//         const event = events[date];
+//         if (event) {
+//             popUp.innerHTML = `
+//             ${months[currentMonthIndex]} ${date}, ${currentYear}: ${event}
+//             <div id="close"> x </div>
+//             `;
+//         }
+
+//         popUp.querySelector("#close").addEventListener("click", (e) => {
+//             e.stopPropagation();
+//             popUp.classList.add("hidden");
+//         })
+//     }
+
+//     function updateCalendar() {
+//         const monthElement = document.getElementById("month");
+//         const datesContainer = document.getElementById("dates");
+
+//         // Clear existing dates
+//         datesContainer.innerHTML = "";
+
+//         const totalDaysInMonth = new Date(currentYear, currentMonthIndex + 1, 0).getDate();
+//         const firstDayOfMonth = new Date(currentYear, currentMonthIndex, 1).getDay();
+
+//         monthElement.children[1].textContent = months[currentMonthIndex];
+
+//         for (let i = 0; i < firstDayOfMonth; i++) {
+//             let emptyDiv = document.createElement("div");
+//             datesContainer.appendChild(emptyDiv);
+//         }
+
+//         for (let i = 1; i <= totalDaysInMonth; i++) {
+//             let dateDiv = document.createElement("div");
+//             dateDiv.classList.add("date");
+//             dateDiv.textContent = i;
+//             const event = events[date];
+//             if (event) {
+//                 dateDiv.style.fontWeight = "bold";
+//             }
+
+//             // Attach click event to each date
+//             dateDiv.addEventListener("click", () => showEventPopup(i));
+
+//             datesContainer.appendChild(dateDiv);
+//         }
+//     }
+
+//     parent.innerHTML = `
+//         <h2> Galagos deadline </h2>
+//         <div id="SmallStroke"></div>
+//         <div id="month">
+//             <div class="arrow" onclick="changeMonth(-1)"> < </div>
+//             <div>${months[currentMonthIndex]}</div>
+//             <div class="arrow" onclick="changeMonth(1)"> > </div>
+//         </div>
+
+//         <div id="days">
+//             <div>S</div>
+//             <div>L</div>
+//             <div>F</div>
+//             <div>T</div>
+//             <div>W</div>
+//             <div>T</div>
+//             <div>M</div>
+//         </div>
+
+//         <div id="dates"></div>
+//     `;
+
+//     updateCalendar();
+// }
+
+function RenderCalendar(parent) {
+    const months = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ];
+
+    let currentMonthIndex = 0; // Default to January
+    let currentYear = new Date().getFullYear();
+
+    const events = {
+        January: {
+            1: "MUSIK, Deadline 8/1",
+            7: "Special feature: Artist Spotlight",
+            8: "Deadline för tema MUSIK",
+            15: "New series premiere",
+        },
+        February: {
+            1: "JÄGARE OCH SAMLARE, Deadline 1/5",
+            14: "Valentine's Day special",
+            28: "Community showcase",
+        },
+        March: {
+            3: "RESA, Deadline 22/5",
+            20: "Spring Series Festival",
+            29: "Fan Art Friday",
+        },
+        April: {
+            4: "April Fools' Day surprise",
+            12: "Genre exploration: Mystery",
+            23: "NATUR, Deadline 1/8",
+        },
+        May: {
+            1: "Deadline för tema JÄGARE OCH SAMLARE",
+            2: "Monthly Challenge: Superheroes",
+            10: "Mother's Day tribute",
+            18: "Spotlight on Fantasy series",
+            22: "Deadline för tema RESA",
+        },
+        June: {
+            6: "Summer Kickoff: Beach-themed series",
+            16: "Interactive Q&A with Artists",
+            25: "Mid-Year Review",
+        },
+        July: {
+            1: "Independence Day special",
+            11: "Series recommendations from the community",
+            21: "Summer Series Contest",
+        },
+        August: {
+            1: "Deadline för tema NATUR",
+            9: "Focus on Sci-Fi series",
+            19: "Interactive Polls: Your favorite genres",
+            30: "Artist Collaboration Week",
+        },
+        September: {
+            5: "Back-to-School series promotion",
+            14: "Series Revival: Bring back old favorites",
+            26: "Fall Series Launch",
+        },
+        October: {
+            8: "Halloween Horror Series",
+            18: "Series Fan Art Contest",
+            31: "Spooky Specials for Halloween",
+        },
+        November: {
+            3: "National Novel Writing Month (NaNoWriMo) series adaptation",
+            13: "Thanksgiving Series Showcase",
+            23: "Black Friday Series Sale",
+        },
+        December: {
+            7: "Holiday Series Marathon",
+            17: "Winter Wonderland Series",
+            24: "Christmas Eve Special",
+        },
+    };
+
+
+    function changeMonth(delta) {
+        currentMonthIndex += delta;
+
+        // Handle overflow
+        if (currentMonthIndex < 0) {
+            currentMonthIndex = 11; // December
+            currentYear--;
+        } else if (currentMonthIndex > 11) {
+            currentMonthIndex = 0; // January
+            currentYear++;
+        }
+
+        updateCalendar();
+    }
+
+    function showEventPopup(date) {
+        let popUp = document.querySelector("#popUp");
+        popUp.classList.add("popUpCalender");
+        popUp.classList.remove("hidden");
+
+        popUp.innerHTML = `
+        <div id="close"> x </div>
+            ${months[currentMonthIndex]} ${date}, ${currentYear}
+        `;
+
+        const event = events[months[currentMonthIndex]][date];
+        if (event) {
+            popUp.innerHTML = ` 
+            <div id="close"> x </div>
+            <div id="tema">
+                <h3> Tema </h3>
+                ${months[currentMonthIndex]} ${date}, ${currentYear} <br>
+                ${events[months[currentMonthIndex]][date]}
+            </div>
+            <div id="about">
+                <h3> About submission </h3> 
+                <p>maila serier som lågupplösta pdf:er direkt i mailet till mig </p>
+            </div>
+            <div id="contact">
+                <h3> Contact </h3> 
+                <p> Rojin@ordforlag.se</p>
+            </div>
+            `;
+        }
+
+        popUp.querySelector("#close").addEventListener("click", (e) => {
+            e.stopPropagation();
+            popUp.classList.add("hidden");
+        })
+    }
+
+
+    function updateCalendar() {
+        const monthElement = document.getElementById("month");
+        const datesContainer = document.getElementById("dates");
+
+        // Clear existing dates
+        datesContainer.innerHTML = "";
+
+        const totalDaysInMonth = new Date(currentYear, currentMonthIndex + 1, 0).getDate();
+        const firstDayOfMonth = new Date(currentYear, currentMonthIndex, 1).getDay();
+
+        monthElement.children[1].textContent = months[currentMonthIndex];
+
+        for (let i = 0; i < firstDayOfMonth; i++) {
+            let emptyDiv = document.createElement("div");
+            datesContainer.appendChild(emptyDiv);
+        }
+
+        for (let i = 1; i <= totalDaysInMonth; i++) {
+            let dateDiv = document.createElement("div");
+            dateDiv.classList.add("date");
+            dateDiv.textContent = i;
+
+            const event = events[months[currentMonthIndex]][i];
+            if (event) {
+                dateDiv.style.fontWeight = "bold";
+                dateDiv.addEventListener("click", () => {
+                    showEventPopup(i)
+                });
+            }
+
+            // Attach click event to each date
+
+            datesContainer.appendChild(dateDiv);
+        }
+    }
 
     parent.innerHTML = `
-    <h2> Galagos deadline </h2>
-    <div id="SmallStroke"></div>
-    <div id="month">
-        <div class="arrow"> < </div>
-        <div>December</div>
-        <div class="arrow"> > </div>
-    </div>
+        <h2> Galagos deadline </h2>
+        <div id="SmallStroke"></div>
+        <div id="month">
+            <div class="arrow" id="prevMonth"> < </div>
+            <div>${months[currentMonthIndex]}</div>
+            <div class="arrow" id="nextMonth"> > </div>
+        </div>
 
         <div id="days">
             <div>S</div>
@@ -88,14 +465,15 @@ function RenderCalender(parent) {
         <div id="dates"></div>
     `;
 
-    for (let i = 1; i < 32; i++) {
-        let divDom = document.createElement("div");
-        divDom.classList.add("date");
-        divDom.textContent = i;
-        document.querySelector("#dates").append(divDom);
+    // Add event listeners to the arrow buttons
+    document.getElementById("prevMonth").addEventListener("click", () => changeMonth(-1));
+    document.getElementById("nextMonth").addEventListener("click", () => changeMonth(1));
 
-    }
+    updateCalendar();
 }
+
+// Example usage:
+// RenderCalendar(document.getElementById("calendarContainer"));
 
 
 async function RenderComment(parent, resourse, value) {

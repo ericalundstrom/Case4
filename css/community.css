@@ -200,6 +200,7 @@ nav>div>div>#cover {
     border: 1px solid black;
     margin-right: 25px;
     margin-top: 50px;
+    /* position: relative; */
 }
 
 #calender>h2 {
@@ -372,4 +373,27 @@ form {
     border-radius: 20px;
     border: 1px solid black;
     margin-top: 55px;
+}
+
+
+
+
+.hidden {
+    display: none;
+}
+
+.popUpCalender {
+    width: 20vw;
+    height: auto;
+    position: absolute;
+    right: 70px;
+    background-color: gray;
+    bottom: 150px;
+    z-index: 1;
+    padding: 10px;
+}
+
+.popUpCalender>#close {
+    text-align: end;
+    padding-right: 10px;
 }

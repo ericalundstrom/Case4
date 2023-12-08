@@ -100,9 +100,64 @@ nav>div>div>#cover {
 
 #navi {
     grid-column: 2;
-    display: flex;
+    display: inherit;
     justify-content: space-around;
     align-items: center;
+}
+
+#navi .stroke {
+    height: 1px;
+    width: 100%;
+    background-color: black;
+}
+
+#filterLeft {
+    width: 350px;
+    height: 100%;
+    padding: 4px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 12px;
+    display: inline-flex;
+}
+
+#filterRight {
+    width: 250px;
+    height: 100%;
+    padding: 4px;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 12px;
+    display: inline-flex;
+    bottom: 20px;
+    position: relative;
+    left: 600px;
+}
+
+.filterContainer {
+    position: absolute;
+    background-color: gray;
+    padding: 10px 0px 10px 10px;
+}
+
+.filterContainer>div:hover {
+    background-color: rgb(236, 104, 80);
+    color: white;
+}
+
+.selected {
+    background-color: blueviolet;
+}
+
+
+#themes {
+    width: 853px;
+    height: 100%;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 32px;
+    display: inline-flex;
+    margin-top: 30px;
 }
 
 #cards {
@@ -116,6 +171,7 @@ nav>div>div>#cover {
     overflow: scroll;
     padding-left: 30px;
     box-sizing: border-box;
+    margin-top: 40px;
 }
 
 #cardBox {

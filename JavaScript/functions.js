@@ -61,7 +61,19 @@ function BasicLayout() {
 
 
 
-function createCard(parent, resource, user) {
+async function createCard(parent, resource, user) {
+
+    if (resource.length === 0) {
+        let response = await fetch("api/data/users.json");
+        let resource = await response.json();
+        let allComics = resource.flatMap(user => user[0].comics);
+        let boxCards = document.querySelector("#cards");
+        boxCards.innerHTML = ``;
+        createCard(boxCards, allComics)
+    }
+
+
+    console.log(resource.length);
     function createSingleCard(data) {
         const cardBox = document.createElement("div");
         cardBox.classList.add("cardBox");
@@ -113,15 +125,23 @@ function createCard(parent, resource, user) {
     }
 
     if (user) {
-        createSingleCard(resource);
-    } else {
-        if (resource.length === 1) {
-            createSingleCard(resource[0]);
+        if (Array.isArray(resource)) {
+            resource.forEach(item => {
+                createSingleCard(item);
+            });
         } else {
+            createSingleCard(resource);
+        }
+    } else {
+        if (Array.isArray(resource[0])) {
             resource.forEach(part => {
                 part.forEach(comic => {
                     createSingleCard(comic);
-                })
+                });
+            });
+        } else {
+            resource.forEach(comic => {
+                createSingleCard(comic);
             });
         }
     }

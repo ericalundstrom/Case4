@@ -49,6 +49,7 @@ async function RenderHomePage() {
     // console.log(comics);
   });
   // console.log(comics);
+
   createCard(boxCards, comics);
 
 

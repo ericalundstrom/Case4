@@ -105,10 +105,6 @@ function updateAuthorInComments($oldUsername, $newUsername, $currentUsername) {
             $post["author"] = $newUsername;
 
             foreach ($post["comments"] as &$comment) {
-                // var_dump($comment["author"]);
-                // var_dump($comment);
-                // var_dump($newUsername);
-                // var_dump($currentUsername);
                 // Check if the comment author is not the current user
                 if ($comment["author"] === $oldUsername) {
                     $comment["author"] = $newUsername;

@@ -1,3 +1,4 @@
+"use strict";
 
 async function RenderProfile(data, value) {
     console.log(data);

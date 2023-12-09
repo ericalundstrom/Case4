@@ -145,7 +145,9 @@ async function createCard(parent, resource, user) {
             });
         }
     }
+
 }
+
 
 function ReadComic(comic) {
     console.log(comic);

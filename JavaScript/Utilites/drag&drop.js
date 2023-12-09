@@ -1,3 +1,5 @@
+"use strict";
+
 async function dragAndDrop(fileContainers) {
     let comicURL = [];
     if (fileContainers.length > 1) {

@@ -1,3 +1,5 @@
+"use strict";
+
 const localStorager = {
 
    get_item: (value_name) => {

@@ -1,3 +1,4 @@
+"use strict";
 
 let filter = [];
 
@@ -100,6 +101,8 @@ let Sort = [
     "Oldest first"
 ];
 
+let matchingComics = [];
+
 async function createFilterDropdowns(container, value) {
     container.innerHTML = `
     <div class="stroke"></div>
@@ -107,9 +110,10 @@ async function createFilterDropdowns(container, value) {
     <div class="stroke"></div>
     <div id="filterLeft"></div>
     <div id="filterRight">
-        <div id="sortComics">Sort</div>
+        <div id="sortComics">Sort all comics by v</div>
     </div>
 `;
+
 
     Themes.forEach(filter => {
         const divDom = document.createElement("div");
@@ -149,7 +153,6 @@ async function createFilterDropdowns(container, value) {
                 createCard(boxCards, matchingComics);
                 console.log("Matching Comics:", matchingComics);
             }
-            // }
         });
 
         document.querySelector("#themes").append(divDom);
@@ -233,7 +236,7 @@ async function createFilterDropdowns(container, value) {
 
             div.addEventListener("click", async (event) => {
                 // event.target.classList.toggle("filter");
-                event.target.classList.add("selected");
+                event.target.classList.toggle("selected");
 
                 if (value === true) {
                     let filter = filterFunction(event);
@@ -273,7 +276,7 @@ async function createFilterDropdowns(container, value) {
         mainCategoryDiv.appendChild(dropdownDiv);
     }
 
-
+    console.log(matchingComics);
     const sortDropdownDiv = document.createElement("div");
     sortDropdownDiv.classList.add("hidden");
     sortDropdownDiv.classList.add("filterContainer");
@@ -283,10 +286,10 @@ async function createFilterDropdowns(container, value) {
     document.querySelector("#sortComics").addEventListener("click", () => {
         sortDropdownDiv.classList.toggle("hidden");
         sortDropdownDiv.innerHTML = ``;
-        sortComics();
+        sortComics(matchingComics);
     });
 
-    async function sortComics(params) {
+    async function sortComics(matchingComics) {
 
         const SortOptions = ["A to Z", "Z to A", "Most recently added", "Oldest first"];
 
@@ -299,6 +302,7 @@ async function createFilterDropdowns(container, value) {
                 comics.push(...comic); // Flatten the nested arrays
             }
         }
+        console.log(matchingComics);
 
         SortOptions.forEach((sort, index) => {
             let div = document.createElement("div");

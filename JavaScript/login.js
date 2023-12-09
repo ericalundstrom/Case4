@@ -1,7 +1,7 @@
 "use strict";
 
 function RenderLoginPage() {
-    console.log("login");
+    // console.log("login");
     wrapper.innerHTML = `
 
     <div id="box">
@@ -52,7 +52,7 @@ function RenderLoginPage() {
             username: username.value,
             password: password.value,
         };
-        console.log(body);
+        // console.log(body);
 
         // trying to log in...
         try {
@@ -63,7 +63,7 @@ function RenderLoginPage() {
 
             if (!response.ok) {
                 errorMessage.innerHTML = `<span>${data.message}</span>.`; // error message
-                console.log(data.message);
+                // console.log(data.message);
             } else {
                 // add to local storage
                 // window.localStorage.setItem("user", JSON.stringify(data));
@@ -75,7 +75,7 @@ function RenderLoginPage() {
 
                 // logged in! (adding function later)
                 // renderCategoriesPage()
-                console.log("logged in");
+                // console.log("logged in");
 
                 RenderHomePage();
 

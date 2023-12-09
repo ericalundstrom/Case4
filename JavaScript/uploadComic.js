@@ -40,7 +40,7 @@ async function renderUploadComic() {
     const container = document.querySelector("#filters");
     dragAndDrop(frontPage);
     let filters = await createFilterDropdowns(container, false)
-    console.log(filters);
+    // console.log(filters);
 
 
 
@@ -68,7 +68,7 @@ async function renderUploadComic() {
 
 
     document.querySelector("#buttonLayout").addEventListener("click", () => {
-        console.log(dataToPublish);
+        // console.log(dataToPublish);
         if (dataToPublish["img1"] == undefined) {
             frontPage.innerText = "Add a image to continue";
 
@@ -76,11 +76,11 @@ async function renderUploadComic() {
             title.innerText = "Add a title";
 
         } else {
-            console.log(filters);
+            // console.log(filters);
             dataToPublish["user"] = localStorager.get_item("user");
             dataToPublish["title"] = title.value;
             dataToPublish["filters"] = localStorager.get_item("filters");
-            console.log(dataToPublish);
+            // console.log(dataToPublish);
             localStorager.remove_item("filters");
 
             if (description.value !== "") {
@@ -92,7 +92,7 @@ async function renderUploadComic() {
 }
 
 async function renderLayoutPage(dataToPublish) {
-    console.log(dataToPublish);
+    // console.log(dataToPublish);
 
     swapStyleSheet("css/uploadComicsLayout.css");
 
@@ -159,7 +159,7 @@ async function renderLayoutPage(dataToPublish) {
     })
 
     document.querySelector("#publish").addEventListener("click", () => {
-        console.log(comicContent);
+        // console.log(comicContent);
         dataToPublish["content"] = comicContent;
         renderPublishComic(dataToPublish);
     })

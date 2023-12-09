@@ -370,7 +370,7 @@ async function RenderComment(parent, resourse, value) {
 
         let commentBox = document.createElement("div");
         let numberOfComments = resourse.comments.length;
-        console.log(resourse.picture);
+        // console.log(resourse.picture);
 
         commentBox.innerHTML = `
                 <div id="box">
@@ -481,7 +481,7 @@ function RenderNewCommentPage() {
 
         let user = localStorage.getItem("user");
         let userParse = JSON.parse(user);
-        console.log(user);
+        // console.log(user);
         let body = {
             "title": title,
             "description": description,
@@ -502,7 +502,7 @@ function RenderNewCommentPage() {
                 document.querySelector("#message").textContent = resourse.message;
             }
         } catch (e) {
-            console.log(e);
+            // console.log(e);
             document.querySelector("#message").textContent = e;
         }
     });
@@ -544,10 +544,10 @@ async function RenderPostLayout(data) {
     let user = localStorage.getItem("user");
     let responseUser = await getUser(user);
 
-    console.log(responseUser);
+    // console.log(responseUser);
 
 
-    console.log(responseUser[0].personal.picture);
+    // console.log(responseUser[0].personal.picture);
     let userPic = responseUser[0].personal.picture;
 
     if (userPic === "") {
@@ -574,7 +574,7 @@ async function addComment(resourse) {
     let id = resourse.id;
 
     let profilePic = localStorage.getItem("profilePic");
-    console.log(comment, userParse, id, profilePic);
+    // // console.log(comment, userParse, id, profilePic);
 
 
     let body = {
@@ -589,7 +589,7 @@ async function addComment(resourse) {
 
     if (resourseComment) {
 
-        // console.log(resourseComment);
+        // // console.log(resourseComment);
         RenderCommunity();
 
     }
@@ -599,7 +599,7 @@ async function addComment(resourse) {
 async function getUserPic(user) {
     let userpro = await fetch(`api/data/users.json?userPic=${user}`);
     let userPic = await userpro.json();
-    // console.log(userPic);
+    // // console.log(userPic);
 
     return userPic;
 }

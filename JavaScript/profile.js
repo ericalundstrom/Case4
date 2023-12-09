@@ -1,8 +1,8 @@
 "use strict";
 
 async function RenderProfile(data, value) {
-    console.log(data);
-    console.log(value);
+    // console.log(data);
+    // console.log(value);
 
     let user = localStorage.getItem("user");
     let response = await getUser(user);
@@ -67,7 +67,7 @@ async function RenderProfile(data, value) {
         `;
 
         if (followers.includes(data[0].personal.username)) {
-            console.log("följer");
+            // console.log("följer");
             document.querySelector("#follow").textContent = "following";
             document.querySelector("#follow").addEventListener("click", () => {
                 document.querySelector("#follow").textContent = "follow";
@@ -131,7 +131,7 @@ async function RenderProfile(data, value) {
 
         let response = await getUser(user);
 
-        console.log(response[0].personal.followers.length);
+        // console.log(response[0].personal.followers.length);
 
         document.querySelector("#wrapper").innerHTML = `
             <div id="notifications">
@@ -181,7 +181,7 @@ async function RenderProfile(data, value) {
         `;
 
         if (response[0].personal.followers.length === 1) {
-            console.log("en följare");
+            // console.log("en följare");
             document.querySelector(" #follows > #name").textContent = ` ${response[0].personal.followers.length} Follower`;
         }
         document.querySelector("#addNewComic").addEventListener("click", () => {
@@ -220,11 +220,11 @@ async function RenderProfile(data, value) {
             let following = resourse[0].personal.following;
             for (const user of following) {
                 let data = await getUser(user);
-                console.log(data);
+                // console.log(data);
                 RenderFollowingArtist(data, false);
             }
             toggleClass(event.target.id)
-            console.log(resourse[0].personal.following[1]);
+            // console.log(resourse[0].personal.following[1]);
         })
 
         document.querySelector("#myComics").addEventListener("click", (event) => {
@@ -298,7 +298,7 @@ function toggleClass(selectedId) {
 
 
 async function RenderFollowingArtist(data, value) {
-    console.log(value);
+    // console.log(value);
 
     let cards = document.querySelector("#cards")
     // cards.innerHTML = ``;
@@ -399,7 +399,7 @@ async function RenderFollowers(popUp, resourceUsers) {
 }
 
 function RenderFollowersCard(parent, resourceUsers, value) {
-    console.log(resourceUsers);
+    // console.log(resourceUsers);
 
     for (let i = 0; i < resourceUsers.length; i++) {
         let user = resourceUsers[i];
@@ -410,7 +410,7 @@ function RenderFollowersCard(parent, resourceUsers, value) {
         }
 
         user.forEach(part => {
-            console.log(part);
+            // console.log(part);
             let divDom = document.createElement("div");
             divDom.classList.add("artistBox");
             divDom.innerHTML = `
@@ -581,11 +581,11 @@ async function findUser(value) {
 
 
 async function followUser(user) {
-    console.log(user[0].personal.username);
+    // console.log(user[0].personal.username);
     let usersUsername = user[0].personal.username;
     let currentUser = localStorage.getItem("user");
     parseUser = JSON.parse(currentUser);
-    console.log(currentUser);
+    // console.log(currentUser);
 
     let body = {
         "user": usersUsername,
@@ -600,13 +600,13 @@ async function followUser(user) {
 
 
 async function unfollow(user) {
-    console.log(user);
+    // console.log(user);
 
-    console.log(user[0].personal.username);
+    // console.log(user[0].personal.username);
     let usersUsername = user[0].personal.username;
     let currentUser = localStorage.getItem("user");
     parseUser = JSON.parse(currentUser);
-    console.log(currentUser);
+    // console.log(currentUser);
 
     let body = {
         "user": usersUsername,

@@ -89,7 +89,7 @@ function RenderSettings(params) {
     knappDivs.forEach((knappDiv, index) => {
         knappDiv.addEventListener("click", (e) => {
             knappDiv.classList.toggle("moved");
-            console.log("truck på knapp");
+            // console.log("truck på knapp");
         })
     });
 
@@ -130,7 +130,7 @@ async function ChangeSettings(data) {
     // console.log(body);
     let response = await fetching("api/settings.php", "PATCH", body);
     let resourse = await response.json();
-    console.log(resourse.personal.username);
+    // console.log(resourse.personal.username);
     localStorager.set_item("user", resourse.personal.username);
 
     if (resourse) {

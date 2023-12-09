@@ -1,6 +1,6 @@
 "use strict";
 async function fetching(URL, method, body) {
-    console.log(method);
+    // console.log(method);
     let response = await fetch(URL, {
         method: method,
         headers: { "Content-Type": "application/json" },
@@ -17,9 +17,9 @@ function swapStyleSheet(styleSheet) {
 
 
 function BasicLayout() {
-    console.log("hej");
+    // console.log("hej");
     let profile = localStorage.getItem("#profilePic");
-    console.log(profile);
+    // console.log(profile);
     document.querySelector("header").innerHTML = `
             <p> Rita </p>
             <input type="text" id="search" name="search" placeholder="search for comics, authors etc.."/>

@@ -8,7 +8,7 @@ async function RenderHomePage() {
   let user = localStorage.getItem("user");
   let response = await getUser(user);
 
-  console.log(response[0].personal.picture);
+  // console.log(response[0].personal.picture);
   let userPic = response[0].personal.picture;
 
   if (userPic === "") {
@@ -41,7 +41,7 @@ async function RenderHomePage() {
   let comics = [];
   resource.forEach(user => {
     let comicOfUser = user[0].comics;
-    console.log(comicOfUser.length);
+    // console.log(comicOfUser.length);
     if (comicOfUser.length > 0) {
 
       comics.push(comicOfUser);
@@ -66,7 +66,7 @@ async function RenderHomePage() {
       } else {
 
 
-        // console.log(e.target.value);
+        // // console.log(e.target.value);
         let comics = await findComic(e.target.value);
 
         if (comics) {
@@ -74,7 +74,7 @@ async function RenderHomePage() {
           parentCards.innerHTML = ``;
           createCard(parentCards, [comics])
         }
-        console.log(comics);
+        // console.log(comics);
         // RenderFollowers(popUp, resourceUsers);
         // findUser(e.target.value);
       }

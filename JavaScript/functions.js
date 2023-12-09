@@ -1,6 +1,6 @@
 "use strict";
 async function fetching(URL, method, body) {
-    console.log(method);
+    // console.log(method);
     let response = await fetch(URL, {
         method: method,
         headers: { "Content-Type": "application/json" },
@@ -46,7 +46,7 @@ function BasicLayout() {
 
     document.querySelector("#userprofile").addEventListener("click", (event) => {
         event.stopPropagation();
-        console.log("profile");
+        // console.log("profile");
         RenderProfile();
     });
     document.querySelector("#home").addEventListener("click", (event) => {
@@ -73,12 +73,12 @@ async function createCard(parent, resource, user) {
     }
 
 
-    console.log(resource.length);
+    // console.log(resource.length);
     function createSingleCard(data) {
         const cardBox = document.createElement("div");
         cardBox.classList.add("cardBox");
 
-        console.log(data);
+        // console.log(data);
 
         cardBox.innerHTML = `
             <h2>${data.title}</h2>
@@ -150,7 +150,7 @@ async function createCard(parent, resource, user) {
 
 
 function ReadComic(comic) {
-    console.log(comic);
+    // console.log(comic);
     let readBox = document.createElement("div");
     document.querySelector("body").append(readBox);
     readBox.classList.add("readBox");
@@ -212,7 +212,7 @@ function ReadComic(comic) {
             updateImages();
         } else {
             console.log("Reached the end of the content array");
-            console.log(currentIndex);
+            // console.log(currentIndex);
             // Handle end of the array
             resetInfo();
         }
@@ -237,7 +237,7 @@ function ReadComic(comic) {
 
 
 async function findComic(value) {
-    console.log(value);
+    // console.log(value);
     let request = new Request(`api/GetUser.php?comic=${value}`)
     let response = await fetch(request);
     let resourse = await response.json();

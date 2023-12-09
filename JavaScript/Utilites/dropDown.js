@@ -12,7 +12,7 @@ function filterFunction(target) {
     }
 
     localStorager.set_item("filters", JSON.stringify(filter))
-    console.log(filter);
+    // console.log(filter);
     return filter;
 }
 
@@ -137,21 +137,21 @@ async function createFilterDropdowns(container, value) {
                             let filtersInComicArray = filtersInComic.split(',').map(filter => filter.trim());
 
                             if (filter.some(filterItem => filtersInComicArray.some(comicFilter => comicFilter.toLowerCase().indexOf(filterItem.toLowerCase()) !== -1))) {
-                                console.log("Found at least one similar filter");
-                                console.log(comic);
+                                // console.log("Found at least one similar filter");
+                                // console.log(comic);
                                 matchingComics.push(comic);
                             } else {
-                                console.log("Filters not found");
+                                // console.log("Filters not found");
                             }
                         });
                     }
                 });
 
-                console.log(matchingComics.length);
+                // console.log(matchingComics.length);
                 let boxCards = document.querySelector("#cards");
                 boxCards.innerHTML = ``;
                 createCard(boxCards, matchingComics);
-                console.log("Matching Comics:", matchingComics);
+                // console.log("Matching Comics:", matchingComics);
             }
         });
 
@@ -195,8 +195,8 @@ async function createFilterDropdowns(container, value) {
                                 let filtersInComicArray = filtersInComic.split(',').map(filter => filter.trim());
 
                                 if (filter.some(filterItem => filtersInComicArray.some(comicFilter => comicFilter.toLowerCase().indexOf(filterItem.toLowerCase()) !== -1))) {
-                                    console.log("Found at least one similar filter");
-                                    console.log(comic);
+                                    // console.log("Found at least one similar filter");
+                                    // console.log(comic);
                                     matchingComics.push(comic);
                                 } else {
                                     console.log("Filters not found");
@@ -206,11 +206,11 @@ async function createFilterDropdowns(container, value) {
                     });
 
 
-                    console.log(matchingComics.length);
+                    // console.log(matchingComics.length);
                     let boxCards = document.querySelector("#cards");
                     boxCards.innerHTML = ``;
                     createCard(boxCards, matchingComics);
-                    console.log("Matching Comics:", matchingComics);
+                    // console.log("Matching Comics:", matchingComics);
                 }
             });
         });
@@ -255,8 +255,8 @@ async function createFilterDropdowns(container, value) {
                                 let filtersInComicArray = filtersInComic.split(',').map(filter => filter.trim());
 
                                 if (filter.some(filterItem => filtersInComicArray.some(comicFilter => comicFilter.toLowerCase().indexOf(filterItem.toLowerCase()) !== -1))) {
-                                    console.log("Found at least one similar filter");
-                                    console.log(comic);
+                                    // console.log("Found at least one similar filter");
+                                    // console.log(comic);
                                     matchingComics.push(comic);
                                 } else {
                                     console.log("Filters not found");
@@ -265,18 +265,18 @@ async function createFilterDropdowns(container, value) {
                         }
                     });
 
-                    console.log(matchingComics.length);
+                    // console.log(matchingComics.length);
                     let boxCards = document.querySelector("#cards");
                     boxCards.innerHTML = ``;
                     createCard(boxCards, matchingComics);
-                    console.log("Matching Comics:", matchingComics);
+                    // console.log("Matching Comics:", matchingComics);
                 }
             });
         });
         mainCategoryDiv.appendChild(dropdownDiv);
     }
 
-    console.log(matchingComics);
+    // console.log(matchingComics);
     const sortDropdownDiv = document.createElement("div");
     sortDropdownDiv.classList.add("hidden");
     sortDropdownDiv.classList.add("filterContainer");
@@ -302,7 +302,7 @@ async function createFilterDropdowns(container, value) {
                 comics.push(...comic); // Flatten the nested arrays
             }
         }
-        console.log(matchingComics);
+        // console.log(matchingComics);
 
         SortOptions.forEach((sort, index) => {
             let div = document.createElement("div");
@@ -331,7 +331,7 @@ async function createFilterDropdowns(container, value) {
     }
 
     function sortComicsByTitle(comics, ascending) {
-        console.log(comics);
+        // console.log(comics);
         // Assuming comics is an array of objects with a 'title' property
         let sortedComics = comics.slice().sort((a, b) => {
             const compareResult = a.title.localeCompare(b.title);

@@ -44,8 +44,8 @@ async function initiateFileUploadDragAndDrop(file, container) {
             method: "POST",
             body: formData,
         });
-        console.log(file);
-        console.log(container);
+        // console.log(file);
+        // console.log(container);
         let response = await fetch(request);
         const data = await response.json();
         if (data.error) {
@@ -63,15 +63,15 @@ async function initiateFileUploadDragAndDrop(file, container) {
 
 //Alla nycklarna är tomma. Använd denna funktion för att inte använda drag and drop.
 async function initiateFileUpload(file, container) {
-    console.log(file);
+    // console.log(file);
     try {
         const formData = new FormData();
         const comicFile = file.get("comic");
         formData.append("comic", comicFile);
 
-        console.log(comicFile);
         // console.log(comicFile);
-        console.log(formData);
+        // // console.log(comicFile);
+        // console.log(formData);
         const request = new Request("api/upload.php", {
             method: "POST",
             body: formData,

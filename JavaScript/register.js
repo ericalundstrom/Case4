@@ -3,7 +3,7 @@
 
 function RenderRegisterPage() {
     swapStyleSheet("css/register.css");
-    console.log("register");
+    // console.log("register");
 
     let wrapper = document.querySelector("#wrapper");
     wrapper.innerHTML = `
@@ -55,7 +55,7 @@ function RenderRegisterPage() {
         let message = wrapper.querySelector("#message");
         let confirmPassword = wrapper.querySelector("#confirmPassword").value;
 
-        console.log(passwordInput, confirmPassword, emailInput);
+        // console.log(passwordInput, confirmPassword, emailInput);
 
         if (passwordInput === confirmPassword) {
             try {

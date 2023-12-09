@@ -561,7 +561,7 @@ async function RenderPostLayout(data) {
     let calender = document.querySelector("#calender");
     let comments = document.querySelector("#commentBox");
 
-    RenderCalender(calender);
+    RenderCalendar(calender);
     RenderComment(comments, data, false);
 }
 

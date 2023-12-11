@@ -11,7 +11,20 @@
                 "following": [],
                 "followers": []
             },
-            "comics": []
+            "comics": [
+                {
+                    "title": "Hejhejhej",
+                    "author": "Usern",
+                    "description": "Hererer",
+                    "filters": "",
+                    "frontPage": "data\/comics\/compass.png",
+                    "content": [
+                        "data\/comics\/compass.png"
+                    ],
+                    "time": "08\/12\/2023",
+                    "likes": []
+                }
+            ]
         }
     ],
     [

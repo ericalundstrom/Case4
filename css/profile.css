@@ -1,21 +1,13 @@
+/*Static content */
+
+@font-face {
+    font-family: Urbanista;
+    src: url("../fonts/Shadows_Into_Light/fonts/Urbanist/static/Urbanist-Regular.ttf");
+}
+
 body {
-    margin: 0;
-}
-
-#main {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#wrapper {
-    display: grid;
-    grid-template-columns: 80px 1fr 1fr;
-    width: 100%;
-    height: 100vh;
-    grid-template-rows: 250px 1fr;
-    gap: 10px;
+    margin: 3%;
+    font-family: Urbanista;
 }
 
 header {
@@ -44,17 +36,22 @@ input {
     font-style: italic;
 }
 
+
 main {
     display: flex;
 }
 
-#profile {
-    width: 40px;
-    height: 40px;
-    border-radius: 50px;
-    border: 1px solid rgb(88, 88, 88);
-    background-size: contain;
-    background-repeat: no-repeat;
+#main {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
 nav {
@@ -80,56 +77,61 @@ footer {
     margin-top: 40px;
 }
 
-.stroke {
-    height: 40px;
-    width: 1px;
-    background-color: black;
+/* Top of profile */
+
+#topProfile{
+    display: flex;
+    justify-content: space-between;
+    padding: 3%;
 }
 
-#notifications {
-    grid-column: 2;
-    grid-row: 1;
-    border: 1px solid black;
-    border-radius: 10px;
+/*   Profile Info */
+
+#userContainer {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     padding: 10px;
-    margin-left: 10px;
-    margin-right: 5px;
 }
 
-#user {
-    grid-column: 3;
-    grid-row: 1;
-    border: 1px solid black;
-    border-radius: 10px;
-    grid-template-columns: repeat(8, 1fr);
-    display: grid;
-    padding: 10px;
-    grid-template-rows: repeat(6, 1fr);
-    margin-right: 20px;
-    margin-left: 5px;
+#profile {
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    border: 1px solid rgb(88, 88, 88);
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
-.notiStroke {
-    width: 100%;
-    border: 1px solid black;
-    align-self: center;
+#userContainerTop{
+    display: flex;
+  justify-content: space-between;
 }
 
-.noti {
-    height: 50px;
-    justify-content: center;
+#profileHeader{
+    width: 50%;
+    display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: center;
 }
+
+#profileHeaderContent{
+   display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: 3%;
+}
+
+#username{
+    font-size: 25px;
+}
+
 
 #profileIcon {
     height: 100px;
     width: 100px;
     border-radius: 50px;
     border: 1px solid black;
-    grid-column: 1/3;
-    grid-row: 1/4;
     /* background-size: contain;
     background-repeat: no-repeat; */
 }
@@ -141,79 +143,108 @@ footer {
 }
 
 #description {
-    grid-column: 2/9;
-    grid-row: 5;
+    margin-top: 3%;
+    margin-left: 27%;
+    margin-right: 20%;
+    width: 60%;
+    text-align: left; 
 }
 
-#settings {
-    grid-row: 1;
-    grid-column: 8;
-}
 
 #insta {
-    grid-row: 6;
-    grid-column: 1/3;
-    align-self: end;
+    align-self: start;
+    margin-left: 14%;
+    margin-top: 4%;
 }
 
-#follows {
-    grid-column: 7/9;
-    grid-row: 6;
-    align-self: end;
-}
+/* Right side top*/
 
-#username {
-    grid-column: 3;
-    grid-row: 2;
-}
-
-#date {
-    grid-row: 3;
-    grid-column: 3/5;
-}
-
-#edit {
-    grid-row: 3;
-    grid-column: 2;
-}
-
-#options {
-    grid-column: 2;
+#topRightProfile{
+    width: 50%;
     display: flex;
-    margin-top: 27px;
-    grid-row: 2;
-}
-
-#options>div {
-    margin-left: 10px;
-}
-
-#BigStroke {
-    border: 1px solid black;
-    height: 0px;
-    grid-column: 2/4;
-    width: 100%;
-    grid-row: 2;
-    position: relative;
-    top: 60px;
-    right: 10px;
-    left: 10px;
+    flex-direction: column;
+    margin: 2%;
+    gap: 6%;
 }
 
 button {
-    grid-column: 3;
-    grid-row: 2;
-    height: 40px;
+    font-family: Urbanista;
+    font-size: 18px;
+    width: 100%;
     padding: 10px;
-    width: 140px;
-    border-radius: 10px;
+    border-radius: 5px;
     border: none;
-    justify-self: end;
-    align-self: auto;
-    margin-top: 15px;
-    margin-right: 10px;
 }
 
+
+
+/* Notifications */
+
+#notifications {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 6%;
+}
+
+.notification {
+    text-align: center;
+
+}
+
+.notiStroke {
+    width: 80%;
+    border: 0.5px solid black;
+    align-self: center;
+}
+
+.stroke {
+    height: 40px;
+    width: 1px;
+    background-color: black;
+}
+
+#middleProfile{
+    display: flex;
+    flex-direction: column;
+    margin: 2px;
+    margin-left: 9%;
+}
+
+/* menu, bottom */
+
+.options {
+    font-size: 18px;
+    margin-bottom: 1%;
+    margin-top: 1%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    gap: 2%;
+    color: gray;
+    transition: font-size 0.5s ease-in;
+
+}
+.selected{
+    font-size: 20px;
+    color: black;
+    transition: font-size 0.5s ease-in;
+
+    
+}
+
+@keyframes Fade {
+    0% {font-size: 15px;}
+    50% { font-size: 18px; }
+}
+
+#BigStroke {
+    border: 0.5px solid black;
+    width: 90%;
+}
 
 /* #cards {
     grid-column: 2/4;
@@ -451,7 +482,7 @@ button {
 
 
 
-
+/* PopUp */
 
 .hidden {
     display: none;

@@ -1,15 +1,21 @@
 "use strict";
 
 async function dragAndDrop(fileContainers) {
+
     let comicURL = [];
     if (fileContainers.length > 1) {
-
-        fileContainers.forEach(fileContainer => startFunction(fileContainer));
+        fileContainers.forEach(fileContainer => {
+            let placeholder = fileContainer.querySelector("#placeholderUpload")
+            console.log(placeholder);
+            startFunction(fileContainer, placeholder)
+    })
+    ;
     } else {
-        startFunction(fileContainers);
+        let placeholder = fileContainers.querySelector("#placeholderUpload")
+        startFunction(fileContainers, placeholder);
     }
 
-    function startFunction(fileContainer) {
+    function startFunction(fileContainer, placeholder) {
         fileContainer.addEventListener("dragover", function (e) {
             e.preventDefault();
         });
@@ -21,7 +27,7 @@ async function dragAndDrop(fileContainers) {
 
             if (files.length > 0) {
                 for (const file of files) {
-                    comic = await initiateFileUploadDragAndDrop(file, e.target)
+                    comic = await initiateFileUploadDragAndDrop(file, e.target.parentNode, placeholder)
                     if (comic) {
                         comicURL.push(comic)
                     }
@@ -36,7 +42,8 @@ async function dragAndDrop(fileContainers) {
 }
 
 
-async function initiateFileUploadDragAndDrop(file, container) {
+async function initiateFileUploadDragAndDrop(file, container, placeholder) {
+    placeholder.setAttribute("id", "hidden");
     try {
         const formData = new FormData();
         formData.append("comic", file);
@@ -53,7 +60,8 @@ async function initiateFileUploadDragAndDrop(file, container) {
         } else {
             const img = document.createElement("img");
             img.src = `../api/${data}`;
-            container.append(img);
+            console.log(container);
+            container.appendChild(img);
             return data;
         }
     } catch (error) {

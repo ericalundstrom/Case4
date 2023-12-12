@@ -8,39 +8,42 @@ async function renderUploadComic() {
 
     document.querySelector("#wrapper").innerHTML = `
     <h1> UploadComic </h1>
+    <div id="bigStroke"></div>
     <div id="container">
         <div id="leftSide">
-            <div id="frontPage"></div>
-                <form id="upload" action="api/upload.php" method="POST" enctype="multipart/form-data">
-                    <input type="file" name="comic">
-                    <button type="submit">Upload</button>
-                </form>         
+            <div id="frontPage">
+                <div id="placeholderUpload">
+                    <p> Drag and drop to upload</p>   
+                </div>    
             </div> 
-    <div id="rightSide"> 
-         <input name="title" placeholder="title">
-            <div id="filters"> </div>
-            <input name="description" placeholder="description">
-            <div id="wordCounter">Characters left: 100</div>   
-                <div id="buttons">
-                <button id="buttonPublish"> Upload now</button>
-                <p> or </p>
-                <button id="buttonLayout">Add more pages</button>
-            </div>
         </div>
+    <div id="rightSide"> 
+    <label for "title"> Titel </label>
+    <br>
+         <input name="title">
+            <div id="filters"> </div>
+            <label for "title"> Description </label>
+            <textarea name="description" required="required" id="description"></textarea>
+            <div id="wordCounter">Characters left: 100</div>   
+        </div>
+    </div>
+     <div id="buttons">
+        <button id="buttonPublish"> Upload now</button>
+        <p> or </p>
+        <button id="buttonLayout">Add more pages</button>
     </div>
 
     `;
 
     const title = document.querySelector("input[name='title']");
-    const description = document.querySelector("input[name='description']");
+    const description = document.querySelector("#description");
     const frontPage = document.querySelector("#frontPage")
-    const form = document.querySelector("form");
+    const placeholderUpload = document.querySelector("#placeholderUpload")
 
 
     const container = document.querySelector("#filters");
-    dragAndDrop(frontPage);
     let filters = await createFilterDropdowns(container, false)
-    // console.log(filters);
+     console.log(filters);
 
 
 
@@ -54,18 +57,10 @@ async function renderUploadComic() {
     //  wordCounter.textContent = `Characters left: ${charactersLeft}`
     //});
 
+    let comicFrontPage = await dragAndDrop(frontPage, placeholderUpload);
 
-    let comicFrontPage = await dragAndDrop(frontPage);
-
-
-    form.addEventListener("submit", async (event) => {
-        const formData = new FormData(form);
-        event.preventDefault();
-
-        data = await initiateFileUpload(formData, frontPage);
-    });
+    console.log(comicFrontPage);
     dataToPublish["img1"] = comicFrontPage;
-
 
     document.querySelector("#buttonLayout").addEventListener("click", () => {
         // console.log(dataToPublish);
@@ -82,7 +77,6 @@ async function renderUploadComic() {
             dataToPublish["filters"] = localStorager.get_item("filters");
             // console.log(dataToPublish);
             localStorager.remove_item("filters");
-
             if (description.value !== "") {
                 dataToPublish["description"] = description.value;
             }
@@ -104,43 +98,68 @@ async function renderLayoutPage(dataToPublish) {
 
     <div id="gridContainer">
         <div class="pageLayout pageOne">
+            <div id="placeholderUpload">
+                <p> Drag and drop to upload</p>   
+            </div>  
         </div>
         <div class="pageLayout pageTwo">
+            <div id="placeholderUpload">
+                <p> Drag and drop to upload</p>   
+            </div>  
         </div>
           <div class="pageLayout hidden">
+            <div id="placeholderUpload">
+                <p> Drag and drop to upload</p>   
+            </div>  
         </div>
          <div class="pageLayout hidden">
+            <div id="placeholderUpload">
+                <p> Drag and drop to upload</p>   
+             </div>  
         </div>
         <div class="pageLayout hidden">
+            <div id="placeholderUpload">
+                 <p> Drag and drop to upload</p>   
+             </div>  
         </div>
          <div class="pageLayout hidden">
+            <div id="placeholderUpload">
+                <p> Drag and drop to upload</p>   
+            </div>  
         </div>
         <div class="pageLayout hidden">
+            <div id="placeholderUpload">
+                <p> Drag and drop to upload</p>   
+            </div>  
         </div>
          <div class="pageLayout hidden">
+            <div id="placeholderUpload">
+                <p> Drag and drop to upload</p>   
+             </div>  
         </div>
         
     </div>
       <div id="bottomOfPage"> 
           <button id="publish"> Publish</button>
-           <button> Upload more</button>
+           <button id="uploadMore"> Upload more</button>
        </div>`;
 
     let hiddenElements = document.querySelectorAll(".pageLayout.hidden");
     let staticElement1 = document.querySelector(".pageOne");
     let staticElement2 = document.querySelector(".pageTwo");
     const fileContainers = document.querySelectorAll(".pageLayout");
-
     let comicContent = await dragAndDrop(fileContainers);
 
     document.querySelector("#toggleButton").addEventListener("click", () => {
 
-        hiddenElements.forEach(element => {
-            element.classList.toggle("hidden");
-        })
-        staticElement1.classList.toggle("pageOne")
-        staticElement2.classList.toggle("pageTwo")
-    })
+        setTimeout(() => {
+            hiddenElements.forEach(element => {
+                element.classList.toggle("hidden");
+            });
+            staticElement1.classList.toggle("pageOne");
+            staticElement2.classList.toggle("pageTwo");
+        }, 700);
+    });
 
 
     document.querySelector("#infoIcon").addEventListener("click", () => {
@@ -158,16 +177,20 @@ async function renderLayoutPage(dataToPublish) {
             </div>`;
     })
 
+
+    document.querySelector("#uploadMore").addEventListener("click", () => {
+        dataToPublish["content"] = comicContent;
+        renderLayoutPage(dataToPublish);
+    })
     document.querySelector("#publish").addEventListener("click", () => {
         // console.log(comicContent);
         dataToPublish["content"] = comicContent;
         renderPublishComic(dataToPublish);
     })
-
 }
 
-
 async function renderPublishComic(dataToPublish) {
+    console.log(dataToPublish);
     try {
         const request = new Request("api/uploadComic.php",
             {

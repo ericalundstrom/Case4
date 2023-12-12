@@ -22,21 +22,6 @@ async function RenderProfile(data, value) {
 
     if (data) {
         document.querySelector("#wrapper").innerHTML = `
-            <div id="notifications">
-                <img>
-                <div class="noti">
-                <p>Elin liked your comment</p> 
-                </div>
-                <div class="notiStroke"></div>
-                <div class="noti">
-                <p>Elin liked your comment</p> 
-            </div>
-                <div class="notiStroke"></div>
-                <div class="noti">
-                <p>Elin liked your comment</p> 
-                </div>
-            </div>
-        
             <div id="user">
                 <img>
                 <div id="profileIcon">
@@ -53,6 +38,21 @@ async function RenderProfile(data, value) {
                 <div id="follows">
                     <div id="follow"> Follow</div>
                     <div id="icon"> </div>
+                </div>
+            </div>
+
+            <div id="notifications">
+                <img>
+                <div class="noti">
+                <p>Elin liked your comment</p> 
+                </div>
+                <div class="notiStroke"></div>
+                <div class="noti">
+                <p>Elin liked your comment</p> 
+            </div>
+                <div class="notiStroke"></div>
+                <div class="noti">
+                <p>Elin liked your comment</p> 
                 </div>
             </div>
         
@@ -134,48 +134,58 @@ async function RenderProfile(data, value) {
         // console.log(response[0].personal.followers.length);
 
         document.querySelector("#wrapper").innerHTML = `
-            <div id="notifications">
-            <img>
-            <div class="noti">
-            <p>Elin liked your comment</p> 
-            </div>
-            <div class="notiStroke"></div>
-            <div class="noti">
-            <p>Elin liked your comment</p> 
-        </div>
-            <div class="notiStroke"></div>
-            <div class="noti">
-            <p>Elin liked your comment</p> 
-            </div>
-            </div>
-
-            <div id="user">
-            <img>
-            <div id="profileIcon">
-                    <img src="${response[0].personal.picture}">
+            <div id="topProfile">
+                <div id="userContainer">
+                <img>
+                    <div id="userContainerTop"> 
+                        <div id="profileHeader">
+                        <div id="profileIcon">
+                        <img src="${response[0].personal.picture}">
+                        </div>
+                        <div id="edit"></div>
+                            <div id="profileHeaderContent"> 
+                                <div id="username">${response[0].personal.username}</div>
+                                <div id="follows">
+                                    <div id="name">${response[0].personal.followers.length} Followers </div>
+                                    <div id="icon"></div>
+                                </div>
+                            </div>   
+                        </div>
+                        <div id="settings">settings</div>
+                         </div>              
+                    <div id="description">${response[0].personal.description}</div>
+                    <div id="insta">
+                        <div id="icon"></div>
+                        <div id="name">@Torkel</div>
                 </div>
-            <div id="edit"></div>
-            <div id="username">${response[0].personal.username}</div>
-            <div id="date">Member since:${response[0].personal.added}</div>
-            <div id="settings">settings</div>
-            <div id="description">${response[0].personal.description}</div>
-            <div id="insta">
-                <div id="icon"></div>
-                <div id="name">@Torkel</div>
-            </div>
-            <div id="follows">
-                <div id="name">${response[0].personal.followers.length} Followers </div>
-                <div id="icon"></div>
-            </div>
+                </div>
+                <div id="topRightProfile"> 
+                    <button id="addNewComic">Add new comic +</button>
+                    <div id="notifications">
+                    <img>
+                    <div class="notification">
+                    <p>Elin liked your comment</p> 
+                    </div>
+                    <div class="notiStroke"></div>
+                    <div class="notification">
+                    <p>Elin liked your comment</p> 
+                     </div>
+                    <div class="notiStroke"></div>
+                    <div class="notification">
+                    <p>Elin liked your comment</p> 
+                     </div>
+                    </div>         
+                </div>
             </div>
 
-            <div id="options">
-            <div id="myComics" class="selected" onclick="toggleClass('myComics')">My comics</div>
-            <div id="artist" onclick="toggleClass('Saved')">Artists you follow</div>
-        </div>
-
-            <button id="addNewComic"> + Add new comic</button>
+            <div id="middleProfile">
             <div id="BigStroke"></div>
+                <div class="options">
+                    <div id="myComics" class="selected" onclick="toggleClass('myComics')">My comics</div>
+                    <div id="artist" onclick="toggleClass('Saved')">Artists you follow</div>
+                </div>
+                <div id="BigStroke"></div>
+            </div>
 
             <div id="cards"></div
         `;
@@ -282,7 +292,9 @@ async function RenderProfile(data, value) {
 }
 
 function toggleClass(selectedId) {
-    var options = document.getElementById('options').children;
+    var options = document.querySelector('.options').children;
+
+
 
     for (var i = 0; i < options.length; i++) {
         var option = options[i];
@@ -294,7 +306,6 @@ function toggleClass(selectedId) {
         }
     }
 }
-
 
 
 async function RenderFollowingArtist(data, value) {
@@ -363,7 +374,6 @@ async function RenderArtistCard(parent, data, value) {
 
 
 }
-
 
 
 async function RenderFollowers(popUp, resourceUsers) {

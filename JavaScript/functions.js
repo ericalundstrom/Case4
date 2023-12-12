@@ -95,37 +95,52 @@ async function createCard(parent, resource, user) {
         const cardBox = document.createElement("div");
         cardBox.classList.add("cardBox");
 
-        // console.log(data);
-
         cardBox.innerHTML = `
-            <h2>${data.title}</h2>
             <div class="imgDiv"></div>
-            <div class="userImg"></div>
-            <div class="userName">${data.author}</div>
-            <div class="likesBox">
-                <div class="likeImg"></div>    
-            </div>
         `;
 
         cardBox.setAttribute("id", data.title);
-        cardBox.addEventListener("click", () => {
-            ReadComic(data);
-        });
 
         cardBox.addEventListener("mouseenter", () => {
             let divDom = document.createElement("div");
+            console.log(JSON.parse(data.filters));
+            let tags = JSON.parse(data.filters);
             let filters = data.filters.replace(/[\[\]"]+/g, ' ');
             divDom.innerHTML = `
-                <div>
-                    ${data.description}
-                </div>
-                <div id="filters">
-                    ${filters}
-                </div>
+            <img id="delete" src="/images/delete.png">
+            <div>
+            ${data.description}
+            </div>
+            <div id="puplished"> Published ${data.time} </div>
+            <div id="filters"></div>
             `;
+
             cardBox.append(divDom);
             divDom.classList.add("description");
+            let user = localStorage.getItem("user");
+            let userPArsed = JSON.parse(user);
+
+            cardBox.querySelector("#delete").addEventListener("click", (event) => {
+                console.log("delete");
+                deleteComic(data);
+            })
+
+            if (userPArsed !== data.author) {
+                divDom.querySelector("#delete").remove();
+            }
+
+            tags.forEach(filter => {
+                let tag = document.createElement("div");
+                tag.classList.add("tags");
+                tag.textContent = filter;
+                divDom.querySelector("#filters").append(tag);
+            })
         });
+
+        cardBox.querySelector(".imgDiv").addEventListener("click", () => {
+            ReadComic(data);
+        });
+
 
         cardBox.addEventListener("mouseleave", () => {
             document.querySelector(".description").remove();

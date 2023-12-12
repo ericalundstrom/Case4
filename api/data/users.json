@@ -430,7 +430,7 @@
                 "username": "petra",
                 "password": "petra",
                 "picture": "images\/profilIcon\/avataaars(6).png",
-                "description": "",
+                "description": "I am a comic artist based in Sweden, Malm\u00f6. My comics usually revolve around superheros and their adventures. The adventures takes place in the fantacy land of",
                 "added": "04-12-2023 16:27",
                 "following": [
                     "ingemar",
@@ -620,7 +620,7 @@
                 "username": "heidi",
                 "password": "heidi",
                 "picture": "images\/profilIcon\/avataaars(10).png",
-                "description": "",
+                "description": "I am a comic artist based in Sweden, Malm\u00f6. My comics usually revolve around superheros and their adventures. The adventures takes place in the fantacy land of",
                 "added": "05-12-2023 16:07",
                 "following": [
                     "frasse",
@@ -635,7 +635,7 @@
                 {
                     "title": "I escaped the prison",
                     "author": "heidi",
-                    "description": "I Escaped the prison",
+                    "description": "A short comic about growing up and not knowing what is expected of you. ",
                     "filters": "[\"Fantasy\"]",
                     "frontPage": "data\/comics\/heidi.alone01png.png",
                     "content": [

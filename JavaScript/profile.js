@@ -1,8 +1,6 @@
 "use strict";
 
 async function RenderProfile(data, value) {
-    // console.log(data);
-    // console.log(value);
 
     let user = localStorage.getItem("user");
     let response = await getUser(user);
@@ -12,8 +10,6 @@ async function RenderProfile(data, value) {
     let userPic = response[0].personal.picture;
 
     if (userPic === "") {
-
-
         document.querySelector("#profile").style.backgroundImage = "url(images/userpic.webp)";
     } else {
         document.querySelector("#profile").style.backgroundImage = `url(${userPic})`;
@@ -21,70 +17,81 @@ async function RenderProfile(data, value) {
 
 
     if (data) {
+
+        console.log(data[0].personal.description);
         document.querySelector("#wrapper").innerHTML = `
-            <div id="user">
+        <div id="topProfile">
+                <div id="userContainer">
                 <img>
-                <div id="profileIcon">
-                    <img src="${data[0].personal.picture}">
+                    <div id="userContainerTop"> 
+                        <div id="profileHeader">
+                        <div id="profileIcon">
+                        <img src="${data[0].personal.picture}">
+                        </div>
+                        <div id="edit"></div>
+                            <div id="profileHeaderContent"> 
+                                <div id="username">${data[0].personal.username}</div>
+                                <div id="follows">
+                                    <img id="followIcon" src="/images/follow.png">
+                                    <div id="followers">${data[0].personal.followers.length} Followers </div>
+                                </div>
+                            </div>   
+                        </div>
+                         </div>              
+                    <div id="description">${data[0].personal.description}</div>
+                   
                 </div>
-                <div id="edit"></div>
-                <div id="username">${data[0].personal.username}</div>
-                <div id="date">Member since: ${data[0].personal.added}</div>
-                <div id="description">${data[0].personal.description} </div>
-                <div id="insta">
-                    <div id="icon"></div>
-                    <div id="name">@Torkel</div>
-                </div>
-                <div id="follows">
-                    <div id="follow"> Follow</div>
-                    <div id="icon"> </div>
+                <div id="topRightProfile"> 
+                    <button id="followButton">Follow artist+</button>
+                    <h3> Most used tags </h3>
+                    <div id="usedTags">
+                        <div class="tags"> Graphic novel </div>
+                        <div class="tags"> Love </div>
+                        <div class="tags"> Collage </div>
+                        <div class="tags"> Color pencils </div>
+                        <div class="tags"> Friends </div>
+                    </div>
+                </div>         
                 </div>
             </div>
 
-            <div id="notifications">
-                <img>
-                <div class="noti">
-                <p>Elin liked your comment</p> 
-                </div>
-                <div class="notiStroke"></div>
-                <div class="noti">
-                <p>Elin liked your comment</p> 
-            </div>
-                <div class="notiStroke"></div>
-                <div class="noti">
-                <p>Elin liked your comment</p> 
-                </div>
-            </div>
-        
-            <div id="options">
-                <div id="myComics" onclick="toggleClass('myComics')">${data[0].personal.username} comics</div>
-            </div>
-        
-            <button id="followers">Followers</button>
+            <div id="middleProfile">
             <div id="BigStroke"></div>
-        
+                <div class="options">
+                    <div id="myComics" class="selected" onclick="toggleClass('myComics')">${data[0].personal.username}'s comics</div>
+                </div>
+                <div id="BigStroke"></div>
+                <button> Grid </button>
+            </div>
+
             <div id="cards"></div
         `;
 
         if (followers.includes(data[0].personal.username)) {
             // console.log("följer");
-            document.querySelector("#follow").textContent = "following";
-            document.querySelector("#follow").addEventListener("click", () => {
-                document.querySelector("#follow").textContent = "follow";
+            document.querySelector("#followButton").textContent = "following";
+            document.querySelector("#followButton").addEventListener("click", () => {
+                document.querySelector("#followButton").textContent = "follow";
                 unfollow(data);
             })
         } else {
 
-            document.querySelector("#follow").addEventListener("click", () => {
-                document.querySelector("#follow").textContent = "following";
+            document.querySelector("#followButton").addEventListener("click", () => {
+                document.querySelector("#followButton").textContent = "following";
                 followUser(data);
             })
         }
 
-        document.querySelector("#followers").addEventListener("click", (event) => {
+        document.querySelector("#followers").addEventListener("click", async (event) => {
             event.stopPropagation();
             let popUp = document.querySelector("#popUp");
-            RenderFollowers(popUp, resourceUsers);
+            let followers = data[0].personal.followers;
+            let arrayOfFollowers = [];
+            for (const user of followers) {
+                let userInfo = await getUser(user);
+                arrayOfFollowers.push(userInfo);
+            }
+            RenderFollowers(popUp, arrayOfFollowers);
         })
 
 
@@ -99,6 +106,7 @@ async function RenderProfile(data, value) {
             toggleClass(event.target.id)
         })
 
+        // let deletebutton = document.querySelector
         if (data[0].comics.length !== 0) {
 
             let comics = data[0].comics[0].title;
@@ -126,12 +134,10 @@ async function RenderProfile(data, value) {
 
         BasicLayout();
 
-
         let user = localStorage.getItem("user");
-
         let response = await getUser(user);
 
-        // console.log(response[0].personal.followers.length);
+        // console.log(response[0].personal.description);
 
         document.querySelector("#wrapper").innerHTML = `
             <div id="topProfile">
@@ -146,23 +152,21 @@ async function RenderProfile(data, value) {
                             <div id="profileHeaderContent"> 
                                 <div id="username">${response[0].personal.username}</div>
                                 <div id="follows">
+                                    <img id="followIcon" src="/images/follow.png">
                                     <div id="name">${response[0].personal.followers.length} Followers </div>
-                                    <div id="icon"></div>
                                 </div>
                             </div>   
                         </div>
-                        <div id="settings">settings</div>
+                        <img id="settings" src="/images/settings.png">
+                        <img id="editPng" src="/images/edit.png">
                          </div>              
                     <div id="description">${response[0].personal.description}</div>
-                    <div id="insta">
-                        <div id="icon"></div>
-                        <div id="name">@Torkel</div>
-                </div>
+                   
                 </div>
                 <div id="topRightProfile"> 
                     <button id="addNewComic">Add new comic +</button>
                     <div id="notifications">
-                    <img>
+                    <img id="noti" src="/images/notis.png">
                     <div class="notification">
                     <p>Elin liked your comment</p> 
                     </div>
@@ -185,11 +189,16 @@ async function RenderProfile(data, value) {
                     <div id="artist" onclick="toggleClass('Saved')">Artists you follow</div>
                 </div>
                 <div id="BigStroke"></div>
+                <button> Grid </button>
             </div>
 
-            <div id="cards"></div
+            <div id="cards">
+                <img id="arrowLeft" class="arrow" src="/images/arrowLeft.png">
+                <img id="arrowRight" class="arrow"  src="/images/arrowRight.png">
+            </div
         `;
 
+        // document.querySelector("#follows > #icon").style.backgroundImage 
         if (response[0].personal.followers.length === 1) {
             // console.log("en följare");
             document.querySelector(" #follows > #name").textContent = ` ${response[0].personal.followers.length} Follower`;
@@ -221,10 +230,17 @@ async function RenderProfile(data, value) {
         document.querySelector("#artist").addEventListener("click", async (event) => {
             event.stopPropagation();
             let cards = document.querySelector("#cards")
-            cards.innerHTML = ``;
+            cards.innerHTML = `
+                <img id="arrowLeft" class="arrow" src="/images/arrowLeft.png">
+                <img id="arrowRight" class="arrow"  src="/images/arrowRight.png">
+            `;
+
+            document.querySelector("#arrowLeft").style.bottom = "170px";
+            document.querySelector("#arrowRight").style.bottom = "170px";
 
             let user = localStorage.getItem("user");
-            userParse = JSON.parse(user);
+            console.log(user);
+            // userParse = JSON.parse(user);
             let resourse = await getUser(user);
 
             let following = resourse[0].personal.following;
@@ -240,7 +256,10 @@ async function RenderProfile(data, value) {
         document.querySelector("#myComics").addEventListener("click", (event) => {
             event.stopPropagation();
             let card = document.querySelector("#cards");
-            card.innerHTML = ``;
+            card.innerHTML = `
+                <img id="arrowLeft" class="arrow" src="/images/arrowLeft.png">
+                <img id="arrowRight" class="arrow"  src="/images/arrowRight.png">
+            `;
 
             if (response[0].comics.length === 0) {
                 console.log("finns inga comics");
@@ -356,13 +375,17 @@ async function RenderArtistCard(parent, data, value) {
             <img id="artistIcon" src="${user.personal.picture}">
             <h3> ${user.personal.username} </h3>
             <div id="uploadedComicsBox">
-            <div class="number"> ${user.comics.length} </div>
-            <div id="text"> Uploaded comics </div>
+                <div class="number"> ${user.comics.length} </div>
+                <div id="text"> Uploaded comics </div>
+            </div>
+            <div id="folowingBox">
+                <div class="number"> ${user.personal.following.length}</div>
+                <div id="text"> Following </div>
             </div>
             <div id="folowerBox">
-            <div class="number"> ${user.personal.followers.length}</div>
-                    <div id="text"> Followers </div>
-                    </div>
+                <div class="number"> ${user.personal.followers.length}</div>
+                <div id="text"> Followers </div>
+            </div>
                     `;
             parent.append(divDom);
 
@@ -503,92 +526,6 @@ async function findUser(value) {
 }
 
 
-// function RenderSettings(params) {
-//     let popUp = document.querySelector("#popUp")
-//     popUp.classList.remove("hidden");
-//     popUp.innerHTML = `
-//         <div> settings</div>
-//         <div class="stroke"></div>
-//         <form>
-//             <div id="noti">
-//                 <h3>Notifications</h3>
-//                 <div>
-//                     <p> Notifications for likes </p>
-
-//                     <div>
-//                     <div style="width: 27px; height: 18px; color: #939393; font-size: 16px; font-family: Urbanist; font-weight: 400; word-wrap: break-word">Off</div>
-//                     <div style="width: 36px; height: 16px; position: relative">
-//                         <div style="width: 36px; height: 16px; left: 0px; top: 0px; position: absolute; background: #D9D9D9; border-radius: 20px"></div>
-//                         <div style="width: 18px; height: 16px; left: 16.80px; top: 0px; position: absolute; background: #464545; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 9999px"></div>
-//                     </div>
-//                     <div style="width: 27px; height: 18px; color: black; font-size: 16px; font-family: Urbanist; font-weight: 400; word-wrap: break-word">On</div>
-//                     </div>
-//                     </div>
-//                 <div>
-//                     <p> Notifications from publication </p>
-//                     <div>
-//                     <div style="width: 27px; height: 18px; color: #939393; font-size: 16px; font-family: Urbanist; font-weight: 400; word-wrap: break-word">Off</div>
-//                     <div style="width: 36px; height: 16px; position: relative">
-//                         <div style="width: 36px; height: 16px; left: 0px; top: 0px; position: absolute; background: #D9D9D9; border-radius: 20px"></div>
-//                         <div style="width: 18px; height: 16px; left: 16.80px; top: 0px; position: absolute; background: #464545; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 9999px"></div>
-//                     </div>
-//                     <div style="width: 27px; height: 18px; color: black; font-size: 16px; font-family: Urbanist; font-weight: 400; word-wrap: break-word">On</div>
-//                     </div>
-//                 </div>
-//                 <div>
-//                     <p> Notifications from comments </p>
-//                     <div>
-//                     <div style="width: 27px; height: 18px; color: #939393; font-size: 16px; font-family: Urbanist; font-weight: 400; word-wrap: break-word">Off</div>
-//                     <div style="width: 36px; height: 16px; position: relative">
-//                         <div style="width: 36px; height: 16px; left: 0px; top: 0px; position: absolute; background: #D9D9D9; border-radius: 20px"></div>
-//                         <div style="width: 18px; height: 16px; left: 16.80px; top: 0px; position: absolute; background: #464545; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 9999px"></div>
-//                     </div>
-//                     <div style="width: 27px; height: 18px; color: black; font-size: 16px; font-family: Urbanist; font-weight: 400; word-wrap: break-word">On</div>
-//                     </div>
-//                 </div>
-
-//             </div>
-//             <div id="general"> 
-//                 <h3>General</h3>
-//                 <label for="email">Email:</label>
-//                 <input type="text" id="email" name="email" />
-
-//                 <label for="username">Username:</label>
-//                 <input type="text" id="username" name="username" />
-
-//             </div>
-//             <div id="password">
-//                 <h3>Password</h3>
-//                 <label for="currentPassword">Current password:</label>
-//                 <input type="password" id="currentPassword" name="currentPassword" />
-
-//                 <label for="newPassword">New password:</label>
-//                 <input type="password" id="newPassword" name="newPassword" />
-
-//                 <label for="repeatPassword">Repeat password:</label>
-//                 <input type="password" id="repeatPassword" name="repeatPassword" />
-//             </div>
-//             <button> Save settings </button>
-//             </form>
-//             <div class="stroke"></div>
-//         <button> Log out</button>
-//         <div id="close"> x </div>
-//         `;
-
-//     popUp.querySelector("button").addEventListener("click", (event) => {
-//         event.stopPropagation();
-//         logout();
-//     })
-
-//     popUp.querySelector("#close").addEventListener("click", () => {
-//         popUp.classList.add("hidden");
-//     })
-
-
-// };
-
-
-
 
 async function followUser(user) {
     // console.log(user[0].personal.username);
@@ -615,7 +552,7 @@ async function unfollow(user) {
     // console.log(user[0].personal.username);
     let usersUsername = user[0].personal.username;
     let currentUser = localStorage.getItem("user");
-    parseUser = JSON.parse(currentUser);
+    let parseUser = JSON.parse(currentUser);
     // console.log(currentUser);
 
     let body = {
@@ -626,4 +563,21 @@ async function unfollow(user) {
     let response = await fetching("api/following.php", "DELETE", body);
     let resourse = await response.json();
     console.log(resourse);
+}
+
+async function deleteComic(comic) {
+    console.log(comic);
+    let currentUser = localStorage.getItem("user");
+    let parseUser = JSON.parse(currentUser);
+
+    let body = {
+        "title": comic.title,
+        "author": comic.author,
+        "user": parseUser
+    };
+
+    let response = await fetching("api/unfollowComic.php", "DELETE", body);
+    let resourse = await response.json();
+    console.log(resourse);
+    console.log(body);
 }

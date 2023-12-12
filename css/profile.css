@@ -6,7 +6,7 @@
 }
 
 body {
-    margin: 3%;
+    margin: 0px;
     font-family: Urbanista;
 }
 
@@ -52,6 +52,7 @@ main {
     display: flex;
     flex-direction: column;
     width: 100%;
+    position: relative;
 }
 
 nav {
@@ -79,7 +80,7 @@ footer {
 
 /* Top of profile */
 
-#topProfile{
+#topProfile {
     display: flex;
     justify-content: space-between;
     padding: 3%;
@@ -91,7 +92,47 @@ footer {
     display: flex;
     flex-direction: column;
     padding: 10px;
+    width: 80%;
 }
+
+/* Other users tags */
+
+#usedTags {
+    display: flex;
+    width: 90%;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#usedTags .tags {
+    width: auto;
+}
+
+#followButton {
+    width: 70%;
+    align-self: center;
+}
+
+#topRightProfile h3 {
+    text-align: center;
+    margin: 40px;
+}
+
+#profileHeaderContent {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 3%;
+}
+
+#username {
+    font-size: 25px;
+}
+
+#follows>#icon {
+    background-image: url(/images/follow.png);
+}
+
 
 #profile {
     width: 40px;
@@ -102,27 +143,55 @@ footer {
     background-repeat: no-repeat;
 }
 
-#userContainerTop{
+#userContainerTop {
     display: flex;
-  justify-content: space-between;
+    justify-content: space-between;
 }
 
-#profileHeader{
+#userContainerTop>img {
+    height: 3vw;
+    width: 3vw;
+}
+
+
+#name {
+    margin: 5px;
+}
+
+#follows {
+    width: auto;
+    display: flex;
+}
+
+#followIcon {
+    height: 2vw;
+    width: 2.5vw;
+}
+
+#follows #followers {
+    padding: 5px;
+}
+
+#settings {
+    margin-left: 18vw;
+}
+
+#profileHeader {
     width: 50%;
     display: flex;
-   flex-direction: row;
-   align-items: center;
-   justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
-#profileHeaderContent{
-   display: flex;
-  justify-content: center;
-  flex-direction: column;
-  margin-left: 3%;
+#profileHeaderContent {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 3%;
 }
 
-#username{
+#username {
     font-size: 25px;
 }
 
@@ -131,9 +200,6 @@ footer {
     height: 100px;
     width: 100px;
     border-radius: 50px;
-    border: 1px solid black;
-    /* background-size: contain;
-    background-repeat: no-repeat; */
 }
 
 #profileIcon>img {
@@ -147,7 +213,7 @@ footer {
     margin-left: 27%;
     margin-right: 20%;
     width: 60%;
-    text-align: left; 
+    text-align: left;
 }
 
 
@@ -159,7 +225,7 @@ footer {
 
 /* Right side top*/
 
-#topRightProfile{
+#topRightProfile {
     width: 50%;
     display: flex;
     flex-direction: column;
@@ -188,11 +254,20 @@ button {
     flex-direction: column;
     justify-content: center;
     margin-top: 6%;
+    position: relative;
 }
 
 .notification {
     text-align: center;
 
+}
+
+#notifications img {
+    height: 3vw;
+    width: 3vw;
+    position: absolute;
+    top: -15px;
+    left: -15px;
 }
 
 .notiStroke {
@@ -207,11 +282,26 @@ button {
     background-color: black;
 }
 
-#middleProfile{
+#middleProfile {
     display: flex;
     flex-direction: column;
     margin: 2px;
     margin-left: 9%;
+    width: 96%;
+}
+
+.options {
+    margin-right: 10%;
+}
+
+#middleProfile button {
+    margin-left: 83%;
+    height: 3vw;
+    width: 6vw;
+    margin-top: 10px;
+    padding: 0px;
+    border-radius: 10px;
+    font-size: 1.5vw;
 }
 
 /* menu, bottom */
@@ -228,17 +318,37 @@ button {
     transition: font-size 0.5s ease-in;
 
 }
-.selected{
+
+.arrow {
+    height: 3vw;
+    width: 3vw;
+    position: absolute;
+}
+
+#arrowLeft {
+    left: 120px;
+    bottom: 320px;
+}
+
+#arrowRight {
+    right: 62px;
+    bottom: 320px;
+}
+
+.selected {
     font-size: 20px;
     color: black;
     transition: font-size 0.5s ease-in;
-
-    
 }
 
 @keyframes Fade {
-    0% {font-size: 15px;}
-    50% { font-size: 18px; }
+    0% {
+        font-size: 15px;
+    }
+
+    50% {
+        font-size: 18px;
+    }
 }
 
 #BigStroke {
@@ -246,45 +356,27 @@ button {
     width: 90%;
 }
 
-/* #cards {
-    grid-column: 2/4;
-    grid-row: 2;
-    margin-top: 80px;
-    padding-left: 40px;
-    grid-template-columns: repeat(5, 1fr);
-    display: grid;
-    gap: 10px;
-    overflow: scroll;
-    grid-template-rows: 1fr;
-}
-
-.card {
-    display: flex;
-    width: 243px;
-    padding: 11px 0px;
-    align-items: flex-start;
-    align-content: flex-start;
-    gap: var(--responsive-spacing-xs, 6px) 92px;
-    flex-wrap: wrap;
-} */
 #cards {
-    grid-column: 2/4;
-    grid-row: 2;
-    margin-top: 80px;
-    padding-left: 40px;
+    margin-left: 10%;
     grid-template-columns: repeat(5, 1fr);
     display: grid;
-    gap: 10px;
+    gap: 20px;
     overflow: scroll;
     grid-template-rows: 1fr;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-left: 30px;
+
 }
 
-#cardBox {
-    height: 450px;
-    width: 300px;
+.cardBox {
+    height: 30vw;
+    width: 22vw;
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+    box-shadow: 0px 4px 4px
 }
 
 #cardBox>h2 {
@@ -303,7 +395,7 @@ button {
 #cardBox #userImg {
     height: 25px;
     width: 20px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     border-radius: 20px;
     position: relative;
     right: 125px;
@@ -311,9 +403,10 @@ button {
 }
 
 .imgDiv {
-    height: 80%;
+    height: 100%;
     background-size: contain;
-    width: 90%;
+    width: 100%;
+    background-repeat: no-repeat;
 }
 
 #cardBox #userName {
@@ -345,35 +438,43 @@ button {
 }
 
 .artistBox {
-    height: 300px;
+    height: 25vw;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: repeat(4, 1fr);
     border-radius: 10px;
-    border: 1px solid black;
+    box-shadow: 0px 4px 4px;
 }
 
 #artistIcon {
-    height: 150px;
-    width: 150px;
+    height: 12vw;
+    width: 12vw;
     grid-column: 1/3;
     border-radius: 80px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     align-self: center;
     margin-left: 50px;
     margin-top: 10px;
 }
 
 .artistBox>h3 {
-    grid-column: 1/3;
+    grid-column: 1/4;
     text-align: center;
+    margin-top: 30px;
 }
 
 #folowerBox {
     grid-column: 2;
     grid-row: 4;
     text-align: center;
-    margin-top: 10px;
+    margin: 10px;
+}
+
+#folowingBox {
+    grid-column: 3;
+    grid-row: 4;
+    text-align: center;
+    margin: 10px;
 }
 
 #uploadedComicsBox {
@@ -387,19 +488,13 @@ button {
     padding: 5px;
 }
 
-/* #popUp {
-    height: 100vh;
-    width: 100vw;
-} */
 
+/* PopUp */
 
 #popUp {
     position: absolute;
     height: 600px;
     width: 900px;
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
     z-index: 2;
     margin-left: auto;
     margin-right: auto;
@@ -409,80 +504,7 @@ button {
     bottom: 80px;
 }
 
-/* 
-.notSelected {
-    display: none;
-}
 
-/* .Selected {
-    opacity: 1;
-} */
-/*
-#popUpBox {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(5, auto);
-    height: 100%;
-    width: 100%;
-}
-
-#popUpBox>#followers>#artist {
-    grid-row: 3;
-    display: flex;
-    grid-column: 1/6;
-    width: 100px;
-    height: 200px;
-} */
-
-
-
-/* #popUp {
-    position: absolute;
-    height: 100vh;
-    width: 100vw;
-
-    /* display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 2; 
-
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-}
-
-#popUpBackground {
-    position: absolute;
-    background-color: white;
-
-    opacity: 50%;
-    height: 100%;
-    width: 100%;
-
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-}
-
-#popUpWindow {
-    position: absolute;
-    background-color: blue;
-    width: 300px;
-    border-radius: 10px;
-    box-shadow: 0 0 20px #41000d47;
-
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-    text-align: center;
-} */
-
-
-
-/* PopUp */
 
 .hidden {
     display: none;
@@ -572,17 +594,47 @@ button {
 
 
 .description {
-    /* height: 50%; */
+    height: 54%;
     width: 100%;
-    background-color: #6e6e797d;
-    position: relative;
-    bottom: 200px;
-    justify-content: center;
-    display: flex;
-    align-items: end;
+    background-color: #dfdfdfde;
+    position: absolute;
+    top: 200px;
     display: flex;
     justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
 
+.tags {
+    border: 1px solid black;
+    border-radius: 5px;
+    text-align: center;
+    padding: 5px 8px 5px 8px;
+    margin: 5px;
+    width: auto;
+}
+
+
+#delete {
+    height: 2vw;
+    width: 2vw;
+
+    position: absolute;
+    right: 0pc;
+    top: 0px;
+    margin: 10px;
+}
+
+#puplished {
+    align-self: start;
+    margin-left: 10px;
+}
+
+#filters {
+    align-self: start;
+    width: 100%;
+    display: flex;
 }
 
 .readBox {

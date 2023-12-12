@@ -38,7 +38,7 @@ function BasicLayout() {
         <div class="stroke"></div>
         <div> Change language </div>
         <div class="stroke"></div>
-        <div> FAQ </div>
+        <div id="faq"> FAQ </div>
         <div class="stroke"></div>
         <div> Copyright </div>
         <div class="stroke"></div>
@@ -71,6 +71,11 @@ function BasicLayout() {
             findComic(e.target.value);
         }
     });
+
+    document.querySelector("#faq").addEventListener("click", (event) => {
+        event.stopPropagation();
+        RenderFaq();
+    })
 }
 
 

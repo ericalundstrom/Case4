@@ -7,13 +7,8 @@
         "Mystery",
         "Education",
         "Horror",
-        "Dystopia",
-        "Autobiographical",
-        "Historical",
         "Science fiction",
-        "Family",
-        "Childhood",
-        "Magic"
+        "Satire"
     ],
     "Styles": [
         "Fable",
@@ -22,56 +17,64 @@
         "Super-hero",
         "Non-fiction",
         "Slice of life",
-        {"formats": [
-             "One-frame",
-             "Webcomic",
-             "Story-telling",
-             "Strip-comic",
-             "Part of novel"
-    ]}
+        {
+            "formats": [
+                "One-frame",
+                "Webcomic",
+                "Story-telling",
+                "Strip-comic",
+                "Part of novel"
+            ]
+        }
     ],
-   
     "Materials": [
-        {"pens": [
-            "Pens and crayons",
-            "Color pencil",
-            "Crayon",
-            "Pastel",
-            "Charcoal",
-            "Pencil",
-            "Ink",
-            "Gel",
-            "Fineline"
-            ]},
-
-        {"papers": [
-            "Colored paper",
-            "Copy paper",
-            "Bond paper",
-            "Cardstock",
-            "Glossy paper",
-            "Matte paper",
-            "Newsprint",
-            "Tissue paper",
-            "Construction paper",
-            "Watercolor paper",
-            "Vellum",
-            "Tracing paper",
-            "Parchment paper"
-        ]},
-        {"colors": [
-            "Gouache",
-            "Watercolor",
-            "Acrylic",
-            "Ink-wash",
-            "Oil"
-        ]},
-        {"more": [
-            "Digital",
-            "Photograph",
-            "Stop-motion",
-            "Collage",
-            "Mixed materials"
-         ]}
+        {
+            "pens": [
+                "Pens and crayons",
+                "Color pencil",
+                "Crayon",
+                "Pastel",
+                "Charcoal",
+                "Pencil",
+                "Ink",
+                "Gel",
+                "Fineline"
+            ]
+        },
+        {
+            "papers": [
+                "Colored paper",
+                "Copy paper",
+                "Bond paper",
+                "Cardstock",
+                "Glossy paper",
+                "Matte paper",
+                "Newsprint",
+                "Tissue paper",
+                "Construction paper",
+                "Watercolor paper",
+                "Vellum",
+                "Tracing paper",
+                "Parchment paper"
+            ]
+        },
+        {
+            "colors": [
+                "Gouache",
+                "Watercolor",
+                "Acrylic",
+                "Ink-wash",
+                "Oil"
+            ]
+        },
+        {
+            "more": [
+                "Digital",
+                "Photograph",
+                "Stop-motion",
+                "Collage",
+                "Mixed materials"
+            ]
+        }
     ]
 }

@@ -29,15 +29,15 @@ function BasicLayout() {
             `
 
     document.querySelector("footer").innerHTML = `
-        <div> About Rita </div>
+        <div id="about"> About Rita </div>
         <div class="stroke"></div>
         <div> Change language </div>
         <div class="stroke"></div>
-        <div> FAQ </div>
+        <div id="faq"> FAQ </div>
         <div class="stroke"></div>
-        <div> Copyright </div>
+        <div id="copy"> Copyright </div>
         <div class="stroke"></div>
-        <div> Contact us </div>`;
+        <div id="contact"> Contact us </div>`;
 
     document.querySelector("#profile").addEventListener("click", (event) => {
         event.stopPropagation();
@@ -57,6 +57,23 @@ function BasicLayout() {
         event.stopPropagation();
         RenderCommunity();
     });
+
+    document.querySelector("#faq").addEventListener("click", (event) => {
+        event.stopPropagation();
+        RenderFaq();
+    })
+    document.querySelector("#about").addEventListener("click", (event) => {
+        event.preventDefault();
+        RenderAboutUs();
+    })
+    document.querySelector("#contact").addEventListener("click", (event) => {
+        event.stopPropagation();
+        RenderContactUs();
+    })
+    document.querySelector("#copy").addEventListener("click", (event) => {
+        event.stopPropagation();
+        RenderCopyRight();
+    })
 }
 
 

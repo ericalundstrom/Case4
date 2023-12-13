@@ -363,20 +363,32 @@ button {
     gap: 20px;
     overflow: scroll;
     grid-template-rows: 1fr;
-    padding-top: 10px;
-    padding-bottom: 20px;
+    padding-top: 30px;
+    padding-bottom: 40px;
     padding-left: 30px;
 
 }
 
 .cardBox {
+    /* height: 30vw;
+    width: 22vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    box-shadow: 0px 4px 4px;
+    transition-property: width, height, z-index;
+    /* Added z-index to transition 
+    transition-duration: 1s;
+    z-index: 1; */
     height: 30vw;
     width: 22vw;
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
-    box-shadow: 0px 4px 4px
+    box-shadow: 0px 4px 4px;
+    transition: transform 0.5s;
 }
 
 #cardBox>h2 {
@@ -494,16 +506,15 @@ button {
 #popUp {
     position: absolute;
     height: 600px;
-    width: 900px;
+    width: 60%;
     z-index: 2;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 20%;
+    margin-right: 20%;
     left: 0;
     right: 0;
-    background-color: blue;
+    background-color: white;
     bottom: 80px;
 }
-
 
 
 .hidden {
@@ -519,6 +530,9 @@ button {
     gap: 10px;
     justify-items: center;
     overflow: scroll;
+    z-index: 2;
+    position: relative;
+    background-color: white;
 }
 
 #close {
@@ -591,6 +605,14 @@ button {
     left: 10px;
 }
 
+.hoverEffect {
+    /* height: 33vw;
+    width: 25vw;
+    transition-property: width, height;
+    transition-duration: 1s;
+    z-index: 2; */
+    transform: scale(1.1);
+}
 
 
 .description {
@@ -604,6 +626,7 @@ button {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    transition: height 1.5s;
 }
 
 .tags {
@@ -754,4 +777,66 @@ button {
 
     transition-property: left;
     transition-duration: 1s;
+}
+
+#comicFrontPage {
+    height: 35vw;
+    grid-column: 2;
+    grid-row: 3;
+    align-self: center;
+    display: flex;
+}
+
+#popUpWindow {
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+    background-color: white;
+    position: relative;
+}
+
+#deleteReq {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    position: relative;
+    z-index: 2;
+    align-items: center;
+    background-color: white;
+}
+
+#deleteReq #close {
+    align-self: end;
+}
+
+#deleteReq h2 {
+    align-self: center;
+    margin-bottom: 30px;
+    margin-top: 1px;
+}
+
+#deleteReq button {
+    width: 20vw;
+    margin: 10px;
+    margin-top: 10px;
+    padding: 7px;
+    align-self: center;
+    margin-top: 40px;
+    border-radius: 10px;
+}
+
+.yesNo {
+    align-self: center;
+}
+
+#popUpBackground {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #808080b2;
+    z-index: 1;
+    /* Ensure it's below other pop-up elements */
+
 }

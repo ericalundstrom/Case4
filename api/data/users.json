@@ -16,7 +16,7 @@
                     "title": "Hejhejhej",
                     "author": "Usern",
                     "description": "Hererer",
-                    "filters": "",
+                    "filters": "[\"Mystery\",\"Slice of life\"]",
                     "frontPage": "data\/comics\/compass.png",
                     "content": [
                         "data\/comics\/compass.png"

@@ -74,7 +74,6 @@ let filterLeft = {
         "Mixed materials"
     ],
 }
-
 let filterRight = {
     "Styles": [
         "Fable",
@@ -93,7 +92,6 @@ let filterRight = {
         "Part of novel"
     ]
 }
-
 let Sort = [
     "A to Z",
     "Z to A",

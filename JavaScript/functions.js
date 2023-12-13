@@ -102,9 +102,11 @@ async function createCard(parent, resource, user) {
         cardBox.setAttribute("id", data.title);
 
         cardBox.addEventListener("mouseenter", () => {
+            cardBox.classList.add("hoverEffect");
             let divDom = document.createElement("div");
-            console.log(JSON.parse(data.filters));
+            // console.log(JSON.parse(data.filters));
             let tags = JSON.parse(data.filters);
+            console.log(data.filters);
             let filters = data.filters.replace(/[\[\]"]+/g, ' ');
             divDom.innerHTML = `
             <img id="delete" src="/images/delete.png">
@@ -143,6 +145,7 @@ async function createCard(parent, resource, user) {
 
 
         cardBox.addEventListener("mouseleave", () => {
+            cardBox.classList.remove("hoverEffect");
             document.querySelector(".description").remove();
         });
 

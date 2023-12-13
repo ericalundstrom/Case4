@@ -85,6 +85,7 @@ async function RenderProfile(data, value) {
         document.querySelector("#followers").addEventListener("click", async (event) => {
             event.stopPropagation();
             let popUp = document.querySelector("#popUp");
+            let popUpWindow = document.querySelector("#popUpWindow");
             let followers = data[0].personal.followers;
             let arrayOfFollowers = [];
             for (const user of followers) {
@@ -215,6 +216,7 @@ async function RenderProfile(data, value) {
         document.querySelector("#follows > #name").addEventListener("click", async (event) => {
             event.stopPropagation();
             let popUp = document.querySelector("#popUp");
+
             // let respons = await fetch("api/data/users.json");
             // let resource = await respons.json();
             // response[0].personal.followers;
@@ -403,12 +405,12 @@ async function RenderFollowers(popUp, resourceUsers) {
 
     popUp.classList.remove("hidden");
     popUp.innerHTML = `
-    <div id="popUpBox">
-    <div id="close"> X </div>
-    <h2> Followers </h2>
-    <input type="text" id="searchFollower" name="searchFollower" placeholder="search follower.."/>
-    <div id="followers"> </div>
-    <button> Show more </button>
+        <div id="popUpBox">
+        <div id="close"> X </div>
+        <h2> Followers </h2>
+        <input type="text" id="searchFollower" name="searchFollower" placeholder="search follower.."/>
+        <div id="followers"> </div>
+        <button> Show more </button>
     </div>
     `;
 
@@ -423,8 +425,9 @@ async function RenderFollowers(popUp, resourceUsers) {
 
     popUp.querySelector("#close").addEventListener("click", (event) => {
         event.stopPropagation();
-        let popUp = document.querySelector("#popUp");
-        popUp.classList.add("hidden");
+        let popUpMain = document.querySelector("#popUp");
+        popUpMain.classList.add("hidden");
+        popUp.innerHTML = ``;
     })
     let parent = document.querySelector("#followers")
     RenderFollowersCard(parent, resourceUsers, true)
@@ -566,18 +569,64 @@ async function unfollow(user) {
 }
 
 async function deleteComic(comic) {
-    console.log(comic);
-    let currentUser = localStorage.getItem("user");
-    let parseUser = JSON.parse(currentUser);
 
-    let body = {
-        "title": comic.title,
-        "author": comic.author,
-        "user": parseUser
-    };
+    let popUp = document.querySelector("#popUp");
+    let popUpWindow = document.querySelector("#popUpWindow");
+    popUp.classList.remove("hidden");
+    popUpWindow.innerHTML = `
+    <div id="popUpBackground"></div>
+        <div id="popUpBox">
+        <div id="close"> X </div>
+        <div id="popUpWindow">
+            <h2> Are you sure you want to delete ${comic.title}?</h2>
+            <img id="comicFrontPage" src="api/${comic.frontPage}">
+            <button id="yes"> Delete comic from library </button>
+        </div>
+    </div>
+    `;
 
-    let response = await fetching("api/unfollowComic.php", "DELETE", body);
-    let resourse = await response.json();
-    console.log(resourse);
-    console.log(body);
+    popUpWindow.querySelector("#close").addEventListener("click", () => {
+        popUp.classList.add("hidden");
+        popUp.querySelector("#popUpBox").removeAttribute("id", "deleteReq");
+    })
+    popUpWindow.querySelector("#popUpBox").setAttribute("id", "deleteReq");
+    popUpWindow.querySelector("#yes").addEventListener("click", async () => {
+
+        console.log(comic);
+        let currentUser = localStorage.getItem("user");
+        let parseUser = JSON.parse(currentUser);
+
+        let body = {
+            "title": comic.title,
+            "author": comic.author,
+            "user": parseUser
+        };
+
+        let response = await fetching("api/deleteComic.php.php", "DELETE", body);
+        let resourse = await response.json();
+        console.log(resourse);
+        console.log(body);
+
+        if (resourse.ok) {
+            popUpWindow.innerHTML = `
+            <div id="popUpBackground"></div>
+                <div id="popUpBox">
+                    <div id="close"> X </div>
+                    <h2> ${comic.title} has been successfully removed!</h2>
+                    <button id="ok"> Okey </button>
+                    </div>
+                </div>
+            `;
+            popUpWindow.querySelector("#ok").addEventListener("click", () => {
+                popUp.classList.add("hidden");
+                popUp.querySelector("#popUpBox").removeAttribute("id", "deleteReq");
+                // popUp.classList.remove("deleteReq");
+            })
+        }
+    })
+
+    // popUp.querySelector("#no").addEventListener("click", () => {
+    //     popUp.classList.add("hidden");
+    //     popUp.querySelector("#popUpBox").removeAttribute("id", "deleteReq");
+    // })
 }

@@ -1,9 +1,10 @@
 "use strict"
 
 function RenderSettings(params) {
-    let popUp = document.querySelector("#popUp")
+    let popUp = document.querySelector("#popUp");
+    let popUpWindow = document.querySelector("#popUpWindow");
     popUp.classList.remove("hidden");
-    popUp.innerHTML = `
+    popUpWindow.innerHTML = `
         <div> settings</div>
         <div class="stroke"></div>
         <form>
@@ -73,12 +74,18 @@ function RenderSettings(params) {
         <div id="message"></div>
         `;
 
-    popUp.querySelector("#logout").addEventListener("click", (event) => {
+    popUpWindow.querySelector("#logout").addEventListener("click", (event) => {
         event.stopPropagation();
         logout();
     })
 
-    popUp.querySelector("#close").addEventListener("click", (e) => {
+    popUpWindow.querySelector("#close").addEventListener("click", (e) => {
+        // popUp.innerHTML = `
+        //     <div id="popUpBackground"></div>
+        //     <div id="popUpWindow">
+        //         <p id="prompt"></p>
+        //     </div>
+        // `;
         e.stopPropagation();
         popUp.classList.add("hidden");
     })
@@ -93,7 +100,7 @@ function RenderSettings(params) {
         })
     });
 
-    popUp.querySelector("#save").addEventListener("click", (e) => {
+    popUpWindow.querySelector("#save").addEventListener("click", (e) => {
         e.stopPropagation();
         let email = document.getElementById("email").value;
         let username = document.getElementById("username").value;

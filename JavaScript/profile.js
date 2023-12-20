@@ -23,7 +23,7 @@ async function RenderProfile(data, value) {
         document.querySelector("body").style.backgroundSize = "cover";
         document.querySelector("body").style.backgroundRepeat = "no-repeat";
 
-        console.log(data[0].personal.description);
+        console.log(data);
         document.querySelector("#wrapper").innerHTML = `
         <div id="topProfile">
                 <div id="userContainer">
@@ -52,7 +52,7 @@ async function RenderProfile(data, value) {
                     <div id="description">${data[0].personal.description}</div>
                     <div id="backgroundPlusButton">
                     <div id="backgroundFollowing">
-                        <button id="followButton">Follow artist+</button>
+                        <button id="followButton">Follow</button>
                     </div>
                 </div>
                 </div>         
@@ -146,6 +146,8 @@ async function RenderProfile(data, value) {
         swapStyleSheet("css/profile.css");
 
         BasicLayout();
+
+        document.querySelector("body").style.backgroundImage = "url(/images/profileBackground.png)";
 
         let user = localStorage.getItem("user");
         let response = await getUser(user);
@@ -464,10 +466,13 @@ function RenderFollowersCard(parent, resourceUsers, value) {
         user.forEach(part => {
             // console.log(part);
             let divDom = document.createElement("div");
+            let background = document.createElement("div");
+            background.classList.add("background");
             divDom.classList.add("artistBox");
             divDom.innerHTML = `
                 <img id="artistIcon" src="${part.personal.picture}">
                 <h3> ${part.personal.username} </h3>
+                <button> Remove </button>
                 `;
 
             // divDom.querySelector("#artistIcon").style.backgroundImage = `url('${part.personal.picture}')`;
@@ -480,8 +485,9 @@ function RenderFollowersCard(parent, resourceUsers, value) {
             // }
             divDom.setAttribute("id", part.personal.username);
             divDom.querySelector("h3").setAttribute("id", part.personal.username);
-            divDom.addEventListener("click", (event) => {
-                RenderProfileArtist(event.target);
+            divDom.addEventListener("click", () => {
+                console.log(part.personal);
+                RenderProfileArtist(part.personal);
             })
 
             // divDom.querySelector("button").addEventListener("click", (e) => {
@@ -489,7 +495,9 @@ function RenderFollowersCard(parent, resourceUsers, value) {
             //     console.log(part.personal.username);
             //     unfollow([part]);
             // })
-            parent.append(divDom);
+            background.append(divDom);
+
+            parent.append(background);
         })
     }
 
@@ -503,6 +511,7 @@ function logout() {
 }
 
 async function RenderProfileArtist(user) {
+    console.log(user);
 
     let popUp = document.querySelector("#popUp")
     popUp.addEventListener("click", (e) => {
@@ -511,7 +520,7 @@ async function RenderProfileArtist(user) {
         popUp.classList.add("hidden");
     })
 
-    let request = new Request(`api/GetUser.php?user=${user.id}`)
+    let request = new Request(`api/GetUser.php?user=${user.username}`)
     let response = await fetch(request);
     let resourse = await response.json();
 
@@ -550,8 +559,9 @@ async function followUser(user) {
     // console.log(user[0].personal.username);
     let usersUsername = user[0].personal.username;
     let currentUser = localStorage.getItem("user");
-    parseUser = JSON.parse(currentUser);
-    // console.log(currentUser);
+    console.log(currentUser);
+    let parseUser = JSON.parse(currentUser);
+    console.log(parseUser);
 
     let body = {
         "user": usersUsername,

@@ -8,6 +8,9 @@
 body {
     margin: 0px;
     font-family: Urbanista;
+    background-image: url(/images/Skärmavbild\ 2023-12-20\ kl.\ 10.29.37.png);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 header {
@@ -118,15 +121,15 @@ footer {
     margin: 40px;
 }
 
-#profileHeaderContent {
+/* #profileHeaderContent {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    margin-left: 3%;
-}
+    margin-left: 4vw;
+} */
 
 #username {
-    font-size: 25px;
+    font-size: 60px;
 }
 
 #follows>#icon {
@@ -146,6 +149,7 @@ footer {
 #userContainerTop {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 10%;
 }
 
 #userContainerTop>img {
@@ -155,11 +159,11 @@ footer {
 
 
 #name {
-    margin: 5px;
+    margin: 0px 0px 3px 5px;
 }
 
 #follows {
-    width: auto;
+    width: 160px;
     display: flex;
 }
 
@@ -173,7 +177,19 @@ footer {
 }
 
 #settings {
-    margin-left: 18vw;
+    /* margin-left: 18vw; */
+    height: 2vw;
+}
+
+#editPng {
+    height: 2vw;
+}
+
+#settingsAndEdit {
+    width: 8vw;
+    justify-content: flex-end;
+    display: flex;
+    margin-left: 30vw;
 }
 
 #profileHeader {
@@ -188,18 +204,25 @@ footer {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    margin-left: 3%;
+    margin-left: -8%;
 }
 
-#username {
+/* #username {
     font-size: 25px;
-}
+} */
 
 
 #profileIcon {
-    height: 100px;
+    /* height: 100px;
     width: 100px;
+    border-radius: 50px; */
+    height: 200px;
+    width: 200px;
     border-radius: 50px;
+    left: 37vw;
+    position: absolute;
+    top: 3vw;
+
 }
 
 #profileIcon>img {
@@ -209,18 +232,35 @@ footer {
 }
 
 #description {
-    margin-top: 3%;
-    margin-left: 27%;
-    margin-right: 20%;
     width: 60%;
-    text-align: left;
+    text-align: end;
+    margin: 3% 0% 10% 40%;
 }
 
+#desc {
+    align-self: flex-start;
+    padding-left: 10px;
+    margin-top: 5px;
+}
 
-#insta {
+/* #insta {
     align-self: start;
     margin-left: 14%;
     margin-top: 4%;
+} */
+
+#instagram {
+    width: 120px;
+    display: flex;
+    margin-left: 4.5vw;
+}
+
+#instagram>img {
+    width: 1.5vw;
+}
+
+#instagram>div {
+    margin-left: 5px;
 }
 
 /* Right side top*/
@@ -231,6 +271,7 @@ footer {
     flex-direction: column;
     margin: 2%;
     gap: 6%;
+    margin-right: 6vw;
 }
 
 button {
@@ -285,23 +326,51 @@ button {
 #middleProfile {
     display: flex;
     flex-direction: column;
-    margin: 2px;
+    margin-bottom: 2px;
     margin-left: 9%;
-    width: 96%;
+    /* width: 96%; */
 }
 
 .options {
     margin-right: 10%;
 }
 
+#background {
+    width: 6.5vw;
+    height: 3.5vw;
+    margin-left: 71vw;
+    background-color: black;
+    margin-top: 10px;
+    clip-path: polygon(0% 0%, 92% 0%, 100% 16%, 100% 100%, 0% 100%, 7% 100%, 0% 85%, 0% 30%);
+}
+
+#backgroundFollowing {
+    width: 7vw;
+    height: 3.5vw;
+    margin-left: 25vw;
+    background-color: black;
+    margin-top: 10px;
+    clip-path: polygon(0% 0%, 92% 0%, 100% 16%, 100% 100%, 0% 100%, 7% 100%, 0% 85%, 0% 30%);
+    position: relative;
+    top: 3vw;
+}
+
+#backgroundFollowing>button {
+    width: 92%;
+    border-radius: 0px;
+    background-color: #8EC6C1;
+    border: 1px solid black;
+}
+
 #middleProfile button {
-    margin-left: 83%;
     height: 3vw;
     width: 6vw;
-    margin-top: 10px;
+    /* margin-top: 5px; */
     padding: 0px;
-    border-radius: 10px;
+    border-radius: 0px;
     font-size: 1.5vw;
+    background-color: #8EC6C1;
+    border: 1px solid black;
 }
 
 /* menu, bottom */
@@ -357,10 +426,10 @@ button {
 }
 
 #cards {
-    margin-left: 10%;
+    margin-left: 7%;
     grid-template-columns: repeat(5, 1fr);
     display: grid;
-    gap: 20px;
+    gap: 100px;
     overflow: scroll;
     grid-template-rows: 1fr;
     padding-top: 30px;
@@ -381,14 +450,18 @@ button {
     /* Added z-index to transition 
     transition-duration: 1s;
     z-index: 1; */
-    height: 30vw;
-    width: 22vw;
+    height: 28vw;
+    width: 21vw;
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
     box-shadow: 0px 4px 4px;
     transition: transform 0.5s;
+    background-color: black;
+    /* transform: skewX(-30deg); */
+    /* transition: transform 0.3s ease-in-out; */
+    clip-path: polygon(0% 0%, 90% 0%, 100% 8%, 100% 100%, 0% 100%, 7% 100%, 0% 95%, 0% 20%);
 }
 
 #cardBox>h2 {
@@ -415,10 +488,13 @@ button {
 }
 
 .imgDiv {
-    height: 100%;
+    height: 95%;
     background-size: contain;
     width: 100%;
     background-repeat: no-repeat;
+    position: absolute;
+    left: 0;
+
 }
 
 #cardBox #userName {
@@ -616,35 +692,42 @@ button {
 
 
 .description {
-    height: 54%;
-    width: 100%;
+    height: 50%;
+    width: 90%;
     background-color: #dfdfdfde;
     position: absolute;
-    top: 200px;
+    top: 182px;
     display: flex;
     justify-content: space-around;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
+    text-align: start;
     transition: height 1.5s;
+    left: 0;
+}
+
+.description #title {
+    padding-left: 10px;
 }
 
 .tags {
     border: 1px solid black;
     border-radius: 5px;
     text-align: center;
-    padding: 5px 8px 5px 8px;
+    padding: 2px 4px 2px 4px;
     margin: 5px;
     width: auto;
+    background-color: #F6B8D3;
+    font-size: 12px;
 }
 
 
 #delete {
-    height: 2vw;
-    width: 2vw;
+    height: 1.5vw;
+    width: 1.5vw;
 
     position: absolute;
-    right: 0pc;
+    right: 0px;
     top: 0px;
     margin: 10px;
 }
@@ -652,12 +735,38 @@ button {
 #puplished {
     align-self: start;
     margin-left: 10px;
+    position: relative;
+    bottom: 10px;
+    font-size: 10px;
+}
+
+#userinfo {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    position: relative;
+    top: 0px;
+}
+
+#userinfo>div {
+    font-size: 15px;
+    padding-left: 8px;
+}
+
+#userinfo>img {
+    height: 1.5vw;
+    width: 1.5vw;
+    border-radius: 90px;
+    background-color: white;
+    border: 1px solid black;
 }
 
 #filters {
     align-self: start;
     width: 100%;
     display: flex;
+    padding-left: 5px;
 }
 
 .readBox {

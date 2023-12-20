@@ -107,6 +107,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // make sure it's the right method
             "picture" => $profileIcon,
             "description" => "",
             "added" => $timestamp,
+            "instagram" => "",
             "following" => [],
             "followers" => []
         ],

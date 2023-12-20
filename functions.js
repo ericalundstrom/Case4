@@ -27,11 +27,11 @@ function BasicLayout() {
             `
         ;
 
-    document.querySelector("nav").innerHTML = `
-            <p id="userprofile"> Profile </p>
-            <p id="home"> Home </p>
-            <p id="community"> Comunity </p>
-            `
+    // document.querySelector("nav").innerHTML = `
+    //         <p id="userprofile"> Profile </p>
+    //         <p id="home"> Home </p>
+    //         <p id="community"> Comunity </p>
+    //         `
 
     document.querySelector("footer").innerHTML = `
         <div> About Rita </div>
@@ -52,18 +52,18 @@ function BasicLayout() {
         RenderProfile();
     });
 
-    document.querySelector("#userprofile").addEventListener("click", (event) => {
-        event.stopPropagation();
-        RenderProfile();
-    });
-    document.querySelector("#home").addEventListener("click", (event) => {
-        event.stopPropagation();
-        RenderHomePage();
-    });
-    document.querySelector("#community").addEventListener("click", (event) => {
-        event.stopPropagation();
-        RenderCommunity();
-    });
+    // document.querySelector("#userprofile").addEventListener("click", (event) => {
+    //     event.stopPropagation();
+    //     RenderProfile();
+    // });
+    // document.querySelector("#home").addEventListener("click", (event) => {
+    //     event.stopPropagation();
+    //     RenderHomePage();
+    // });
+    // document.querySelector("#community").addEventListener("click", (event) => {
+    //     event.stopPropagation();
+    //     RenderCommunity();
+    // });
 
     document.querySelector("#search").addEventListener("keyup", (e) => {
         e.stopPropagation();

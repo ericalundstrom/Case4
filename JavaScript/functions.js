@@ -110,10 +110,17 @@ async function createCard(parent, resource, user) {
             let filters = data.filters.replace(/[\[\]"]+/g, ' ');
             divDom.innerHTML = `
             <img id="delete" src="/images/delete.png">
-            <div>
-            ${data.description}
+            <div id="title">
+            ${data.title}
             </div>
             <div id="puplished"> Published ${data.time} </div>
+            <div id="userinfo">
+                <img>
+                <div id="username"> ${data.author} </div>
+            </div>
+            <div id="desc">
+                ${data.description}
+            </div>
             <div id="filters"></div>
             `;
 

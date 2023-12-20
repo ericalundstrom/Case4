@@ -4,9 +4,15 @@
     src: url("../fonts/Shadows_Into_Light/fonts/Urbanist/static/Urbanist-Regular.ttf");
 }
 
- body {
-    margin: 3%;
+@font-face {
+    font-family: UrbanistaBold;
+    src: url("../fonts/Shadows_Into_Light/fonts/Urbanist/static/Urbanist-Bold.ttf");
+}
+
+body {
+    /* margin: 3%; */
     font-family: Urbanista;
+    margin: 0px;
 }
 
 header {
@@ -56,11 +62,47 @@ footer {
 #wrapper {
     width: 100%;
     display: grid;
-    grid-template-columns: 80px 2fr;
+    /* grid-template-columns: 80px 2fr; */
     height: 100vh;
-    grid-template-rows: 40px 1fr;
+    /* grid-template-rows: 40px 1fr; */
+    min-height: 100vh;
+
 }
 
+#welcome {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    grid-column: 2/4;
+    margin-bottom: 5%;
+    margin-top: 2%;
+
+}
+
+#welcome #text {
+    margin-left: 50px;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+}
+
+#welcome h1 {
+    font-family: UrbanistaBold;
+    font-size: 60px;
+    /* font-weight: bold; */
+    margin: 0px;
+}
+
+#welcome h2 {
+    font-size: 50px;
+    margin: 0px;
+}
+
+#welcome img {
+    height: 25vw;
+    margin-right: 10vw;
+}
 
 input {
     height: 30px;
@@ -109,6 +151,8 @@ nav>div>div>#cover {
     display: inherit;
     justify-content: space-around;
     align-items: center;
+    grid-row: 2;
+    margin-top: 50px;
 }
 
 #navi .stroke {
@@ -167,25 +211,35 @@ nav>div>div>#cover {
 }
 
 #cards {
-    grid-row: 2;
+    grid-row: 3;
     grid-column: 2;
     width: 100%;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     display: grid;
-    gap: 35px;
+    gap: 40px;
     height: auto;
-    overflow: scroll;
+    /* overflow: scroll; */
     padding-left: 30px;
     box-sizing: border-box;
-    margin-top: 40px;
+    /* margin-top: 80px; */
+    padding-top: 40px;
 }
 
-#cardBox {
-    height: 450px;
-    width: 300px;
+.cardBox {
+    height: 28vw;
+    width: 21vw;
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+    box-shadow: 0px 4px 4px;
+    transition: transform 0.5s;
+    background-color: black;
+    clip-path: polygon(0% 0%, 90% 0%, 100% 8%, 100% 100%, 0% 100%, 7% 100%, 0% 95%, 0% 20%);
+}
+
+.hoverEffect {
+    transform: scale(1.1);
 }
 
 #cardBox>h2 {
@@ -195,12 +249,12 @@ nav>div>div>#cover {
 }
 
 .imgDiv {
-    height: 75%;
-    width: 90%;
-    /* background-image: url("/images/unnamed.png"); 
-    background-size: contain; */
+    height: 95%;
     background-size: contain;
+    width: 100%;
     background-repeat: no-repeat;
+    position: absolute;
+    left: 0;
 }
 
 
@@ -218,7 +272,6 @@ nav>div>div>#cover {
 #cardBox #userName {
     position: relative;
     right: 85px;
-    /* bottom: 8px; */
 }
 
 #likesBox {
@@ -260,17 +313,86 @@ nav>div>div>#cover {
 
 
 .description {
-    /* height: 50%; */
-    width: 100%;
-    background-color: #6e6e797d;
-    position: relative;
-    bottom: 200px;
-    justify-content: center;
-    display: flex;
-    align-items: end;
+    height: 50%;
+    width: 90%;
+    background-color: #dfdfdfde;
+    position: absolute;
+    top: 182px;
     display: flex;
     justify-content: space-around;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: start;
+    transition: height 1.5s;
+    left: 0;
+}
 
+.description #title {
+    padding-left: 10px;
+}
+
+#desc {
+    align-self: flex-start;
+    padding-left: 10px;
+}
+
+.tags {
+    border: 1px solid black;
+    border-radius: 5px;
+    text-align: center;
+    padding: 2px 4px 2px 4px;
+    margin: 5px;
+    width: auto;
+    background-color: #F6B8D3;
+    font-size: 12px;
+}
+
+
+#delete {
+    height: 1.5vw;
+    width: 1.5vw;
+
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    margin: 10px;
+}
+
+#puplished {
+    align-self: start;
+    margin-left: 10px;
+    position: relative;
+    bottom: 10px;
+    font-size: 10px;
+}
+
+#userinfo {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    position: relative;
+    top: 0px;
+}
+
+#userinfo>div {
+    font-size: 15px;
+    padding-left: 8px;
+}
+
+#userinfo>img {
+    height: 1.5vw;
+    width: 1.5vw;
+    border-radius: 90px;
+    background-color: white;
+    border: 1px solid black;
+}
+
+#filters {
+    align-self: start;
+    width: 100%;
+    display: flex;
+    padding-left: 5px;
 }
 
 .readBox {

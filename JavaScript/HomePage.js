@@ -3,6 +3,10 @@
 async function RenderHomePage() {
   swapStyleSheet("css/landingPage.css");
 
+  document.querySelector("body").style.backgroundImage = `url(images/mainBackground.png)`;
+  document.querySelector("body").style.backgroundSize = "cover";
+  document.querySelector("body").style.backgroundRepeat = "no-repeat";
+
   BasicLayout();
 
   let user = localStorage.getItem("user");
@@ -22,6 +26,15 @@ async function RenderHomePage() {
   document.querySelector("#profile").style.backgroundImage = `url(api/${profilePic})`;
 
   document.querySelector("#wrapper").innerHTML = `
+
+    <div id="welcome">
+      <div id="text">
+        <h1>Welcome to Rita! </h1>
+        <h2> Explore and upload comics </h2>
+      </div>
+      <img src="/images/welcomeLogo.png">
+    </div>
+
     <div id="navi"> </div>
     <div id="cards"></div>
   `;

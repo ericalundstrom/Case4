@@ -123,14 +123,10 @@ async function RenderProfile(data, value) {
             toggleClass(event.target.id)
         })
 
-        // let deletebutton = document.querySelector
         if (data[0].comics.length !== 0) {
 
             let comics = data[0].comics[0].title;
             if (comics !== 0) {
-
-                // let responseUser = await fetch("api/data/users.json");
-                // let resourceUser = await responseUser.json();
 
                 let user = data[0].personal.username;
 
@@ -153,8 +149,6 @@ async function RenderProfile(data, value) {
 
         let user = localStorage.getItem("user");
         let response = await getUser(user);
-
-        // console.log(response[0].personal.description);
 
         document.querySelector("#wrapper").innerHTML = `
             <div id="topProfile">
@@ -241,9 +235,6 @@ async function RenderProfile(data, value) {
             event.stopPropagation();
             let popUp = document.querySelector("#popUp");
 
-            // let respons = await fetch("api/data/users.json");
-            // let resource = await respons.json();
-            // response[0].personal.followers;
             let followers = response[0].personal.followers;
             let arrayOfFollowers = [];
             for (const user of followers) {
@@ -256,13 +247,7 @@ async function RenderProfile(data, value) {
         document.querySelector("#artist").addEventListener("click", async (event) => {
             event.stopPropagation();
             let cards = document.querySelector("#cards")
-            cards.innerHTML = `
-                <img id="arrowLeft" class="arrow" src="/images/arrowLeft.png">
-                <img id="arrowRight" class="arrow"  src="/images/arrowRight.png">
-            `;
-
-            document.querySelector("#arrowLeft").style.bottom = "170px";
-            document.querySelector("#arrowRight").style.bottom = "170px";
+            cards.innerHTML = ``;
 
             let user = localStorage.getItem("user");
             console.log(user);
@@ -282,10 +267,7 @@ async function RenderProfile(data, value) {
         document.querySelector("#myComics").addEventListener("click", (event) => {
             event.stopPropagation();
             let card = document.querySelector("#cards");
-            card.innerHTML = `
-                <img id="arrowLeft" class="arrow" src="/images/arrowLeft.png">
-                <img id="arrowRight" class="arrow"  src="/images/arrowRight.png">
-            `;
+            card.innerHTML = ``;
 
             if (response[0].comics.length === 0) {
                 console.log("finns inga comics");
@@ -384,8 +366,8 @@ async function RenderArtistCard(parent, data, value) {
             </div>
             <div id="folowerBox">
             <div class="number"> </div>
-                    <div id="text"> Followers </div>
-                    </div>
+                <div id="text"> Followers </div>
+            </div>
         `;
             parent.append(divDom);
 
@@ -395,25 +377,30 @@ async function RenderArtistCard(parent, data, value) {
         })
     } else {
         data.forEach(user => {
+            let backgroundShadow = document.createElement("div");
+            backgroundShadow.classList.add("background");
             let divDom = document.createElement("div");
             divDom.classList.add("artistBox");
             divDom.innerHTML = `
-            <img id="artistIcon" src="${user.personal.picture}">
-            <h3> ${user.personal.username} </h3>
-            <div id="uploadedComicsBox">
-                <div class="number"> ${user.comics.length} </div>
-                <div id="text"> Uploaded comics </div>
-            </div>
-            <div id="folowingBox">
-                <div class="number"> ${user.personal.following.length}</div>
-                <div id="text"> Following </div>
-            </div>
-            <div id="folowerBox">
-                <div class="number"> ${user.personal.followers.length}</div>
-                <div id="text"> Followers </div>
-            </div>
-                    `;
-            parent.append(divDom);
+                <img id="artistIcon" src="${user.personal.picture}">
+                <h3> ${user.personal.username} </h3>
+                <div id="uploadedComicsBox">
+                    <div class="number"> ${user.comics.length} </div>
+                    <div id="text"> Uploaded comics </div>
+                </div>
+                <div id="folowingBox">
+                    <div class="number"> ${user.personal.following.length}</div>
+                    <div id="text"> Following </div>
+                </div>
+                <div id="folowerBox">
+                    <div class="number"> ${user.personal.followers.length}</div>
+                    <div id="text"> Followers </div>
+                </div>
+            `;
+            // parent.append(divDom);
+
+            backgroundShadow.append(divDom);
+            parent.append(backgroundShadow);
 
             divDom.addEventListener("click", () => {
                 RenderProfile([user], true);

@@ -17,17 +17,21 @@ function swapStyleSheet(styleSheet) {
 
 
 function BasicLayout() {
-    // console.log("hej");
     let profile = localStorage.getItem("#profilePic");
     // console.log(profile);
     document.querySelector("header").innerHTML = `
-            <p> Rita </p>
-            <input type="text" id="search" name="search" placeholder="search for comics, authors etc.."/>
-            <img id="profile" src="${profile}">
+            <img src="../images/loggo.png"/>
+            <div id="leftSide">
+            <div id="community">COMMUNITY</div>
+            <div class="stroke"></div>
+            <div id="profile"> PROFILE</div>
+            <div class="stroke"></div>
+            <img id="notifications" src="../images/notifcationbell.png"> </>
+            </div>
             `
         ;
 
-    // document.querySelector("nav").innerHTML = `
+    // document.querySelect or("nav").innerHTML = `
     //         <p id="userprofile"> Profile </p>
     //         <p id="home"> Home </p>
     //         <p id="community"> Comunity </p>

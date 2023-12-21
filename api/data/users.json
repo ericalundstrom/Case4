@@ -732,5 +732,37 @@
             },
             "comics": []
         }
+    ],
+    [
+        {
+            "personal": {
+                "email": "un",
+                "username": "un",
+                "password": "un",
+                "picture": "..\/images\/profilIcon\/avataaars(3).png",
+                "description": "",
+                "added": "21-12-2023 10:27",
+                "instagram": "",
+                "following": [],
+                "followers": []
+            },
+            "comics": []
+        }
+    ],
+    [
+        {
+            "personal": {
+                "email": "uni",
+                "username": "uni",
+                "password": "uni",
+                "picture": "..\/images\/profilIcon\/avataaars(9).png",
+                "description": "",
+                "added": "21-12-2023 10:45",
+                "instagram": "",
+                "following": [],
+                "followers": []
+            },
+            "comics": []
+        }
     ]
 ]

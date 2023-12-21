@@ -1,29 +1,31 @@
 "use strict";
 
 function RenderLoginPage() {
+
+    swapStyleSheet("css/register.css");
     // console.log("login");
     wrapper.innerHTML = `
 
     <div id="box">
-    <h1> Rita </h1>
-
+        <h1 id="loggo"> R </h1>
+    </div>
         <div id="LoginOrReg">
 
         <form>
                 <div id="login"> 
-                    <label for="username">Username:</label>
+                    <label for="username">USERNAME</label>
                     <input type="text" id="username" name="username" />
                     <div class="underline"></div>
                 </div>
 
                 <div id="reg">
-                    <label for="password">Password:</label>
+                    <label for="password">PASSWORD</label>
                     <input type="password" id="password" name="password" />
                     <div class="underline"></div>
                     <p>Forgot password?</p>
                 </div>
 
-                <button> Sign In </button>
+                <button> LOGIN </button>
                 <p id=message></p>
 
                 <h3>New to this? <u> Create an account <u></h3>
@@ -31,9 +33,7 @@ function RenderLoginPage() {
         </form>
         </div>
 
-     </div>
 `;
-    wrapper.querySelector("#box").style.backgroundImage = "url(/images/paper.png)";
 
     //     // go to register
     document.querySelector("h3").addEventListener("click", () => {

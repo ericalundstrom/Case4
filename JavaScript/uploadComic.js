@@ -3,7 +3,7 @@
 let dataToPublish = {};
 
 async function renderUploadComic() {
-
+    BasicLayout()
     swapStyleSheet("css/uploadComic.css");
 
     document.querySelector("#wrapper").innerHTML = `

@@ -8,43 +8,43 @@ function RenderRegisterPage() {
     let wrapper = document.querySelector("#wrapper");
     wrapper.innerHTML = `
         <div id="box">
-            <h1> Rita </h1>
+            <h1> R </h1>
+            </div>
             <div id="LoginOrReg">
                 <form>
                     <div id="login"> 
-                        <label for="username">Username:</label>
+                        <label for="username">Username</label>
                         <input type="text" id="username" name="username" />
                         <div class="underline"></div>
                     </div>
 
                     <div id="reg">
-                        <label for="password">Password:</label>
+                        <label for="password">Password</label>
                         <input type="password" id="password" name="password" />
                         <div class="underline"></div>
                     </div>
 
                     <div id="confirm">
-                        <label for="confirm">Confirm password:</label>
+                        <label for="confirm">Confirm password</label>
                         <input type="password" id="confirmPassword" name="confirm" />
                         <div class="underline"></div>
                     </div>
                     
                     <div id="email">
-                        <label for="email">Email:</label>
+                        <label for="email">Email</label>
                         <input type="text" id="emailInput" name="Email" />
                         <div class="underline"></div>
                     </div>
 
-                    <button id="register" type=submit> Sign Up </button>
+                    <button id="register" type=submit> GET STARTED! </button>
                     <p id=message></p>
 
                     <h3>Got an account? <u>Login here</u></h3>
                 </form>
-            </div>
         </div>
     `;
 
-    wrapper.querySelector("#box").style.backgroundImage = "url(/images/paper.png)";
+
 
     let RegisterButton = wrapper.querySelector("form");
     RegisterButton.addEventListener("submit", async function (event) {
@@ -54,8 +54,6 @@ function RenderRegisterPage() {
         let passwordInput = wrapper.querySelector("#password").value;
         let message = wrapper.querySelector("#message");
         let confirmPassword = wrapper.querySelector("#confirmPassword").value;
-
-        // console.log(passwordInput, confirmPassword, emailInput);
 
         if (passwordInput === confirmPassword) {
             try {

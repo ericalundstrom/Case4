@@ -545,7 +545,7 @@ button {
 .artistBox>h3 {
     grid-column: 1/4;
     text-align: center;
-    margin-top: 30px;
+    margin-top: 10px;
 }
 
 #folowerBox {
@@ -652,48 +652,48 @@ button {
 }
 
 #popUpBox>#followers>.background {
-    width: 17vw;
-    height: 23vw;
-    margin-top: 6vw;
+    width: 15.6vw;
+    height: 19.6vw;
+    /* margin-top: 6vw; */
     background-color: black;
     clip-path: polygon(0% 0%, 90% 0%, 100% 10%, 100% 100%, 0% 100%, 10% 100%, 0% 91%, 0% 20%);
 }
 
 #popUpBox>#followers>.background>.artistBox {
-    /* height: fit-content;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid black;
-    width: 90%; */
-    height: 21vw;
+    height: 18vw;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: repeat(4, 1fr);
     box-shadow: 0px 4px 4px;
-    width: 15.3vw;
+    width: 14vw;
     background-color: #72A080;
 }
 
 #popUpBox>#followers>.background>.artistBox>#artistIcon {
-    height: 12vw;
-    width: 12vw;
+    height: 9vw;
+    width: 9vw;
     grid-column: 1/3;
     border-radius: 80px;
-    align-self: center;
-    margin-left: 26px;
-    margin-top: 10px;
+    margin-left: 42px;
 }
 
 
-#popUpBox>#followers>.background>.artistBox>button {
-
+#popUpBox>#followers>.background>.artistBox>#backgroundButton>button {
     height: 3vw;
     width: 7vw;
     border-radius: 0px;
-    margin: 0px;
-    margin-left: 0px;
     padding: 0px 5px;
-    margin-left: 62px;
+    background-color: #B7323E;
+}
+
+#popUpBox>#followers>.background>.artistBox>#backgroundButton {
+    width: 7.6vw;
+    height: 3.5vw;
+    background-color: black;
+    clip-path: polygon(0% 0%, 92% 0%, 100% 10%, 100% 100%, 0% 100%, 10% 100%, 0% 87%, 0% 20%);
+    position: relative;
+    bottom: 10px;
+    left: 50px;
 }
 
 .hoverEffect {

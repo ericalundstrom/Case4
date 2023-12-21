@@ -2,6 +2,8 @@
 
 async function RenderCommunity() {
 
+    document.querySelector("body").style.backgroundImage = "url(images/backgroundCommunity.png)";
+
     swapStyleSheet("css/community.css");
     let wrapper = document.querySelector("#wrapper");
 
@@ -13,9 +15,11 @@ async function RenderCommunity() {
             <div id="commentBox"></div>
         </div>
 
+        <div id="backgroundButton">    
             <button onclick="RenderNewCommentPage()"> Add a post + </button>
-            <div id="tipsbox"></div>
-            <div id="calender"></div>
+        </div>
+        <div id="tipsbox"></div>
+        <div id="calender"></div>
     `;
 
     let user = localStorage.getItem("user");
@@ -52,19 +56,19 @@ function tipsBox(parent) {
 
     const tipsArray = [
         {
+            date: "2023-09-11",
             title: "Sale on light tables in pennstore",
             description: "Models ****** and **** are half price off right now. Sale will be on until December first.",
-            date: "2023-09-11"
         },
         {
+            date: "2023-09-15",
             title: "Special discounts at Art Haven",
             description: "Art Haven is offering a 20% discount on all painting supplies this weekend. Don't miss out!",
-            date: "2023-09-15"
         },
         {
+            date: "2023-09-20",
             title: "Tech Extravaganza at Gadget Galaxy",
             description: "Explore the latest gadgets and enjoy exclusive discounts at Gadget Galaxy. Limited stock available!",
-            date: "2023-09-20"
         }
     ];
 
@@ -72,10 +76,10 @@ function tipsBox(parent) {
         const tip = tipsArray[currentTipIndex];
         const tipsContainer = document.getElementById("tips");
         tipsContainer.innerHTML = `
+            <p id="date">${tip.date}</p>
             <h3>${tip.title}</h3>
             <div id="SmallStroke"></div>
             <p>${tip.description}</p>
-            <p id="date">${tip.date}</p>
         `;
 
         // Update dots based on the currentTipIndex
@@ -295,21 +299,21 @@ function RenderCalendar(parent) {
 
     parent.innerHTML = `
         <h2> Galagos deadline </h2>
-        <div id="SmallStroke"></div>
         <div id="month">
             <div class="arrow" id="prevMonth"> < </div>
             <div>${months[currentMonthIndex]}</div>
             <div class="arrow" id="nextMonth"> > </div>
         </div>
+        <div id="SmallStroke"></div>
 
         <div id="days">
-            <div>S</div>
-            <div>L</div>
-            <div>F</div>
+            <div>M</div>
             <div>T</div>
             <div>W</div>
             <div>T</div>
-            <div>M</div>
+            <div>F</div>
+            <div>S</div>
+            <div>S</div>
         </div>
 
         <div id="dates"></div>
@@ -330,6 +334,8 @@ async function RenderComment(parent, resourse, value) {
 
         resourse.forEach(async comment => {
 
+            let background = document.createElement("div");
+            background.classList.add("backgroundComment");
             let commentBox = document.createElement("div");
             let numberOfComments = comment.comments.length;
 
@@ -357,8 +363,8 @@ async function RenderComment(parent, resourse, value) {
                 RenderPostLayout(comment);
             })
 
-
-            parent.append(commentBox);
+            background.append(commentBox);
+            parent.append(background);
         });
     } else {
         document.querySelector("#commentBox").innerHTML += `

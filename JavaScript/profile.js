@@ -421,7 +421,7 @@ async function RenderFollowers(popUp, resourceUsers) {
         <div id="popUpBox">
         <div id="close"> X </div>
         <h2> Followers </h2>
-        <input type="text" id="searchFollower" name="searchFollower" placeholder="search follower.."/>
+        <input type="text" id="searchFollower" name="searchFollower" placeholder="search user..."/>
         <div id="followers"> </div>
         <button> Show more </button>
     </div>
@@ -472,7 +472,9 @@ function RenderFollowersCard(parent, resourceUsers, value) {
             divDom.innerHTML = `
                 <img id="artistIcon" src="${part.personal.picture}">
                 <h3> ${part.personal.username} </h3>
-                <button> Remove </button>
+                <div id="backgroundButton">
+                    <button> Remove </button>
+                </div>
                 `;
 
             // divDom.querySelector("#artistIcon").style.backgroundImage = `url('${part.personal.picture}')`;

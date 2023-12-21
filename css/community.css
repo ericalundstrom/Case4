@@ -1,5 +1,17 @@
+@font-face {
+    font-family: Urbanista;
+    src: url("../fonts/Shadows_Into_Light/fonts/Urbanist/static/Urbanist-Regular.ttf");
+}
+
+@font-face {
+    font-family: UrbanistaBold;
+    src: url("../fonts/Shadows_Into_Light/fonts/Urbanist/static/Urbanist-Bold.ttf");
+}
+
 body {
-    margin: 0;
+    /* margin: 3%; */
+    font-family: Urbanista;
+    margin: 0px;
 }
 
 #wrapper {
@@ -137,13 +149,21 @@ nav>div>div>#cover {
 
 #box {
     padding: 10px;
-    background-color: #eacaba;
+    background-color: #72A080;
     margin-top: 10px;
-    border-radius: 10px;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(3, auto);
-    height: 300px;
+    height: 37vw;
+    width: 45.5vw;
+}
+
+.backgroundComment {
+    width: 50vw;
+    height: 40vw;
+    background-color: black;
+    clip-path: polygon(0% 0%, 94% 0%, 100% 5%, 100% 100%, 0% 100%, 8% 100%, 0% 96%, 0% 20%);
+    margin-right: 25px;
 }
 
 #box>h2 {
@@ -161,26 +181,49 @@ nav>div>div>#cover {
 
 #date {
     grid-column: 5;
-    justify-self: end;
     align-self: center;
+    margin-right: 20px;
+    width: 10vw;
+    text-align: end;
 }
 
-#wrapper>button {
+#wrapper>#backgroundButton {
+
     grid-column: 3;
+    grid-row: 2;
+    justify-self: center;
+    width: 21vw;
+    height: 3.7vw;
+    background-color: black;
+    clip-path: polygon(0% 0%, 95% 0%, 100% 20%, 100% 100%, 0% 100%, 8% 100%, 0% 82%, 0% 20%);
     margin-right: 25px;
+}
+
+#wrapper>#backgroundButton>button {
+    margin-right: 25px;
+    height: 3vw;
+    width: 20vw;
+    background-color: #8EC6C1;
+    border: 1px solid black;
 }
 
 #tipsbox {
     grid-column: 3;
-    grid-row: 2;
+    grid-row: 3;
+    justify-self: center;
 }
 
 #bigBox {
     border: 1px solid black;
     padding: 20px;
     margin-right: 25px;
-
     position: relative;
+    height: 22vw;
+    width: 18vw;
+    text-align: center;
+    background-color: black;
+    color: white;
+
 }
 
 /* #bigBox {
@@ -195,34 +238,43 @@ nav>div>div>#cover {
 }
 
 #tips p,
-#tips h3,
+#tips h3 {
+    margin: 20px;
+}
+
 #tips #date {
-    margin: 0;
+    margin: 10px;
 }
 
 #leftArrow,
 #rightArrow {
     position: absolute;
-    top: 50%;
+    top: 92%;
     transform: translateY(-50%);
     font-size: 20px;
     cursor: pointer;
 }
 
 #leftArrow {
-    bottom: 40px;
-    right: 310px;
+    right: 400px;
 }
 
 #rightArrow {
     right: 0;
-    bottom: 40px;
 }
 
 #dots {
     display: flex;
     justify-content: center;
     margin-top: 10px;
+}
+
+#SmallStroke {
+    width: 80%;
+    border: 1px solid white;
+    height: 0px;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 .dot {
@@ -261,11 +313,15 @@ nav>div>div>#cover {
 
 #calender {
     grid-column: 3;
-    grid-row: 3;
+    grid-row: 4;
     border: 1px solid black;
     margin-right: 25px;
     margin-top: 50px;
     /* position: relative; */
+    width: 20.5vw;
+    justify-self: center;
+    background-color: black;
+    color: white;
 }
 
 #calender>h2 {
@@ -276,19 +332,21 @@ nav>div>div>#cover {
     margin-bottom: 20px;
     display: flex;
     justify-content: center;
+    margin-top: 20px;
 }
 
 #days {
     display: flex;
     justify-content: space-around;
     font-weight: bold;
+    margin: 25px 10px 10px 10px;
 }
 
 #dates {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: 5px;
-    margin: 20px 0px;
+    margin: 20px 10px;
 }
 
 .arrow {
@@ -312,6 +370,7 @@ nav>div>div>#cover {
 #userAndProfile {
     display: flex;
     align-items: center;
+    margin: 0px 20px;
 }
 
 #profilePic {

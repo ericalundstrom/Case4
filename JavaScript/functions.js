@@ -18,15 +18,19 @@ function swapStyleSheet(styleSheet) {
 
 function BasicLayout() {
     document.querySelector("header").innerHTML = `
-                <p> Rita </p>
-            <input type="text" id="search" name="search" placeholder="search for comics, authors etc.."/>
-            <div id="profile"></div>`
-
-    document.querySelector("nav").innerHTML = `
-            <p id="userprofile"> Profile </p>
-            <p id="home"> Home </p>
-            <p id="community"> Comunity </p>
+            <div id="home">
+                <h1>R</h1>
+            </div>  
+            <div id="leftSideHeader">
+            <div id="community">COMMUNITY</div>
+            <div class="stroke"></div>
+            <div id="profile"> PROFILE</div>
+            <div class="stroke"></div>
+            <img id="notifications" src="../images/notifcationbell.png"> </>
+            </div>
             `
+
+
 
     document.querySelector("footer").innerHTML = `
         <div id="about"> About Rita </div>
@@ -44,7 +48,7 @@ function BasicLayout() {
         RenderProfile();
     });
 
-    document.querySelector("#userprofile").addEventListener("click", (event) => {
+    document.querySelector("#profile").addEventListener("click", (event) => {
         event.stopPropagation();
         // console.log("profile");
         RenderProfile();

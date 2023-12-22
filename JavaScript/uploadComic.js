@@ -5,24 +5,26 @@ let dataToPublish = {};
 async function renderUploadComic() {
     BasicLayout()
     swapStyleSheet("css/uploadComic.css");
+            document.querySelector("body").style.backgroundImage = "url(/images/bkg/bkg/upload.svg)";
 
     document.querySelector("#wrapper").innerHTML = `
-    <h1> UploadComic </h1>
-    <div id="bigStroke"></div>
+    <div id="headerUpload">
+        <h1> UPLOAD </h1>
+    </div>
     <div id="container">
         <div id="leftSide">
             <div id="frontPage">
                 <div id="placeholderUpload">
+                <img src="../images/UploadIcon.svg">
                     <p> Drag and drop to upload</p>   
                 </div>    
             </div> 
         </div>
     <div id="rightSide"> 
-    <label for "title"> Titel </label>
-    <br>
-         <input name="title">
-            <div id="filters"> </div>
-            <label for "title"> Description </label>
+
+         <input name="title" placeholder="Add title">
+            <button id="filters"> Tags + </button>
+            <label for="description"> Add description </label>
             <textarea name="description" required="required" id="description"></textarea>
             <div id="wordCounter">Characters left: 100</div>   
         </div>

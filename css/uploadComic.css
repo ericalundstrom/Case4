@@ -6,47 +6,9 @@
 }
 
 body {
-    margin: 3%;
+    margin: 0%;
     font-family: Urbanista;
-}
-
-header {
-    flex-basis: 50px;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    width: 100%;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    background-color: rgba(255, 255, 255, 0.574);
-}
-
-header>p {
-    margin-top: 20px;
-}
-
-nav {
-    width: 10%;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    border-right: 1px solid black;
-    justify-content: center;
-    position: absolute;
-    position: sticky;
-    top: 75px;
-    margin-left: 10px;
-}
-
-
-footer {
-    display: flex;
-    justify-content: space-around;
-    height: 60px;
-    background-color: gray;
-    align-items: center;
-    margin-top: 40px;
+    background-image: url("../images/bkg/bkg/upload.svg");
 }
 
 main {
@@ -58,11 +20,26 @@ main {
     margin: 0px;
     height: 100vh;
     margin: 0px;
-    width: 90%;
+    width: 100%;
     align-items: center;
     display: flex;
     flex-direction: column;
 }
+
+/* HEADER */
+
+#headerUpload{
+    display: flex;
+    width: 66%;
+}
+
+h1{
+    align-self: flex-start;
+    font-size: 40px;
+    font-weight: 600;  
+}
+
+/* CONTENT */
 
 #container{
     display: flex;
@@ -71,9 +48,7 @@ main {
     gap: 5%;
 }
 
-h1{
-    font-size: 25pz;
-}
+/* Left side */ 
 
 #bigStroke{
      border: 0.5px solid black;
@@ -89,19 +64,74 @@ h1{
     justify-content: center;
 }
 
+#frontPage {
+    width: 413px;
+    height: 591px;
+    background-color: white;
+    box-shadow: 12px 12px 0px black;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  justify-content: center;
+}
+
+#frontPage img {
+    height: 100%;
+    width: 100%;
+    size: contain;
+}
+
+#placeholderUpload{
+    width: 124.67px;
+    height: 133.38px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#frontPage > #placeholderUpload > img {
+    width: 124.67px;
+    height: 133.38px;
+}
+
+#placeholderUpload > p {
+    width: 179.34px;
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Right side*/
+
 
 #rightSide{
     height: 100%;
     display: flex;
     flex-direction: column;
-    margin-top: 8%;
+    margin-top: 23%;
+    width: 35%;
+    margin-left: 100px;
 }
 
 #filters {
-    display: flex;
-    flex-direction: row;
-    width: 30%;
-    gap: 5px;
+    margin-top: 15%;
+    margin-bottom: 15%;
+    width: 100%;
+    padding: 2%;
+    background-color: black;
+    color: white;
+    font-family: Urbanista;
+}
+
+label{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+label[for="description"]{
+    width: 50px;
 }
 
 #rightSide > input[name="title"]:focus, #rightSide > input[name="title"]:required {
@@ -114,16 +144,19 @@ h1{
     /*padding: 0 10px; */
 }
 
-#rightSide >  input[name="title"]{
+input[name="title"]{
+    outline: none;
+    background-color: transparent;
     transition-duration: 1s;
     transform-style: smooth;
     border-style: none;
-    font-size: 20px;
+    font-size: 30px;
     font-family: Urbanista;
     border-bottom: 1px solid black;
 }
 
 #rightSide > textarea{
+    background-color: #f7c488;
     outline: none;
     font-family: Urbanista;
     height: 30vh;
@@ -147,21 +180,6 @@ h1{
 }
 
 
-#frontPage {
-    width: 310px;
-    height: 463px;
-    border: 1px solid black;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  justify-content: center;
-}
-
-#frontPage img {
-    height: 100%;
-    width: 100%;
-    size: contain;
-}
 
 #hidden{
     display: none;

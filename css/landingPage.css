@@ -10,70 +10,15 @@
 }
 
 body {
-     margin: 3%; 
     font-family: Urbanista;
     margin: 0px;
     position: relative;
 }
 
-header {
-    width: 90%;
-     position: sticky;
-    /* flex-basis: 50px; */
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    margin-left: 4%; 
-    margin-right: 4%;
-    align-items: center;
-    top:0;
-    position: sticky;
+header{
+    background: linear-gradient(to bottom, #f7c488, rgba(247, 196, 136, 0));
+    z-index: 1;
 }
-
-header > #home > h1{
-    font-size: 40px;
-    -webkit-text-stroke-width: 0.1px;
-    -webkit-text-stroke-color: black;
-    color: #F7C488;
-    text-shadow: 3px 2px 0px black;
-}
-
-#leftSideHeader{
-    width: 30%;
-    justify-content: space-between;
-    display: flex;
-    align-items: center;
-    font-weight: bold;
-}
-
-
-main {
-    width: 100%;
-    display: flex;
-}
-
-nav {
-    width: 10%;
-    display: flex;
-    flex-direction: column;
-   /*height: 100vh; */
-    border-right: 1px solid black;
-    justify-content: center;
-    position: absolute;
-    /*position: sticky; */
-    top: 75px;
-    margin-left: 10px;
-}
-
-footer {
-    display: flex;
-    justify-content: space-around;
-    height: 60px;
-    background-color: gray;
-    align-items: center;
-    margin-top: 40px;
-}
-
 
 #wrapper {
     width: 100%;
@@ -120,17 +65,23 @@ footer {
     margin-right: 10vw;
 }
 
-input {
-    height: 30px;
-    width: 400px;
-    border-radius: 20px;
-    border: 1px solid black;
-    margin-right: 320px;
-    padding-left: 10px;
-    font-style: italic;
+.hiddenSearch{
+    width: auto;
+  visibility: hidden;
+  transition: visibility 0.5s;
 }
 
+.hidden{
+    opacity: 0;
+}
 
+.hiddenFilters{
+    display: none;
+}
+
+img{
+    cursor: pointer;
+}
 
 .stroke {
     height: 40px;
@@ -193,13 +144,11 @@ nav>div>div>#cover {
 }
 
 .filterContainer {
-    position: absolute;
-    background-color: gray;
-    padding: 10px 0px 10px 10px;
+  background-color: #72A080;
+  padding: 10px 10px 10px 10px;
 }
 
 .filterContainer>div:hover {
-    background-color: rgb(236, 104, 80);
     color: white;
 }
 
@@ -207,9 +156,6 @@ nav>div>div>#cover {
     color: white;
     border-bottom: 1px solid white;
 }
-
-
-
 
 #cards {
     grid-row: 3;
@@ -222,7 +168,7 @@ nav>div>div>#cover {
     /* overflow: scroll; */
     padding-left: 30px;
     box-sizing: border-box;
-    /* margin-top: 80px; */
+    margin-top: 80px; 
     padding-top: 40px;
 }
 
@@ -301,15 +247,6 @@ nav>div>div>#cover {
     background-color: white;
     width: 400px;
     z-index: 1;
-}
-
-
-.hidden {
-    display: none;
-}
-
-.filter {
-    background-color: gray;
 }
 
 
@@ -436,23 +373,84 @@ nav>div>div>#cover {
 /* FILTER MENU */
 
 #filters {
-    grid-template-columns: 1fr, 2fr, 1fr;
-    grid-template-rows: 2fr, 1fr, 2fr;
-    padding-left: 5px;
-    width: 100vh;
-    justify-content: space-between;
+    position: relative;
+    top: 60px;
+    z-index: 1;
+    width: 100%;
+}
+
+#contentFilter{
+    width: 80vw;
+    display: flex;
+    gap: 30%;
 }
 
 #rightHandSide{
-    width: 13%;
+    max-width: 50px;
     display: grid;
-    column-gap: 10px;
+    grid-template-columns: 4, 1fr;
+    grid-template-rows: 2, 1fr;
+
     row-gap:  10px;
+    gap:10%;
+     font-size: 18px;;
+}
+
+#filter{
+    grid-column: 1;
+    grid-row: 2;
+    cursor: pointer;
+    align-self: center;
+    justify-self: end;
+}
+
+#search{
+    cursor: pointer;
+    margin-left: auto;
+    grid-column: 2;
+    grid-row: 1;
+    z-index: 1;
+    align-self: center;
+}
+
+.search-field{
+    grid-column: 1 / 3;
+    grid-row: 1; 
+}
+
+input {
+    width: 220px;
+    border-radius: 5px;
+    border: 1px solid black;
+    background-color: #f7c488;
+    font-style: italic;
+    font-family: Urbanista;
+}
+
+input:focus{
+    outline: none;
+}
+
+#sortComicContainer{
+    grid-column: 2;
+    grid-row: 2;
+    display: flex;
+    align-items: center;
+    justify-self: end;
+    cursor: pointer;
+}
+
+#sortComics {
+    width: 80px;
+}
+#sortComicContainer > img {
+   height: 23px;
+  width: 23px;
 }
 
 #rightBottom{
-    grid-row: 3;
-    grid-column: 3;
+    grid-row: 2;
+    grid-column: 1/3;
     display: flex;
     gap: 10%;
 }
@@ -461,9 +459,9 @@ nav>div>div>#cover {
   align-self: center;
   height: 3px;
   background-color: black;
-  grid-row: 2;
-  grid-column: 1/4;
-  width: 95vw;
+  width: 103%;
+  position: absolute;
+  top:33px;
 
 }
 
@@ -473,33 +471,56 @@ nav>div>div>#cover {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 1fr);
-    row-gap: 150%;
     column-gap: 5%;
-    height: 7%;
+    height: 8%;
     margin-left: 2%;
 }
 
 #themes > * {
+    cursor: pointer;
+    font-size: 25px;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-weight: bold;
-    text-align: center;
     padding: 2%;
 }
 
 
 /* Filter pop-up*/
 
-.containerFilter{
-    transition: transform 0.7s ease-in-out;
-    z-index: 3;
-    position: absolute;
-    top: 0;
-    right: 0;
-    transform: scaleX(0); 
+.containerFilterBig{
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    z-index: 1;
+     transition: transform 0.7s ease-in-out;
+    /* transform: scaleX(0); */
     transform-origin: top right;
     height: 100vh;
+    width: 40vw;
     background-color: #72A080;
     border: 2px solid black;
     overflow: hidden; 
+
+}
+
+#containerFilterBigTop{
+    padding: 2%;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+
+#containerFilterBigTop > p{
+    padding: 0px;
+}
+
+#containerFilterBigTop > img{
+    padding: 3%;
+    height: 20px;
+    width: 20px;
 }
 
 .containerFilter.open{
@@ -512,16 +533,37 @@ nav>div>div>#cover {
     margin-left: 5%;
 }
 
-#formatContainer, #styleContainer, #materialContainer{
-    margin-left: 5%;
+.material{
+    width: 180px;
+}
+
+#materialContainer {
+    width: 70%;
+    margin-left: 2%;   
+}
+
+#formatContainer, #styleContainer{
+    width: 70%;
+    margin-left: 4%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    gap: 15%;
+    grid-template-rows: repeat(4, 1fr); 
+    gap: 5%;
+}
+
+#formatContainer, #styleContainer, #materialContainer > *{
+    cursor: pointer;
+}
+
+#formatContainer > *:hover, #styleContainer >*:hover, #materialContainer >*:hover{
+    color: white;
 }
 
 .removeFilter{
     opacity: 0;
 }
+
+
+
 
 

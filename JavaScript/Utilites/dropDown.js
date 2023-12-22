@@ -21,14 +21,14 @@ function filterFunction(target) {
 
 let Themes = [
 
-    "Identity",
-    "Fantasy",
-    "Love",
-    "Mystery",
-    "Education",
-    "Horror",
-    "Science fiction",
-    "Satire"
+    "HORROR",
+    "FAMILY",
+    "FRIENDS",
+    "IDENTITY",
+    "SATIRÉ",
+    "FANTASY",
+    "LOVE",
+    "EDUCATION"
 ];
 let Materials = {
     "Pens and crayons": [
@@ -101,15 +101,18 @@ let matchingComics = [];
 
 async function createFilterDropdowns(container, value) {
     container.innerHTML = `
-    <div id="themes"></div>
-    <div id="rightHandSide">
-        <img id="search" src="../images/search.png"></img>
-        <div id=rightBottom>
-            <div id="filter">Filters</div>
-            <div id="sortComics">Sort by</div>
+    <div class="strokeFilters"></div>
+    <div id="contentFilter">
+        <div id="themes"></div>
+        <div id="rightHandSide">
+        <input type="text" id="searchField" class="hidden search-field" placeholder="SEARCH...">
+            <img id="search" src="../images/searchIcon.svg"></img>
+            <div id="filter">FILTERS</div>
+            <div id=sortComicContainer>
+                <div id="sortComics">SORT BY</div>
+                <img src="../images/sortArrows.svg"></img>            
+            </div>
         </div>
-        <div class="strokeFilters"></div>
-    </div>
 `;
 
 
@@ -158,6 +161,10 @@ async function createFilterDropdowns(container, value) {
 
     document.querySelector("#filter").addEventListener("click", () => {
         createFilterPage(value);
+    })
+
+    document.querySelector("#search").addEventListener("click", () => {
+        renderSearchField();
     })
 
 
@@ -242,6 +249,10 @@ async function createFilterDropdowns(container, value) {
 }
 
 
+async function renderSearchField(){
+    let searchfeildDOM = document.querySelector(".search-field");
+    searchfeildDOM.classList.toggle("hidden");
+}
 async function displayComics(comics, value) {
     if (value === false) {
         // Fetch all comics
@@ -263,13 +274,16 @@ async function displayComics(comics, value) {
 
 function toggleDropdown(event) {
     const dropdownDiv = event.currentTarget.lastElementChild;
-    dropdownDiv.classList.toggle("hidden");
+    console.log(dropdownDiv);
+    dropdownDiv.classList.toggle("hiddenFilters");
 }
 
 function createFilterPage (value){
 
+    document.querySelector("body").style.overflow = "hidden";
+
     let containerFilter = document.createElement("div");
-    containerFilter.classList.add("containerFilter")
+    containerFilter.classList.add("containerFilterBig")
     document.querySelector("body").append(containerFilter);
 
        containerFilter.offsetWidth;
@@ -278,12 +292,13 @@ function createFilterPage (value){
         containerFilter.classList.add("open");
     }, 200)
 
-    
-  
 
 
     containerFilter.innerHTML = `
-    <p> Clear filters </p>
+    <div id="containerFilterBigTop">
+        <p> Clear filters </p> 
+        <img src="../images/cross.svg" class="close">
+    </div>
     <div id="allFilters">
     <h1>Format</h1>
             <div id="formatContainer">
@@ -296,7 +311,6 @@ function createFilterPage (value){
              </div>
         </div>
     </div>
-    <div class="close">close</div>
     `;
 
         for (const key in Materials) {
@@ -305,10 +319,11 @@ function createFilterPage (value){
         mainCategoryDiv.setAttribute("id", key);
         mainCategoryDiv.classList.add("material");
         mainCategoryDiv.addEventListener("click", toggleDropdown);
-        document.querySelector("#materialContainer").append(mainCategoryDiv);
+        let mainComponent = document.querySelector("#materialContainer");
+        mainComponent.append(mainCategoryDiv);
 
         const dropdownDiv = document.createElement("div");
-        dropdownDiv.classList.add("hidden");
+        dropdownDiv.classList.add("hiddenFilters");
         dropdownDiv.classList.add("filterContainer");
 
         Materials[key].forEach(filter => {
@@ -317,7 +332,7 @@ function createFilterPage (value){
             dropdownDiv.append(div);
 
             div.addEventListener("click", async (event) => {
-                // event.target.classList.toggle("filter");
+                 event.target.classList.toggle("hiddenFilters");
                 event.target.classList.add("selected");
 
                 if (value === true) {
@@ -447,7 +462,10 @@ function createFilterPage (value){
 
 
     document.querySelector(".close").addEventListener("click", () => {
-        containerFilter.classList.add("removeFilter");
+        containerFilter.remove();
+        document.querySelector("body").style.overflow = "scroll";
+
+
     })
 }
 

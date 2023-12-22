@@ -38,15 +38,12 @@ async function RenderProfile(data, value) {
                                 <div id="username">${data[0].personal.username}</div>
                                 <div id="follows">
                                     <img id="followIcon" src="/images/follow.png">
-                                    <div id="followers">${data[0].personal.followers.length} people follows </div>
+                                    <div id="followers">${data[0].personal.followers.length} followers </div>
                                 </div>
                             </div>   
                         </div>
                          </div>              
-                <div id="instagram"> 
-                    <img src="/images/insta.png">
-                    <div>@${data[0].personal.instagram}</div>
-                </div>
+                <div id="instagram"></div>
                 </div>
                 <div id="topRightProfile"> 
                     <div id="description">${data[0].personal.description}</div>
@@ -70,19 +67,13 @@ async function RenderProfile(data, value) {
             <div id="cards"></div
         `;
 
-        if (data[0].personal.instagram == "") {
-            document.querySelector("#instagram > div").textContent = "";
-            document.querySelector("#instagram > img").src = "";
+        if (data[0].personal.instagram !== "") {
+            document.querySelector("#instagram").innerHTML = `
+            <img src="/images/insta.png">
+            <div>@${data[0].personal.instagram}</div>`;
         }
 
-        // <h3> Most used tags </h3>
-        //             <div id="usedTags">
-        //                 <div class="tags"> Graphic novel </div>
-        //                 <div class="tags"> Love </div>
-        //                 <div class="tags"> Collage </div>
-        //                 <div class="tags"> Color pencils </div>
-        //                 <div class="tags"> Friends </div>
-        //             </div>
+                
         if (followers.includes(data[0].personal.username)) {
             // console.log("följer");
             document.querySelector("#followButton").textContent = "following";
@@ -166,21 +157,19 @@ async function RenderProfile(data, value) {
                                         <div id="username">${response[0].personal.username}</div>
                                         <div id="follows">
                                             <img id="followIcon" src="/images/follow.png">
-                                            <div id="name">${response[0].personal.followers.length} people follows </div>
+                                            <div id="name">${response[0].personal.followers.length} followers </div>
                                         </div>
                                 </div>   
                             </div>
                         </div>              
                 <div id="instagram"> 
-                    <img src="/images/insta.png">
-                    <div>@${response[0].personal.instagram}</div>
                 </div>        
                 </div>
                     <div id="topRightProfile">   
                         <div id="description">${response[0].personal.description}</div>  
                         <div id="settingsAndEdit">  
                             <img id="settings" src="/images/settings.png">
-                            <img id="editPng" src="/images/edit.png">
+                            <img id="editPng" src="/images/editicon.svg">
                         </div>
                 </div>
             </div>
@@ -188,50 +177,33 @@ async function RenderProfile(data, value) {
             <div id="middleProfile">
             <div id="BigStroke"></div>
                 <div class="options">
-                    <div id="myComics" class="selected" onclick="toggleClass('myComics')">My comics</div>
-                    <div id="artist" onclick="toggleClass('Saved')">Artists you follow</div>
+                    <div id="myComics" class="selected" onclick="toggleClass('myComics')">COMICS</div>
+                    <div id="artist" onclick="toggleClass('Saved')">FOLLOWING</div>
                 </div>
                 <div id="BigStroke"></div>
-                <div id="backgroundPlusButton">
-                    <div id="background">
-                        <button id="addNewComic">Add +</button>
-                    </div>
+                <div id="bottomMiddleMenu">
+                <button id="addNewComic">ADD +</button>
                 </div>
             </div>
 
             <div id="cards">
             </div
         `;
-
-        // <button id="addNewComic">Add new comic +</button>
-        //             <div id="notifications">
-        //             <img id="noti" src="/images/notis.png">
-        //             <div class="notification">
-        //             <p>Elin liked your comment</p> 
-        //             </div>
-        //             <div class="notiStroke"></div>
-        //             <div class="notification">
-        //             <p>Elin liked your comment</p> 
-        //              </div>
-        //             <div class="notiStroke"></div>
-        //             <div class="notification">
-        //             <p>Elin liked your comment</p> 
-        //              </div>
-        //             </div>   
+ 
 
         // document.querySelector("#follows > #icon").style.backgroundImage 
         if (response[0].personal.followers.length === 1) {
             // console.log("en följare");
             document.querySelector(" #follows > #name").textContent = ` ${response[0].personal.followers.length} people follow`;
         }
-        document.querySelector("#addNewComic").addEventListener("click", () => {
-            renderUploadComic();
-            //renderLayoutPage()
-        })
 
         document.querySelector("#settings").addEventListener("click", () => {
             RenderSettings();
         })
+
+        document.querySelector("#addNewComic").addEventListener("click", () => {
+            renderUploadComic();
+            })
 
         document.querySelector("#follows > #name").addEventListener("click", async (event) => {
             event.stopPropagation();
@@ -248,6 +220,17 @@ async function RenderProfile(data, value) {
 
         document.querySelector("#artist").addEventListener("click", async (event) => {
             event.stopPropagation();
+
+        document.querySelector("#bottomMiddleMenu").innerHTML = `
+            <div id="menuSearchFilter">
+                <img src="../images/SearchIcon.svg">
+                <div class="strokeFilter"></div>
+                <div id="filterProfile">
+                    <p> Filter By </p>
+                    <img src="../images/sortArrows.svg">
+                </div>
+            </div>`;
+
             let cards = document.querySelector("#cards")
             cards.innerHTML = ``;
 
@@ -264,10 +247,15 @@ async function RenderProfile(data, value) {
             }
             toggleClass(event.target.id)
             // console.log(resourse[0].personal.following[1]);
-        })
 
         document.querySelector("#myComics").addEventListener("click", (event) => {
             event.stopPropagation();
+
+            document.querySelector("#bottomMiddleMenu").innerHTML = `
+            <button id="addNewComic">Add +</button>`;
+
+        })
+
             let card = document.querySelector("#cards");
             card.innerHTML = ``;
 
@@ -322,8 +310,6 @@ async function RenderProfile(data, value) {
 
 function toggleClass(selectedId) {
     var options = document.querySelector('.options').children;
-
-
 
     for (var i = 0; i < options.length; i++) {
         var option = options[i];

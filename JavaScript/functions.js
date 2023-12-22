@@ -26,7 +26,7 @@ function BasicLayout() {
             <div class="stroke"></div>
             <div id="profile"> PROFILE</div>
             <div class="stroke"></div>
-            <img id="notifications" src="../images/notifcationbell.png"> </>
+            <img id="notifications" src="../images/alertBell.svg"> </>
             </div>
             `
 
@@ -47,6 +47,38 @@ function BasicLayout() {
         event.stopPropagation();
         RenderProfile();
     });
+
+    document.querySelector("#notifications").addEventListener("click", () => {
+        let notificationsContainer = document.createElement("div");
+        notificationsContainer.innerHTML= `  
+        <div class="notificationContainer"> 
+        <div class="topNotification">
+            <img src="../images/cross.png"></img> 
+        </div>        
+            <div class="notification">
+                <p>Elin liked your comment</p> 
+                <p> 12:03 </p>
+            </div>
+            <div class="notiStroke"></div>
+            <div class="notification">
+                <p>Elin liked your comment</p>
+                <p> 12:21 </p> 
+             </div>
+                <div class="notiStroke"></div>
+            <div class="notification">
+                <p>Elin liked your comment</p> 
+                <p> 13:01 </p>
+             </div>
+        </div>
+    </div>`;
+
+document.querySelector("body").append(notificationsContainer);
+
+document.querySelector(".topNotification> img").addEventListener("click", () => {
+    document.querySelector(".notificationContainer").classList.toggle("hidden");
+})
+
+    })
 
     document.querySelector("#profile").addEventListener("click", (event) => {
         event.stopPropagation();

@@ -8,40 +8,20 @@
 body {
     margin: 0px;
     font-family: Urbanista;
-    background-image: url(/images/Skärmavbild\ 2023-12-20\ kl.\ 10.29.37.png);
+    background-image: url("../images/bkg/profile.png");
     background-size: cover;
     background-repeat: no-repeat;
+      background-attachment: fixed;
 }
 
-header {
-    width: 90%;
-     position: sticky;
-    /* flex-basis: 50px; */
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    margin-left: 4%; 
-    margin-right: 4%;
-    align-items: center;
-    top:0;
-    position: sticky;
+
+footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
 }
 
-header > #home > h1{
-    font-size: 40px;
-    -webkit-text-stroke-width: 0.1px;
-    -webkit-text-stroke-color: black;
-    color: #F7C488;
-    text-shadow: 3px 2px 0px black;
-}
-
-#leftSideHeader{
-    width: 30%;
-    justify-content: space-between;
-    display: flex;
-    align-items: center;
-    font-weight: bold;
-}
 
 input {
     height: 30px;
@@ -72,28 +52,7 @@ main {
     position: relative;
 }
 
-nav {
-    width: 70px;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    border-right: 1px solid black;
-    justify-content: center;
-    position: absolute;
-    position: sticky;
-    top: 75px;
-    margin-left: 10px;
-}
 
-
-footer {
-    display: flex;
-    justify-content: space-around;
-    height: 60px;
-    background-color: gray;
-    align-items: center;
-    margin-top: 40px;
-}
 
 /* Top of profile */
 
@@ -143,22 +102,17 @@ footer {
 } */
 
 #username {
-    font-size: 60px;
+    font-size: 90px;
+    -webkit-text-stroke-width: 0.8px;
+    -webkit-text-stroke-color: black;
+    color: #F7C488;
+    text-shadow: 10px 10px 0px black;
 }
 
 #follows>#icon {
     background-image: url(/images/follow.png);
 }
 
-
-#profile {
-    width: 40px;
-    height: 40px;
-    border-radius: 50px;
-    border: 1px solid rgb(88, 88, 88);
-    background-size: contain;
-    background-repeat: no-repeat;
-}
 
 #userContainerTop {
     display: flex;
@@ -221,9 +175,6 @@ footer {
     margin-left: -8%;
 }
 
-/* #username {
-    font-size: 25px;
-} */
 
 
 #profileIcon {
@@ -257,12 +208,6 @@ footer {
     margin-top: 5px;
 }
 
-/* #insta {
-    align-self: start;
-    margin-left: 14%;
-    margin-top: 4%;
-} */
-
 #instagram {
     width: 120px;
     display: flex;
@@ -288,48 +233,7 @@ footer {
     margin-right: 6vw;
 }
 
-button {
-    font-family: Urbanista;
-    font-size: 18px;
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    border: none;
-}
 
-
-
-/* Notifications */
-
-#notifications {
-    border: 1px solid black;
-    border-radius: 5px;
-    padding: 2%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-top: 6%;
-    position: relative;
-}
-
-.notification {
-    text-align: center;
-
-}
-
-#notifications img {
-    height: 3vw;
-    width: 3vw;
-    position: absolute;
-    top: -15px;
-    left: -15px;
-}
-
-.notiStroke {
-    width: 80%;
-    border: 0.5px solid black;
-    align-self: center;
-}
 
 .stroke {
     height: 40px;
@@ -349,43 +253,57 @@ button {
     margin-right: 10%;
 }
 
-#background {
-    width: 6.5vw;
-    height: 3.5vw;
-    margin-left: 71vw;
+/*#bottomMiddleMenu {
+/*    width: 6.5vw;
+/*    height: 3.5vw;
+/*} */
+
+#menuSearchFilter{
+    margin-left: 67vw;
+    display: flex;
+    flex-direction: row;
+    width: 15vw;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#menuSearchFilter > img {
+        height: 30%;
+        width: 30%;
+}
+
+.strokeFilter{
+    height: 4vh;
+    width: 1px;
     background-color: black;
-    margin-top: 10px;
-    clip-path: polygon(0% 0%, 92% 0%, 100% 16%, 100% 100%, 0% 100%, 7% 100%, 0% 85%, 0% 30%);
 }
 
-#backgroundFollowing {
-    width: 7vw;
-    height: 3.5vw;
-    margin-left: 25vw;
-    background-color: black;
-    margin-top: 10px;
-    clip-path: polygon(0% 0%, 92% 0%, 100% 16%, 100% 100%, 0% 100%, 7% 100%, 0% 85%, 0% 30%);
-    position: relative;
-    top: 3vw;
+#filterProfile{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
 
-#backgroundFollowing>button {
-    width: 92%;
-    border-radius: 0px;
-    background-color: #8EC6C1;
-    border: 1px solid black;
+#filterProfile > img {
+    height: 30%;
+    width: 30%;
 }
 
-#middleProfile button {
-    height: 3vw;
-    width: 6vw;
-    /* margin-top: 5px; */
-    padding: 0px;
-    border-radius: 0px;
-    font-size: 1.5vw;
-    background-color: #8EC6C1;
-    border: 1px solid black;
+ #bottomMiddleMenu > button {
+margin-left: 71vw;
+  height: 5vh;
+  width: 9vw;
+  margin-top: 5px;
+  border: 1px solid black;
+  font-size: 20px;
+  font-family: Urbanista;
+  background-color: #8EC6C1;
+  box-shadow: 5px 5px 0px black;
+  margin-top: 5px;
 }
+
+
 
 /* menu, bottom */
 
@@ -397,7 +315,7 @@ button {
     align-content: center;
     justify-content: center;
     gap: 2%;
-    color: gray;
+    color: #F7C488;
     transition: font-size 0.5s ease-in;
 
 }
@@ -885,12 +803,6 @@ button {
     grid-column: 3;
 }
 
-.stroke {
-    height: 1px;
-    width: 90%;
-    background-color: black;
-    margin: 5%;
-}
 
 #popUp #noti div .moved {
     transition-property: left;

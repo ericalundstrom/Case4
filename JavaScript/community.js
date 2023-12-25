@@ -101,9 +101,9 @@ function tipsBox(parent) {
         timer = setInterval(nextTip, 3000); // Change tip every 3 seconds
     }
 
-    function stopTimer() {
-        clearInterval(timer);
-    }
+    // function stopTimer() {
+    //     clearInterval(timer);
+    // }
 
     parent.innerHTML = `
         <div id="leftArrow"> < </div>
@@ -118,7 +118,8 @@ function tipsBox(parent) {
         stopTimer()
     })
     parent.addEventListener("mouseleave", () => {
-        startTimer();
+        clearInterval(timer);
+        // startTimer();
     })
     parent.querySelector("#leftArrow").addEventListener("click", () => {
         prevTip()

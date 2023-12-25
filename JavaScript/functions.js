@@ -50,7 +50,7 @@ function BasicLayout() {
 
     document.querySelector("#notifications").addEventListener("click", () => {
         let notificationsContainer = document.createElement("div");
-        notificationsContainer.innerHTML= `  
+        notificationsContainer.innerHTML = `  
         <div class="notificationContainer"> 
         <div class="topNotification">
             <img src="../images/cross.png"></img> 
@@ -72,11 +72,11 @@ function BasicLayout() {
         </div>
     </div>`;
 
-document.querySelector("body").append(notificationsContainer);
+        document.querySelector("body").append(notificationsContainer);
 
-document.querySelector(".topNotification> img").addEventListener("click", () => {
-    document.querySelector(".notificationContainer").classList.toggle("hidden");
-})
+        document.querySelector(".topNotification> img").addEventListener("click", () => {
+            document.querySelector(".notificationContainer").classList.toggle("hidden");
+        })
 
     })
 
@@ -122,12 +122,14 @@ async function createCard(parent, resource, user) {
         let allComics = resource.flatMap(user => user[0].comics);
         let boxCards = document.querySelector("#cards");
         boxCards.innerHTML = ``;
+        console.log("högst upp");
         createCard(boxCards, allComics)
     }
 
 
     // console.log(resource.length);
     function createSingleCard(data) {
+        console.log("näst högst upp");
         const cardBox = document.createElement("div");
         cardBox.classList.add("cardBox");
 
@@ -204,14 +206,17 @@ async function createCard(parent, resource, user) {
 
     if (user) {
         if (Array.isArray(resource)) {
+            console.log("array i array");
             resource.forEach(item => {
                 createSingleCard(item);
             });
         } else {
+            console.log("bara array");
             createSingleCard(resource);
         }
     } else {
         if (Array.isArray(resource[0])) {
+            console.log("array i array [0]");
             resource.forEach(part => {
                 part.forEach(comic => {
                     createSingleCard(comic);
@@ -219,6 +224,7 @@ async function createCard(parent, resource, user) {
             });
         } else {
             resource.forEach(comic => {
+                console.log("array i array oklart varför");
                 createSingleCard(comic);
             });
         }

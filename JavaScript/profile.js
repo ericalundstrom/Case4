@@ -73,7 +73,7 @@ async function RenderProfile(data, value) {
             <div>@${data[0].personal.instagram}</div>`;
         }
 
-                
+
         if (followers.includes(data[0].personal.username)) {
             // console.log("följer");
             document.querySelector("#followButton").textContent = "following";
@@ -109,6 +109,7 @@ async function RenderProfile(data, value) {
             let card = document.querySelector("#cards");
             card.innerHTML = ``;
 
+            console.log("på rad 112");
             createCard(card, data);
 
             toggleClass(event.target.id)
@@ -125,6 +126,7 @@ async function RenderProfile(data, value) {
 
                 comics.forEach(comic => {
                     let cardBox = document.querySelector("#cards");
+                    console.log("på rad 128");
                     createCard(cardBox, comic, user);
                 })
 
@@ -189,7 +191,7 @@ async function RenderProfile(data, value) {
             <div id="cards">
             </div
         `;
- 
+
 
         // document.querySelector("#follows > #icon").style.backgroundImage 
         if (response[0].personal.followers.length === 1) {
@@ -203,7 +205,7 @@ async function RenderProfile(data, value) {
 
         document.querySelector("#addNewComic").addEventListener("click", () => {
             renderUploadComic();
-            })
+        })
 
         document.querySelector("#follows > #name").addEventListener("click", async (event) => {
             event.stopPropagation();
@@ -220,8 +222,10 @@ async function RenderProfile(data, value) {
 
         document.querySelector("#artist").addEventListener("click", async (event) => {
             event.stopPropagation();
+            let cards = document.querySelector("#cards")
+            cards.innerHTML = ``;
 
-        document.querySelector("#bottomMiddleMenu").innerHTML = `
+            document.querySelector("#bottomMiddleMenu").innerHTML = `
             <div id="menuSearchFilter">
                 <img src="../images/SearchIcon.svg">
                 <div class="strokeFilter"></div>
@@ -231,30 +235,31 @@ async function RenderProfile(data, value) {
                 </div>
             </div>`;
 
-            let cards = document.querySelector("#cards")
-            cards.innerHTML = ``;
 
             let user = localStorage.getItem("user");
             console.log(user);
             // userParse = JSON.parse(user);
             let resourse = await getUser(user);
+            console.log(resourse[0].personal.following);
 
             let following = resourse[0].personal.following;
             for (const user of following) {
                 let data = await getUser(user);
+                console.log(data);
                 // console.log(data);
                 RenderFollowingArtist(data, false);
             }
             toggleClass(event.target.id)
             // console.log(resourse[0].personal.following[1]);
 
+        })
         document.querySelector("#myComics").addEventListener("click", (event) => {
             event.stopPropagation();
 
             document.querySelector("#bottomMiddleMenu").innerHTML = `
             <button id="addNewComic">Add +</button>`;
 
-        })
+
 
             let card = document.querySelector("#cards");
             card.innerHTML = ``;
@@ -268,8 +273,8 @@ async function RenderProfile(data, value) {
                     let comic = response[0].comics[i];
                     comics.push([comic]); // Wrap each comic in an array
                 }
-
-                createCard(cardBox, comics);
+                console.log("på rad 276");
+                createCard(card, comics);
             }
         })
 
@@ -277,17 +282,20 @@ async function RenderProfile(data, value) {
         // let resourceUser = await responseUser.json();
         // let cardBox = document.querySelector("#cards");
         // createCard(cardBox, resourceUsers);
-        let responsUsers = await fetch("api/data/users.json");
-        let resourceUsers = await responsUsers.json();
-        let comics = [];
-        resourceUsers.forEach(user => {
-            let comicOfUser = user[0].comics;
-            if (comicOfUser.length > 0) {
 
-                comics.push(comicOfUser);
-            }
-        });
+
+        // let responsUsers = await fetch("api/data/users.json");
+        // let resourceUsers = await responsUsers.json();
+        // let comics = [];
+        // resourceUsers.forEach(user => {
+        //     let comicOfUser = user[0].comics;
+        //     if (comicOfUser.length > 0) {
+
+        //         comics.push(comicOfUser);
+        //     }
+        // });
         let cardBox = document.querySelector("#cards");
+        // createCard(cardBox, comics);
 
 
         if (response[0].comics.length === 0) {
@@ -302,6 +310,7 @@ async function RenderProfile(data, value) {
                 // toggleClass(event.target.id)
             }
 
+            console.log("på rad 310");
             createCard(cardBox, comics);
 
         }
@@ -404,12 +413,21 @@ async function RenderFollowers(popUp, resourceUsers) {
 
     popUp.classList.remove("hidden");
     popUp.innerHTML = `
+    <div id="popUpBackground"></div>
         <div id="popUpBox">
         <div id="close"> X </div>
-        <h2> Followers </h2>
-        <input type="text" id="searchFollower" name="searchFollower" placeholder="search user..."/>
+        <h2> FOLLOW <br> ERS </h2>
+        <div id="searchAndSort">
+            <input type="text" id="searchFollower" name="searchFollower" </input>
+            <img id="search" src="../images/searchIcon.svg">
+            <div id="stroke"> </div>
+            <p> Sort By </p>
+            <img src="../images/downArrow.png">
+        </div>
         <div id="followers"> </div>
-        <button> Show more </button>
+        <div id="background">
+            <button> Show more </button>
+        </div>
     </div>
     `;
 

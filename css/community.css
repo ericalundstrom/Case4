@@ -24,19 +24,19 @@ body {
 
 header {
     width: 90%;
-     position: sticky;
+    position: sticky;
     /* flex-basis: 50px; */
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
-    margin-left: 4%; 
+    margin-left: 4%;
     margin-right: 4%;
     align-items: center;
-    top:0;
+    top: 0;
     position: sticky;
 }
 
-header > #home > h1{
+header>#home>h1 {
     font-size: 40px;
     -webkit-text-stroke-width: 0.1px;
     -webkit-text-stroke-color: black;
@@ -44,7 +44,7 @@ header > #home > h1{
     text-shadow: 3px 2px 0px black;
 }
 
-#leftSideHeader{
+#leftSideHeader {
     width: 30%;
     justify-content: space-between;
     display: flex;
@@ -80,7 +80,7 @@ footer {
     display: flex;
     justify-content: space-around;
     height: 60px;
-    background-color: gray;
+    width: 100%;
     align-items: center;
     margin-top: 40px;
 }

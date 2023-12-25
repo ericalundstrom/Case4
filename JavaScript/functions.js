@@ -154,7 +154,7 @@ async function createCard(parent, resource, user) {
             <div id="puplished"> Published ${data.time} </div>
             <div id="userinfo">
                 <img>
-                <div id="username"> ${data.author} </div>
+                <div id="usernameAuthor"> ${data.author} </div>
             </div>
             <div id="desc">
                 ${data.description}
@@ -198,7 +198,6 @@ async function createCard(parent, resource, user) {
             cardBox.querySelector(".imgDiv").style.backgroundImage = `url("api/${data.frontPage}")`;
         } else {
             cardBox.querySelector(".imgDiv").style.backgroundImage = `url("/images/unnamed.png")`;
-            console.log("fungerar ej");
         }
 
         parent.appendChild(cardBox);
@@ -206,17 +205,14 @@ async function createCard(parent, resource, user) {
 
     if (user) {
         if (Array.isArray(resource)) {
-            console.log("array i array");
             resource.forEach(item => {
                 createSingleCard(item);
             });
         } else {
-            console.log("bara array");
             createSingleCard(resource);
         }
     } else {
         if (Array.isArray(resource[0])) {
-            console.log("array i array [0]");
             resource.forEach(part => {
                 part.forEach(comic => {
                     createSingleCard(comic);
@@ -224,7 +220,6 @@ async function createCard(parent, resource, user) {
             });
         } else {
             resource.forEach(comic => {
-                console.log("array i array oklart varför");
                 createSingleCard(comic);
             });
         }

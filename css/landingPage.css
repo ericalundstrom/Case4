@@ -319,6 +319,11 @@ nav>div>div>#cover {
     padding-left: 8px;
 }
 
+#usernameAuthor {
+    font-size: 15px;
+    padding-left: 8px;
+}
+
 #userinfo>img {
     height: 1.5vw;
     width: 1.5vw;

@@ -3,9 +3,12 @@
 function RenderSettings(params) {
     let popUp = document.querySelector("#popUp");
     let popUpWindow = document.querySelector("#popUpWindow");
+    popUpWindow.classList.add("settings");
     popUp.classList.remove("hidden");
+    popUp.classList.add("settingPopUp");
     popUpWindow.innerHTML = `
-        <div> settings</div>
+        <h2> settings</h2>
+        <div id="strokeSetting"> x </div>
         <div class="stroke"></div>
         <form>
             <div id="noti">
@@ -46,31 +49,44 @@ function RenderSettings(params) {
                 </div>
             
             </div>
-            <div id="general"> 
-                <h3>General</h3>
-                <label for="email">Email:</label>
-                <input type="text" id="email" name="email" />
 
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" />
-
-            </div>
-            <div id="password">
-                <h3>Password</h3>
-                <label for="currentPassword">Current password:</label>
-                <input type="password" id="currentPassword" name="currentPassword" />
-                
-                <label for="newPassword">New password:</label>
-                <input type="password" id="newPassword" name="newPassword" />
-                
-                <label for="repeatPassword">Repeat password:</label>
-                <input type="password" id="repeatPassword" name="repeatPassword" />
-            </div>
-            </form>
-            <button id="save"> Save settings </button>
             <div class="stroke"></div>
-        <button id="logout"> Log out</button>
-        <div id="close"> x </div>
+
+            <div id="nedreDel">
+                <div id="password">
+                    <h3>Password</h3>
+                    <label for="currentPassword">Current password:</label>
+                    <input type="password" id="currentPassword" name="currentPassword" />
+                    <div class="underline"></div>
+                    
+                    <label for="newPassword">New password:</label>
+                    <input type="password" id="newPassword" name="newPassword" />
+                    <div class="underline"></div>
+                    
+                    <label for="repeatPassword">Repeat password:</label>
+                    <input type="password" id="repeatPassword" name="repeatPassword" />
+                    <div class="underline"></div>
+                </div>
+                <div id="general"> 
+                    <h3>General</h3>
+                    <label for="email">Email:</label>
+                    <input type="text" id="email" name="email" />
+                    <div class="underline"></div>
+
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" />
+                    <div class="underline"></div>
+
+                </div>
+                </div>
+                <div id="buttonsSettings">
+                    <button id="logout"> Log out</button>
+                    <button id="Remove"> Remove account </button>
+                </div>
+            </form>
+            <div id="backgroundButton">
+                <button id="save"> Save settings </button>
+            </div>
         <div id="message"></div>
         `;
 
@@ -79,7 +95,7 @@ function RenderSettings(params) {
         logout();
     })
 
-    popUpWindow.querySelector("#close").addEventListener("click", (e) => {
+    popUpWindow.querySelector("#strokeSetting").addEventListener("click", (e) => {
         // popUp.innerHTML = `
         //     <div id="popUpBackground"></div>
         //     <div id="popUpWindow">
@@ -88,6 +104,7 @@ function RenderSettings(params) {
         // `;
         e.stopPropagation();
         popUp.classList.add("hidden");
+        popUpWindow.classList.remove("settings");
     })
 
 
@@ -102,6 +119,7 @@ function RenderSettings(params) {
 
     popUpWindow.querySelector("#save").addEventListener("click", (e) => {
         e.stopPropagation();
+        e.preventDefault();
         let email = document.getElementById("email").value;
         let username = document.getElementById("username").value;
         let currentPassword = document.getElementById("currentPassword").value;
@@ -116,7 +134,8 @@ function RenderSettings(params) {
             "repeatPassword": repeatPassword
         };
 
-        ChangeSettings(changesInForm);
+        console.log(changesInForm);
+        // ChangeSettings(changesInForm);
     })
 
 };

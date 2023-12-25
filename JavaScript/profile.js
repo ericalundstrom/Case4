@@ -184,7 +184,9 @@ async function RenderProfile(data, value) {
                 </div>
                 <div id="BigStroke"></div>
                 <div id="bottomMiddleMenu">
-                <button id="addNewComic">ADD +</button>
+                <div id="background">
+                    <button id="addNewComic">ADD +</button>
+                </div>
                 </div>
             </div>
 
@@ -604,23 +606,47 @@ async function deleteComic(comic) {
 
     let popUp = document.querySelector("#popUp");
     let popUpWindow = document.querySelector("#popUpWindow");
+
+    document.querySelector("#popUp").style.width = "50%";
+    document.querySelector("#popUp").style.marginLeft = "25%";
+    document.querySelector("#popUp").style.marginRight = "25%";
     popUp.classList.remove("hidden");
     popUpWindow.innerHTML = `
     <div id="popUpBackground"></div>
         <div id="popUpBox">
         <div id="close"> X </div>
         <div id="popUpWindow">
-            <h2> Are you sure you want to delete ${comic.title}?</h2>
+            <h1> HOLD ON!</h1>
+            <h2>You are about to delete “${comic.title}” premanently form library. </h2>
             <img id="comicFrontPage" src="api/${comic.frontPage}">
-            <button id="yes"> Delete comic from library </button>
+            <h3> Are you sure? </h3>
+            <div id="DeleteOrKeep">
+            <div class="backgroundButton">
+                <button id="yes"> DELETE</button>
+            </div>
+            <div class="backgroundButton">
+                <button id="no"> KEEP</button>
+            </div>
+            </div>
         </div>
     </div>
     `;
 
     popUpWindow.querySelector("#close").addEventListener("click", () => {
         popUp.classList.add("hidden");
+        document.querySelector("#popUp").style.width = "60%";
+        document.querySelector("#popUp").style.marginLeft = "20%";
+        document.querySelector("#popUp").style.marginRight = "20%";
         popUp.querySelector("#popUpBox").removeAttribute("id", "deleteReq");
     })
+    popUpWindow.querySelector("#no").addEventListener("click", () => {
+        popUp.classList.add("hidden");
+        document.querySelector("#popUp").style.width = "60%";
+        document.querySelector("#popUp").style.marginLeft = "20%";
+        document.querySelector("#popUp").style.marginRight = "20%";
+        popUp.querySelector("#popUpBox").removeAttribute("id", "deleteReq");
+    })
+
     popUpWindow.querySelector("#popUpBox").setAttribute("id", "deleteReq");
     popUpWindow.querySelector("#yes").addEventListener("click", async () => {
 
@@ -634,24 +660,28 @@ async function deleteComic(comic) {
             "user": parseUser
         };
 
-        let response = await fetching("api/deleteComic.php.php", "DELETE", body);
+        let response = await fetching("api/deleteComic.php", "DELETE", body);
         let resourse = await response.json();
         console.log(resourse);
         console.log(body);
 
-        if (resourse.ok) {
+        if (resourse) {
+            document.querySelector("#popUp").style.height = "auto";
+
+
             popUpWindow.innerHTML = `
-            <div id="popUpBackground"></div>
-                <div id="popUpBox">
-                    <div id="close"> X </div>
-                    <h2> ${comic.title} has been successfully removed!</h2>
-                    <button id="ok"> Okey </button>
-                    </div>
+                <div id="close"> X </div>
+                        <h3> Your comic ${comic.title} is now deleted</h3>
                 </div>
             `;
-            popUpWindow.querySelector("#ok").addEventListener("click", () => {
+            popUpWindow.querySelector("#close").addEventListener("click", () => {
                 popUp.classList.add("hidden");
-                popUp.querySelector("#popUpBox").removeAttribute("id", "deleteReq");
+                document.querySelector("#popUp").style.height = "600px";
+                document.querySelector("#popUp").style.width = "60%";
+                document.querySelector("#popUp").style.marginLeft = "20%";
+                document.querySelector("#popUp").style.marginRight = "20%";
+                // popUp.querySelector("#popUpBox").removeAttribute("id", "deleteReq");
+                // popUp.querySelector("#popUpBox").removeAttribute("id", "info");
                 // popUp.classList.remove("deleteReq");
             })
         }

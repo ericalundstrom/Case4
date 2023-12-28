@@ -10,10 +10,15 @@ async function RenderCommunity() {
     BasicLayout();
     wrapper.innerHTML = `
         <div id="comunityBox"> 
-            <h2> Community </h2>
-            <div id="stroke"></div>
+            <h2> COMMUNITY </h2>
+            <div id="filterComments">
+                <p> Sort By </p>
+                <img src="../images/downArrow.png">
+            </div>
             <div id="commentBox"></div>
         </div>
+
+        <div id="BigstrokeCommunity"></div>
 
         <div id="backgroundButton">    
             <button onclick="RenderNewCommentPage()"> Add a post + </button>
@@ -58,7 +63,7 @@ function tipsBox(parent) {
         {
             date: "2023-09-11",
             title: "Sale on light tables in pennstore",
-            description: "Models ****** and **** are half price off right now. Sale will be on until December first.",
+            description: "Models ****** and **** are half price off right now. <br> <br>Sale will be on until December first.",
         },
         {
             date: "2023-09-15",
@@ -83,8 +88,8 @@ function tipsBox(parent) {
         `;
 
         // Update dots based on the currentTipIndex
-        const dotsContainer = document.getElementById("dots");
-        dotsContainer.innerHTML = tipsArray.map((_, index) => `<div class="dot ${index === currentTipIndex ? 'active' : ''}"></div>`).join('');
+        // const dotsContainer = document.getElementById("dots");
+        // dotsContainer.innerHTML = tipsArray.map((_, index) => `<div class="dot ${index === currentTipIndex ? 'active' : ''}"></div>`).join('');
     }
 
     function nextTip() {
@@ -101,15 +106,15 @@ function tipsBox(parent) {
         timer = setInterval(nextTip, 3000); // Change tip every 3 seconds
     }
 
-    // function stopTimer() {
-    //     clearInterval(timer);
-    // }
+    function stopTimer() {
+        clearInterval(timer);
+    }
 
+    // <div id="dots"></div>
     parent.innerHTML = `
         <div id="leftArrow"> < </div>
         <div id="bigBox">
             <div id="tips"></div>
-            <div id="dots"></div>
         </div>
         <div id="rightArrow"> > </div>
     `;
@@ -119,7 +124,7 @@ function tipsBox(parent) {
     })
     parent.addEventListener("mouseleave", () => {
         clearInterval(timer);
-        // startTimer();
+        startTimer();
     })
     parent.querySelector("#leftArrow").addEventListener("click", () => {
         prevTip()
@@ -349,18 +354,19 @@ async function RenderComment(parent, resourse, value) {
                         </div>
                         <div id="date">${comment.date}</div>
             
+                        <div id="Bigstroke"></div>
                         <h2>${comment.title}</h2>
                         <p>${comment.description}</p>
             
                         <div id="comments">
-                            <div id="icon">icon</div>
+                            <div id="commentsCount">Comments</div>
+                            <img id="icon" src="/images/commentIcon.png">
                             <div id="count">${numberOfComments}</div>
                         </div>
                 </div>
-                <div id="stroke"></div>
                 `;
 
-            commentBox.addEventListener("click", (event) => {
+            commentBox.querySelector("#box").addEventListener("click", () => {
                 RenderPostLayout(comment);
             })
 
@@ -369,12 +375,13 @@ async function RenderComment(parent, resourse, value) {
         });
     } else {
         document.querySelector("#commentBox").innerHTML += `
-        <div id="goBack"> Go Back </div>
     `;
 
         document.querySelector("#goBack").addEventListener("click", RenderCommunity);
 
 
+        let background = document.createElement("div");
+        background.classList.add("backgroundComment");
         let commentBox = document.createElement("div");
         let numberOfComments = resourse.comments.length;
         // console.log(resourse.picture);
@@ -387,25 +394,28 @@ async function RenderComment(parent, resourse, value) {
                         </div>
                         <div id="date">${resourse.date}</div>
 
+                        <div id="Bigstroke"></div>
                         <h2>${resourse.title}</h2>
                         <p>${resourse.description}</p>
 
                         <div id="comments">
-                            <div id="icon">icon</div>
+                            <div id="commentsCount">Comments</div>
+                            <img id="icon" src="/images/commentIcon.png">
                             <div id="count">${numberOfComments}</div>
                         </div>
                 </div>
-                <div id="stroke"></div>
                 `;
 
         commentBox.querySelector("#profilePic").style.backgroundImage = `url(${resourse.picture})`;
-        parent.append(commentBox);
+
+        background.append(commentBox);
+        parent.append(background);
 
         document.querySelector("#commentBox").innerHTML += `
             <div id="divForComments"></div>
             <form id="addComment" action="api/community.php" method="POST">
                 <input type="text" id="comment" name="comment"placeholder="Skriv en kommentar här..."/>
-                <div id="submitIcon"></div>
+                <img id="submitIcon" src="/images/SendComment.jpg">
             </form>
         `;
         document.querySelector("#goBack").addEventListener("click", RenderCommunity);
@@ -415,16 +425,19 @@ async function RenderComment(parent, resourse, value) {
             for (let i = 0; i < resourse.comments.length; i++) {
 
                 let divDom = document.createElement("div");
+                let backgroundComment = document.createElement("div");
+                backgroundComment.classList.add("backgroundForComment");
                 divDom.innerHTML = `
-                <div id="userAndProfile">
-                <img id="profilePic" src="${resourse.comments[i].picture}">
-                    <p id="username">${resourse.comments[i].author}</p>
-                </div>
-                <div id="date">${resourse.comments[i].date}</div>
-                <div id="stroke"></div>
-                <p>${resourse.comments[i].comment}</p>
+                    <div id="userAndProfile">
+                    <img id="profilePic" src="${resourse.comments[i].picture}">
+                        <p id="username">${resourse.comments[i].author}</p>
+                    </div>
+                    <div id="date">${resourse.comments[i].date}</div>
+                    <div id="stroke"></div>
+                    <p>${resourse.comments[i].comment}</p>
                 `;
-                document.querySelector("#divForComments").append(divDom);
+                backgroundComment.append(divDom);
+                document.querySelector("#divForComments").append(backgroundComment);
 
             }
         } else {
@@ -440,32 +453,55 @@ async function RenderComment(parent, resourse, value) {
 }
 
 
-function RenderNewCommentPage() {
+async function RenderNewCommentPage() {
     // console.log("add");
 
     // BasicLayout();
+
+    let user = localStorage.getItem("user");
+    let userParse = JSON.parse(user);
+    let responseUser = await getUser(userParse);
+    console.log(responseUser[0].personal.picture);
+
+    const date = new Date();
+
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
+
+    // This arrangement can be altered based on how we want the date's format to appear.
+    let currentDate = `${day}-${month}-${year}`;
+    console.log(currentDate);
+
+
     document.querySelector("body").innerHTML += `
     <div id="BackgroundColor" class="hidden">
+        <div id="backgroundNewPost"> 
         <div id="bigBoxCommunity">
-            <h3> Add a new post</h3>
-
-            <form action="api/community.php" method="POST">
-                <div id="titleBox"> 
-                    <label for="title">Title:</label>
-                    <input type="text" id="title" name="title" />
+            <div id="x"> X </div>
+                <div id="userAndProfile">
+                    <img id="profilePic" src="${responseUser[0].personal.picture}">
+                    <p id="username">${responseUser[0].personal.username}</p>
                 </div>
 
-                <div id="descriptionBox">
-                    <label for="description">Description:</label>
-                    <input type="text" id="description" name="description"/>
-                </div>
+                <div id="dateDate">${currentDate}</div>
 
-                <button type="submit"> Upload to community</button>
-            </form>
+                <form action="api/community.php" method="POST">
+                    <div id="titleBox"> 
+                        <label for="title">Title:</label>
+                        <input type="text" id="title" name="title" />
+                    </div>
 
-            <div id="message"></div>
-            
-            <div id="x"> Close </div>
+                    <div id="descriptionBox">
+                        <label for="description">Description:</label>
+                        <input type="text" id="description" name="description"/>
+                    </div>
+
+                    <button type="submit"> Add new post </button>
+                </form>
+
+                <div id="message"></div>
+            </div>
         </div>
     </div>
     `;
@@ -522,30 +558,49 @@ async function RenderPostLayout(data) {
 
     BasicLayout();
     let wrapper = document.querySelector("#wrapper");
-    wrapper.innerHTML = `
-        <div id="comunityBox"> 
-            <h2> Community </h2>
-            <div id="stroke"></div>
-            <div id="commentBox"></div>
-        </div>
+    // wrapper.innerHTML = `
+    //     <div id="comunityBox"> 
+    //         <h2> Community </h2>
+    //         <div id="stroke"></div>
+    //         <div id="commentBox"></div>
+    //     </div>
 
-            <button onclick="RenderNewCommentPage()"> Add a post + </button>
-            <div id="tipsbox">
-                <div id="tips">
-                    <h3> Sale on light tables in pennstore </h3>
-                    <div id="SmallStroke"></div>
-                    <p> Models ****** and **** are half price off right now. Sale will be on untill december first </p>
-                    <p id="date">2023-09-11</p>
-                </div>
-                <div id="dots">
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-                </div>
-            </div>
-            <div id="calender"></div>
-    `;
+    //         <button onclick="RenderNewCommentPage()"> Add a post + </button>
+    //         <div id="tipsbox">
+    //             <div id="tips">
+    //                 <h3> Sale on light tables in pennstore </h3>
+    //                 <div id="SmallStroke"></div>
+    //                 <p> Models ****** and **** are half price off right now. Sale will be on untill december first </p>
+    //                 <p id="date">2023-09-11</p>
+    //             </div>
+    //             <div id="dots">
+    //                 <div class="dot"></div>
+    //                 <div class="dot"></div>
+    //                 <div class="dot"></div>
+    //                 <div class="dot"></div>
+    //             </div>
+    //         </div>
+    //         <div id="calender"></div>
+    // `;
+
+    wrapper.innerHTML = `
+    <div id="comunityBox"> 
+        <h2> Community </h2>
+        <div id="filterComments">
+        <p id="goBack"> Go back </p>
+    </div>
+        <div id="commentBox"></div>
+    </div>
+
+    <div id="BigstrokeCommunity"></div>
+
+    <div id="backgroundButton">    
+        <button onclick="RenderNewCommentPage()"> Add a post + </button>
+    </div>
+    <div id="tipsbox"></div>
+    <div id="calender"></div>
+`;
+
 
 
     let user = localStorage.getItem("user");
@@ -567,9 +622,13 @@ async function RenderPostLayout(data) {
 
     let calender = document.querySelector("#calender");
     let comments = document.querySelector("#commentBox");
+    let tips = document.querySelector("#tipsbox");
 
     RenderCalendar(calender);
     RenderComment(comments, data, false);
+
+    tipsBox(tips);
+
 }
 
 
@@ -609,4 +668,71 @@ async function getUserPic(user) {
     // // console.log(userPic);
 
     return userPic;
+}
+
+
+async function sortComics(matchingComics) {
+
+    const SortOptions = ["A to Z", "Z to A", "Most recently added", "Oldest first"];
+
+    let comics = [];
+    let response = await fetch("api/data/users.json");
+    let resource = await response.json();
+    for (let i = 0; i < resource.length; i++) {
+        if (resource[i][0].comics.length !== 0) {
+            let comic = resource[i][0].comics;
+            comics.push(...comic); // Flatten the nested arrays
+        }
+    }
+    // console.log(matchingComics);
+
+    SortOptions.forEach((sort, index) => {
+        let div = document.createElement("div");
+        div.textContent = sort;
+        div.setAttribute("id", `sort-${index}`); // Unique ID for each option
+        sortDropdownDiv.append(div);
+        div.addEventListener("click", () => {
+            // Call the appropriate sorting function based on the selected option
+            switch (sort) {
+                case "A to Z":
+                    sortComicsByTitle(comics, true);
+                    break;
+                case "Z to A":
+                    sortComicsByTitle(comics, false);
+                    break;
+                case "Most recently added":
+                    sortComicsByDate(comics, true);
+                    break;
+                case "Oldest first":
+                    sortComicsByDate(comics, false);
+                    break;
+                // Add more cases for additional sorting options
+            }
+        });
+    });
+}
+
+function sortComicsByTitle(comics, ascending) {
+    // console.log(comics);
+    // Assuming comics is an array of objects with a 'title' property
+    let sortedComics = comics.slice().sort((a, b) => {
+        const compareResult = a.title.localeCompare(b.title);
+        return ascending ? compareResult : -compareResult;
+    });
+    displayComics(sortedComics, true);
+}
+
+function sortComicsByDate(comics, newestFirst) {
+    // Assuming comics is an array of objects with a 'time' property in the format "MM/DD/YYYY"
+    let sortedComics = comics.slice().sort((a, b) => {
+        const dateA = parseDate(a.time);
+        const dateB = parseDate(b.time);
+        return newestFirst ? dateB - dateA : dateA - dateB;
+    });
+    displayComics(sortedComics, true);
+}
+
+function parseDate(dateString) {
+    const [month, day, year] = dateString.split("/");
+    return new Date(`${year}-${month}-${day}`);
 }

@@ -14,26 +14,40 @@ body {
     margin: 0px;
 }
 
+footer {
+    display: flex;
+    justify-content: space-around;
+    height: 60px;
+    width: 100%;
+    align-items: center;
+    margin-top: 40px;
+}
+
 #wrapper {
     display: grid;
-    grid-template-columns: 80px 2fr 1fr;
+    grid-template-columns: 80px 2fr 10px 1fr;
     height: 100vh;
     grid-template-rows: 40px 1fr 1fr 1fr;
     gap: 40px;
+    overflow: auto;
 }
 
 header {
-    width: 90%;
+    width: 94%;
     position: sticky;
-    /* flex-basis: 50px; */
+    height: 10vh;
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
-    margin-left: 4%;
-    margin-right: 4%;
+    padding-left: 3%;
+    padding-right: 3%;
     align-items: center;
     top: 0;
     position: sticky;
+}
+
+header>* {
+    cursor: pointer;
 }
 
 header>#home>h1 {
@@ -45,7 +59,7 @@ header>#home>h1 {
 }
 
 #leftSideHeader {
-    width: 30%;
+    width: 22%;
     justify-content: space-between;
     display: flex;
     align-items: center;
@@ -125,6 +139,15 @@ nav>div>div>#cover {
     margin-left: 95px;
 }
 
+#BigstrokeCommunity {
+    grid-column: 3;
+    height: 92%;
+    width: 0px;
+    border: 1px solid black;
+    grid-row: 1/5;
+    align-self: end;
+}
+
 #top {
     display: flex;
     justify-content: space-between;
@@ -150,7 +173,27 @@ nav>div>div>#cover {
 }
 
 #comunityBox>h2 {
-    grid-column: 3;
+    font-size: 60px;
+    margin: 0px;
+}
+
+#comunityBox #filterComments {
+    margin-right: 20px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+#comunityBox #filterComments img {
+    height: 0.9vw;
+}
+
+#comunityBox #filterComments p {
+    margin-right: 6px;
+}
+
+#commentBox {
+    margin-top: 50px;
 }
 
 #box {
@@ -160,42 +203,87 @@ nav>div>div>#cover {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(3, auto);
-    height: 37vw;
+    height: 29vw;
     width: 45.5vw;
+    border: 1px solid black;
 }
 
 .backgroundComment {
-    width: 50vw;
-    height: 40vw;
+    width: 49vw;
+    height: 31.9vw;
     background-color: black;
-    clip-path: polygon(0% 0%, 94% 0%, 100% 5%, 100% 100%, 0% 100%, 8% 100%, 0% 96%, 0% 20%);
+    clip-path: polygon(0% 0%, 96% 0%, 100% 5%, 100% 100%, 0% 100%, 8% 100%, 0% 95.3%, 0% 20%);
     margin-right: 25px;
+    margin-bottom: 60px;
+}
+
+#box #Bigstroke {
+    width: 95%;
+    height: 0px;
+    border: 1px solid black;
+    grid-column: 1/6;
+    justify-self: center;
+}
+
+#box img {
+    height: 2.8vw;
+    width: 2.8vw;
+    left: 81px;
+    bottom: -16px;
+}
+
+#box #comments #icon {
+    height: 3vw;
+    position: absolute;
+    left: 83px;
+    bottom: -16px;
 }
 
 #box>h2 {
-    grid-row: 2;
+    grid-row: 3;
     grid-column: 1/6;
-    margin: 5px 0px 5px 40px;
+    margin: 5px 0px 5px 16px;
     font-size: 20px;
 }
 
 #box>p {
     grid-column: 1/6;
-    grid-row: 3;
-    margin: 10px 10px 5px 40px;
+    grid-row: 4;
+    margin: 10px 10px 5px 16px;
 }
 
 #date {
     grid-column: 5;
     align-self: center;
-    margin-right: 20px;
+    margin-right: 15px;
     width: 10vw;
     text-align: end;
+    font-style: italic;
+
+}
+
+#x {
+    position: relative;
+    /* bottom: 320px; */
+    left: 650px;
+    color: white;
+    width: 13px;
+    top: 50px;
+}
+
+#dateDate {
+    margin-right: 15px;
+    width: 95%;
+    text-align: end;
+    font-style: italic;
+    position: absolute;
+    top: 15px;
+    right: 5px;
 }
 
 #wrapper>#backgroundButton {
 
-    grid-column: 3;
+    grid-column: 4;
     grid-row: 2;
     justify-self: center;
     width: 21vw;
@@ -214,9 +302,10 @@ nav>div>div>#cover {
 }
 
 #tipsbox {
-    grid-column: 3;
+    grid-column: 4;
     grid-row: 3;
     justify-self: center;
+    position: relative;
 }
 
 #bigBox {
@@ -224,7 +313,7 @@ nav>div>div>#cover {
     padding: 20px;
     margin-right: 25px;
     position: relative;
-    height: 22vw;
+    height: 19vw;
     width: 18vw;
     text-align: center;
     background-color: black;
@@ -249,20 +338,23 @@ nav>div>div>#cover {
 }
 
 #tips #date {
-    margin: 10px;
+    margin: 0px 10px 10px 10px;
+    text-align: center;
+    font-size: 12px;
+    font-style: normal;
 }
 
 #leftArrow,
 #rightArrow {
     position: absolute;
-    top: 92%;
+    top: 50%;
     transform: translateY(-50%);
     font-size: 20px;
     cursor: pointer;
 }
 
 #leftArrow {
-    right: 400px;
+    right: 340px;
 }
 
 #rightArrow {
@@ -276,11 +368,11 @@ nav>div>div>#cover {
 }
 
 #SmallStroke {
-    width: 80%;
+    width: 70%;
     border: 1px solid white;
     height: 0px;
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 15%;
+    margin-right: 15%;
 }
 
 .dot {
@@ -318,7 +410,7 @@ nav>div>div>#cover {
 
 
 #calender {
-    grid-column: 3;
+    grid-column: 4;
     grid-row: 4;
     border: 1px solid black;
     margin-right: 25px;
@@ -370,13 +462,16 @@ nav>div>div>#cover {
 
 #stroke {
     border: 1px solid black;
-    margin-top: 10px;
+    /* margin-top: 10px; */
+    grid-column: 1/6;
+    width: 95%;
+    margin-left: 2.5%;
 }
 
 #userAndProfile {
     display: flex;
     align-items: center;
-    margin: 0px 20px;
+    margin: 0px 18px;
 }
 
 #profilePic {
@@ -388,16 +483,21 @@ nav>div>div>#cover {
 }
 
 #count {
-    margin-left: 10px;
+    margin-left: 22px;
 }
 
 #comments {
     display: flex;
-    grid-column: 5;
+    grid-column: 1;
     align-self: center;
     justify-self: center;
+    position: relative;
+    margin-left: 16px;
 }
 
+#divForComments {
+    padding-top: 10px;
+}
 
 .hidden {
     display: none;
@@ -410,31 +510,64 @@ nav>div>div>#cover {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
+    position: absolute;
 }
 
-#bigBoxCommunity {
+#backgroundNewPost {
     width: auto;
-    background-color: white;
+    background-color: black;
     /* text-align: center; */
     display: flex;
     position: fixed;
-    left: 20%;
-    right: 20%;
+    left: 25%;
+    right: 25%;
     top: 15%;
-    bottom: 15%;
-    bottom: 15%;
+    bottom: 25%;
     flex-direction: column;
+    clip-path: polygon(0% 0%, 94% 0%, 100% 8%, 100% 100%, 0% 100%, 8% 100%, 0% 94.5%, 0% 20%);
+
+}
+
+#bigBoxCommunity button {
+    margin-left: 40%;
+    height: 3vw;
+    padding: 10px;
+}
+
+#bigBoxCommunity {
+    height: 31vw;
+    width: 47vw;
+    background-color: #F7C488;
+    position: relative;
+}
+
+#bigBoxCommunity input {
+    width: 90%;
+}
+
+#bigBoxCommunity #userAndProfile {
+    margin-top: 10px;
+}
+
+#bigBoxCommunity #userAndProfile img {
+    border: none;
+}
+
+#titleBox {
+    margin-top: 20px;
 }
 
 #title,
 #description {
     /* height: 30px; */
-    width: 400px;
+    /* width: 400px;
     border-radius: 10px;
-    border: 1px solid black;
+    border: 1px solid black; */
     /* margin-right: 0px;
     padding-left: 10px;
     font-style: italic; */
+    border: none;
+    background-color: transparent;
 }
 
 #description {
@@ -445,18 +578,30 @@ form {
     margin-left: 20px;
 }
 
-#divForComments>div {
+#divForComments>.backgroundForComment {
+    margin-top: 30px;
+    width: 49vw;
+    background-color: black;
+    height: 11.3vw;
+    clip-path: polygon(0% 0%, 96% 0%, 100% 20%, 100% 100%, 0% 100%, 8% 100%, 0% 84%, 0% 20%);
+    margin-bottom: 50px;
+}
+
+#divForComments>.backgroundForComment>div {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 40px 1px 1fr;
-    margin-top: 20px;
-    background-color: rgb(189, 183, 183);
-    border-radius: 10px;
+    /* margin-top: 20px; */
+    background-color: #F7C488;
+    /* border-radius: 10px; */
     padding: 5px 10px 10px 10px;
+    width: 45.5vw;
+    height: 8.4vw;
+    border: 1px solid black;
 
 }
 
-#divForComments>div>#stroke {
+#divForComments>.backgroundForComment>div#stroke {
     height: 0px;
     width: 95%;
     grid-column: 1/6;
@@ -464,8 +609,9 @@ form {
     justify-self: center;
 }
 
-#divForComments>div>p {
+#divForComments>.backgroundForComment>div>p {
     grid-row: 3;
+    margin-left: 18px;
 }
 
 #profilePic {
@@ -474,13 +620,15 @@ form {
 }
 
 #addComment {
-    height: 85px;
+    height: 30px;
     margin-top: 20px;
-    background-color: rgb(189, 183, 183);
+    background-color: black;
     border-radius: 10px;
     padding: 10px;
     display: flex;
     margin-left: 0px;
+    /* color: white; */
+    width: 47.7vw;
 }
 
 #addComment>form {
@@ -495,6 +643,8 @@ form {
     width: 90%;
     margin: 0px;
     background-color: transparent;
+    color: white;
+    font-size: 16px;
 }
 
 #submitIcon {
@@ -502,7 +652,8 @@ form {
     width: 30px;
     border-radius: 20px;
     border: 1px solid black;
-    margin-top: 55px;
+    margin-left: 10px;
+    /* margin-top: 55px; */
 }
 
 

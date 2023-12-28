@@ -143,12 +143,22 @@ nav>div>div>#cover {
     left: 600px;
 }
 
+.filterContainerComics {
+    background-color: #72A080;
+    padding: 10px 10px 10px 10px;
+    padding: 0px;
+    position: absolute;
+}
+
 .filterContainer {
     background-color: #72A080;
     padding: 10px 10px 10px 10px;
+    padding: 0px;
+    /* position: absolute; */
 }
 
-.filterContainer>div:hover {
+.filterContainer>div:hover,
+.filterContainerComics>div:hover {
     color: white;
 }
 

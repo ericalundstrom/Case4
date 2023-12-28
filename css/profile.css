@@ -162,6 +162,10 @@ main {
     height: 2vw;
 }
 
+#popUp h2 {
+    margin-left: 35px;
+}
+
 #strokeSetting {
     padding: 0px 10px;
     position: relative;
@@ -179,6 +183,7 @@ main {
     margin: 0px;
     background-color: #8EC6C1;
     color: black;
+    font-size: 20px;
 }
 
 #backgroundButton {
@@ -220,7 +225,7 @@ main {
     /* transition: color 0.3s, background 0.3s, border 0.3s, text-shadow 0.3s; */
     z-index: 0;
     height: 1px;
-    width: 50%;
+    width: 60%;
     margin-bottom: 5px;
 }
 
@@ -243,6 +248,7 @@ main {
     flex-direction: column;
     gap: 10px;
     align-items: end;
+    margin-right: 36px;
 }
 
 #buttonsSettings>button {
@@ -252,16 +258,19 @@ main {
     background-color: #B7323E;
     color: white;
     font-size: 16px;
+    font-weight: lighter;
 }
 
 #nedreDel #password {
     margin-left: 70px;
+    width: 45%;
 }
 
 #popUpWindow #nedreDel input {
     background-color: transparent;
     border-radius: 0px;
     border: none;
+    margin-left: 10px;
 }
 
 #popUpWindow #nedreDel label,
@@ -998,9 +1007,13 @@ body {
 
 
 #popUp #noti div .moved {
-    transition-property: left;
     transition-duration: 1s;
     left: 0px;
+}
+
+#usernameLabel,
+#emailLabel {
+    margin: 10px 25px 38px 25px;
 }
 
 .knapp {

@@ -73,22 +73,22 @@ let Materials = {
         "Mixed materials"
     ],
 }
-let Styles =  [
-        "Fable",
-        "Manga",
-        "Alternative",
-        "Super-hero",
-        "Non-fiction",
-        "Slice of life",
-    ];
+let Styles = [
+    "Fable",
+    "Manga",
+    "Alternative",
+    "Super-hero",
+    "Non-fiction",
+    "Slice of life",
+];
 
 let Format = [
-        "One-frame",
-        "Webcomic",
-        "Story-telling",
-        "Strip-comic",
-        "Part of novel"
-    ]
+    "One-frame",
+    "Webcomic",
+    "Story-telling",
+    "Strip-comic",
+    "Part of novel"
+]
 
 let Sort = [
     "A to Z",
@@ -249,7 +249,7 @@ async function createFilterDropdowns(container, value) {
 }
 
 
-async function renderSearchField(){
+async function renderSearchField() {
     let searchfeildDOM = document.querySelector(".search-field");
     searchfeildDOM.classList.toggle("hidden");
 }
@@ -278,7 +278,7 @@ function toggleDropdown(event) {
     dropdownDiv.classList.toggle("hiddenFilters");
 }
 
-function createFilterPage (value){
+function createFilterPage(value) {
 
     document.querySelector("body").style.overflow = "hidden";
 
@@ -286,8 +286,8 @@ function createFilterPage (value){
     containerFilter.classList.add("containerFilterBig")
     document.querySelector("body").append(containerFilter);
 
-       containerFilter.offsetWidth;
-               containerFilter.offsetWidth;
+    containerFilter.offsetWidth;
+    containerFilter.offsetWidth;
     setTimeout(() => {
         containerFilter.classList.add("open");
     }, 200)
@@ -313,7 +313,7 @@ function createFilterPage (value){
     </div>
     `;
 
-        for (const key in Materials) {
+    for (const key in Materials) {
         const mainCategoryDiv = document.createElement("div");
         mainCategoryDiv.textContent = `${key} v`;
         mainCategoryDiv.setAttribute("id", key);
@@ -332,7 +332,7 @@ function createFilterPage (value){
             dropdownDiv.append(div);
 
             div.addEventListener("click", async (event) => {
-                 event.target.classList.toggle("hiddenFilters");
+                event.target.classList.toggle("hiddenFilters");
                 event.target.classList.add("selected");
 
                 if (value === true) {
@@ -373,8 +373,8 @@ function createFilterPage (value){
         });
         mainCategoryDiv.appendChild(dropdownDiv);
     }
-//
-     Styles.forEach(filter => {
+    //
+    Styles.forEach(filter => {
         const divDom = document.createElement("div");
         divDom.textContent = filter;
         divDom.setAttribute("id", filter);
@@ -417,7 +417,7 @@ function createFilterPage (value){
         document.querySelector("#styleContainer").append(divDom);
     });
 
-     Format.forEach(filter => {
+    Format.forEach(filter => {
         const divDom = document.createElement("div");
         divDom.textContent = filter;
         divDom.setAttribute("id", filter);

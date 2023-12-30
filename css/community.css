@@ -739,3 +739,15 @@ form {
 #contact h3 {
     font-weight: bolder;
 }
+
+.event-dot {
+    width: 5px;
+    height: 5px;
+    background-color: red;
+    /* Adjust the color as needed */
+    border-radius: 50%;
+    position: absolute;
+    /* bottom: 2px; */
+    left: 50%;
+    transform: translateX(-50%);
+}

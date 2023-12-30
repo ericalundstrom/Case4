@@ -230,41 +230,85 @@ function RenderCalendar(parent) {
         updateCalendar();
     }
 
+    // function showEventPopup(date) {
+    //     let popUp = document.querySelector("#popUp");
+    //     popUp.classList.add("popUpCalender");
+    //     popUp.classList.remove("hidden");
+
+    //     popUp.innerHTML = `
+    //     <div id="close"> x </div>
+    //         ${months[currentMonthIndex]} ${date}, ${currentYear}
+    //     `;
+
+    //     const event = events[months[currentMonthIndex]][date];
+    //     if (event) {
+    //         popUp.innerHTML = ` 
+    //         <div id="close"> x </div>
+    //         <div id="tema">
+    //             <h3> Tema </h3>
+    //             ${months[currentMonthIndex]} ${date}, ${currentYear} <br>
+    //             ${events[months[currentMonthIndex]][date]}
+    //         </div>
+    //         <div id="about">
+    //             <h3> About submission </h3> 
+    //             <p>maila serier som lågupplösta pdf:er direkt i mailet till mig </p>
+    //         </div>
+    //         <div id="contact">
+    //             <h3> Contact </h3> 
+    //             <p> Rojin@ordforlag.se</p>
+    //         </div>
+    //         `;
+    //     }
+
+    //     popUp.querySelector("#close").addEventListener("click", (e) => {
+    //         e.stopPropagation();
+    //         popUp.classList.add("hidden");
+    //     })
+    // }
+
     function showEventPopup(date) {
         let popUp = document.querySelector("#popUp");
         popUp.classList.add("popUpCalender");
         popUp.classList.remove("hidden");
 
-        popUp.innerHTML = `
-        <div id="close"> x </div>
-            ${months[currentMonthIndex]} ${date}, ${currentYear}
-        `;
-
         const event = events[months[currentMonthIndex]][date];
         if (event) {
             popUp.innerHTML = ` 
-            <div id="close"> x </div>
-            <div id="tema">
-                <h3> Tema </h3>
-                ${months[currentMonthIndex]} ${date}, ${currentYear} <br>
-                ${events[months[currentMonthIndex]][date]}
-            </div>
-            <div id="about">
-                <h3> About submission </h3> 
-                <p>maila serier som lågupplösta pdf:er direkt i mailet till mig </p>
-            </div>
-            <div id="contact">
-                <h3> Contact </h3> 
-                <p> Rojin@ordforlag.se</p>
-            </div>
+                <div id="close"> x </div>
+                <div id="tema">
+                    <h3> Tema </h3>
+                    ${months[currentMonthIndex]} ${date}, ${currentYear} <br>
+                    ${events[months[currentMonthIndex]][date]}
+                </div>
+                <div id="about">
+                    <h3> About submission </h3> 
+                    <p>maila serier som lågupplösta pdf:er direkt i mailet till mig </p>
+                </div>
+                <div id="contact">
+                    <h3> Contact </h3> 
+                    <p> Rojin@ordforlag.se</p>
+                </div>
             `;
+
+            const dateElements = document.querySelectorAll(".date");
+            const clickedDateElement = Array.from(dateElements).find(element => element.textContent === String(date));
+
+            if (clickedDateElement) {
+                const dateRect = clickedDateElement.getBoundingClientRect();
+                const scrollY = window.scrollY || window.pageYOffset;
+
+                // Adjust the popup position based on the clicked date, scroll position, and offset
+                popUp.style.left = `${dateRect.left - popUp.clientWidth + dateRect.width + 42}px`;
+                popUp.style.top = `${dateRect.top + scrollY - popUp.clientHeight - 20}px`;
+            }
         }
 
         popUp.querySelector("#close").addEventListener("click", (e) => {
             e.stopPropagation();
             popUp.classList.add("hidden");
-        })
+        });
     }
+
 
 
     function updateCalendar() {
@@ -291,7 +335,13 @@ function RenderCalendar(parent) {
 
             const event = events[months[currentMonthIndex]][i];
             if (event) {
+                dateDiv.style.position = "relative";
                 dateDiv.style.fontWeight = "bold";
+                let dot = document.createElement("div");
+                dot.classList.add("event-dot");
+
+                // Append the dot to the date element
+                dateDiv.appendChild(dot)
                 dateDiv.addEventListener("click", () => {
                     showEventPopup(i)
                 });

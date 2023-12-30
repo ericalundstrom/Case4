@@ -146,6 +146,7 @@ nav>div>div>#cover {
 .filterContainer {
   background-color: #72A080;
   padding: 10px 10px 10px 10px;
+  position: absolute;
 }
 
 .filterContainer>div:hover {

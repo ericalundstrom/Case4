@@ -1,23 +1,8 @@
 body {
     margin: 10px;
-    font-family: ShadowsInToLight;
+    font-family: Urbanista;
 }
 
-header {
-    flex-basis: 50px;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    width: 100%;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    background-color: rgba(255, 255, 255, 0.574);
-}
-
-header>p {
-    margin-top: 20px;
-}
 
 main {
     width: 100%;
@@ -37,14 +22,7 @@ nav {
     margin-left: 10px;
 }
 
-footer {
-    display: flex;
-    justify-content: space-around;
-    height: 60px;
-    background-color: gray;
-    align-items: center;
-    margin-top: 40px;
-}
+
 
 
 #wrapper {
@@ -65,16 +43,6 @@ input {
     font-style: italic;
 }
 
-
-#profile {
-    width: 40px;
-    height: 40px;
-    border-radius: 50px;
-    border: 1px solid rgb(88, 88, 88);
-    background-size: contain;
-    background-repeat: no-repeat;
-}
-
 #contactUsBox {
     display: flex;
     width: 900px;
@@ -84,8 +52,9 @@ input {
 
 
 #bigbox {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
 #contactFacts {

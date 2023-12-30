@@ -12,7 +12,6 @@ function RenderCopyRight(params) {
     
     <div id="copyrightBox">
         <h2> Copyright </h2>
-        <div id="stroke"></div>
         <div id="bigbox">
             <div id="copyrightInfo">
                 <p> © 2023 Rita, All rights reserved. The content, images, and materials on this website are protected by copyright law. <br> <br>
@@ -30,5 +29,6 @@ function RenderCopyRight(params) {
             </div>
         </div>
     </div>
+    <div id="BigStroke"></div>
     `;
 }

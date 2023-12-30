@@ -144,9 +144,12 @@ nav>div>div>#cover {
 }
 
 .filterContainer {
-  background-color: #72A080;
-  padding: 10px 10px 10px 10px;
-  position: absolute;
+    background-color: #72A080;
+    padding: 10px 10px 10px 10px;
+    position: absolute;
+
+}
+
 .filterContainerComics {
     background-color: #72A080;
     padding: 10px 10px 10px 10px;
@@ -356,6 +359,7 @@ nav>div>div>#cover {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    z-index: 2;
 }
 
 .comic {

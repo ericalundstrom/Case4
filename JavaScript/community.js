@@ -335,6 +335,7 @@ function RenderCalendar(parent) {
 
 async function RenderComment(parent, resourse, value) {
 
+    parent.innerHTML = "";
 
     if (value) {
 
@@ -368,14 +369,13 @@ async function RenderComment(parent, resourse, value) {
 
             commentBox.querySelector("#box").addEventListener("click", () => {
                 RenderPostLayout(comment);
-            })
+            });
 
             background.append(commentBox);
             parent.append(background);
         });
     } else {
-        document.querySelector("#commentBox").innerHTML += `
-    `;
+        document.querySelector("#commentBox").innerHTML += ``;
 
         document.querySelector("#goBack").addEventListener("click", RenderCommunity);
 
@@ -407,6 +407,10 @@ async function RenderComment(parent, resourse, value) {
                 `;
 
         commentBox.querySelector("#profilePic").style.backgroundImage = `url(${resourse.picture})`;
+
+        commentBox.querySelector("#box").addEventListener("click", () => {
+            RenderPostLayout(resourse);
+        });
 
         background.append(commentBox);
         parent.append(background);
@@ -445,8 +449,6 @@ async function RenderComment(parent, resourse, value) {
         }
         document.querySelector("#submitIcon").addEventListener("click", (event) => {
             event.stopPropagation();
-
-
             addComment(resourse);
         })
     }
@@ -454,9 +456,6 @@ async function RenderComment(parent, resourse, value) {
 
 
 async function RenderNewCommentPage() {
-    // console.log("add");
-
-    // BasicLayout();
 
     let user = localStorage.getItem("user");
     let userParse = JSON.parse(user);
@@ -469,12 +468,12 @@ async function RenderNewCommentPage() {
     let month = date.getMonth() + 1;
     let year = date.getFullYear();
 
-    // This arrangement can be altered based on how we want the date's format to appear.
     let currentDate = `${day}-${month}-${year}`;
     console.log(currentDate);
 
 
-    document.querySelector("body").innerHTML += `
+    let DivDom = document.createElement("div");
+    DivDom.innerHTML = `
     <div id="BackgroundColor" class="hidden">
         <div id="backgroundNewPost"> 
         <div id="bigBoxCommunity">
@@ -486,10 +485,11 @@ async function RenderNewCommentPage() {
 
                 <div id="dateDate">${currentDate}</div>
 
+                <div id="BigStroke"></div>
                 <form action="api/community.php" method="POST">
                     <div id="titleBox"> 
                         <label for="title">Title:</label>
-                        <input type="text" id="title" name="title" />
+                        <input type="text" id="title" name="title" rows="5" >
                     </div>
 
                     <div id="descriptionBox">
@@ -506,10 +506,13 @@ async function RenderNewCommentPage() {
     </div>
     `;
 
+    document.body.appendChild(DivDom);
+
     document.querySelector("#BackgroundColor").classList.remove("hidden");
     document.querySelector("#x").addEventListener("click", () => {
         // document.querySelector("#BackgroundColor").classList.add("hidden");
         document.querySelector("#BackgroundColor").remove();
+        // RenderCommunity();     <-- Ska vi ha det? Då uppdateras sidan
 
     });
 
@@ -539,7 +542,11 @@ async function RenderNewCommentPage() {
 
             if (!resourse.message) {
                 console.log(resourse);
-                document.querySelector("#message").textContent = "Successfully added post!";
+                document.querySelector("#message").textContent = `Successfully added post!`;
+                document.querySelector("#x").addEventListener("click", () => {
+                    document.querySelector("#BackgroundColor").remove();
+                    RenderCommunity();
+                })
             } else {
                 console.log(resourse.message);
                 document.querySelector("#message").textContent = resourse.message;
@@ -584,22 +591,22 @@ async function RenderPostLayout(data) {
     // `;
 
     wrapper.innerHTML = `
-    <div id="comunityBox"> 
-        <h2> Community </h2>
-        <div id="filterComments">
-        <p id="goBack"> Go back </p>
-    </div>
-        <div id="commentBox"></div>
-    </div>
+        <div id="comunityBox"> 
+            <h2> Community </h2>
+            <div id="filterComments">
+            <p id="goBack"> Go back </p>
+        </div>
+            <div id="commentBox"></div>
+        </div>
 
-    <div id="BigstrokeCommunity"></div>
+        <div id="BigstrokeCommunity"></div>
 
-    <div id="backgroundButton">    
-        <button onclick="RenderNewCommentPage()"> Add a post + </button>
-    </div>
-    <div id="tipsbox"></div>
-    <div id="calender"></div>
-`;
+        <div id="backgroundButton">    
+            <button onclick="RenderNewCommentPage()"> Add a post + </button>
+        </div>
+        <div id="tipsbox"></div>
+        <div id="calender"></div>
+    `;
 
 
 
@@ -652,10 +659,13 @@ async function addComment(resourse) {
 
     let respons = await fetching("api/community.php", "POST", body);
     let resourseComment = await respons.json();
+    console.log(resourseComment);
 
     if (resourseComment) {
 
         // // console.log(resourseComment);
+        // let comments = document.querySelector("#commentBox");                   <--- Ska vi ha detta? 
+        // RenderComment(comments, resourse, false);
         RenderCommunity();
 
     }

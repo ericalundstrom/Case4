@@ -21,13 +21,15 @@ body {
 
 
 
-#box{
+#box {
     width: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     max-height: 100vh;
+    margin-right: 10vw;
 }
+
 h1 {
     margin-left: 20%;
     font-size: 390px;
@@ -68,7 +70,7 @@ input {
     font-family: Urbanista;
 }
 
-input:focus{
+input:focus {
     font-size: 18px;
     outline: none;
 }
@@ -92,7 +94,7 @@ p {
     display: flex;
 }
 
-form{
+form {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -110,14 +112,14 @@ button {
     height: 40px;
 }
 
-button:focus{
+button:focus {
     outline: none;
 }
 
-button:active{
+button:active {
     box-shadow: 2px 2px 0px black;
 }
 
-#message > p > span{
-align-items: center;
+#message>p>span {
+    align-items: center;
 }

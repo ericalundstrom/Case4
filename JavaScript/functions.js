@@ -50,7 +50,7 @@ function BasicLayout() {
 
     document.querySelector("#notifications").addEventListener("click", () => {
         let notificationsContainer = document.createElement("div");
-        notificationsContainer.innerHTML= `  
+        notificationsContainer.innerHTML = `  
         <div class="notificationContainer"> 
         <div class="topNotification">
             <img src="../images/cross.png"></img> 
@@ -72,11 +72,11 @@ function BasicLayout() {
         </div>
     </div>`;
 
-document.querySelector("body").append(notificationsContainer);
+        document.querySelector("body").append(notificationsContainer);
 
-document.querySelector(".topNotification> img").addEventListener("click", () => {
-    document.querySelector(".notificationContainer").classList.toggle("hidden");
-})
+        document.querySelector(".topNotification> img").addEventListener("click", () => {
+            document.querySelector(".notificationContainer").classList.toggle("hidden");
+        })
 
     })
 
@@ -122,12 +122,14 @@ async function createCard(parent, resource, user) {
         let allComics = resource.flatMap(user => user[0].comics);
         let boxCards = document.querySelector("#cards");
         boxCards.innerHTML = ``;
+        console.log("högst upp");
         createCard(boxCards, allComics)
     }
 
 
     // console.log(resource.length);
     function createSingleCard(data) {
+        console.log("näst högst upp");
         const cardBox = document.createElement("div");
         cardBox.classList.add("cardBox");
 
@@ -152,7 +154,7 @@ async function createCard(parent, resource, user) {
             <div id="puplished"> Published ${data.time} </div>
             <div id="userinfo">
                 <img>
-                <div id="username"> ${data.author} </div>
+                <div id="usernameAuthor"> ${data.author} </div>
             </div>
             <div id="desc">
                 ${data.description}
@@ -196,7 +198,6 @@ async function createCard(parent, resource, user) {
             cardBox.querySelector(".imgDiv").style.backgroundImage = `url("api/${data.frontPage}")`;
         } else {
             cardBox.querySelector(".imgDiv").style.backgroundImage = `url("/images/unnamed.png")`;
-            console.log("fungerar ej");
         }
 
         parent.appendChild(cardBox);

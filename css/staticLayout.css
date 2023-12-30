@@ -15,23 +15,23 @@ body {
 
 header {
     width: 94%;
-     position: sticky;
+    position: sticky;
     height: 10vh;
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
-    padding-left: 3%; 
+    padding-left: 3%;
     padding-right: 3%;
     align-items: center;
-    top:0;
+    top: 0;
     position: sticky;
 }
 
-header > * {
+header>* {
     cursor: pointer;
 }
 
-header > #home > h1{
+header>#home>h1 {
     font-size: 40px;
     -webkit-text-stroke-width: 0.1px;
     -webkit-text-stroke-color: black;
@@ -39,7 +39,7 @@ header > #home > h1{
     text-shadow: 3px 2px 0px black;
 }
 
-#leftSideHeader{
+#leftSideHeader {
     width: 22%;
     justify-content: space-between;
     display: flex;
@@ -56,15 +56,16 @@ footer {
     margin-top: 40px;
 }
 
-footer > *{
+footer>* {
     cursor: pointer;
 }
 
-.hidden{
-    opacity: 0px;
+.hidden {
+    opacity: 0;
+    height: 0px;
 }
 
-.notificationContainer{
+.notificationContainer {
     position: absolute;
     top: 90px;
     right: 10px;
@@ -80,28 +81,28 @@ footer > *{
     justify-content: flex-end;
 }
 
-.topNotification > img{
+.topNotification>img {
     height: 40px;
     width: 40px;
 }
 
-.notification{
+.notification {
     display: flex;
     justify-content: space-between;
     padding: 5%;
 
 }
 
-button{
+button {
     background-color: #8EC6C1;
     border: 1px solid black;
     box-shadow: 2px 2px 0px black;
 }
 
-button:focus{
+button:focus {
     outline: none;
 }
 
-button:active{
+button:active {
     box-shadow: 2px 2px 0px black;
 }

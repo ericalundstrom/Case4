@@ -1,76 +1,90 @@
 "use strict"
 
 function RenderSettings(params) {
+    let username = localStorage.getItem("user");
+    let userParse = JSON.parse(username);
     let popUp = document.querySelector("#popUp");
     let popUpWindow = document.querySelector("#popUpWindow");
+    popUpWindow.classList.add("settings");
     popUp.classList.remove("hidden");
+    popUp.classList.add("settingPopUp");
     popUpWindow.innerHTML = `
-        <div> settings</div>
+        <h2> settings</h2>
+        <div id="strokeSetting"> x </div>
         <div class="stroke"></div>
         <form>
             <div id="noti">
                 <h3>Notifications</h3>
                 <div>
-                    <p> Notifications for likes </p>
+                    <p> Comments </p>
 
                     <div>
-                    <div style="width: 27px; height: 18px; color: #939393; font-size: 16px; font-family: Urbanist; font-weight: 400; word-wrap: break-word">Off</div>
+                    <div style="width: 27px; height: 18px; color: black; font-size: 16px; font-weight: 400; word-wrap: break-word">Off</div>
                     <div style="width: 36px; height: 16px; position: relative">
-                        <div style="width: 36px; height: 16px; left: 0px; top: 0px; position: absolute; background: #D9D9D9; border-radius: 20px"></div>
-                        <div class="knapp"></div>
+                        <div  class="bkg" style="width: 36px; height: 16px; left: 0px; top: 0px; position: absolute; background: #B7323E; border-radius: 20px"></div>
+                        <div class="knapp moved"></div>
                     </div>
-                    <div style="width: 27px; height: 18px; color: black; font-size: 16px; font-family: Urbanist; font-weight: 400; word-wrap: break-word">On</div>
+                    <div style="width: 27px; height: 18px; color: #464545; font-size: 16px; font-weight: 400; word-wrap: break-word">On</div>
                     </div>
                     </div>
                 <div>
-                    <p> Notifications from publication </p>
+                    <p> Followers </p>
                     <div>
-                    <div style="width: 27px; height: 18px; color: #939393; font-size: 16px; font-family: Urbanist; font-weight: 400; word-wrap: break-word">Off</div>
+                    <div style="width: 27px; height: 18px; color: #464545; font-size: 16px; font-weight: 400; word-wrap: break-word">Off</div>
                     <div style="width: 36px; height: 16px; position: relative">
-                        <div style="width: 36px; height: 16px; left: 0px; top: 0px; position: absolute; background: #D9D9D9; border-radius: 20px"></div>
+                        <div class="bkg" style="width: 36px; height: 16px; left: 0px; top: 0px; position: absolute; background: #8EC6C1; border-radius: 20px"></div>
                         <div class="knapp" ></div>
                     </div>
-                    <div style="width: 27px; height: 18px; color: black; font-size: 16px; font-family: Urbanist; font-weight: 400; word-wrap: break-word">On</div>
+                    <div style="width: 27px; height: 18px; color: black; font-size: 16px; font-weight: 400; word-wrap: break-word">On</div>
                     </div>
                 </div>
                 <div>
-                    <p> Notifications from comments </p>
+                    <p> Followers publications </p>
                     <div>
-                    <div style="width: 27px; height: 18px; color: #939393; font-size: 16px; font-family: Urbanist; font-weight: 400; word-wrap: break-word">Off</div>
+                    <div style="width: 27px; height: 18px; color: black; font-size: 16px; font-weight: 400; word-wrap: break-word">Off</div>
                     <div style="width: 36px; height: 16px; position: relative">
-                        <div style="width: 36px; height: 16px; left: 0px; top: 0px; position: absolute; background: #D9D9D9; border-radius: 20px"></div>
-                        <div class="knapp"></div>
+                        <div class="bkg" style="width: 36px; height: 16px; left: 0px; top: 0px; position: absolute; background: #B7323E; border-radius: 20px"></div>
+                        <div class="knapp moved"></div>
                     </div>
-                    <div style="width: 27px; height: 18px; color: black; font-size: 16px; font-family: Urbanist; font-weight: 400; word-wrap: break-word">On</div>
+                    <div style="width: 27px; height: 18px; color: #464545; font-size: 16px; font-weight: 400; word-wrap: break-word">On</div>
                     </div>
                 </div>
             
             </div>
-            <div id="general"> 
-                <h3>General</h3>
-                <label for="email">Email:</label>
-                <input type="text" id="email" name="email" />
 
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" />
-
-            </div>
-            <div id="password">
-                <h3>Password</h3>
-                <label for="currentPassword">Current password:</label>
-                <input type="password" id="currentPassword" name="currentPassword" />
-                
-                <label for="newPassword">New password:</label>
-                <input type="password" id="newPassword" name="newPassword" />
-                
-                <label for="repeatPassword">Repeat password:</label>
-                <input type="password" id="repeatPassword" name="repeatPassword" />
-            </div>
-            </form>
-            <button id="save"> Save settings </button>
             <div class="stroke"></div>
-        <button id="logout"> Log out</button>
-        <div id="close"> x </div>
+
+            <div id="nedreDel">
+                <div id="password">
+                    <h3>Password</h3>
+                    <label for="currentPassword">Current password:</label>
+                    <input type="password" id="currentPassword" name="currentPassword" />
+                    <div class="underline"></div>
+                    
+                    <label for="newPassword">New password:</label>
+                    <input type="password" id="newPassword" name="newPassword" />
+                    <div class="underline"></div>
+                    
+                    <label for="repeatPassword">Repeat password:</label>
+                    <input type="password" id="repeatPassword" name="repeatPassword" />
+                    <div class="underline"></div>
+                </div>
+                <div id="general"> 
+                    <h3>General</h3>
+
+                    <div id="usernameLabel"> Username: ${userParse} </div> 
+                    <div id="emailLabel"> Email: ${userParse}@outlook.com </div> 
+
+                </div>
+                </div>
+                <div id="buttonsSettings">
+                    <button id="logout"> Log out</button>
+                    <button id="Remove"> Remove account </button>
+                </div>
+            </form>
+            <div id="backgroundButton">
+                <button id="save"> Save settings </button>
+            </div>
         <div id="message"></div>
         `;
 
@@ -79,7 +93,7 @@ function RenderSettings(params) {
         logout();
     })
 
-    popUpWindow.querySelector("#close").addEventListener("click", (e) => {
+    popUpWindow.querySelector("#strokeSetting").addEventListener("click", (e) => {
         // popUp.innerHTML = `
         //     <div id="popUpBackground"></div>
         //     <div id="popUpWindow">
@@ -88,6 +102,7 @@ function RenderSettings(params) {
         // `;
         e.stopPropagation();
         popUp.classList.add("hidden");
+        popUpWindow.classList.remove("settings");
     })
 
 
@@ -96,27 +111,38 @@ function RenderSettings(params) {
     knappDivs.forEach((knappDiv, index) => {
         knappDiv.addEventListener("click", (e) => {
             knappDiv.classList.toggle("moved");
+            let parent = knappDiv.parentNode;
+            let selected = parent.querySelector(".bkg")
+            if (knappDiv.classList.contains("moved")) {
+                selected.style.backgroundColor = "#B7323E";
+            } else {
+                selected.style.backgroundColor = "#8EC6C1";
+            }
             // console.log("truck på knapp");
         })
     });
 
     popUpWindow.querySelector("#save").addEventListener("click", (e) => {
         e.stopPropagation();
-        let email = document.getElementById("email").value;
-        let username = document.getElementById("username").value;
+        e.preventDefault();
+        // let email = document.getElementById("email").value;
+        let username = document.getElementById("usernameLabel").value;
+        // let username = localStorage.getItem("user");
+        // let userParse = JSON.parse(username);
         let currentPassword = document.getElementById("currentPassword").value;
         let newPassword = document.getElementById("newPassword").value;
         let repeatPassword = document.getElementById("repeatPassword").value;
 
+        // "email": email,
         let changesInForm = {
-            "email": email,
-            "username": username,
+            "username": userParse,
             "currentPassword": currentPassword,
             "newPassword": newPassword,
             "repeatPassword": repeatPassword
         };
 
-        ChangeSettings(changesInForm);
+        console.log(changesInForm);
+        // ChangeSettings(changesInForm);
     })
 
 };
@@ -125,8 +151,8 @@ async function ChangeSettings(data) {
 
     let user = localStorage.getItem("user");
     let userParse = JSON.parse(user);
+    // "email": data.email,
     let body = {
-        "email": data.email,
         "username": data.username,
         "currentPassword": data.currentPassword,
         "newPassword": data.newPassword,

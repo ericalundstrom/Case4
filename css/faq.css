@@ -92,9 +92,6 @@ button {
 
 .faq {
     display: flex;
-    /* flex-direction: row; */
-    /* align-content: center;
-    align-items: center; */
     padding: 10px;
     flex-direction: column;
     width: 60vw;

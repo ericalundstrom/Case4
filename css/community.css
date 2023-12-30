@@ -699,16 +699,6 @@ form {
     display: none;
 }
 
-/* .popUpCalender {
-    width: 20vw;
-    height: auto;
-    position: absolute;
-    right: 290px;
-    background-color: gray;
-    bottom: -100px;
-    z-index: 1;
-    padding: 10px;
-} */
 
 .popUpCalender>#close {
     text-align: end;

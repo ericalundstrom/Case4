@@ -31,7 +31,6 @@ async function renderUploadComic() {
     </div>
      <div id="buttons">
         <button id="buttonPublish"> Upload now</button>
-        <p> or </p>
         <button id="buttonLayout">Add more pages</button>
     </div>
 

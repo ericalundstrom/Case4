@@ -12,9 +12,6 @@ function RenderContactUs(params) {
     
     <div id="contactUsBox">
         <h2> Contact Us </h2>
-        <div id="stroke"></div>
-        <div id="bigbox">
-            <div id="contactFacts">
             
                 <p> Physical adress: </p>
                 <div id="adressBox">
@@ -28,20 +25,22 @@ function RenderContactUs(params) {
                     <p>ContactUs@Rita.com</p>
                 </div>
 
+                <p> Social media: </p>
                 <div id="social">
-                    <p> Social media: </p>
                     <div id="facebook">
-                        <img id="fb">   
+                        <img id="fb" src="/images/fbIcon.png">   
                         <p> @RitaCommuity</p>
                     </div>
                     
                     <div id="instagram">
-                        <img id="insta">
+                        <img id="insta" src="/images/instaIcon.png">
                         <p> @RitaComics</p>
                     </div>
                     </div>
-            </div>
            
+            </div>
+            <div id="BigStroke"></div>
+
             <div id="formBox">
                 <h3> Form for users: </h3>
                 <div id="custom">
@@ -56,7 +55,5 @@ function RenderContactUs(params) {
                     <p> Surveys </p>
                     <button> Go > </button>
                 </div>
-        </div>
-    </div>
     `;
 }

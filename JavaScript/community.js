@@ -230,41 +230,85 @@ function RenderCalendar(parent) {
         updateCalendar();
     }
 
+    // function showEventPopup(date) {
+    //     let popUp = document.querySelector("#popUp");
+    //     popUp.classList.add("popUpCalender");
+    //     popUp.classList.remove("hidden");
+
+    //     popUp.innerHTML = `
+    //     <div id="close"> x </div>
+    //         ${months[currentMonthIndex]} ${date}, ${currentYear}
+    //     `;
+
+    //     const event = events[months[currentMonthIndex]][date];
+    //     if (event) {
+    //         popUp.innerHTML = ` 
+    //         <div id="close"> x </div>
+    //         <div id="tema">
+    //             <h3> Tema </h3>
+    //             ${months[currentMonthIndex]} ${date}, ${currentYear} <br>
+    //             ${events[months[currentMonthIndex]][date]}
+    //         </div>
+    //         <div id="about">
+    //             <h3> About submission </h3> 
+    //             <p>maila serier som lågupplösta pdf:er direkt i mailet till mig </p>
+    //         </div>
+    //         <div id="contact">
+    //             <h3> Contact </h3> 
+    //             <p> Rojin@ordforlag.se</p>
+    //         </div>
+    //         `;
+    //     }
+
+    //     popUp.querySelector("#close").addEventListener("click", (e) => {
+    //         e.stopPropagation();
+    //         popUp.classList.add("hidden");
+    //     })
+    // }
+
     function showEventPopup(date) {
         let popUp = document.querySelector("#popUp");
         popUp.classList.add("popUpCalender");
         popUp.classList.remove("hidden");
 
-        popUp.innerHTML = `
-        <div id="close"> x </div>
-            ${months[currentMonthIndex]} ${date}, ${currentYear}
-        `;
-
         const event = events[months[currentMonthIndex]][date];
         if (event) {
             popUp.innerHTML = ` 
-            <div id="close"> x </div>
-            <div id="tema">
-                <h3> Tema </h3>
-                ${months[currentMonthIndex]} ${date}, ${currentYear} <br>
-                ${events[months[currentMonthIndex]][date]}
-            </div>
-            <div id="about">
-                <h3> About submission </h3> 
-                <p>maila serier som lågupplösta pdf:er direkt i mailet till mig </p>
-            </div>
-            <div id="contact">
-                <h3> Contact </h3> 
-                <p> Rojin@ordforlag.se</p>
-            </div>
+                <div id="close"> x </div>
+                <div id="tema">
+                    <h3> Tema </h3>
+                    ${months[currentMonthIndex]} ${date}, ${currentYear} <br>
+                    ${events[months[currentMonthIndex]][date]}
+                </div>
+                <div id="about">
+                    <h3> About submission </h3> 
+                    <p>maila serier som lågupplösta pdf:er direkt i mailet till mig </p>
+                </div>
+                <div id="contact">
+                    <h3> Contact </h3> 
+                    <p> Rojin@ordforlag.se</p>
+                </div>
             `;
+
+            const dateElements = document.querySelectorAll(".date");
+            const clickedDateElement = Array.from(dateElements).find(element => element.textContent === String(date));
+
+            if (clickedDateElement) {
+                const dateRect = clickedDateElement.getBoundingClientRect();
+                const scrollY = window.scrollY || window.pageYOffset;
+
+                // Adjust the popup position based on the clicked date, scroll position, and offset
+                popUp.style.left = `${dateRect.left - popUp.clientWidth + dateRect.width + 42}px`;
+                popUp.style.top = `${dateRect.top + scrollY - popUp.clientHeight - 20}px`;
+            }
         }
 
         popUp.querySelector("#close").addEventListener("click", (e) => {
             e.stopPropagation();
             popUp.classList.add("hidden");
-        })
+        });
     }
+
 
 
     function updateCalendar() {
@@ -291,7 +335,13 @@ function RenderCalendar(parent) {
 
             const event = events[months[currentMonthIndex]][i];
             if (event) {
+                dateDiv.style.position = "relative";
                 dateDiv.style.fontWeight = "bold";
+                let dot = document.createElement("div");
+                dot.classList.add("event-dot");
+
+                // Append the dot to the date element
+                dateDiv.appendChild(dot)
                 dateDiv.addEventListener("click", () => {
                     showEventPopup(i)
                 });
@@ -335,6 +385,7 @@ function RenderCalendar(parent) {
 
 async function RenderComment(parent, resourse, value) {
 
+    parent.innerHTML = "";
 
     if (value) {
 
@@ -368,14 +419,13 @@ async function RenderComment(parent, resourse, value) {
 
             commentBox.querySelector("#box").addEventListener("click", () => {
                 RenderPostLayout(comment);
-            })
+            });
 
             background.append(commentBox);
             parent.append(background);
         });
     } else {
-        document.querySelector("#commentBox").innerHTML += `
-    `;
+        document.querySelector("#commentBox").innerHTML += ``;
 
         document.querySelector("#goBack").addEventListener("click", RenderCommunity);
 
@@ -407,6 +457,10 @@ async function RenderComment(parent, resourse, value) {
                 `;
 
         commentBox.querySelector("#profilePic").style.backgroundImage = `url(${resourse.picture})`;
+
+        commentBox.querySelector("#box").addEventListener("click", () => {
+            RenderPostLayout(resourse);
+        });
 
         background.append(commentBox);
         parent.append(background);
@@ -445,8 +499,6 @@ async function RenderComment(parent, resourse, value) {
         }
         document.querySelector("#submitIcon").addEventListener("click", (event) => {
             event.stopPropagation();
-
-
             addComment(resourse);
         })
     }
@@ -454,9 +506,6 @@ async function RenderComment(parent, resourse, value) {
 
 
 async function RenderNewCommentPage() {
-    // console.log("add");
-
-    // BasicLayout();
 
     let user = localStorage.getItem("user");
     let userParse = JSON.parse(user);
@@ -469,12 +518,12 @@ async function RenderNewCommentPage() {
     let month = date.getMonth() + 1;
     let year = date.getFullYear();
 
-    // This arrangement can be altered based on how we want the date's format to appear.
     let currentDate = `${day}-${month}-${year}`;
     console.log(currentDate);
 
 
-    document.querySelector("body").innerHTML += `
+    let DivDom = document.createElement("div");
+    DivDom.innerHTML = `
     <div id="BackgroundColor" class="hidden">
         <div id="backgroundNewPost"> 
         <div id="bigBoxCommunity">
@@ -486,10 +535,11 @@ async function RenderNewCommentPage() {
 
                 <div id="dateDate">${currentDate}</div>
 
+                <div id="BigStroke"></div>
                 <form action="api/community.php" method="POST">
                     <div id="titleBox"> 
                         <label for="title">Title:</label>
-                        <input type="text" id="title" name="title" />
+                        <input type="text" id="title" name="title" rows="5" >
                     </div>
 
                     <div id="descriptionBox">
@@ -506,10 +556,13 @@ async function RenderNewCommentPage() {
     </div>
     `;
 
+    document.body.appendChild(DivDom);
+
     document.querySelector("#BackgroundColor").classList.remove("hidden");
     document.querySelector("#x").addEventListener("click", () => {
         // document.querySelector("#BackgroundColor").classList.add("hidden");
         document.querySelector("#BackgroundColor").remove();
+        // RenderCommunity();     <-- Ska vi ha det? Då uppdateras sidan
 
     });
 
@@ -539,7 +592,11 @@ async function RenderNewCommentPage() {
 
             if (!resourse.message) {
                 console.log(resourse);
-                document.querySelector("#message").textContent = "Successfully added post!";
+                document.querySelector("#message").textContent = `Successfully added post!`;
+                document.querySelector("#x").addEventListener("click", () => {
+                    document.querySelector("#BackgroundColor").remove();
+                    RenderCommunity();
+                })
             } else {
                 console.log(resourse.message);
                 document.querySelector("#message").textContent = resourse.message;
@@ -584,22 +641,22 @@ async function RenderPostLayout(data) {
     // `;
 
     wrapper.innerHTML = `
-    <div id="comunityBox"> 
-        <h2> Community </h2>
-        <div id="filterComments">
-        <p id="goBack"> Go back </p>
-    </div>
-        <div id="commentBox"></div>
-    </div>
+        <div id="comunityBox"> 
+            <h2> Community </h2>
+            <div id="filterComments">
+            <p id="goBack"> Go back </p>
+        </div>
+            <div id="commentBox"></div>
+        </div>
 
-    <div id="BigstrokeCommunity"></div>
+        <div id="BigstrokeCommunity"></div>
 
-    <div id="backgroundButton">    
-        <button onclick="RenderNewCommentPage()"> Add a post + </button>
-    </div>
-    <div id="tipsbox"></div>
-    <div id="calender"></div>
-`;
+        <div id="backgroundButton">    
+            <button onclick="RenderNewCommentPage()"> Add a post + </button>
+        </div>
+        <div id="tipsbox"></div>
+        <div id="calender"></div>
+    `;
 
 
 
@@ -652,10 +709,13 @@ async function addComment(resourse) {
 
     let respons = await fetching("api/community.php", "POST", body);
     let resourseComment = await respons.json();
+    console.log(resourseComment);
 
     if (resourseComment) {
 
         // // console.log(resourseComment);
+        // let comments = document.querySelector("#commentBox");                   <--- Ska vi ha detta? 
+        // RenderComment(comments, resourse, false);
         RenderCommunity();
 
     }

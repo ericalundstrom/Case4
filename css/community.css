@@ -26,7 +26,7 @@ footer {
 #wrapper {
     display: grid;
     grid-template-columns: 80px 2fr 10px 1fr;
-    height: 100vh;
+    height: 120vh;
     grid-template-rows: 40px 1fr 1fr 1fr;
     gap: 40px;
     overflow: auto;
@@ -263,22 +263,40 @@ nav>div>div>#cover {
 }
 
 #x {
-    position: relative;
-    /* bottom: 320px; */
+    /* position: relative;
+    /* bottom: 320px; 
     left: 650px;
     color: white;
     width: 13px;
-    top: 50px;
+    top: 50px; */
+
+    position: relative;
+    left: 650px;
+    /* Adjust the value as needed */
+    color: white;
+    width: 13px;
+    top: 10px;
+    z-index: 2;
 }
 
 #dateDate {
-    margin-right: 15px;
     width: 95%;
     text-align: end;
     font-style: italic;
     position: absolute;
-    top: 15px;
-    right: 5px;
+    top: 45px;
+    right: 25px;
+}
+
+#bigBoxCommunity #BigStroke {
+    width: 93%;
+    border: 1px solid black;
+    margin: 20px 20px;
+}
+
+#message {
+    text-align: center;
+    padding-top: 15px;
 }
 
 #wrapper>#backgroundButton {
@@ -477,7 +495,7 @@ nav>div>div>#cover {
 #profilePic {
     height: 40px;
     width: 40px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     border-radius: 30px;
     margin-right: 10px;
 }
@@ -510,7 +528,7 @@ nav>div>div>#cover {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
-    position: absolute;
+    /* position: absolute; */
 }
 
 #backgroundNewPost {
@@ -529,9 +547,12 @@ nav>div>div>#cover {
 }
 
 #bigBoxCommunity button {
-    margin-left: 40%;
-    height: 3vw;
+    /* margin-left: 40%; */
+    /* height: 3vw; */
     padding: 10px;
+    align-self: center;
+    display: flex;
+    margin-top: 20px;
 }
 
 #bigBoxCommunity {
@@ -539,10 +560,14 @@ nav>div>div>#cover {
     width: 47vw;
     background-color: #F7C488;
     position: relative;
+    overflow: visible;
 }
 
 #bigBoxCommunity input {
     width: 90%;
+    font-style: normal;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 #bigBoxCommunity #userAndProfile {
@@ -571,11 +596,21 @@ nav>div>div>#cover {
 }
 
 #description {
-    height: 200px;
+    height: 100px;
 }
 
 form {
+    /* margin-left: 20px; */
     margin-left: 20px;
+    /* display: flex;
+    flex-direction: column; */
+}
+
+#bigBoxComunitym form {
+    /* margin-left: 20px; */
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 #divForComments>.backgroundForComment {
@@ -612,11 +647,12 @@ form {
 #divForComments>.backgroundForComment>div>p {
     grid-row: 3;
     margin-left: 18px;
+    grid-column: 1/6;
 }
 
 #profilePic {
-    height: 30px;
-    width: 30px;
+    height: 40px;
+    width: 40px;
 }
 
 #addComment {
@@ -663,18 +699,55 @@ form {
     display: none;
 }
 
-.popUpCalender {
-    width: 20vw;
-    height: auto;
-    position: absolute;
-    right: 70px;
-    background-color: gray;
-    bottom: 150px;
-    z-index: 1;
-    padding: 10px;
-}
 
 .popUpCalender>#close {
     text-align: end;
     padding-right: 10px;
+    height: 0;
+}
+
+.popUpCalender {
+    position: absolute;
+    right: 335px;
+    bottom: -80px;
+    z-index: 1;
+    padding: 10px;
+    width: 20vw;
+    height: 20vw;
+    background-color: #F7C488;
+    border-radius: 10px;
+}
+
+.popUpCalender::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    border-style: solid;
+}
+
+/* Triangle pointing to the top */
+.popUpCalender::before {
+    border-width: 15px 10px 0;
+    border-color: #F7C488 transparent transparent transparent;
+    left: 85%;
+    transform: translateX(-50%);
+    bottom: -15px;
+}
+
+#tema h3,
+#about h3,
+#contact h3 {
+    font-weight: bolder;
+}
+
+.event-dot {
+    width: 5px;
+    height: 5px;
+    background-color: red;
+    /* Adjust the color as needed */
+    border-radius: 50%;
+    position: absolute;
+    /* bottom: 2px; */
+    left: 50%;
+    transform: translateX(-50%);
 }

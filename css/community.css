@@ -182,6 +182,7 @@ nav>div>div>#cover {
     display: flex;
     justify-content: end;
     align-items: center;
+    position: relative;
 }
 
 #comunityBox #filterComments img {
@@ -547,7 +548,7 @@ nav>div>div>#cover {
 }
 
 #bigBoxCommunity button {
-    /* margin-left: 40%; */
+    margin-left: 40%;
     /* height: 3vw; */
     padding: 10px;
     align-self: center;
@@ -743,11 +744,22 @@ form {
 .event-dot {
     width: 5px;
     height: 5px;
-    background-color: red;
+    background-color: #F7C488;
     /* Adjust the color as needed */
     border-radius: 50%;
     position: absolute;
     /* bottom: 2px; */
     left: 50%;
     transform: translateX(-50%);
+}
+
+.communityContainerSort {
+    position: absolute;
+    /* width: 100%; */
+    top: 40px;
+    /* left: 10px; */
+    background-color: #f7c488;
+    padding: 4px;
+    z-index: 2;
+    right: 0px;
 }

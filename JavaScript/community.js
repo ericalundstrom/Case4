@@ -27,6 +27,11 @@ async function RenderCommunity() {
         <div id="calender"></div>
     `;
 
+    wrapper.querySelector("#filterComments").addEventListener("click", () => {
+        let parent = document.querySelector("#filterComments > p");
+
+        sortComicsCommunity(parent);
+    })
     let user = localStorage.getItem("user");
     let responseUser = await getUser(user);
 
@@ -230,41 +235,6 @@ function RenderCalendar(parent) {
         updateCalendar();
     }
 
-    // function showEventPopup(date) {
-    //     let popUp = document.querySelector("#popUp");
-    //     popUp.classList.add("popUpCalender");
-    //     popUp.classList.remove("hidden");
-
-    //     popUp.innerHTML = `
-    //     <div id="close"> x </div>
-    //         ${months[currentMonthIndex]} ${date}, ${currentYear}
-    //     `;
-
-    //     const event = events[months[currentMonthIndex]][date];
-    //     if (event) {
-    //         popUp.innerHTML = ` 
-    //         <div id="close"> x </div>
-    //         <div id="tema">
-    //             <h3> Tema </h3>
-    //             ${months[currentMonthIndex]} ${date}, ${currentYear} <br>
-    //             ${events[months[currentMonthIndex]][date]}
-    //         </div>
-    //         <div id="about">
-    //             <h3> About submission </h3> 
-    //             <p>maila serier som lågupplösta pdf:er direkt i mailet till mig </p>
-    //         </div>
-    //         <div id="contact">
-    //             <h3> Contact </h3> 
-    //             <p> Rojin@ordforlag.se</p>
-    //         </div>
-    //         `;
-    //     }
-
-    //     popUp.querySelector("#close").addEventListener("click", (e) => {
-    //         e.stopPropagation();
-    //         popUp.classList.add("hidden");
-    //     })
-    // }
 
     function showEventPopup(date) {
         let popUp = document.querySelector("#popUp");
@@ -663,10 +633,6 @@ async function RenderPostLayout(data) {
     let user = localStorage.getItem("user");
     let responseUser = await getUser(user);
 
-    // console.log(responseUser);
-
-
-    // console.log(responseUser[0].personal.picture);
     let userPic = responseUser[0].personal.picture;
 
     if (userPic === "") {
@@ -712,12 +678,7 @@ async function addComment(resourse) {
     console.log(resourseComment);
 
     if (resourseComment) {
-
-        // // console.log(resourseComment);
-        // let comments = document.querySelector("#commentBox");                   <--- Ska vi ha detta? 
-        // RenderComment(comments, resourse, false);
         RenderCommunity();
-
     }
 }
 
@@ -730,48 +691,6 @@ async function getUserPic(user) {
     return userPic;
 }
 
-
-async function sortComics(matchingComics) {
-
-    const SortOptions = ["A to Z", "Z to A", "Most recently added", "Oldest first"];
-
-    let comics = [];
-    let response = await fetch("api/data/users.json");
-    let resource = await response.json();
-    for (let i = 0; i < resource.length; i++) {
-        if (resource[i][0].comics.length !== 0) {
-            let comic = resource[i][0].comics;
-            comics.push(...comic); // Flatten the nested arrays
-        }
-    }
-    // console.log(matchingComics);
-
-    SortOptions.forEach((sort, index) => {
-        let div = document.createElement("div");
-        div.textContent = sort;
-        div.setAttribute("id", `sort-${index}`); // Unique ID for each option
-        sortDropdownDiv.append(div);
-        div.addEventListener("click", () => {
-            // Call the appropriate sorting function based on the selected option
-            switch (sort) {
-                case "A to Z":
-                    sortComicsByTitle(comics, true);
-                    break;
-                case "Z to A":
-                    sortComicsByTitle(comics, false);
-                    break;
-                case "Most recently added":
-                    sortComicsByDate(comics, true);
-                    break;
-                case "Oldest first":
-                    sortComicsByDate(comics, false);
-                    break;
-                // Add more cases for additional sorting options
-            }
-        });
-    });
-}
-
 function sortComicsByTitle(comics, ascending) {
     // console.log(comics);
     // Assuming comics is an array of objects with a 'title' property
@@ -779,20 +698,102 @@ function sortComicsByTitle(comics, ascending) {
         const compareResult = a.title.localeCompare(b.title);
         return ascending ? compareResult : -compareResult;
     });
-    displayComics(sortedComics, true);
+    // displayComics(sortedComics, true);
+
+    document.querySelector(".communityContainerSort").remove();
+    let comments = document.querySelector("#commentBox");
+
+    RenderComment(comments, sortedComics, true);
 }
 
 function sortComicsByDate(comics, newestFirst) {
-    // Assuming comics is an array of objects with a 'time' property in the format "MM/DD/YYYY"
+    // Assuming comics is an array of objects with a 'date' property in the format "DD-MM-YYYY HH:mm"
     let sortedComics = comics.slice().sort((a, b) => {
-        const dateA = parseDate(a.time);
-        const dateB = parseDate(b.time);
+        const dateA = parseDate(a.date);
+        const dateB = parseDate(b.date);
+
+        // Check if either date is undefined before comparison
+        if (!dateA || !dateB) {
+            return newestFirst ? -1 : 1; // Place items with undefined dates at the end or beginning
+        }
+
         return newestFirst ? dateB - dateA : dateA - dateB;
     });
-    displayComics(sortedComics, true);
+
+    document.querySelector(".communityContainerSort").remove();
+    let comments = document.querySelector("#commentBox");
+    sortBox.remove();
+    RenderComment(comments, sortedComics, true);
 }
 
+
+
+
 function parseDate(dateString) {
-    const [month, day, year] = dateString.split("/");
-    return new Date(`${year}-${month}-${day}`);
+    if (!dateString) {
+        return undefined; // Return undefined for invalid or missing date
+    }
+
+    const [dayMonth, yearTime] = dateString.split(" ");
+    const [day, month] = dayMonth.split("-");
+    const [year, time] = yearTime.split("-");
+    const [hours, minutes] = time.split(":");
+
+    return new Date(year, month - 1, day, hours, minutes);
+}
+
+
+async function sortComicsCommunity(parent) {
+    // Remove existing sort container if it exists
+    const existingSortContainer = document.querySelector(".communityContainerSort");
+    if (existingSortContainer) {
+        existingSortContainer.remove();
+        return; // Stop the function to avoid creating a new container immediately
+    }
+
+    let sortBox = document.createElement("div");
+    sortBox.classList.add("communityContainerSort");
+    parent.append(sortBox);
+    const SortOptions = ["A to Z", "Z to A"];
+
+    let postsArray = [];
+    let response = await fetch("api/data/community.json");
+    let resource = await response.json();
+    for (let i = 0; i < resource.length; i++) {
+        let post = resource[i];
+        postsArray.push(post);
+    }
+
+    function handleSortOptionClick(sort) {
+        // Call the appropriate sorting function based on the selected option
+        switch (sort) {
+            case "A to Z":
+                sortComicsByTitle(postsArray, true);
+                break;
+            case "Z to A":
+                sortComicsByTitle(postsArray, false);
+                break;
+            // Add more cases for additional sorting options
+        }
+
+    }
+
+    // Event listeners array
+    const clickListeners = SortOptions.map((sort, index) => {
+        const div = document.createElement("div");
+        div.textContent = sort;
+        div.setAttribute("id", `sort-${index}`);
+        sortBox.append(div);
+
+        // Add click event listener for each option
+        const clickListener = () => handleSortOptionClick(sort);
+        div.addEventListener("click", () => {
+            clickListener();
+            let divDom = div.parentNode;
+            divDom.classList.add("hidden");
+            console.log(divDom);
+        });
+
+        return clickListener;
+    });
 }

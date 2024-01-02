@@ -159,7 +159,7 @@ async function createCard(parent, resource, user) {
             <div id="desc">
                 ${data.description}
             </div>
-            <div id="filters"></div>
+            <div class="filters"></div>
             `;
 
             cardBox.append(divDom);
@@ -180,7 +180,7 @@ async function createCard(parent, resource, user) {
                 let tag = document.createElement("div");
                 tag.classList.add("tags");
                 tag.textContent = filter;
-                divDom.querySelector("#filters").append(tag);
+                divDom.querySelector(".filters").append(tag);
             })
         });
 
@@ -228,27 +228,51 @@ async function createCard(parent, resource, user) {
 }
 
 
-function ReadComic(comic) {
+async function ReadComic(comic) {
+
+    let user = await getUser(comic.author);
+    console.log(user);
+    let userPic = user[0].personal.picture;
+
     // console.log(comic);
     let readBox = document.createElement("div");
     document.querySelector("body").append(readBox);
     readBox.classList.add("readBox");
     readBox.innerHTML = `
         <div id="close"> X </div>
-        <div id="leftArrow"> < </div>
         <div id="left" class="comic"></div>
         <div id="right" class="comic"></div>
-        <div id="rightArrow"> > </div>
+        <img id="leftArrow" src="images/downArrow.png"> 
+        <img id="rightArrow" src="images/downArrow.png">
     `;
 
+    readBox.querySelector("#rightArrow").style.transform = "rotate(270deg)";
+    readBox.querySelector("#leftArrow").style.transform = "rotate(90deg)";
+
     let filters = comic.filters.replace(/[\[\]"]+/g, ' ');
+    let filter = JSON.parse(comic.filters);
+    console.log(filter);
+
     readBox.querySelector("#left").innerHTML = `
-        <div id="title">${comic.title}</div>
-        <div id="time">${comic.time}</div>
-        <div id="description">${comic.description}</div>
-        <div id="filter">${filters}</div>
-        <div id="author">${comic.author}</div>
+        <div id="infoDiv">
+            <div id="title">${comic.title}</div>
+            <div id="description">${comic.description}</div>
+            <div id="filter"></div>
+            <div id="authorInfo">
+                <img src="${userPic}">
+                <div id="author">${comic.author}</div>
+            </div>
+        </div>
     `;
+
+    filter.forEach(filter => {
+        console.log(filter);
+        let divDom = document.createElement("div");
+        divDom.textContent = filter;
+        divDom.classList.add("tags");
+        readBox.querySelector("#filter").append(divDom);
+    })
+
 
     readBox.querySelector("#right").style.backgroundImage = `url("api/${comic.frontPage}")`;
     readBox.querySelector("#right").style.backgroundSize = "cover";
@@ -270,18 +294,31 @@ function ReadComic(comic) {
         readBox.querySelector("#right").style.backgroundImage = `url("api/${content[currentIndex + 1]}")`;
     }
 
+    // <div id="time">${comic.time}</div>
     function resetInfo() {
         let filters = comic.filters.replace(/[\[\]"]+/g, ' ');
         readBox.querySelector("#left").style.backgroundImage = "";
         readBox.querySelector("#left").innerHTML = `
-            <div id="title">${comic.title}</div>
-            <div id="time">${comic.time}</div>
-            <div id="description">${comic.description}</div>
-            <div id="filter">${filters}</div>
-            <div id="author">${comic.author}</div>
+            <div id="infoDiv">
+                <div id="title">${comic.title}</div>
+                <div id="description">${comic.description}</div>
+                <div id="filter"></div>
+                <div id="authorInfo">
+                    <img src="${userPic}">
+                    <div id="author">${comic.author}</div>
+                </div>
+            </div>
         `;
         readBox.querySelector("#right").style.backgroundImage = `url("api/${comic.frontPage}")`;
         currentIndex = -2;
+
+        filter.forEach(filter => {
+            console.log(filter);
+            let divDom = document.createElement("div");
+            divDom.textContent = filter;
+            divDom.classList.add("tags");
+            readBox.querySelector("#filter").append(divDom);
+        })
     }
 
     // Attach click event listeners after initial setup

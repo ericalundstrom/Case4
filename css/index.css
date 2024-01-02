@@ -26,6 +26,14 @@ main {
     grid-template-columns: 1fr 2fr; */
 }
 
+
+footer .stroke {
+    height: 40px;
+    width: 1px;
+    background-color: black;
+}
+
+
 #logo {
     height: 200px;
 }

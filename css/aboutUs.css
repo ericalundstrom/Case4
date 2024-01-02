@@ -10,6 +10,14 @@ body {
     grid-template-rows: 40px 1fr;
 }
 
+
+footer .stroke {
+    height: 40px;
+    width: 1px;
+    background-color: black;
+}
+
+
 #aboutUsBox {
     display: flex;
     /* width: 900px; */

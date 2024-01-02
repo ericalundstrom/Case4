@@ -18,6 +18,13 @@ main {
 }
 
 
+footer .stroke {
+    height: 40px;
+    width: 1px;
+    background-color: black;
+}
+
+
 #contactUsBox {
     margin-left: 80px;
 }

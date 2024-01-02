@@ -261,6 +261,9 @@ async function RenderProfile(data, value) {
             document.querySelector("#bottomMiddleMenu").innerHTML = `
             <button id="addNewComic">Add +</button>`;
 
+            document.querySelector("#addNewComic").addEventListener("click", () => {
+                renderUploadComic();
+            })
 
 
             let card = document.querySelector("#cards");

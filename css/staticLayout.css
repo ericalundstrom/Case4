@@ -27,6 +27,12 @@ header {
     position: sticky;
 }
 
+.stroke {
+    height: 40px;
+    width: 1px;
+    background-color: black;
+}
+
 header>* {
     cursor: pointer;
 }

@@ -127,6 +127,8 @@ nav>div>div>#cover {
     background-color: black;
 }
 
+/* FILTERS */
+
 #filterLeft {
     width: 350px;
     height: 100%;
@@ -149,6 +151,7 @@ nav>div>div>#cover {
     position: relative;
     left: 600px;
 }
+
 
 .filterContainer {
     background-color: #72A080;
@@ -531,10 +534,31 @@ input:focus {
     align-items: center;
     justify-self: end;
     cursor: pointer;
+    position: relative;
+}
+
+.filterContainerSort {
+    position: absolute;
+    width: 100%;
+    top: 40px;
+    left: 10px;
+    background-color: #f7c488;
+    padding: 4px;
+}
+
+.filterContainerSort>* {
+    padding: 4px;
+}
+
+.filterContainerSort>*:hover {
+    color: white;
 }
 
 #sortComics {
-    width: 80px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #sortComicContainer>img {
@@ -627,6 +651,38 @@ input:focus {
     margin-left: 5%;
 }
 
+.filterContainer {
+    background-color: #72A080;
+    padding: 10px 10px 10px 10px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.filterContainer>*:hover {
+    color: white;
+}
+
+.filterContainerComics {
+    background-color: #72A080;
+    padding: 10px 10px 10px 10px;
+    padding: 0px;
+    position: absolute;
+}
+
+/* .filterContainer>div:hover,
+.filterContainerComics>div:hover {
+    color: white;
+} */
+
+.selected {
+    color: white;
+    border-bottom: 1px solid white;
+}
+
+.selected>* {
+    color: black;
+}
+
 .material {
     width: 180px;
 }
@@ -634,6 +690,10 @@ input:focus {
 #materialContainer {
     width: 70%;
     margin-left: 2%;
+    display: grid;
+    /*grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 5%; */
 }
 
 #formatContainer,
@@ -653,8 +713,7 @@ input:focus {
 }
 
 #formatContainer>*:hover,
-#styleContainer>*:hover,
-#materialContainer>*:hover {
+#styleContainer>*:hover {
     color: white;
 }
 

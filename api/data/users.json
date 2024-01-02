@@ -746,7 +746,28 @@
                 "following": [],
                 "followers": []
             },
-            "comics": []
+            "comics": [
+                {
+                    "title": "titel",
+                    "author": "un",
+                    "description": "gege",
+                    "filters": "",
+                    "frontPage": "",
+                    "content": [],
+                    "time": "02\/01\/2024",
+                    "likes": []
+                },
+                {
+                    "title": "Here is the Title",
+                    "author": "un",
+                    "description": "H\u00e4r st\u00e5r beskrivningen",
+                    "filters": "",
+                    "frontPage": "data\/comics\/\u00c4gg for start_up.png",
+                    "content": [],
+                    "time": "02\/01\/2024",
+                    "likes": []
+                }
+            ]
         }
     ],
     [

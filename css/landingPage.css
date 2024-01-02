@@ -280,8 +280,8 @@ nav>div>div>#cover {
 
 
 .description {
-    height: 50%;
-    width: 90%;
+    height: 51%;
+    width: 91%;
     color: white;
     background-color: rgba(0, 0, 0, 0.8);
     position: absolute;
@@ -306,6 +306,7 @@ nav>div>div>#cover {
 
 .description .filters {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .tags {

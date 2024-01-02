@@ -413,6 +413,7 @@ async function RenderArtistCard(parent, data, value) {
 
 async function RenderFollowers(popUp, resourceUsers) {
 
+    document.querySelector("#popUp").style.zIndex = "3";
     popUp.classList.remove("hidden");
     popUp.innerHTML = `
     <div id="popUpBackground"></div>
@@ -445,6 +446,7 @@ async function RenderFollowers(popUp, resourceUsers) {
     popUp.querySelector("#close").addEventListener("click", (event) => {
         event.stopPropagation();
         let popUpMain = document.querySelector("#popUp");
+        popUpMain.style.zIndex = "0";
         popUpMain.classList.add("hidden");
         popUp.innerHTML = `
         <div id="popUpBackground"></div>
@@ -610,6 +612,7 @@ async function deleteComic(comic) {
     document.querySelector("#popUp").style.width = "50%";
     document.querySelector("#popUp").style.marginLeft = "25%";
     document.querySelector("#popUp").style.marginRight = "25%";
+    document.querySelector("#popUp").style.zIndex = "3";
     popUp.classList.remove("hidden");
     popUpWindow.innerHTML = `
     <div id="popUpBackground"></div>
@@ -637,14 +640,16 @@ async function deleteComic(comic) {
         document.querySelector("#popUp").style.width = "60%";
         document.querySelector("#popUp").style.marginLeft = "20%";
         document.querySelector("#popUp").style.marginRight = "20%";
-        popUp.querySelector("#popUpBox").removeAttribute("id", "deleteReq");
+        document.querySelector("#popUp").style.zIndex = "0";
+        // popUp.querySelector("#popUpBox").removeAttribute("id", "deleteReq");
     })
     popUpWindow.querySelector("#no").addEventListener("click", () => {
         popUp.classList.add("hidden");
         document.querySelector("#popUp").style.width = "60%";
         document.querySelector("#popUp").style.marginLeft = "20%";
         document.querySelector("#popUp").style.marginRight = "20%";
-        popUp.querySelector("#popUpBox").removeAttribute("id", "deleteReq");
+        document.querySelector("#popUp").style.zIndex = "0";
+        // popUp.querySelector("#popUpBox").removeAttribute("id", "deleteReq");
     })
 
     popUpWindow.querySelector("#popUpBox").setAttribute("id", "deleteReq");

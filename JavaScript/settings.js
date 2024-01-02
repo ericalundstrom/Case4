@@ -4,7 +4,13 @@ function RenderSettings(params) {
     let username = localStorage.getItem("user");
     let userParse = JSON.parse(username);
     let popUp = document.querySelector("#popUp");
+    document.querySelector("#popUp").style.height = "500px";
+    document.querySelector("#popUp").style.width = "45%";
+    // document.querySelector("#popUp").style.marginLeft = "25%";
+    // document.querySelector("#popUp").style.marginRight = "25%";
+    popUp.style.zIndex = "3";
     let popUpWindow = document.querySelector("#popUpWindow");
+    popUpWindow.style.height = "700px";
     popUpWindow.classList.add("settings");
     popUp.classList.remove("hidden");
     popUp.classList.add("settingPopUp");
@@ -102,7 +108,14 @@ function RenderSettings(params) {
         // `;
         e.stopPropagation();
         popUp.classList.add("hidden");
+        popUp.style.zIndex = "0";
         popUpWindow.classList.remove("settings");
+        document.querySelector("#popUp").style.height = "500px";
+        document.querySelector("#popUp").style.width = "60%";
+        document.querySelector("#popUp").style.marginLeft = "20%";
+        document.querySelector("#popUp").style.marginRight = "20%";
+        document.querySelector("#popUp").style.height = "80%";
+
     })
 
 

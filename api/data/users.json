@@ -473,9 +473,9 @@
             },
             "comics": [
                 {
-                    "title": "hej",
+                    "title": "Wonderful Christmas",
                     "author": "petra",
-                    "description": "hejhej",
+                    "description": "A shorter comic about a psycological development through the tidiues wok of washing dishes. ",
                     "filters": "[\"Mystery\",\"Slice of life\"]",
                     "frontPage": "data\/comics\/wonderful-christmas.png",
                     "content": [
@@ -486,7 +486,7 @@
                     "likes": []
                 },
                 {
-                    "title": "ffewfe",
+                    "title": "Jeg kan ikke blinke",
                     "author": "petra",
                     "description": "fewfewf",
                     "filters": "[\"Mystery\",\"Manga\"]",

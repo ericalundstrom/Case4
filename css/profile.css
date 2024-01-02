@@ -171,6 +171,7 @@ main {
     position: relative;
     bottom: 60px;
     text-align: end;
+    right: 10px;
 }
 
 #popUp #noti p {
@@ -178,7 +179,7 @@ main {
 }
 
 #popUpWindow #save {
-    height: 3.2vw;
+    height: 3vw;
     width: 14vw;
     margin: 0px;
     background-color: #8EC6C1;
@@ -187,14 +188,15 @@ main {
 }
 
 #backgroundButton {
-    height: 3.5vw;
+    height: 3.3vw;
     width: 14.8vw;
     background-color: black;
     clip-path: polygon(0% 0%, 94% 0%, 100% 10%, 100% 100%, 0% 100%, 10% 100%, 0% 92%, 0% 20%);
-    margin: 10px;
-    position: relative;
-    left: 35%;
-    margin-top: 50px;
+    /* margin: 10px; */
+    position: fixed;
+    left: 43%;
+    /* margin-bottom: 60px; */
+    bottom: 70px;
 }
 
 #nedreDel button {
@@ -249,11 +251,15 @@ main {
     gap: 10px;
     align-items: end;
     margin-right: 36px;
+    position: relative;
+    bottom: 95px;
+    left: 25px;
 }
+
 
 #buttonsSettings>button {
     width: 15vw;
-    height: 3vw;
+    height: 2.6vw;
     margin-right: 54px;
     background-color: #B7323E;
     color: white;
@@ -271,6 +277,7 @@ main {
     border-radius: 0px;
     border: none;
     margin-left: 10px;
+    height: 38px;
 }
 
 #popUpWindow #nedreDel label,
@@ -430,7 +437,7 @@ main {
 }
 
 #bottomMiddleMenu>button {
-    margin-left: 71vw; 
+    margin-left: 71vw;
     height: 2.9vw;
     width: 9vw;
     border: 1px solid black;
@@ -647,7 +654,7 @@ main {
 
 /* PopUp */
 
-#popUp {
+/* #popUp {
     position: absolute;
     height: 600px;
     width: 50%;
@@ -659,6 +666,17 @@ main {
     background-color: #F7C488;
     bottom: 80px;
     border-radius: 10px;
+} */
+
+#popUp {
+    width: 60%;
+    height: 600px;
+    margin-left: 20%;
+    margin-right: 20%;
+    position: fixed;
+    top: 5%;
+    /* left: 25%; */
+    /* z-index: 3; */
 }
 
 
@@ -674,7 +692,7 @@ main {
     height: 110%;
     gap: 10px;
     justify-items: center;
-    overflow: scroll;
+    /* overflow: scroll; */
     z-index: 2;
     position: relative;
     background-color: #F7C488;
@@ -784,18 +802,19 @@ body {
     grid-template-rows: auto;
     width: 95%;
     gap: 10px;
+    overflow: scroll;
 }
 
 #popUpBox>#followers>.background {
     width: 14.3vw;
-    height: 19.6vw;
+    height: 19vw;
     /* margin-top: 6vw; */
     background-color: black;
     clip-path: polygon(0% 0%, 90% 0%, 100% 10%, 100% 100%, 0% 100%, 10% 100%, 0% 91%, 0% 20%);
 }
 
 #popUpBox>#followers>.background>.artistBox {
-    height: 18vw;
+    height: 17.2vw;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: repeat(4, 1fr);
@@ -827,7 +846,7 @@ body {
     background-color: black;
     clip-path: polygon(0% 0%, 92% 0%, 100% 10%, 100% 100%, 0% 100%, 10% 100%, 0% 87%, 0% 20%);
     position: relative;
-    bottom: 40px;
+    bottom: 10px;
     left: 33px;
 }
 
@@ -853,6 +872,10 @@ body {
 
 .description #title {
     padding-left: 10px;
+}
+
+.description .filters {
+    display: flex;
 }
 
 .tags {
@@ -914,24 +937,45 @@ body {
     padding-left: 5px;
 }
 
+
 .readBox {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
     background-color: #808080b2;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
+    z-index: 2;
+}
+
+.readBox img {
+    height: 2vw;
+    position: absolute;
+    bottom: 30px;
+}
+
+.readBox #leftArrow {
+    left: 45%;
+}
+
+.readBox #rightArrow {
+    right: 45%;
 }
 
 .comic {
-    height: 80%;
-    width: 40%;
+    height: 85%;
+    width: 30%;
     background-color: white;
-    border-radius: 10px;
+    /* border-radius: 10px; */
     padding: 10px;
+    box-shadow: black;
+    border: 1px solid black;
+    position: relative;
+    bottom: 3%;
+    margin: 0px 20px;
 
 }
 
@@ -941,6 +985,14 @@ body {
     right: 30px;
 
 }
+
+.readBox>#close {
+    position: absolute;
+    top: 15px;
+    left: 30px;
+
+}
+
 
 #left {
     display: flex;
@@ -953,10 +1005,53 @@ body {
     justify-content: space-around;
     padding: 10px;
     margin: 10px;
-    background-color: gray;
     border-radius: 10px;
-    width: 100px;
+    width: 85%;
+    height: 250px;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
 }
+
+#infoDiv #title {
+    font-size: 25px;
+}
+
+#infoDiv #description {
+    text-align: left;
+    margin: 0px;
+}
+
+#infoDiv #authorInfo {
+    display: flex
+}
+
+#infoDiv #authorInfo img {
+    height: 2vw;
+    position: unset;
+}
+
+#infoDiv #authorInfo div {
+    margin-left: 10px;
+    font-size: 16px;
+    align-self: end;
+}
+
+#infoDiv #filter {
+    align-self: start;
+    display: flex;
+}
+
+#infoDiv #filter .tags {
+    font-size: 12px;
+    border-radius: 0px;
+    padding: 4px 5px;
+    margin-right: 10px;
+    margin-left: 0px;
+}
+
+
+
 
 #popUp>form {
     display: grid;
@@ -1014,7 +1109,7 @@ body {
 
 #usernameLabel,
 #emailLabel {
-    margin: 10px 25px 38px 25px;
+    margin: 10px 25px 25px 25px;
 }
 
 .knapp {
@@ -1061,18 +1156,6 @@ body {
     background-color: #F7C488;
 }
 
-/* position: absolute;
-height: 600px;
-width: 40%;
-z-index: 2;
-margin-left: 30%;
-margin-right: 30%;
-left: 0;
-right: 0;
-background-color: #F7C488;
-bottom: 80px;
-border-radius: 10px; */
-
 #deleteReq #close {
     align-self: end;
 }
@@ -1089,15 +1172,6 @@ border-radius: 10px; */
 
 }
 
-/* #deleteReq button {
-    width: 20vw;
-    margin: 10px;
-    margin-top: 10px;
-    padding: 7px;
-    align-self: center;
-    margin-top: 40px;
-    border-radius: 10px;
-} */
 
 .yesNo {
     align-self: center;

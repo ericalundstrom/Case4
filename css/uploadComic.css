@@ -18,7 +18,6 @@ main {
 
 #wrapper {
     margin: 0px;
-    height: 100vh;
     margin: 0px;
     width: 100%;
     align-items: center;
@@ -193,7 +192,8 @@ input[name="title"]{
 
 #buttons{
    width: 90%;
-    gap: 2%;
+    gap: 4%;
+    margin-top: 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -202,10 +202,11 @@ input[name="title"]{
 
 #buttons > button {
     font-family: Urbanista;
-    font-size: 18px;
+    font-size: 16px;
     background-color: #8EC6C1;
     border: 1px solid black;
-    box-shadow: 2px 2px 0px black;
+    box-shadow: 5px 5px 0px black;
+    padding: 8px;
     cursor: pointer;
 }
 
@@ -361,4 +362,12 @@ input[name="title"]{
 
 .removeFilter {
     opacity: 0;
+}
+
+.selected {
+    color: white;
+    border-image-source: linear-gradient(90deg,white, transparent);
+    border-image-slice: 1;
+    border-image-width: 0 0 1px 0px; /* Adjust the thickness as needed */
+    transition: border-image-width 0.3s ease;
 }

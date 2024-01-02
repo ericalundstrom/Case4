@@ -248,7 +248,6 @@ async function createFilterDropdowns(container, value) {
     }
 }
 
-
 async function renderSearchField() {
     let searchfeildDOM = document.querySelector(".search-field");
     searchfeildDOM.classList.toggle("hidden");
@@ -381,6 +380,8 @@ function createFilterPage(value) {
         divDom.addEventListener("click", async (event) => {
             event.target.classList.toggle("selected");
 
+            createFilterDOM(event.target);
+
             if (value === true) {
                 let filter = filterFunction(event);
                 let response = await fetch("api/data/users.json");
@@ -467,5 +468,11 @@ function createFilterPage(value) {
 
 
     })
+}
+
+function createFilterDOM(target, container){
+    let filterDOM = document.createElement("div");
+    filterDOM.textContent = target;
+    
 }
 

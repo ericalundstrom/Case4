@@ -242,7 +242,8 @@ nav>div>div>#cover {
 .description {
     height: 50%;
     width: 90%;
-    background-color: #dfdfdfde;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.8);
     position: absolute;
     top: 182px;
     display: flex;
@@ -517,7 +518,7 @@ input:focus {
     /* transform: scaleX(0); */
     transform-origin: top right;
     height: 100vh;
-    width: 40vw;
+    width: 30vw;
     background-color: #72A080;
     border: 2px solid black;
     overflow: hidden;
@@ -576,7 +577,11 @@ input:focus {
 
 .selected {
     color: white;
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid transparent;
+    border-image-source: linear-gradient(90deg,white, transparent);
+    border-image-slice: 1;
+    border-image-width: 0 0 1px 0px; /* Adjust the thickness as needed */
+    transition: border-image-width 0.3s ease;
 }
 
 .selected > * {

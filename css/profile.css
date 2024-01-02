@@ -359,6 +359,10 @@ main{
     margin-right: 10%;
 }
 
+#bottomMiddleMenu {
+    margin-left: 65vw;
+}
+
 #bottomMiddleMenu>#background {
     width: 9.5vw;
     height: 3.5vw;
@@ -375,7 +379,6 @@ main{
 }
 
 #menuSearchFilter {
-    margin-left: 70vw;
     display: flex;
     flex-direction: row;
     width: 11vw;
@@ -407,7 +410,6 @@ main{
 }
 
 #bottomMiddleMenu>button {
-    margin-left: 71vw; 
     height: 2.9vw;
     width: 9vw;
     border: 1px solid black;

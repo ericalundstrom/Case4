@@ -115,7 +115,7 @@ function BasicLayout() {
 
 
 async function createCard(parent, resource, user) {
-    let cardCounter = 0;
+    // let cardCounter = 0;
 
     if (resource.length === 0) {
         let response = await fetch("api/data/users.json");
@@ -130,7 +130,7 @@ async function createCard(parent, resource, user) {
 
     // console.log(resource.length);
     function createSingleCard(data) {
-        cardCounter++;
+        // cardCounter++;
         console.log("näst högst upp");
         const cardBox = document.createElement("div");
         cardBox.classList.add("cardBox");
@@ -139,33 +139,20 @@ async function createCard(parent, resource, user) {
             <div class="imgDiv"></div>
         `;
 
-        cardBox.classList.add(`card-${cardCounter}`);
-
-
-        // if (cardCounter % 5 === 3 || cardCounter % 5 === 4) {
-        //     cardBox.classList.add('bigger-card');
-        // }
-
+        // cardBox.classList.add(`card-${cardCounter}`);
 
         // if ((cardCounter + 1) % 5 === 0 || (cardCounter + 1) % 5 === 1) {
         //     cardBox.classList.add('bigger-card');
-        //     cardBox.classList.add('second-row');
+
+        //     console.log('Intermediate Value:', (cardCounter + 1) % 5);
+        //     if (cardCounter === 5) {
+        //         console.log('Card Counter is 5:', cardCounter);
+        //     }
+
+        //     if (cardCounter === 6) {
+        //         console.log('Card Counter is 6:', cardCounter);
+        //     }
         // }
-
-        if ((cardCounter + 1) % 5 === 0 || (cardCounter + 1) % 5 === 1) {
-            cardBox.classList.add('bigger-card');
-            cardBox.classList.add('second-row');
-            // parent.classList.add('next-rows');
-
-            console.log('Intermediate Value:', (cardCounter + 1) % 5);
-            if (cardCounter === 5) {
-                console.log('Card Counter is 5:', cardCounter);
-            }
-
-            if (cardCounter === 6) {
-                console.log('Card Counter is 6:', cardCounter);
-            }
-        }
 
         cardBox.setAttribute("id", data.title);
 
@@ -305,6 +292,11 @@ async function ReadComic(comic) {
         readBox.querySelector("#filter").append(divDom);
     })
 
+    readBox.querySelector("#author").addEventListener("click", () => {
+        RenderProfile(user, true);
+        readBox.remove();
+    })
+
 
     readBox.querySelector("#right").style.backgroundImage = `url("api/${comic.frontPage}")`;
     readBox.querySelector("#right").style.backgroundSize = "cover";
@@ -350,6 +342,11 @@ async function ReadComic(comic) {
             divDom.textContent = filter;
             divDom.classList.add("tags");
             readBox.querySelector("#filter").append(divDom);
+        })
+
+        readBox.querySelector("#author").addEventListener("click", () => {
+            RenderProfile(user, true);
+            readBox.remove();
         })
     }
 

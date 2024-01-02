@@ -2,6 +2,8 @@
 
 async function RenderProfile(data, value) {
 
+    swapStyleSheet("css/profile.css");
+
     let user = localStorage.getItem("user");
     let response = await getUser(user);
 

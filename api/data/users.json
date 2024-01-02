@@ -14,13 +14,16 @@
             },
             "comics": [
                 {
-                    "title": "Hejhejhej",
+                    "title": "Hilda",
                     "author": "Usern",
-                    "description": "Hererer",
-                    "filters": "[\"Mystery\",\"Slice of life\"]",
-                    "frontPage": "data\/comics\/unnamed.png",
+                    "description": "Hildas comic",
+                    "filters": "[\"Mystery\",\"Slice of life\",\"Fable\",\"Story-telling\",\"Ink-wash\"]",
+                    "frontPage": "data\/comics\/Hilda1.png",
                     "content": [
-                        "data\/comics\/compass.png"
+                        "data\/comics\/Hilda2.png",
+                        "data\/comics\/Hilda3.png",
+                        "data\/comics\/Hilda4.png",
+                        "data\/comics\/Hilda5.png"
                     ],
                     "time": "08\/12\/2023",
                     "likes": []
@@ -48,7 +51,22 @@
                     "heidi"
                 ]
             },
-            "comics": []
+            "comics": [
+                {
+                    "title": "Rutin",
+                    "author": "ingemar",
+                    "description": "A short story about someones ruitne",
+                    "filters": "[\"Ink-wash\",\"Non-fiction\",\"Ink-wash\",\"FANTASY\",\"SATIR\u00c9\",\"EDUCATION\"]",
+                    "frontPage": "data\/comics\/Rutin1.jpg",
+                    "content": [
+                        "data\/comics\/Rutin2.jpg",
+                        "data\/comics\/Rutin3.jpg",
+                        "data\/comics\/Rutin4.jpg"
+                    ],
+                    "time": "02\/01\/2024",
+                    "likes": []
+                }
+            ]
         }
     ],
     [
@@ -480,7 +498,8 @@
                     "heidi",
                     "emmajones",
                     "erica",
-                    "morgan"
+                    "morgan",
+                    "siri"
                 ],
                 "followers": [
                     "ingemar"
@@ -712,6 +731,39 @@
                     ],
                     "time": "05\/12\/2023",
                     "likes": []
+                },
+                {
+                    "title": "Job opening",
+                    "author": "heidi",
+                    "description": "A short story about someones ruitne",
+                    "filters": "[\"Ink-wash\",\"Non-fiction\",\"Pastel\",\"FANTASY\",\"HORROR\",\"FAMILY\",\"Color pencil\"]",
+                    "frontPage": "data\/comics\/jobopening01.png",
+                    "content": [
+                        "data\/comics\/jobopening02.png",
+                        "data\/comics\/jobopening03.png",
+                        "data\/comics\/jobopening04.png",
+                        "data\/comics\/jobopening05.png",
+                        "data\/comics\/jobopening06.png",
+                        "data\/comics\/jobopening07.png"
+                    ],
+                    "time": "02\/01\/2024",
+                    "likes": []
+                },
+                {
+                    "title": "Har du t\u00e4nkt",
+                    "author": "heidi",
+                    "description": "Har du t\u00e4nkt p\u00e5 detta?",
+                    "filters": "[\"Ink-wash\",\"Non-fiction\",\"Tissue paper\",\"Parchment paper\",\"Watercolor\",\"FAMILY\",\"Color pencil\",\"Collage\"]",
+                    "frontPage": "data\/comics\/juli2021.png",
+                    "content": [
+                        "data\/comics\/juli2021 2.png",
+                        "data\/comics\/juli2021 3.png",
+                        "data\/comics\/juli2021 4.png",
+                        "data\/comics\/juli2021 5.png",
+                        "data\/comics\/juli2021 6.png"
+                    ],
+                    "time": "02\/01\/2024",
+                    "likes": []
                 }
             ]
         }
@@ -730,6 +782,164 @@
                 "followers": []
             },
             "comics": []
+        }
+    ],
+    [
+        {
+            "personal": {
+                "email": "julija",
+                "username": "julija",
+                "password": "julija",
+                "picture": "..\/images\/profilIcon\/avataaars.png",
+                "description": "",
+                "added": "03-01-2024 12:50",
+                "instagram": "",
+                "following": [],
+                "followers": []
+            },
+            "comics": [
+                {
+                    "title": "Julija",
+                    "author": "julija",
+                    "description": "Julijas comic",
+                    "filters": "[\"Ink-wash\",\"Non-fiction\",\"Parchment paper\",\"Watercolor\",\"FAMILY\",\"Color pencil\",\"Collage\"]",
+                    "frontPage": "data\/comics\/Julija1.png",
+                    "content": [
+                        "data\/comics\/Julija2.png"
+                    ],
+                    "time": "02\/01\/2024",
+                    "likes": []
+                }
+            ]
+        }
+    ],
+    [
+        {
+            "personal": {
+                "email": "siri",
+                "username": "siri",
+                "password": "sirisiri",
+                "picture": "..\/images\/profilIcon\/avataaars(7).png",
+                "description": "",
+                "added": "03-01-2024 14:50",
+                "instagram": "",
+                "following": [],
+                "followers": []
+            },
+            "comics": [
+                {
+                    "title": "Siri",
+                    "author": "siri",
+                    "description": "Beroende",
+                    "filters": "[\"Ink-wash\",\"Non-fiction\",\"Parchment paper\",\"IDENTITY\",\"FAMILY\",\"Color pencil\",\"Pencil\"]",
+                    "frontPage": "data\/comics\/Siri1.png",
+                    "content": [
+                        "data\/comics\/Siri2.png",
+                        "data\/comics\/Siri3.png"
+                    ],
+                    "time": "02\/01\/2024",
+                    "likes": []
+                }
+            ]
+        }
+    ],
+    [
+        {
+            "personal": {
+                "email": "andrea",
+                "username": "andrea",
+                "password": "andrea",
+                "picture": "..\/images\/profilIcon\/avataaars(4).png",
+                "description": "Just a person trying to live",
+                "added": "03-01-2024 13:56",
+                "instagram": "",
+                "following": [],
+                "followers": []
+            },
+            "comics": [
+                {
+                    "title": "Minnet",
+                    "author": "siri",
+                    "description": "Hur gör man med minnet av någon?",
+                    "filters": "[\"Story-telling\",\"Fineliner\",\"IDENTITY\",\"LOVE\",\"Color pencil\",\"Pencil\",\"trip-comic\",\"Color pencil\"]",
+                    "frontPage": "data\/comics\/AndreaUdd1.png",
+                    "content": [
+                        "data\/comics\/AndreaUdd2.png",
+                        "data\/comics\/AndreaUdd3.png",
+                        "data\/comics\/AndreaUdd4.png",
+                        "data\/comics\/AndreaUdd5.png",
+                        "data\/comics\/AndreaUdd6.png",
+                        "data\/comics\/AndreaUdd7.png"
+                    ],
+                    "time": "02\/01\/2024",
+                    "likes": []
+                }
+            ]
+        }
+    ],
+    [
+        {
+            "personal": {
+                "email": "Jon",
+                "username": "Jon",
+                "password": "JonJon",
+                "picture": "..\/images\/profilIcon\/avataaars(2).png",
+                "description": "",
+                "added": "03-01-2024 12:50",
+                "instagram": "",
+                "following": [],
+                "followers": []
+            },
+            "comics": [
+                {
+                    "title": "Jon's comic",
+                    "author": "Jon",
+                    "description": "Jon's comic",
+                    "filters": "[\"Newsprint\",\"Non-fiction\",\"Parchment paper\",\"Ink-wash\",\"FAMILY\",\"FRIENDS\",\"Collage\"]",
+                    "frontPage": "data\/comics\/Jon1.png",
+                    "content": [
+                        "data\/comics\/Jon2.png",
+                        "data\/comics\/Jon3.png",
+                        "data\/comics\/Jon4.png",
+                        "data\/comics\/Jon5.png"
+                    ],
+                    "time": "02\/01\/2024",
+                    "likes": []
+                }
+            ]
+        }
+    ],
+    [
+        {
+            "personal": {
+                "email": "alma",
+                "username": "alma",
+                "password": "alma",
+                "picture": "..\/images\/profilIcon\/avataaars(5).png",
+                "description": "",
+                "added": "03-01-2024 19:50",
+                "instagram": "",
+                "following": [],
+                "followers": []
+            },
+            "comics": [
+                {
+                    "title": "Prolog",
+                    "author": "alma",
+                    "description": "Prologernas prolog",
+                    "filters": "[\"Non-fiction\",\"Parchment paper\",\"LOVE\",\"FAMILY\",\"FRIENDS\",\"Collage\"]",
+                    "frontPage": "data\/comics\/Alma1.1.png",
+                    "content": [
+                        "data\/comics\/Alma1.2.png",
+                        "data\/comics\/Alma1.3.png",
+                        "data\/comics\/Alma1.4.png",
+                        "data\/comics\/Alma1.5.png",
+                        "data\/comics\/Alma1.6.png"
+                    ],
+                    "time": "02\/01\/2024",
+                    "likes": []
+                }
+            ]
         }
     ],
     [

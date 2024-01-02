@@ -188,43 +188,17 @@ nav>div>div>#cover {
     grid-row: 3;
     grid-column: 2;
     width: 100%;
-    /* grid-template-columns: repeat(3, 1fr); */
+    /* grid-template-columns: repeat(3, 1fr);  */
     display: grid;
     gap: 40px;
     height: auto;
-    /* overflow: scroll;  */
+    /* overflow: scroll;   */
     padding-left: 30px;
     box-sizing: border-box;
     margin-top: 80px;
     padding-top: 40px;
     grid-template-columns: repeat(auto-fill, minmax(21vw, 1fr));
 }
-
-/* #cards> :nth-child(n+4) {
-    grid-column: span 2;
-}
-
-/* Define the grid position for the second row with two columns 
-.second-row>* {
-    grid-column: span 2;
-} */
-
-/* #cards {
-    grid-row: 3;
-    grid-column: 2;
-    width: 100%;
-    display: grid;
-    gap: 40px;
-    height: auto;
-    padding-left: 30px;
-    box-sizing: border-box;
-    margin-top: 80px;
-    padding-top: 40px;
-
-    /* Update the grid template columns to auto-fill with a minimum size of 200px 
-    grid-template-columns: repeat(auto-fill, minmax(21vw, 1fr));
-} */
-
 
 .cardBox {
     height: 28vw;
@@ -251,8 +225,8 @@ nav>div>div>#cover {
 
 .imgDiv {
     height: 95%;
-    background-size: contain;
-    width: 100%;
+    background-size: cover;
+    width: 90%;
     background-repeat: no-repeat;
     position: absolute;
     left: 0;
@@ -481,6 +455,7 @@ nav>div>div>#cover {
 #infoDiv #filter {
     align-self: start;
     display: flex;
+    flex-wrap: wrap;
 }
 
 #infoDiv #filter .tags {
@@ -705,9 +680,10 @@ input:focus {
 .selected {
     color: white;
     border-bottom: 1px solid transparent;
-    border-image-source: linear-gradient(90deg,white, transparent);
+    border-image-source: linear-gradient(90deg, white, transparent);
     border-image-slice: 1;
-    border-image-width: 0 0 1px 0px; /* Adjust the thickness as needed */
+    border-image-width: 0 0 1px 0px;
+    /* Adjust the thickness as needed */
     transition: border-image-width 0.3s ease;
 }
 
@@ -823,15 +799,6 @@ border-radius: 10px; */
 
 }
 
-/* #deleteReq button {
-    width: 20vw;
-    margin: 10px;
-    margin-top: 10px;
-    padding: 7px;
-    align-self: center;
-    margin-top: 40px;
-    border-radius: 10px;
-} */
 
 .yesNo {
     align-self: center;

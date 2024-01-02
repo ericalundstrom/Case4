@@ -2,10 +2,10 @@
 
 let dataToPublish = {};
 
-async function renderUploadComic() {    
+async function renderUploadComic() {
     BasicLayout()
     swapStyleSheet("css/uploadComic.css");
-            document.querySelector("body").style.backgroundImage = "url(/images/bkg/bkg/upload.svg)";
+    document.querySelector("body").style.backgroundImage = "url(/images/bkg/bkg/upload.svg)";
 
     document.querySelector("#wrapper").innerHTML = `
     <div id="headerUpload">
@@ -46,9 +46,9 @@ async function renderUploadComic() {
 
     filterButtonDOM.addEventListener("click", async function () {
 
-            let filters = await createFilterPage(false)
-            console.log(filters);
-    
+        let filters = await createFilterPage(false)
+        console.log(filters);
+
     })
 
     //let descriptionInput = document.querySelector("input[name='description']");

@@ -171,7 +171,7 @@ async function createFilterDropdowns(container, value) {
     // SORT COMICS 
     const sortDropdownDiv = document.createElement("div");
     sortDropdownDiv.classList.add("hidden");
-    sortDropdownDiv.classList.add("filterContainer");
+    sortDropdownDiv.classList.add("filterContainerSort");
 
     document.querySelector("#sortComics").appendChild(sortDropdownDiv);
 

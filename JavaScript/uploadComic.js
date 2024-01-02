@@ -2,7 +2,7 @@
 
 let dataToPublish = {};
 
-async function renderUploadComic() {
+async function renderUploadComic() {    
     BasicLayout()
     swapStyleSheet("css/uploadComic.css");
             document.querySelector("body").style.backgroundImage = "url(/images/bkg/bkg/upload.svg)";
@@ -43,11 +43,14 @@ async function renderUploadComic() {
     const placeholderUpload = document.querySelector("#placeholderUpload")
 
 
-    const container = document.querySelector("#filters");
-    let filters = await createFilterDropdowns(container, false)
-     console.log(filters);
+    const filterButtonDOM = document.querySelector("#filters");
 
+    filterButtonDOM.addEventListener("click", async function () {
 
+            let filters = await createFilterPage(false)
+            console.log(filters);
+    
+    })
 
     //let descriptionInput = document.querySelector("input[name='description']");
     //const wordCounter = document.querySelector("#wordCounter");
@@ -59,7 +62,7 @@ async function renderUploadComic() {
     //  wordCounter.textContent = `Characters left: ${charactersLeft}`
     //});
 
-    let comicFrontPage = await dragAndDrop(frontPage, placeholderUpload);
+    let comicFrontPage = await dragAndDropFirst(frontPage);
 
     console.log(comicFrontPage);
     dataToPublish["img1"] = comicFrontPage;

@@ -15,15 +15,6 @@ body {
 }
 
 
-footer {
-    display: flex;
-    justify-content: space-around;
-    height: 60px;
-    width: 100%;
-    align-items: center;
-    margin-top: 40px;
-}
-
 
 input {
     height: 30px;
@@ -35,25 +26,11 @@ input {
     font-style: italic;
 }
 
+/* So that footer is always at the mottom of the page*/
 
-main {
-    display: flex;
+main{
+    min-height: 74vh;
 }
-
-#main {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#wrapper {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    position: relative;
-}
-
 
 
 /* Top of profile */
@@ -441,7 +418,6 @@ main {
 }
 
 
-
 /* menu, bottom */
 
 .options {
@@ -453,6 +429,8 @@ main {
     justify-content: center;
     gap: 2%;
     color: #F7C488;
+    -webkit-text-stroke-width: 0.2px;
+  -webkit-text-stroke-color: black;
     transition: font-size 0.5s ease-in;
 
 }

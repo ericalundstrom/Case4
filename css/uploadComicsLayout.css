@@ -10,50 +10,6 @@ body {
     font-family: Urbanista;
 }
 
-header {
-    flex-basis: 50px;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    width: 100%;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    background-color: rgba(255, 255, 255, 0.574);
-}
-
-header>p {
-    margin-top: 20px;
-}
-
-nav {
-    width: 10%;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    border-right: 1px solid black;
-    justify-content: center;
-    position: absolute;
-    position: sticky;
-    top: 75px;
-    margin-left: 10px;
-}
-
-
-footer {
-    display: flex;
-    justify-content: space-around;
-    height: 60px;
-    background-color: gray;
-    align-items: center;
-    margin-top: 40px;
-}
-
-main {
-    display: flex;
-    width: 100%;
-}
-
 /* content */
 
 #wrapper {
@@ -87,7 +43,6 @@ main {
     text-align: center;
 }
 
-
 #gridContainer {
   width: 60%;
   height: 70%;
@@ -113,6 +68,9 @@ main {
 }
 
 .pageLayout {
+    background-color: white;
+        box-shadow: 8px 8px 0px black;
+    border: 1px solid black;
     align-self: center;
     height: 100%;
     border: 1px solid black;

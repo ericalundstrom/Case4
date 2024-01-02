@@ -64,6 +64,12 @@ h1{
     justify-content: center;
 }
 
+#leftSide > img {
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+}
+
 #frontPage {
     width: 413px;
     height: 591px;
@@ -73,13 +79,13 @@ h1{
     display: flex;
     flex-direction: row;
     align-items: center;
-  justify-content: center;
+    justify-content: center;
 }
 
-#frontPage img {
+#frontPage > *{
     height: 100%;
     width: 100%;
-    size: contain;
+    object-fit: contain;
 }
 
 #placeholderUpload{
@@ -170,7 +176,7 @@ input[name="title"]{
 #wordCounter {
     text-align: right;
     margin-top: 0px;
-    color: gray;
+    color: black;
     font-size: 12px;
 }
 
@@ -192,6 +198,23 @@ input[name="title"]{
     align-items: center;
     justify-content: space-between;
     justify-content: center;
+}
+
+#buttons > button {
+    font-family: Urbanista;
+    font-size: 18px;
+    background-color: #8EC6C1;
+    border: 1px solid black;
+    box-shadow: 2px 2px 0px black;
+    cursor: pointer;
+}
+
+#buttons > button:focus {
+    outline: none;
+}
+
+#buttons > button:active {
+    box-shadow: 2px 2px 0px black;
 }
 
 /* Dropdown menu */ 
@@ -259,3 +282,83 @@ input[name="title"]{
     display: none;
 }
 
+.containerFilterBig {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+    transition: transform 0.7s ease-in-out;
+    /* transform: scaleX(0); */
+    transform-origin: top right;
+    height: 100vh;
+    width: 40vw;
+    background-color: #72A080;
+    border: 2px solid black;
+    overflow: hidden;
+
+}
+
+#containerFilterBigTop {
+    padding: 2%;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+
+#containerFilterBigTop>p {
+    padding: 0px;
+}
+
+#containerFilterBigTop>img {
+    padding: 3%;
+    height: 20px;
+    width: 20px;
+}
+
+.containerFilter.open {
+    transform: scaleX(1);
+}
+
+#allFilters {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5%;
+}
+
+.material {
+    width: 180px;
+}
+
+#materialContainer {
+    width: 70%;
+    margin-left: 2%;
+    display: grid;
+    /*grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 5%; */
+}
+
+#formatContainer,
+#styleContainer {
+    width: 70%;
+    margin-left: 4%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 5%;
+}
+
+#formatContainer,
+#styleContainer,
+#materialContainer>* {
+    cursor: pointer;
+}
+
+#formatContainer>*:hover,
+#styleContainer>*:hover {
+    color: white;
+}
+
+.removeFilter {
+    opacity: 0;
+}

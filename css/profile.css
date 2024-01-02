@@ -391,6 +391,7 @@ main {
 }
 
 #bottomMiddleMenu>#background>#addNewComic {
+
     width: 8.9vw;
     height: 3.1vw;
     font-size: 20px;
@@ -429,7 +430,7 @@ main {
 }
 
 #bottomMiddleMenu>button {
-    /* margin-left: 71vw; */
+    margin-left: 71vw; 
     height: 2.9vw;
     width: 9vw;
     border: 1px solid black;

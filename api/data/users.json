@@ -287,7 +287,22 @@
                 "following": [],
                 "followers": []
             },
-            "comics": []
+            "comics": [
+                {
+                    "title": "Julia",
+                    "author": "oliwer",
+                    "description": "A shorter comic about a psycological development through the tidiues wok of washing dishes. ",
+                    "filters": "[\"Crayon\",\"FAMILY\"]",
+                    "frontPage": "data\/comics\/Julia1.png",
+                    "content": [
+                        "data\/comics\/Julia2.png",
+                        "data\/comics\/Julia3.png",
+                        "data\/comics\/Julia4.png"
+                    ],
+                    "time": "02\/01\/2024",
+                    "likes": []
+                }
+            ]
         }
     ],
     [

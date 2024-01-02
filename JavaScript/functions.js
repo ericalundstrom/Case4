@@ -115,6 +115,7 @@ function BasicLayout() {
 
 
 async function createCard(parent, resource, user) {
+    let cardCounter = 0;
 
     if (resource.length === 0) {
         let response = await fetch("api/data/users.json");
@@ -129,6 +130,7 @@ async function createCard(parent, resource, user) {
 
     // console.log(resource.length);
     function createSingleCard(data) {
+        cardCounter++;
         console.log("näst högst upp");
         const cardBox = document.createElement("div");
         cardBox.classList.add("cardBox");
@@ -136,6 +138,34 @@ async function createCard(parent, resource, user) {
         cardBox.innerHTML = `
             <div class="imgDiv"></div>
         `;
+
+        cardBox.classList.add(`card-${cardCounter}`);
+
+
+        // if (cardCounter % 5 === 3 || cardCounter % 5 === 4) {
+        //     cardBox.classList.add('bigger-card');
+        // }
+
+
+        // if ((cardCounter + 1) % 5 === 0 || (cardCounter + 1) % 5 === 1) {
+        //     cardBox.classList.add('bigger-card');
+        //     cardBox.classList.add('second-row');
+        // }
+
+        if ((cardCounter + 1) % 5 === 0 || (cardCounter + 1) % 5 === 1) {
+            cardBox.classList.add('bigger-card');
+            cardBox.classList.add('second-row');
+            // parent.classList.add('next-rows');
+
+            console.log('Intermediate Value:', (cardCounter + 1) % 5);
+            if (cardCounter === 5) {
+                console.log('Card Counter is 5:', cardCounter);
+            }
+
+            if (cardCounter === 6) {
+                console.log('Card Counter is 6:', cardCounter);
+            }
+        }
 
         cardBox.setAttribute("id", data.title);
 
@@ -166,6 +196,7 @@ async function createCard(parent, resource, user) {
             divDom.classList.add("description");
             let user = localStorage.getItem("user");
             let userPArsed = JSON.parse(user);
+
 
             cardBox.querySelector("#delete").addEventListener("click", (event) => {
                 console.log("delete");
@@ -239,6 +270,7 @@ async function ReadComic(comic) {
     document.querySelector("body").append(readBox);
     readBox.classList.add("readBox");
     readBox.innerHTML = `
+
         <div id="close"> X </div>
         <div id="left" class="comic"></div>
         <div id="right" class="comic"></div>

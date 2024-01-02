@@ -87,36 +87,39 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
     }
 
+
     if (isset($_GET["comic"])) {
-
         $titleOfComic = $_GET["comic"];
-
-        foreach($users as $user){
-            foreach($user as $part){
+        
+        foreach ($users as $user) {
+            foreach ($user as $part) {
                 if ($titleOfComic === "") {
-               // If titleOfComic is empty, send all users back
-                   send_JSON($part["comics"]);    
-               }
+                    // If titleOfComic is empty, send all comics back
+                    send_JSON($part["comics"]);
+                }
+    
                 $userComicArray = $part["comics"];
-                
-                foreach ( $userComicArray as $comic){
+    
+                foreach ($userComicArray as $comic) {
                     $comicTitle = $comic["title"];
                     
-                    $similarityPercentage = 70;
-                    
-                    // Check if the titles are at least 70% similar
-                    if (strstr($comicTitle, $titleOfComic)) {
+                    $minSimilarityPercentage = 50; // Adjust this threshold as needed
+    
+                    // Check if the titles are above the minimum similarity threshold
+                    similar_text($comicTitle, $titleOfComic, $percent);
+    
+                    if ($percent >= $minSimilarityPercentage) {
                         send_JSON($comic);
                     }
                 }
-                
-            };
+            }
         }
-
+    
         $error = ["error" => "Hittade ingen matchande"];
         send_JSON($error, 400);
-        
     }
+    
+    
 
 }else{
     $error = ["error" => "Fel här"];

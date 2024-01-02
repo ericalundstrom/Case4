@@ -15,7 +15,7 @@ async function RenderHomePage() {
   // console.log(response[0].personal.picture);
   let userPic = response[0].personal.picture;
 
- document.querySelector("#wrapper").innerHTML = `
+  document.querySelector("#wrapper").innerHTML = `
 
     <div id="welcome">
       <div id="text">
@@ -61,6 +61,7 @@ async function RenderHomePage() {
     e.stopPropagation();
     if (e.key == "Enter") {
 
+      console.log(e.target.value);
       if (e.target.value === "") {
         parentCards.innerHTML = ``;
         createCard(boxCards, comics);
@@ -69,6 +70,7 @@ async function RenderHomePage() {
 
         // // console.log(e.target.value);
         let comics = await findComic(e.target.value);
+        console.log(comics);
 
         if (comics) {
 

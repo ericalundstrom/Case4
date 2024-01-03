@@ -192,11 +192,11 @@ async function createCard(parent, resource, user) {
                 divDom.querySelector("#delete").remove();
             }
 
-                document.querySelector("#usernameAuthor").addEventListener("click", () => {
+            document.querySelector("#usernameAuthor").addEventListener("click", () => {
                 RenderProfile(user, true);
-                })
+            })
 
-            for(let i = 0; i < tags.length; i++){
+            for (let i = 0; i < tags.length; i++) {
                 let tag = document.createElement("div");
                 tag.classList.add("tags");
                 let text = tags[i].toUpperCase()
@@ -214,8 +214,8 @@ async function createCard(parent, resource, user) {
         cardBox.addEventListener("mouseleave", () => {
             console.log("inne");
             cardBox.classList.remove("hoverEffect");
-            cardBox.classList.remove("description");
-            
+            document.querySelector(".description").remove();
+
         });
 
         if (data.frontPage !== "") {
@@ -286,7 +286,7 @@ async function ReadComic(comic) {
         </div>
     `;
 
-    for(let i = 0; i < filter.length; i++){
+    for (let i = 0; i < filter.length; i++) {
         let divDom = document.createElement("div");
         divDom.textContent = filter[i];
         divDom.classList.add("tags");
@@ -297,7 +297,7 @@ async function ReadComic(comic) {
         RenderProfile(user, true);
         readBox.remove();
     })
-    
+
     document.querySelector("#author").addEventListener("click", () => {
         // Get user from hoover 
     })
@@ -339,7 +339,7 @@ async function ReadComic(comic) {
         readBox.querySelector("#right").style.backgroundImage = `url("api/${comic.frontPage}")`;
         currentIndex = -2;
 
-       for(let i = 0; i < filter.length; i++){
+        for (let i = 0; i < filter.length; i++) {
             let divDom = document.createElement("div");
             divDom.textContent = filter[i];
             divDom.classList.add("tags");

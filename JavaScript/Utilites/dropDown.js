@@ -12,6 +12,7 @@ function filterFunction(target) {
     }
 
     localStorager.set_item("filters", JSON.stringify(filter))
+    console.log(filter);
     return filter;
 }
 
@@ -345,7 +346,7 @@ function createFilterPage(value, container) {
             dropdownDiv.append(div);
 
             div.addEventListener("click", async (event) => {
-                event.target.classList.toggle("hiddenFilters");
+                // event.target.classList.toggle("hiddenFilters");
                 event.target.classList.add("selected");
                 if (container) {
                     createFilterDOM(event.target.innerText, container);
@@ -386,6 +387,27 @@ function createFilterPage(value, container) {
                     boxCards.innerHTML = ``;
                     createCard(boxCards, matchingComics);
 
+                    let localFilter = localStorage.getItem("filters");
+                    let parse = JSON.parse(localFilter)
+                    // console.log(JSON.parse(localFilter));
+
+                    let filtersInComic = parse.replace(/[\[\]"]+/g, ' ').trim();
+                    let filtersInComicArray = filtersInComic.split(',').map(filter => filter.trim());
+                    console.log(filtersInComicArray);
+                    let count = 0;
+
+                    if (filtersInComicArray.length >= 1) {
+                        document.querySelector("#filter").textContent = "FILTERS";
+
+                        for (let i = 0; i < filtersInComicArray.length; i++) {
+
+                            count++
+                        }
+                    }
+
+                    document.querySelector("#filter").textContent += `(${count})`;
+
+
                 }
             });
         });
@@ -408,6 +430,14 @@ function createFilterPage(value, container) {
                 });
             }
         })
+
+        let selected = document.querySelectorAll(".selected");
+        console.log(selected);
+        selected.forEach(filter => {
+            filter.classList.remove("selected");
+        })
+
+        document.querySelector("#filter").textContent = "FILTERS";
 
         let boxCards = document.querySelector("#cards");
         boxCards.innerHTML = ``;
@@ -558,7 +588,8 @@ function createFilterDOM(target, container) {
     filterP.textContent = uppercaseStr;
     chosenFilter.append(filterP)
     chosenFilter.append(cross);
-    container.append(chosenFilter);
+    document.querySelector("#filters").append(chosenFilter);
+    // container.append(chosenFilter);
 
     cross.addEventListener("click", () => {
         chosenFilter.remove();

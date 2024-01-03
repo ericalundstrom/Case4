@@ -24,9 +24,10 @@ async function renderUploadComic() {
 
          <input name="title" placeholder="Add title">
             <button id="filters"> Tags + </button>
+            <div id="filterContainerDOM"></div>
             <label for="description"> Add description </label>
             <textarea name="description" required="required" id="description"></textarea>
-            <div id="wordCounter">Characters left: 100</div>   
+            <div id="wordCounter">0/250</div>   
         </div>
     </div>
      <div id="buttons">
@@ -43,10 +44,11 @@ async function renderUploadComic() {
 
 
     const filterButtonDOM = document.querySelector("#filters");
+    const filterDOM = document.querySelector("#filterContainerDOM");
 
     filterButtonDOM.addEventListener("click", async function () {
 
-        let filters = await createFilterPage(false)
+        let filters = await createFilterPage(true, filterDOM)
         console.log(filters);
 
     })
@@ -93,11 +95,13 @@ async function renderLayoutPage(dataToPublish) {
     // console.log(dataToPublish);
 
     swapStyleSheet("css/uploadComicsLayout.css");
+    document.querySelector("body").style.backgroundImage = "url(/images/bkg/bkg/upload.svg)";
 
     document.querySelector("#wrapper").innerHTML = `
+     <h1> UPLOAD </h1>
     <div id="topOfPage"> 
           <div id="infoIcon">Info</div> 
-          <button id="toggleButton">Toggle Layout</button>
+          <button id="toggleButton">Grid +</button>
         </div>
 
     <div id="gridContainer">
@@ -144,8 +148,8 @@ async function renderLayoutPage(dataToPublish) {
         
     </div>
       <div id="bottomOfPage"> 
-          <button id="publish"> Publish</button>
-           <button id="uploadMore"> Upload more</button>
+          <button id="publish"> Upload</button>
+           <button id="uploadMore"> Add more</button>
        </div>`;
 
     let hiddenElements = document.querySelectorAll(".pageLayout.hidden");

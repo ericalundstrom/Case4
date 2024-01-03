@@ -5,6 +5,11 @@
     src: url("../fonts/Shadows_Into_Light/fonts/Urbanist/static/Urbanist-Regular.ttf");
 }
 
+@font-face {
+    font-family: UrbanistaBold;
+    src: url("../fonts/Shadows_Into_Light/fonts/Urbanist/static/Urbanist-Bold.ttf");
+}
+
 body {
     margin: 0%;
     font-family: Urbanista;
@@ -32,10 +37,11 @@ main {
     width: 66%;
 }
 
-h1{
+#headerUpload > h1{
     align-self: flex-start;
-    font-size: 40px;
-    font-weight: 600;  
+    font-size: 60px;
+    font-family: UrbanistaBold;
+    margin-top: 0px;
 }
 
 /* CONTENT */
@@ -218,6 +224,40 @@ input[name="title"]{
     box-shadow: 2px 2px 0px black;
 }
 
+/* CHOSEN FILTERS */
+
+#filterContainerDOM{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4%;
+    height: auto;
+    margin-bottom: 10%;
+}
+
+.selectedDOM > img {
+    height: 9px;
+    padding-top: 2px;
+    padding-right: 4px;
+    margin-left: 6px;
+}
+.selectedDOM > p {
+    margin: 0px;
+    margin-top: 3px;
+}
+
+.selectedDOM {
+    width: auto;
+    padding: 3px;
+    background-color: #F6B8D3;
+    border: 2px solid black;
+    box-shadow: 3px 3px 0px black;
+    margin: 2px;
+    display: flex;
+    justify-content: center;
+    font-size: 12px;
+
+}
+
 /* Dropdown menu */ 
 
 .dropDown {
@@ -283,6 +323,10 @@ input[name="title"]{
     display: none;
 }
 
+.hiddenFilters {
+    display: none;
+}
+
 .containerFilterBig {
     position: fixed;
     top: 0px;
@@ -337,6 +381,24 @@ input[name="title"]{
     /*grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(4, 1fr);
     gap: 5%; */
+}
+
+.headerMaterial{
+    display: flex;
+    align-items: center;
+    gap: 4%;
+}
+
+.headerMaterial > img {
+    height: 11px;
+}
+
+.rotate-icon {
+  transition: transform 0.6s ease; /* Add a transition for smoother rotation */
+}
+
+.rotate-icon.rotate {
+  transform: rotate(90deg); /* Specify the rotation angle as needed */
 }
 
 #formatContainer,

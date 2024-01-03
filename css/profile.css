@@ -137,7 +137,7 @@ main {
 
 #settings {
     /* margin-left: 18vw; */
-    height: 2vw;
+    height: 22px;
 }
 
 #popUp h2 {
@@ -256,6 +256,7 @@ main {
     border: none;
     margin-left: 10px;
     height: 38px;
+    max-width: 180px;
 }
 
 #popUpWindow #nedreDel label,
@@ -264,7 +265,7 @@ main {
 }
 
 #editPng {
-    height: 2vw;
+    height: 20px;
 }
 
 #settingsAndEdit {

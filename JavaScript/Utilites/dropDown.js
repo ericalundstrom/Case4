@@ -105,7 +105,7 @@ async function createFilterDropdowns(container, value) {
     <div id="contentFilter">
         <div id="themes"></div>
         <div id="rightHandSide">
-        <input type="text" id="searchField" class="hidden search-field" placeholder="SEARCH...">
+        <input type="text" id="searchField" class="hiddenSearch" placeholder="SEARCH...">
             <img id="search" src="../images/searchIcon.svg"></img>
             <div id="filter">FILTERS</div>
             <div id=sortComicContainer>
@@ -122,6 +122,10 @@ async function createFilterDropdowns(container, value) {
         divDom.setAttribute("id", filter);
         divDom.addEventListener("click", async (event) => {
             event.target.classList.toggle("selected");
+
+            if(container){
+                createFilterDOM(event.target.innerText, container);
+            }
 
             if (value === true) {
                 let filter = filterFunction(event);
@@ -249,8 +253,9 @@ async function createFilterDropdowns(container, value) {
 }
 
 async function renderSearchField() {
-    let searchfeildDOM = document.querySelector(".search-field");
-    searchfeildDOM.classList.toggle("hidden");
+    let searchfeildDOM = document.querySelector("#searchField");
+    searchfeildDOM.classList.toggle("hiddenSearch");
+    searchfeildDOM.classList.toggle("visible-search");
 }
 async function displayComics(comics, value) {
     if (value === false) {
@@ -275,9 +280,11 @@ function toggleDropdown(event) {
     const dropdownDiv = event.currentTarget.lastElementChild;
     console.log(dropdownDiv);
     dropdownDiv.classList.toggle("hiddenFilters");
+    const rotateIcon = event.currentTarget.querySelector('.rotate-icon');
+    rotateIcon.classList.toggle("rotate"); 
 }
 
-function createFilterPage(value) {
+function createFilterPage(value, container) {
 
     document.querySelector("body").style.overflow = "hidden";
 
@@ -314,7 +321,16 @@ function createFilterPage(value) {
 
     for (const key in Materials) {
         const mainCategoryDiv = document.createElement("div");
-        mainCategoryDiv.textContent = `${key} v`;
+        const mainCategoryDivContent = document.createElement("div");
+        mainCategoryDivContent.classList.add("headerMaterial");
+        const mainTextDOM =  document.createElement("p");
+        mainTextDOM.textContent = `${key}`;
+        const mainImgDOM = document.createElement("img");
+        mainImgDOM.src = "../images/Arrow.svg";
+        mainImgDOM.classList.add("rotate-icon")
+        mainCategoryDivContent.append(mainTextDOM);
+        mainCategoryDivContent.append(mainImgDOM);
+        mainCategoryDiv.append(mainCategoryDivContent);
         mainCategoryDiv.setAttribute("id", key);
         mainCategoryDiv.classList.add("material");
         mainCategoryDiv.addEventListener("click", toggleDropdown);
@@ -333,6 +349,10 @@ function createFilterPage(value) {
             div.addEventListener("click", async (event) => {
                 event.target.classList.toggle("hiddenFilters");
                 event.target.classList.add("selected");
+                if(container){
+                    createFilterDOM(event.target.innerText, container);
+                }
+                
 
                 if (value === true) {
                     let filter = filterFunction(event);
@@ -379,8 +399,7 @@ function createFilterPage(value) {
         divDom.setAttribute("id", filter);
         divDom.addEventListener("click", async (event) => {
             event.target.classList.toggle("selected");
-
-            createFilterDOM(event.target);
+            createFilterDOM(event.target.innerText, container);
 
             if (value === true) {
                 let filter = filterFunction(event);
@@ -424,6 +443,9 @@ function createFilterPage(value) {
         divDom.setAttribute("id", filter);
         divDom.addEventListener("click", async (event) => {
             event.target.classList.toggle("selected");
+            if(container){
+                createFilterDOM(event.target.innerText, container);
+            }
 
             if (value === true) {
                 let filter = filterFunction(event);
@@ -471,8 +493,20 @@ function createFilterPage(value) {
 }
 
 function createFilterDOM(target, container){
-    let filterDOM = document.createElement("div");
-    filterDOM.textContent = target;
-    
+    let chosenFilter = document.createElement("div");
+    let filterP = document.createElement("p");
+    let cross = document.createElement("img");
+    cross.src = "../images/cross.svg";
+    chosenFilter.classList.add("selectedDOM");
+    let uppercaseStr = target.toUpperCase();
+    filterP.textContent = uppercaseStr;
+    chosenFilter.append(filterP)
+    chosenFilter.append(cross);
+    container.append(chosenFilter);
+
+    cross.addEventListener("click", () => {
+        chosenFilter.remove();
+    })
+
 }
 

@@ -33,15 +33,22 @@ function BasicLayout() {
 
 
     document.querySelector("footer").innerHTML = `
-        <div id="about"> About Rita </div>
+    <div id="contentFooter">
         <div class="stroke"></div>
-        <div> Change language </div>
+        <div class="boxFooterOne">
+          <div id="contact"> CONTACT</div>
+            <div id="about"> ABOUT RITA </div>
+        </div>
         <div class="stroke"></div>
-        <div id="faq"> FAQ </div>
+        <div class="boxFooter">
+            <div id="faq"> FAQ </div>
+            <div id="copy"> COPYRIGHT </div>
+        </div>
         <div class="stroke"></div>
-        <div id="copy"> Copyright </div>
-        <div class="stroke"></div>
-        <div id="contact"> Contact us </div>`;
+        <div class="boxFooterLast"> CHANGE LANGUAGE </div>
+    </div>
+       
+        `;
 
     document.querySelector("#profile").addEventListener("click", (event) => {
         event.stopPropagation();

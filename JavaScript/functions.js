@@ -59,7 +59,7 @@ function BasicLayout() {
         notificationsContainer.innerHTML = `  
         <div class="notificationContainer"> 
         <div class="topNotification">
-            <img src="../images/cross.png"></img> 
+            <img src="../images/cross.svg"></img> 
         </div>        
             <div class="notification">
                 <p>Elin liked your comment</p> 

@@ -1059,63 +1059,9 @@
             },
             "comics": [
                 {
-                    "title": "titel",
-                    "author": "un",
-                    "description": "gege",
-                    "filters": "",
-                    "frontPage": "",
-                    "content": [],
-                    "time": "02\/01\/2024",
-                    "likes": []
-                },
-                {
-                    "title": "Here is the Title",
-                    "author": "un",
-                    "description": "H\u00e4r st\u00e5r beskrivningen",
-                    "filters": "",
-                    "frontPage": "data\/comics\/\u00c4gg for start_up.png",
-                    "content": [],
-                    "time": "02\/01\/2024",
-                    "likes": []
-                },
-                {
-                    "title": "a little comic",
-                    "author": "un",
-                    "description": "fefe",
-                    "filters": [
-                        "Webcomic",
-                        "Crayon"
-                    ],
-                    "frontPage": "data\/comics\/Ska\u0308rmavbild 2023-12-04 kl. 15.04.08.png",
-                    "content": [
-                        "data\/comics\/Ska\u0308rmavbild 2023-12-04 kl. 15.04.08.png",
-                        "data\/comics\/Ska\u0308rmavbild 2023-12-04 kl. 15.04.08.png"
-                    ],
-                    "time": "03\/01\/2024",
-                    "likes": []
-                },
-                {
-                    "title": "Added a comic",
-                    "author": "un",
-                    "description": "Descritopn",
-                    "filters": [
-                        "One-frame",
-                        "Pastel",
-                        "Acrylic",
-                        "Collage",
-                        "Manga"
-                    ],
-                    "frontPage": "data\/comics\/Ska\u0308rmavbild 2023-12-04 kl. 15.04.08.png",
-                    "content": [
-                        "data\/comics\/Ska\u0308rmavbild 2023-12-04 kl. 15.04.08.png"
-                    ],
-                    "time": "03\/01\/2024",
-                    "likes": []
-                },
-                {
                     "title": "Walking",
                     "author": "un",
-                    "description": null,
+                    "description": "",
                     "filters": [
                         "Part of novel",
                         "Color pencil",
@@ -1126,6 +1072,21 @@
                     "content": [
                         "data\/comics\/Ska\u0308rmavbild 2024-01-03 kl. 19.40.23.png",
                         "data\/comics\/Ska\u0308rmavbild 2024-01-03 kl. 19.40.32.png"
+                    ],
+                    "time": "03\/01\/2024",
+                    "likes": []
+                },
+                {
+                    "title": "Swirl",
+                    "author": "un",
+                    "description": "titel",
+                    "filters": [
+                        "Story-telling",
+                        "Pastel"
+                    ],
+                    "frontPage": "data\/comics\/Ska\u0308rmavbild 2024-01-03 kl. 19.50.55.png",
+                    "content": [
+                        "data\/comics\/Ska\u0308rmavbild 2024-01-03 kl. 19.51.05.png"
                     ],
                     "time": "03\/01\/2024",
                     "likes": []

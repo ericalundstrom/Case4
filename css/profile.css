@@ -369,7 +369,7 @@ main {
 }
 
 #bottomMiddleMenu {
-    margin-left: 65vw;
+    margin-left: 72vw;
 }
 
 #bottomMiddleMenu>#background {
@@ -841,7 +841,8 @@ body {
 .description {
     height: 50%;
     width: 90%;
-    background-color: #dfdfdfde;
+    background-color: rgba(0, 0, 0, 0.271);
+    color: white;
     position: absolute;
     top: 182px;
     display: flex;

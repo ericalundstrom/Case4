@@ -133,10 +133,11 @@ async function createFilterDropdowns(container, value) {
                         let comics = [...user[0].comics];
 
                         comics.forEach(comic => {
-                            let filtersInComic = comic.filters.replace(/[\[\]"]+/g, ' ').trim();
-                            let filtersInComicArray = filtersInComic.split(',').map(filter => filter.trim());
+                            console.log(comic.filters);
+                            //let filtersInComic = comic.filters.replace(/[\[\]"]+/g, ' ').trim();
+                            //let filtersInComicArray = filtersInComic.split(',').map(filter => filter.trim());
 
-                            if (filter.some(filterItem => filtersInComicArray.some(comicFilter => comicFilter.toLowerCase().indexOf(filterItem.toLowerCase()) !== -1))) {
+                            if (filter.some(filterItem => comic.filters.includes(comicFilter => comicFilter.toLowerCase().indexOf(filterItem.toLowerCase()) !== -1))) {
                                 // console.log("Found at least one similar filter");
                                 // console.log(comic);
                                 matchingComics.push(comic);

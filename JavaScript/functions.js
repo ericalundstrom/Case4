@@ -128,7 +128,6 @@ async function createCard(parent, resource, user) {
         let allComics = resource.flatMap(user => user[0].comics);
         let boxCards = document.querySelector("#cards");
         boxCards.innerHTML = ``;
-        console.log("högst upp");
         createCard(boxCards, allComics)
     }
 
@@ -164,20 +163,17 @@ async function createCard(parent, resource, user) {
         cardBox.addEventListener("mouseenter", () => {
             cardBox.classList.add("hoverEffect");
             let divDom = document.createElement("div");
-            // console.log(JSON.parse(data.filters));
             let tags = (data.filters);
+
             divDom.innerHTML = `
             <img id="delete" src="/images/delete.png">
-            <div id="title">
-            ${data.title}
+            <div id="divDomTop">
+                <div id="title">${data.title} </div>
+                <div id="published"> Published: ${data.time} </div>
             </div>
-            <div id="published"> Published ${data.time} </div>
             <div id="userinfo">
                 <img>
                 <div id="usernameAuthor"> ${data.author} </div>
-            </div>
-            <div id="desc">
-                ${data.description}
             </div>
             <div class="filters"></div>
             `;
@@ -203,7 +199,8 @@ async function createCard(parent, resource, user) {
             for(let i = 0; i < tags.length; i++){
                 let tag = document.createElement("div");
                 tag.classList.add("tags");
-                tag.textContent = tags[i];
+                let text = tags[i].toUpperCase()
+                tag.textContent = text;
                 divDom.querySelector(".filters").append(tag);
             }
 
@@ -215,9 +212,10 @@ async function createCard(parent, resource, user) {
 
 
         cardBox.addEventListener("mouseleave", () => {
+            console.log("inne");
             cardBox.classList.remove("hoverEffect");
+            cardBox.classList.remove("description");
             
-           // document.querySelector(".description").remove();
         });
 
         if (data.frontPage !== "") {
@@ -326,7 +324,6 @@ async function ReadComic(comic) {
 
     // <div id="time">${comic.time}</div>
     function resetInfo() {
-      //  let filters = comic.filters.replace(/[\[\]"]+/g, ' ');
         readBox.querySelector("#left").style.backgroundImage = "";
         readBox.querySelector("#left").innerHTML = `
             <div id="infoDiv">

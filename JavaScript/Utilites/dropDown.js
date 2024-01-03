@@ -12,7 +12,6 @@ function filterFunction(target) {
     }
 
     localStorager.set_item("filters", JSON.stringify(filter))
-    // console.log(filter);
     return filter;
 }
 
@@ -123,10 +122,6 @@ async function createFilterDropdowns(container, value) {
         divDom.addEventListener("click", async (event) => {
             event.target.classList.toggle("selected");
 
-            if(container){
-                createFilterDOM(event.target.innerText, container);
-            }
-
             if (value === true) {
                 let filter = filterFunction(event);
                 let response = await fetch("api/data/users.json");
@@ -198,7 +193,6 @@ async function createFilterDropdowns(container, value) {
                 comics.push(...comic); // Flatten the nested arrays
             }
         }
-        // console.log(matchingComics);
 
         SortOptions.forEach((sort, index) => {
             let div = document.createElement("div");
@@ -278,7 +272,6 @@ async function displayComics(comics, value) {
 
 function toggleDropdown(event) {
     const dropdownDiv = event.currentTarget.lastElementChild;
-    console.log(dropdownDiv);
     dropdownDiv.classList.toggle("hiddenFilters");
     const rotateIcon = event.currentTarget.querySelector('.rotate-icon');
     rotateIcon.classList.toggle("rotate"); 
@@ -343,6 +336,7 @@ function createFilterPage(value, container) {
 
         Materials[key].forEach(filter => {
             const div = document.createElement("div");
+            div.setAttribute("id", filter);
             div.textContent = filter;
             dropdownDiv.append(div);
 
@@ -485,7 +479,15 @@ function createFilterPage(value, container) {
 
 
     document.querySelector(".close").addEventListener("click", () => {
+       let nodeList = document.querySelectorAll(".selected");
+        let idNames = [];
+        nodeList.forEach(element => {
+        idNames.push(element.id);
+        
+        localStorager.set_item("newComicFilters", idNames)
+});
         containerFilter.remove();
+
         document.querySelector("body").style.overflow = "scroll";
 
 

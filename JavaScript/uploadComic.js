@@ -30,6 +30,7 @@ async function renderUploadComic() {
             <div id="wordCounter">0/250</div>   
         </div>
     </div>
+    <p class="errorMessage"></p>
      <div id="buttons">
         <button id="buttonPublish"> Upload now</button>
         <button id="buttonLayout">Add more pages</button>
@@ -40,7 +41,7 @@ async function renderUploadComic() {
     const title = document.querySelector("input[name='title']");
     const description = document.querySelector("#description");
     const frontPage = document.querySelector("#frontPage")
-    const placeholderUpload = document.querySelector("#placeholderUpload")
+    const errorM = document.querySelector(".errorMessage")
 
 
     const filterButtonDOM = document.querySelector("#filters");
@@ -48,8 +49,7 @@ async function renderUploadComic() {
 
     filterButtonDOM.addEventListener("click", async function () {
 
-        let filters = await createFilterPage(true, filterDOM)
-        console.log(filters);
+        createFilterPage(false, filterDOM)
 
     })
 
@@ -64,25 +64,57 @@ async function renderUploadComic() {
     //});
 
     let comicFrontPage = await dragAndDropFirst(frontPage);
+        dataToPublish["img1"] = comicFrontPage;
 
-    console.log(comicFrontPage);
-    dataToPublish["img1"] = comicFrontPage;
+        document.querySelector("#buttonPublish").addEventListener("click", () => {
+
+            if (dataToPublish["img1"].length === 0) {
+                errorM.textContent = "Add a image to continue";
+                setTimeout(() => {
+                errorM.textContent = "";
+            }, 2000);
+
+            } else if (title.value === "") {
+                errorM.textContent = "Add a title";
+                setTimeout(() => {
+                errorM.textContent = ""; 
+            }, 2000);
+
+            } else {
+                dataToPublish["user"] = localStorager.get_item("user");
+                dataToPublish["title"] = title.value;
+                dataToPublish["filters"] = localStorager.get_item("newComicFilters");
+                localStorager.remove_item("newComicFilters");
+                if (description.value !== "") {
+                    dataToPublish["description"] = description.value;
+                }
+                 
+                renderPublishComic(dataToPublish)
+            }
+    })
+
 
     document.querySelector("#buttonLayout").addEventListener("click", () => {
-        // console.log(dataToPublish);
-        if (dataToPublish["img1"] == undefined) {
-            frontPage.innerText = "Add a image to continue";
+
+        console.log(dataToPublish["img1"]);
+
+        if (dataToPublish["img1"].length === 0) {
+            errorM.textContent = "Add a image to continue";
+            setTimeout(() => {
+            errorM.textContent = "";
+        }, 2000);
 
         } else if (title.value === "") {
-            title.innerText = "Add a title";
+            errorM.textContent = "Add a title";
+            setTimeout(() => {
+            errorM.textContent = ""; 
+        }, 2000);
 
         } else {
-            // console.log(filters);
             dataToPublish["user"] = localStorager.get_item("user");
             dataToPublish["title"] = title.value;
-            dataToPublish["filters"] = localStorager.get_item("filters");
-            // console.log(dataToPublish);
-            localStorager.remove_item("filters");
+            dataToPublish["filters"] = localStorager.get_item("newComicFilters");
+            localStorager.remove_item("newComicFilters");
             if (description.value !== "") {
                 dataToPublish["description"] = description.value;
             }
@@ -92,7 +124,7 @@ async function renderUploadComic() {
 }
 
 async function renderLayoutPage(dataToPublish) {
-    // console.log(dataToPublish);
+     console.log(dataToPublish);
 
     swapStyleSheet("css/uploadComicsLayout.css");
     document.querySelector("body").style.backgroundImage = "url(/images/bkg/bkg/upload.svg)";
@@ -172,17 +204,44 @@ async function renderLayoutPage(dataToPublish) {
 
     document.querySelector("#infoIcon").addEventListener("click", () => {
         let popUp = document.querySelector("dialog");
+        popUp.classList.add("modulPopUp")
+        popUp.classList.remove("hidden");
         popUp.showModal();
 
         popUp.innerHTML = `
-            <div id="leftSide">
-            <h1>${dataToPublish.title}</h1>
-            <div id="description"><p></p></div>
-            </div>
-            <div id="rightSide">
-            <img src="../images/cross.png">
-            <img src="${dataToPublish.img1}"
+        <div id="topHeader">
+            <h2> FONT PAGE </h2>
+            <img class="end" src="../images/cross.svg">
+        </div>
+            <div id="popUpcontent">
+                <div id="leftSide">
+                    <img class="headerIMG" src="../api/${dataToPublish.img1}">
+                </div>
+                <div id="rightSide">
+                    <h2>${dataToPublish.title}</h2>
+                    <div id="displayFilters"></div>
+                    <div id="description">
+                    <h3>Description</h3>
+                    <div class="descriptionContainer">
+                    <p>${dataToPublish.description}</p></div>
+                    </div>
+                </div>
             </div>`;
+
+           let filterContainer = document.querySelector("#displayFilters");
+                if(dataToPublish.filter){
+                    dataToPublish.filters.forEach(filter => {
+                    let filterDiv = document.createElement("div");
+                    let capitalLetter = filter.toUpperCase();
+                    filterDiv.textContent = capitalLetter;
+                    filterDiv.classList.add("selectedDOM");
+                    filterContainer.append(filterDiv);  
+                    })
+                }
+
+        document.querySelector(".end").addEventListener("click", () => {
+            popUp.classList.add("hidden");
+        })
     })
 
 
@@ -198,7 +257,6 @@ async function renderLayoutPage(dataToPublish) {
 }
 
 async function renderPublishComic(dataToPublish) {
-    console.log(dataToPublish);
     try {
         const request = new Request("api/uploadComic.php",
             {
@@ -212,11 +270,26 @@ async function renderPublishComic(dataToPublish) {
         if (data.error) {
             console.error(data.error);
         } else {
-            return data;
+            let popUp = document.querySelector("dialog");
+            popUp.showModal();
+            popUp.innerHTML = `<h2>A new comic has been uploaded!</h2>`;
+
+            setTimeout(() => {
+                popUp.close(); 
+                RenderProfile();
+            }, 2000);
+
         }
 
     } catch (error) {
-        console.error("Error uploading image:", error);
+        let popUp = document.querySelector("dialog");
+        popUp.showModal();
+        popUp.classList.add("messagePop");
+        popUp.innerHTML = `<h2>${error}</h2>`;
+        setTimeout(() => {
+            popUp.close(); 
+            RenderProfile();
+        }, 2000);
     }
 }
 

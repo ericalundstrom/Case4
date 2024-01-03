@@ -17,7 +17,7 @@
                     "title": "Hilda",
                     "author": "Usern",
                     "description": "Hildas comic",
-                    "filters": "[\"Mystery\",\"Slice of life\",\"Fable\",\"Story-telling\",\"Ink-wash\"]",
+                    "filters": ["Mystery","Slice of life","Fable","Story-telling","Ink-wash"],
                     "frontPage": "data\/comics\/Hilda1.png",
                     "content": [
                         "data\/comics\/Hilda2.png",
@@ -56,7 +56,7 @@
                     "title": "Rutin",
                     "author": "ingemar",
                     "description": "A short story about someones ruitne",
-                    "filters": "[\"Ink-wash\",\"Non-fiction\",\"Ink-wash\",\"FANTASY\",\"SATIR\u00c9\",\"EDUCATION\"]",
+                    "filters": ["Ink-wash","Non-fiction","Ink-wash","FANTASY","SATIRIE","EDUCATION"],
                     "frontPage": "data\/comics\/Rutin1.jpg",
                     "content": [
                         "data\/comics\/Rutin2.jpg",
@@ -227,7 +227,7 @@
                     "title": "opvask",
                     "author": "michaeljackson",
                     "description": "dfewfef",
-                    "filters": "[\"Identity\"]",
+                    "filters": ["Identity"],
                     "frontPage": "data\/comics\/opvask-6sider.png",
                     "content": [
                         "data\/comics\/opvask-6sider 2.png",
@@ -709,7 +709,7 @@
                     "title": "I escaped the prison",
                     "author": "heidi",
                     "description": "A short comic about growing up and not knowing what is expected of you. ",
-                    "filters": "[\"Fantasy\"]",
+                    "filters": ["Fantasy"],
                     "frontPage": "data\/comics\/heidi.alone01png.png",
                     "content": [
                         "data\/comics\/heidi.alone02.png",
@@ -736,7 +736,7 @@
                     "title": "Job opening",
                     "author": "heidi",
                     "description": "A short story about someones ruitne",
-                    "filters": "[\"Ink-wash\",\"Non-fiction\",\"Pastel\",\"FANTASY\",\"HORROR\",\"FAMILY\",\"Color pencil\"]",
+                    "filters": ["Ink-wash","Non-fiction","Pastel","FANTASY","HORROR","FAMILY","Color pencil"],
                     "frontPage": "data\/comics\/jobopening01.png",
                     "content": [
                         "data\/comics\/jobopening02.png",
@@ -753,7 +753,7 @@
                     "title": "Har du t\u00e4nkt",
                     "author": "heidi",
                     "description": "Har du t\u00e4nkt p\u00e5 detta?",
-                    "filters": "[\"Ink-wash\",\"Non-fiction\",\"Tissue paper\",\"Parchment paper\",\"Watercolor\",\"FAMILY\",\"Color pencil\",\"Collage\"]",
+                    "filters": ["Ink-wash","Non-fiction","Tissue paper","Parchment paper","Watercolor","FAMILY","Color pencil","Collage"],
                     "frontPage": "data\/comics\/juli2021.png",
                     "content": [
                         "data\/comics\/juli2021 2.png",
@@ -802,7 +802,7 @@
                     "title": "Julija",
                     "author": "julija",
                     "description": "Julijas comic",
-                    "filters": "[\"Ink-wash\",\"Non-fiction\",\"Parchment paper\",\"Watercolor\",\"FAMILY\",\"Color pencil\",\"Collage\"]",
+                    "filters": ["Ink-wash","Non-fiction","Parchment paper","Watercolor","FAMILY","Color pencil","Collage"],
                     "frontPage": "data\/comics\/Julija1.png",
                     "content": [
                         "data\/comics\/Julija2.png"
@@ -831,7 +831,7 @@
                     "title": "Siri",
                     "author": "siri",
                     "description": "Beroende",
-                    "filters": "[\"Ink-wash\",\"Non-fiction\",\"Parchment paper\",\"IDENTITY\",\"FAMILY\",\"Color pencil\",\"Pencil\"]",
+                    "filters": ["Ink-wash","Non-fiction","Parchment paper","IDENTITY","FAMILY","Color pencil","Pencil"],
                     "frontPage": "data\/comics\/Siri1.png",
                     "content": [
                         "data\/comics\/Siri2.png",
@@ -861,7 +861,7 @@
                     "title": "Minnet",
                     "author": "siri",
                     "description": "Hur g\u00f6r man med minnet av n\u00e5gon?",
-                    "filters": "[\"Story-telling\",\"Fineliner\",\"IDENTITY\",\"LOVE\",\"Color pencil\",\"Pencil\",\"trip-comic\",\"Color pencil\"]",
+                    "filters": ["Story-telling","Fineliner","IDENTITY","LOVE","Color pencil","Pencil","trip-comic","Color pencil"],
                     "frontPage": "data\/comics\/AndreaUdd1.png",
                     "content": [
                         "data\/comics\/AndreaUdd2.png",
@@ -895,7 +895,7 @@
                     "title": "Jon's comic",
                     "author": "Jon",
                     "description": "Jon's comic",
-                    "filters": "[\"Newsprint\",\"Non-fiction\",\"Parchment paper\",\"Ink-wash\",\"FAMILY\",\"FRIENDS\",\"Collage\"]",
+                    "filters": ["Newsprint","Non-fiction","Parchment paper","Ink-wash","FAMILY","FRIENDS","Collage"],
                     "frontPage": "data\/comics\/Jon1.png",
                     "content": [
                         "data\/comics\/Jon2.png",
@@ -927,7 +927,7 @@
                     "title": "Prolog",
                     "author": "alma",
                     "description": "Prologernas prolog",
-                    "filters": "[\"Non-fiction\",\"Parchment paper\",\"LOVE\",\"FAMILY\",\"FRIENDS\",\"Collage\"]",
+                    "filters": ["Non-fiction","Parchment paper","LOVE","FAMILY","FRIENDS","Collage"],
                     "frontPage": "data\/comics\/Alma1.1.png",
                     "content": [
                         "data\/comics\/Alma1.2.png",
@@ -990,6 +990,40 @@
                     "frontPage": "data\/comics\/\u00c4gg for start_up.png",
                     "content": [],
                     "time": "02\/01\/2024",
+                    "likes": []
+                },
+                {
+                    "title": "a little comic",
+                    "author": "un",
+                    "description": "fefe",
+                    "filters": [
+                        "Webcomic",
+                        "Crayon"
+                    ],
+                    "frontPage": "data\/comics\/Ska\u0308rmavbild 2023-12-04 kl. 15.04.08.png",
+                    "content": [
+                        "data\/comics\/Ska\u0308rmavbild 2023-12-04 kl. 15.04.08.png",
+                        "data\/comics\/Ska\u0308rmavbild 2023-12-04 kl. 15.04.08.png"
+                    ],
+                    "time": "03\/01\/2024",
+                    "likes": []
+                },
+                {
+                    "title": "Added a comic",
+                    "author": "un",
+                    "description": "Descritopn",
+                    "filters": [
+                        "One-frame",
+                        "Pastel",
+                        "Acrylic",
+                        "Collage",
+                        "Manga"
+                    ],
+                    "frontPage": "data\/comics\/Ska\u0308rmavbild 2023-12-04 kl. 15.04.08.png",
+                    "content": [
+                        "data\/comics\/Ska\u0308rmavbild 2023-12-04 kl. 15.04.08.png"
+                    ],
+                    "time": "03\/01\/2024",
                     "likes": []
                 }
             ]

@@ -167,9 +167,8 @@ async function createCard(parent, resource, user) {
             cardBox.classList.add("hoverEffect");
             let divDom = document.createElement("div");
             // console.log(JSON.parse(data.filters));
-            let tags = JSON.parse(data.filters);
+            let tags = (data.filters);
             console.log(data.filters);
-            let filters = data.filters.replace(/[\[\]"]+/g, ' ');
             divDom.innerHTML = `
             <img id="delete" src="/images/delete.png">
             <div id="title">
@@ -201,12 +200,14 @@ async function createCard(parent, resource, user) {
                 divDom.querySelector("#delete").remove();
             }
 
-            tags.forEach(filter => {
+
+            for(let i = 0; i < tags.length; i++){
                 let tag = document.createElement("div");
                 tag.classList.add("tags");
-                tag.textContent = filter;
+                tag.textContent = tags[i];
                 divDom.querySelector(".filters").append(tag);
-            })
+            }
+
         });
 
         cardBox.querySelector(".imgDiv").addEventListener("click", () => {
@@ -216,7 +217,8 @@ async function createCard(parent, resource, user) {
 
         cardBox.addEventListener("mouseleave", () => {
             cardBox.classList.remove("hoverEffect");
-            document.querySelector(".description").remove();
+            
+           // document.querySelector(".description").remove();
         });
 
         if (data.frontPage !== "") {
@@ -275,9 +277,6 @@ async function ReadComic(comic) {
     readBox.querySelector("#rightArrow").style.transform = "rotate(270deg)";
     readBox.querySelector("#leftArrow").style.transform = "rotate(90deg)";
 
-    let filters = comic.filters.replace(/[\[\]"]+/g, ' ');
-    let filter = JSON.parse(comic.filters);
-    console.log(filter);
 
     readBox.querySelector("#left").innerHTML = `
         <div id="infoDiv">
@@ -327,7 +326,7 @@ async function ReadComic(comic) {
 
     // <div id="time">${comic.time}</div>
     function resetInfo() {
-        let filters = comic.filters.replace(/[\[\]"]+/g, ' ');
+      //  let filters = comic.filters.replace(/[\[\]"]+/g, ' ');
         readBox.querySelector("#left").style.backgroundImage = "";
         readBox.querySelector("#left").innerHTML = `
             <div id="infoDiv">

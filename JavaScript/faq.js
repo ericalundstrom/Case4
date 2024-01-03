@@ -16,7 +16,7 @@ function RenderFaq() {
             <div id="stroke"></div>
             <div id="questions">
                 <div class="faq">
-                <img id="arrow" src="/images/arrowFAQ.png">
+                <img id="arrow" src="/images/ArrowUp.svg">
                     <h3> Is there a mobile app available for reading comics on the go?</h3>
                     <div id="backgroundFAQ" class="hidden">
                         <div id="answere">
@@ -25,7 +25,7 @@ function RenderFaq() {
                     </div>
                 </div>
                 <div class="faq">
-                <img id="arrow" src="/images/arrowFAQ.png">
+                <img id="arrow" src="/images/ArrowUp.svg">
                     <h3> Can I share my favorite comics with friends or on social media?</h3>
                     <div id="backgroundFAQ" class="hidden">
                         <div id="answere">
@@ -34,7 +34,7 @@ function RenderFaq() {
                     </div>
                 </div>
                 <div class="faq">
-                <img id="arrow" src="/images/arrowFAQ.png">
+                <img id="arrow" src="/images/ArrowUp.svg">
                     <h3>How often are new comics added to the platform?</h3>
                     <div id="backgroundFAQ" class="hidden">
                         <div id="answere">
@@ -43,7 +43,7 @@ function RenderFaq() {
                     </div>
                 </div>
                 <div class="faq">
-                <img id="arrow" src="/images/arrowFAQ.png">
+                <img id="arrow" src="/images/ArrowUp.svg">
                     <h3> Can I read comics offline?</h3>
                     <div id="backgroundFAQ" class="hidden">
                         <div id="answere">
@@ -52,7 +52,7 @@ function RenderFaq() {
                     </div>
                 </div>
                 <div class="faq">
-                <img id="arrow" src="/images/arrowFAQ.png">
+                <img id="arrow" src="/images/ArrowUp.svg">
                     <h3>What genres of comics are available on this site?</h3>
                     <div id="backgroundFAQ" class="hidden">
                         <div id="answere">
@@ -61,7 +61,7 @@ function RenderFaq() {
                     </div>
                 </div>
                 <div class="faq">
-                    <img id="arrow" src="/images/arrowFAQ.png">
+                    <img id="arrow" src="/images/ArrowUp.svg">
                     <h3> How can I start reading comics on this platform?</h3>
                     <div id="backgroundFAQ" class="hidden">
                         <div id="answere">
@@ -76,7 +76,7 @@ function RenderFaq() {
                 <button> Ask a question </button>
             </div>
     `;
-    let questions = wrapper.querySelectorAll("h3");
+    let questions = wrapper.querySelectorAll(".faq");
     console.log(questions);
     questions.forEach(question => {
         question.addEventListener("click", (event) => {

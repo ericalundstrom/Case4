@@ -675,7 +675,7 @@ main {
     gap: 10px;
     justify-items: center;
     /* overflow: scroll; */
-    z-index: 2;
+    z-index: 4;
     position: relative;
     background-color: #F7C488;
     border-radius: 10px;

@@ -678,6 +678,7 @@ async function deleteComic(comic) {
 
         if (resourse) {
             document.querySelector("#popUp").style.height = "auto";
+            document.querySelector("#popUp").style.top = "40%";
 
 
             popUpWindow.innerHTML = `
@@ -691,7 +692,6 @@ async function deleteComic(comic) {
                 document.querySelector("#popUp").style.width = "60%";
                 document.querySelector("#popUp").style.marginLeft = "20%";
                 document.querySelector("#popUp").style.marginRight = "20%";
-                document.querySelector("#popUp").style.top = "40%";
                 // popUp.querySelector("#popUpBox").removeAttribute("id", "deleteReq");
                 // popUp.querySelector("#popUpBox").removeAttribute("id", "info");
                 // popUp.classList.remove("deleteReq");

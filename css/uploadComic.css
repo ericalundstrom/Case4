@@ -276,6 +276,14 @@ input[name="title"]{
     position: relative;
 }
 
+.filterContainer > div:hover, .filterContainerComics > div:hover{
+    color: white;
+}
+
+#materialContainer > * {
+  cursor: pointer;
+}
+
 .Themes .dropDown>div {
     /* height: 20px; */
     padding: 10px;

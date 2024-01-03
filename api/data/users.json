@@ -310,7 +310,7 @@
                     "title": "Julia",
                     "author": "oliwer",
                     "description": "A shorter comic about a psycological development through the tidiues wok of washing dishes. ",
-                    "filters": "[\"Crayon\",\"FAMILY\"]",
+                    "filters": ["Crayon","FAMILY"],
                     "frontPage": "data\/comics\/Julia1.png",
                     "content": [
                         "data\/comics\/Julia2.png",
@@ -510,7 +510,7 @@
                     "title": "Wonderful Christmas",
                     "author": "petra",
                     "description": "A shorter comic about a psycological development through the tidiues wok of washing dishes. ",
-                    "filters": "[\"Mystery\",\"Slice of life\"]",
+                    "filters": ["Mystery","Slice of life"],
                     "frontPage": "data\/comics\/wonderful-christmas.png",
                     "content": [
                         "data\/comics\/wonderful-christmas.2.png",
@@ -523,7 +523,7 @@
                     "title": "Jeg kan ikke blinke",
                     "author": "petra",
                     "description": "fewfewf",
-                    "filters": "[\"Mystery\",\"Manga\"]",
+                    "filters": ["Mystery","Manga"],
                     "frontPage": "data\/comics\/jegkanikkeblinke.png",
                     "content": [
                         "data\/comics\/jegkanikkeblinke 2.png",
@@ -722,7 +722,7 @@
                     "title": "Thalia",
                     "author": "heidi",
                     "description": "Ber\u00e4ttelsen om bror Marklunds skulptur",
-                    "filters": "[\"Fantasy\",\"Mystery\"]",
+                    "filters": ["Fantasy","Mystery"],
                     "frontPage": "data\/comics\/Thalia_-_Torkel_Tire\u0301n.jpg",
                     "content": [
                         "data\/comics\/Thalia_-_Torkel_Tire\u0301n 2.jpg",

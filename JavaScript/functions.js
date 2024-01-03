@@ -175,7 +175,7 @@ async function createCard(parent, resource, user) {
                 <img>
                 <div id="usernameAuthor"> ${data.author} </div>
             </div>
-            <div class="filters"></div>
+            <div class="filterTags"></div>
             `;
 
             cardBox.append(divDom);
@@ -201,7 +201,7 @@ async function createCard(parent, resource, user) {
                 tag.classList.add("tags");
                 let text = tags[i].toUpperCase()
                 tag.textContent = text;
-                divDom.querySelector(".filters").append(tag);
+                divDom.querySelector(".filterTags").append(tag);
             }
 
         });

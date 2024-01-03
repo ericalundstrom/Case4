@@ -555,6 +555,24 @@
                     ],
                     "time": "04\/12\/2023",
                     "likes": []
+                },
+                {
+                    "title": "test",
+                    "author": "petra",
+                    "description": "Testing testing",
+                    "filters": [
+                        "Strip-comic",
+                        "Color pencil",
+                        "Stop-motion",
+                        "Super-hero"
+                    ],
+                    "frontPage": "data\/comics\/ericaProfilePic.jpg",
+                    "content": [
+                        "data\/comics\/LoProfilePic.jpg",
+                        "data\/comics\/welcomeLogo.png"
+                    ],
+                    "time": "03\/01\/2024",
+                    "likes": []
                 }
             ]
         }
@@ -1058,26 +1076,6 @@
                 "followers": []
             },
             "comics": [
-                {
-                    "title": "titel",
-                    "author": "un",
-                    "description": "gege",
-                    "filters": "",
-                    "frontPage": "",
-                    "content": [],
-                    "time": "02\/01\/2024",
-                    "likes": []
-                },
-                {
-                    "title": "Here is the Title",
-                    "author": "un",
-                    "description": "H\u00e4r st\u00e5r beskrivningen",
-                    "filters": "",
-                    "frontPage": "data\/comics\/\u00c4gg for start_up.png",
-                    "content": [],
-                    "time": "02\/01\/2024",
-                    "likes": []
-                },
                 {
                     "title": "a little comic",
                     "author": "un",

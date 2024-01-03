@@ -858,9 +858,11 @@ body {
     padding-left: 10px;
 }
 
-.description .filters {
+.description .filterTags {
     display: flex;
     flex-wrap: wrap;
+    margin-left: 5px;
+    align-self: flex-start;
 }
 
 .tags {

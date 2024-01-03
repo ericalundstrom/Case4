@@ -302,10 +302,11 @@ nav>div>div>#cover {
     padding: 10px;
 }
 
-.description .filters {
+.description .filterTags {
     display: flex;
     flex-wrap: wrap;
     margin-left: 5px;
+    align-self: flex-start;
 }
 
 .tags {
@@ -365,7 +366,7 @@ nav>div>div>#cover {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 2;
+    z-index: 4;
 }
 
 .readBox img {

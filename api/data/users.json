@@ -555,6 +555,24 @@
                     ],
                     "time": "04\/12\/2023",
                     "likes": []
+                },
+                {
+                    "title": "test",
+                    "author": "petra",
+                    "description": "Testing testing",
+                    "filters": [
+                        "Strip-comic",
+                        "Color pencil",
+                        "Stop-motion",
+                        "Super-hero"
+                    ],
+                    "frontPage": "data\/comics\/ericaProfilePic.jpg",
+                    "content": [
+                        "data\/comics\/LoProfilePic.jpg",
+                        "data\/comics\/welcomeLogo.png"
+                    ],
+                    "time": "03\/01\/2024",
+                    "likes": []
                 }
             ]
         }

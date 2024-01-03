@@ -137,20 +137,23 @@ async function createFilterDropdowns(container, value) {
                             //let filtersInComic = comic.filters.replace(/[\[\]"]+/g, ' ').trim();
                             //let filtersInComicArray = filtersInComic.split(',').map(filter => filter.trim());
 
-                            if (filter.some(filterItem => comic.filters.includes(comicFilter => comicFilter.toLowerCase().indexOf(filterItem.toLowerCase()) !== -1))) {
-                                // console.log("Found at least one similar filter");
-                                // console.log(comic);
+                            if (filter.some(filterItem => comic.filters.some(comicFilter => comicFilter.toLowerCase().includes(filterItem.toLowerCase())))) {
+                                // Found at least one similar filter
                                 matchingComics.push(comic);
+                                console.log(comics);
                             } else {
-                                // console.log("Filters not found");
+                                console.log("Filters not found");
                             }
+
                         });
                     }
+                    console.log(matchingComics);
                 });
 
                 // console.log(matchingComics.length);
                 let boxCards = document.querySelector("#cards");
                 boxCards.innerHTML = ``;
+                console.log(matchingComics);
                 createCard(boxCards, matchingComics);
                 // console.log("Matching Comics:", matchingComics);
             }
@@ -275,7 +278,7 @@ function toggleDropdown(event) {
     const dropdownDiv = event.currentTarget.lastElementChild;
     dropdownDiv.classList.toggle("hiddenFilters");
     const rotateIcon = event.currentTarget.querySelector('.rotate-icon');
-    rotateIcon.classList.toggle("rotate"); 
+    rotateIcon.classList.toggle("rotate");
 }
 
 function createFilterPage(value, container) {
@@ -317,7 +320,7 @@ function createFilterPage(value, container) {
         const mainCategoryDiv = document.createElement("div");
         const mainCategoryDivContent = document.createElement("div");
         mainCategoryDivContent.classList.add("headerMaterial");
-        const mainTextDOM =  document.createElement("p");
+        const mainTextDOM = document.createElement("p");
         mainTextDOM.textContent = `${key}`;
         const mainImgDOM = document.createElement("img");
         mainImgDOM.src = "../images/Arrow.svg";
@@ -344,10 +347,10 @@ function createFilterPage(value, container) {
             div.addEventListener("click", async (event) => {
                 event.target.classList.toggle("hiddenFilters");
                 event.target.classList.add("selected");
-                if(container){
+                if (container) {
                     createFilterDOM(event.target.innerText, container);
                 }
-                
+
 
                 if (value === true) {
                     let filter = filterFunction(event);
@@ -438,7 +441,7 @@ function createFilterPage(value, container) {
         divDom.setAttribute("id", filter);
         divDom.addEventListener("click", async (event) => {
             event.target.classList.toggle("selected");
-            if(container){
+            if (container) {
                 createFilterDOM(event.target.innerText, container);
             }
 
@@ -480,13 +483,13 @@ function createFilterPage(value, container) {
 
 
     document.querySelector(".close").addEventListener("click", () => {
-       let nodeList = document.querySelectorAll(".selected");
+        let nodeList = document.querySelectorAll(".selected");
         let idNames = [];
         nodeList.forEach(element => {
-        idNames.push(element.id);
-        
-        localStorager.set_item("newComicFilters", idNames)
-});
+            idNames.push(element.id);
+
+            localStorager.set_item("newComicFilters", idNames)
+        });
         containerFilter.remove();
 
         document.querySelector("body").style.overflow = "scroll";
@@ -495,7 +498,7 @@ function createFilterPage(value, container) {
     })
 }
 
-function createFilterDOM(target, container){
+function createFilterDOM(target, container) {
     let chosenFilter = document.createElement("div");
     let filterP = document.createElement("p");
     let cross = document.createElement("img");

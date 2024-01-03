@@ -365,12 +365,14 @@ function createFilterPage(value, container) {
                             let comics = [...user[0].comics];
 
                             comics.forEach(comic => {
-                                let filtersInComic = comic.filters.replace(/[\[\]"]+/g, ' ').trim();
-                                let filtersInComicArray = filtersInComic.split(',').map(filter => filter.trim());
+                                console.log(comic.filters);
+                                let filtersInComicArray = comic.filters.map(filter => filter.trim().toLowerCase());
 
-                                if (filter.some(filterItem => filtersInComicArray.some(comicFilter => comicFilter.toLowerCase().indexOf(filterItem.toLowerCase()) !== -1))) {
-                                    // console.log("Found at least one similar filter");
-                                    // console.log(comic);
+                                console.log(filtersInComicArray);
+
+                                // Check if there's an intersection between filtersInComicArray and the selected filters
+                                if (filter.some(filterItem => filtersInComicArray.includes(filterItem.toLowerCase()))) {
+                                    // At least one similar filter found
                                     matchingComics.push(comic);
                                 } else {
                                     console.log("Filters not found");
@@ -380,16 +382,40 @@ function createFilterPage(value, container) {
                     });
 
 
-                    // console.log(matchingComics.length);
                     let boxCards = document.querySelector("#cards");
                     boxCards.innerHTML = ``;
                     createCard(boxCards, matchingComics);
-                    // console.log("Matching Comics:", matchingComics);
+
                 }
             });
         });
         mainCategoryDiv.appendChild(dropdownDiv);
     }
+
+    document.querySelector("#containerFilterBigTop > p").addEventListener("click", async () => {
+
+        let response = await fetch("api/data/users.json");
+        let resource = await response.json();
+
+        let allComics = [];
+
+        resource.forEach(user => {
+            if (user[0].comics.length >= 1) {
+                let comics = [...user[0].comics];
+
+                comics.forEach(comic => {
+                    allComics.push(comic);
+                });
+            }
+        })
+
+        let boxCards = document.querySelector("#cards");
+        boxCards.innerHTML = ``;
+        createCard(boxCards, allComics);
+
+    });
+
+
     //
     Styles.forEach(filter => {
         const divDom = document.createElement("div");
@@ -405,20 +431,23 @@ function createFilterPage(value, container) {
                 let resource = await response.json();
                 let matchingComics = [];
 
+
                 resource.forEach(user => {
                     if (user[0].comics.length >= 1) {
                         let comics = [...user[0].comics];
 
                         comics.forEach(comic => {
-                            let filtersInComic = comic.filters.replace(/[\[\]"]+/g, ' ').trim();
-                            let filtersInComicArray = filtersInComic.split(',').map(filter => filter.trim());
+                            console.log(comic.filters);
+                            let filtersInComicArray = comic.filters.map(filter => filter.trim().toLowerCase());
 
-                            if (filter.some(filterItem => filtersInComicArray.some(comicFilter => comicFilter.toLowerCase().indexOf(filterItem.toLowerCase()) !== -1))) {
-                                // console.log("Found at least one similar filter");
-                                // console.log(comic);
+                            console.log(filtersInComicArray);
+
+                            // Check if there's an intersection between filtersInComicArray and the selected filters
+                            if (filter.some(filterItem => filtersInComicArray.includes(filterItem.toLowerCase()))) {
+                                // At least one similar filter found
                                 matchingComics.push(comic);
                             } else {
-                                // console.log("Filters not found");
+                                console.log("Filters not found");
                             }
                         });
                     }
@@ -451,20 +480,41 @@ function createFilterPage(value, container) {
                 let resource = await response.json();
                 let matchingComics = [];
 
+                // resource.forEach(user => {
+                //     if (user[0].comics.length >= 1) {
+                //         let comics = [...user[0].comics];
+
+                //         comics.forEach(comic => {
+                //             let filtersInComic = comic.filters.replace(/[\[\]"]+/g, ' ').trim();
+                //             let filtersInComicArray = filtersInComic.split(',').map(filter => filter.trim());
+
+                //             if (filter.some(filterItem => filtersInComicArray.some(comicFilter => comicFilter.toLowerCase().indexOf(filterItem.toLowerCase()) !== -1))) {
+                //                 // console.log("Found at least one similar filter");
+                //                 // console.log(comic);
+                //                 matchingComics.push(comic);
+                //             } else {
+                //                 // console.log("Filters not found");
+                //             }
+                //         });
+                //     }
+                // });
+
                 resource.forEach(user => {
                     if (user[0].comics.length >= 1) {
                         let comics = [...user[0].comics];
 
                         comics.forEach(comic => {
-                            let filtersInComic = comic.filters.replace(/[\[\]"]+/g, ' ').trim();
-                            let filtersInComicArray = filtersInComic.split(',').map(filter => filter.trim());
+                            console.log(comic.filters);
+                            let filtersInComicArray = comic.filters.map(filter => filter.trim().toLowerCase());
 
-                            if (filter.some(filterItem => filtersInComicArray.some(comicFilter => comicFilter.toLowerCase().indexOf(filterItem.toLowerCase()) !== -1))) {
-                                // console.log("Found at least one similar filter");
-                                // console.log(comic);
+                            console.log(filtersInComicArray);
+
+                            // Check if there's an intersection between filtersInComicArray and the selected filters
+                            if (filter.some(filterItem => filtersInComicArray.includes(filterItem.toLowerCase()))) {
+                                // At least one similar filter found
                                 matchingComics.push(comic);
                             } else {
-                                // console.log("Filters not found");
+                                console.log("Filters not found");
                             }
                         });
                     }

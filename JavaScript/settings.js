@@ -15,8 +15,8 @@ function RenderSettings(params) {
     popUp.classList.remove("hidden");
     popUp.classList.add("settingPopUp");
     popUpWindow.innerHTML = `
-        <h2> settings</h2>
-        <div id="strokeSetting"> x </div>
+        <h2> SETTINGS</h2>
+        <div id="strokeSetting"> <img src="../images/cross.svg"> </div>
         <div class="stroke"></div>
         <form>
             <div id="noti">

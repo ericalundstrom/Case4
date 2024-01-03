@@ -209,6 +209,7 @@ async function RenderProfile(data, value) {
 
         document.querySelector("#addNewComic").addEventListener("click", () => {
             renderUploadComic();
+           // renderLayoutPage()
         })
 
         document.querySelector("#follows > #name").addEventListener("click", async (event) => {

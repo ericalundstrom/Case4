@@ -54,12 +54,108 @@ header>#home>h1 {
 }
 
 footer {
-    display: flex;
-    justify-content: space-around;
     height: 60px;
     width: 100%;
     align-items: center;
     margin-top: 40px;
+}
+
+
+/* INFO FOR HOOVER CARDS*/
+
+#divDomTop{
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+}
+
+
+#title{
+    font-size: 25px;
+    padding-left: 10px;
+    margin-bottom: 0px;
+}
+
+#published{
+    padding-left: 12px;
+    font-size: 10px;
+    margin-top: 0px;
+}
+
+.hoverEffect {
+    transform: scale(1.3);
+    z-index: 3;
+}
+
+#userinfo{
+    display: flex;
+    gap: 1px;
+    padding-left: 10px;
+}
+
+#usernameAuthor {
+    font-size: 15px;
+    padding-left: 1px;
+}
+
+#userinfo>img {
+    height: 1.5vw;
+    width: 1.5vw;
+    border-radius: 90px;
+    background-color: white;
+    border: 1px solid black;
+}
+
+#desc {
+    padding-left: 37px;
+}
+
+.description, .filters {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 10px;
+    color: black;
+    justify-content: center;
+    align-items: center;
+}
+
+.tags {
+    border: 1px solid black;
+    border-radius: 5px;
+    text-align: center;
+    padding: 2px 4px 2px 4px;
+    margin: 5px;
+    width: auto;
+    background-color: #F6B8D3;
+    font-size: 12px;
+}
+
+#contentFooter{
+    letter-spacing: 1px; 
+    display: flex;
+    flex-direction: row;
+}
+
+.boxFooterOne{
+    margin-left: 35px;
+    margin-right: 65px;
+    display: flex;
+    gap: 5px;
+    flex-direction: column;  
+}
+
+.boxFooter{
+    margin-left: 10px;
+    margin-right: 65px;
+    display: flex;
+     gap: 5px;
+    flex-direction: column;
+}
+
+.boxFooterLast{
+     margin-left: 10px;
+    display: flex;
+    align-items: end;
 }
 
 footer>* {
@@ -68,7 +164,6 @@ footer>* {
 
 .hidden {
     opacity: 0;
-    height: 0px;
 }
 
 .notificationContainer {
@@ -102,7 +197,9 @@ footer>* {
 button {
     background-color: #8EC6C1;
     border: 1px solid black;
-    box-shadow: 2px 2px 0px black;
+    box-shadow: 4px 4px 0px black;
+    font-family: Urbanista;
+    cursor: pointer;
 }
 
 button:focus {

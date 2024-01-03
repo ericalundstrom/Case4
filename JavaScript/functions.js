@@ -15,7 +15,6 @@ function swapStyleSheet(styleSheet) {
     document.getElementById("styles").setAttribute("href", styleSheet);
 }
 
-
 function BasicLayout() {
     document.querySelector("header").innerHTML = `
             <div id="home">
@@ -33,15 +32,22 @@ function BasicLayout() {
 
 
     document.querySelector("footer").innerHTML = `
-        <div id="about"> About Rita </div>
+    <div id="contentFooter">
         <div class="stroke"></div>
-        <div> Change language </div>
+        <div class="boxFooterOne">
+          <div id="contact"> CONTACT</div>
+            <div id="about"> ABOUT RITA </div>
+        </div>
         <div class="stroke"></div>
-        <div id="faq"> FAQ </div>
+        <div class="boxFooter">
+            <div id="faq"> FAQ </div>
+            <div id="copy"> COPYRIGHT </div>
+        </div>
         <div class="stroke"></div>
-        <div id="copy"> Copyright </div>
-        <div class="stroke"></div>
-        <div id="contact"> Contact us </div>`;
+        <div class="boxFooterLast"> CHANGE LANGUAGE </div>
+    </div>
+       
+        `;
 
     document.querySelector("#profile").addEventListener("click", (event) => {
         event.stopPropagation();
@@ -113,7 +119,6 @@ function BasicLayout() {
 }
 
 
-
 async function createCard(parent, resource, user) {
     // let cardCounter = 0;
 
@@ -123,7 +128,6 @@ async function createCard(parent, resource, user) {
         let allComics = resource.flatMap(user => user[0].comics);
         let boxCards = document.querySelector("#cards");
         boxCards.innerHTML = ``;
-        console.log("högst upp");
         createCard(boxCards, allComics)
     }
 
@@ -159,22 +163,17 @@ async function createCard(parent, resource, user) {
         cardBox.addEventListener("mouseenter", () => {
             cardBox.classList.add("hoverEffect");
             let divDom = document.createElement("div");
-            // console.log(JSON.parse(data.filters));
-            let tags = JSON.parse(data.filters);
-            console.log(data.filters);
-            let filters = data.filters.replace(/[\[\]"]+/g, ' ');
+            let tags = (data.filters);
+
             divDom.innerHTML = `
             <img id="delete" src="/images/delete.png">
-            <div id="title">
-            ${data.title}
+            <div id="divDomTop">
+                <div id="title">${data.title} </div>
+                <div id="published"> Published: ${data.time} </div>
             </div>
-            <div id="puplished"> Published ${data.time} </div>
             <div id="userinfo">
                 <img>
                 <div id="usernameAuthor"> ${data.author} </div>
-            </div>
-            <div id="desc">
-                ${data.description}
             </div>
             <div class="filters"></div>
             `;
@@ -184,8 +183,7 @@ async function createCard(parent, resource, user) {
             let user = localStorage.getItem("user");
             let userPArsed = JSON.parse(user);
 
-
-            cardBox.querySelector("#delete").addEventListener("click", (event) => {
+            cardBox.querySelector("#delete").addEventListener("click", () => {
                 console.log("delete");
                 deleteComic(data);
             })
@@ -194,12 +192,18 @@ async function createCard(parent, resource, user) {
                 divDom.querySelector("#delete").remove();
             }
 
-            tags.forEach(filter => {
+                document.querySelector("#usernameAuthor").addEventListener("click", () => {
+                RenderProfile(user, true);
+                })
+
+            for(let i = 0; i < tags.length; i++){
                 let tag = document.createElement("div");
                 tag.classList.add("tags");
-                tag.textContent = filter;
+                let text = tags[i].toUpperCase()
+                tag.textContent = text;
                 divDom.querySelector(".filters").append(tag);
-            })
+            }
+
         });
 
         cardBox.querySelector(".imgDiv").addEventListener("click", () => {
@@ -208,8 +212,10 @@ async function createCard(parent, resource, user) {
 
 
         cardBox.addEventListener("mouseleave", () => {
+            console.log("inne");
             cardBox.classList.remove("hoverEffect");
-            document.querySelector(".description").remove();
+            cardBox.classList.remove("description");
+            
         });
 
         if (data.frontPage !== "") {
@@ -249,7 +255,6 @@ async function createCard(parent, resource, user) {
 async function ReadComic(comic) {
 
     let user = await getUser(comic.author);
-    console.log(user);
     let userPic = user[0].personal.picture;
 
     // console.log(comic);
@@ -268,9 +273,6 @@ async function ReadComic(comic) {
     readBox.querySelector("#rightArrow").style.transform = "rotate(270deg)";
     readBox.querySelector("#leftArrow").style.transform = "rotate(90deg)";
 
-    let filters = comic.filters.replace(/[\[\]"]+/g, ' ');
-    let filter = JSON.parse(comic.filters);
-    console.log(filter);
 
     readBox.querySelector("#left").innerHTML = `
         <div id="infoDiv">
@@ -284,19 +286,21 @@ async function ReadComic(comic) {
         </div>
     `;
 
-    filter.forEach(filter => {
-        console.log(filter);
+    for(let i = 0; i < filter.length; i++){
         let divDom = document.createElement("div");
-        divDom.textContent = filter;
+        divDom.textContent = filter[i];
         divDom.classList.add("tags");
         readBox.querySelector("#filter").append(divDom);
-    })
+    }
 
     readBox.querySelector("#author").addEventListener("click", () => {
         RenderProfile(user, true);
         readBox.remove();
     })
-
+    
+    document.querySelector("#author").addEventListener("click", () => {
+        // Get user from hoover 
+    })
 
     readBox.querySelector("#right").style.backgroundImage = `url("api/${comic.frontPage}")`;
     readBox.querySelector("#right").style.backgroundSize = "cover";
@@ -320,7 +324,6 @@ async function ReadComic(comic) {
 
     // <div id="time">${comic.time}</div>
     function resetInfo() {
-        let filters = comic.filters.replace(/[\[\]"]+/g, ' ');
         readBox.querySelector("#left").style.backgroundImage = "";
         readBox.querySelector("#left").innerHTML = `
             <div id="infoDiv">
@@ -336,13 +339,12 @@ async function ReadComic(comic) {
         readBox.querySelector("#right").style.backgroundImage = `url("api/${comic.frontPage}")`;
         currentIndex = -2;
 
-        filter.forEach(filter => {
-            console.log(filter);
+       for(let i = 0; i < filter.length; i++){
             let divDom = document.createElement("div");
-            divDom.textContent = filter;
+            divDom.textContent = filter[i];
             divDom.classList.add("tags");
             readBox.querySelector("#filter").append(divDom);
-        })
+        }
 
         readBox.querySelector("#author").addEventListener("click", () => {
             RenderProfile(user, true);

@@ -5,9 +5,19 @@
     src: url("../fonts/Shadows_Into_Light/fonts/Urbanist/static/Urbanist-Regular.ttf");
 }
 
+@font-face {
+    font-family: UrbanistaBold;
+    src: url("../fonts/Shadows_Into_Light/fonts/Urbanist/static/Urbanist-Bold.ttf");
+}
+
 body {
-    margin: 3%;
+    margin: 0px;
     font-family: Urbanista;
+}
+
+header{
+    background: linear-gradient(to bottom, #f7c488, rgba(247, 196, 136, 0));
+    z-index: 1;
 }
 
 /* content */
@@ -19,17 +29,30 @@ body {
     align-items: center;
     margin: 2%;
     width: 90%;
+    margin-bottom: 30px;
 }
 
 #topOfPage{
     width: 90%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
+
+h1{
+    align-self: flex-start;
+    font-size: 60px;
+    font-family: UrbanistaBold;
+    margin-top: 0px;
+}
+
+#toggleButton{
+    font-size: 18px;
+    height: 35px;
+}
+
 #infoIcon{
-    height: 10%;
-    width: 10%;
-    background-image: url("../images/cross.png");
+    cursor: pointer;
 }
 
 #placeholderUpload{
@@ -44,37 +67,42 @@ body {
 }
 
 #gridContainer {
-  width: 60%;
   height: 70%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 2%;
-  margin: 2%;
+  column-gap: 15px;
+  row-gap: 35px;
+  margin: 1%;
   align-self: center;
   padding: 5%;
   grid-template-rows: repeat(2, 2fr);
 }
 
 .pageLayout.pageOne{
+    margin-top: auto;
+    height: 400px;
     grid-area :  1 / 1 / span 4 / span 2;
     transition: opacity 1s ;
   animation: Fade 2s ease-in;
 }
 
 .pageLayout.pageTwo{
+    margin-top: auto;
+    height: 400px;
     grid-area: 1 / 3 / span 4 / span 2;
      transition: opacity 2s;
     animation: Fade 2s ease-out;
 }
 
 .pageLayout {
+    min-height: 200px;
+    max-width: 222px;
+    padding: 10px;
     background-color: white;
-    box-shadow: 8px 8px 0px black;
+    box-shadow: 4px 4px 0px black;
     border: 1px solid black;
     align-self: center;
     height: 100%;
-    border: 1px solid black;
-    border-radius: 5px;
     transition: opacity 2s;
     animation: Fade 2s ease-out;
 
@@ -103,11 +131,102 @@ body {
     width: 100%;
 }
 
+#bottomOfPage{
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+
+#bottomOfPage > button{
+    padding: 4px;
+    font-size: 18px;
+    width: 176px;
+    border: solid 1px black;
+}
+
+
+
 
 /* popUp*/
 
-dialog{
-    width: 60vw;
-    height: 60vh;
+.modulPopUp{
+    border-radius: 5px;
+    width: 40vw;
+    height: 64vh;
+    background-color: #ffffff;
+}
+
+#topHeader{
+    display: flex;
+    justify-content: space-between;
+}
+
+#topHeader > h2 {
+    margin-left: 43px;
+}
+
+#popUpcontent{
+    display: flex;
+      justify-content: space-around;
+}
+
+#leftSide{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-around;
+}
+
+#rightSide > h2{
+    border-bottom: 1px solid black;
+}
+
+.end{
+    cursor: pointer;
+    height: 10px;
+    width: 10px;
+    align-self: start;
+}
+
+.headerIMG{
+    height: 380px;
+    width: 95%;
+}
+
+#rightSide{
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+
+#displayFilters{
+    display: flex;
+    gap: 8px;
+}
+
+.selectedDOM {
+    width: auto;
+    padding: 3px;
+    background-color: #F6B8D3;
+    border: 1px solid black;
+    margin: 2px;
+    display: flex;
+    justify-content: center;
+    font-size: 12px;
+}
+
+.descriptionContainer > h3{
+    margin-bottom: 0px;
+}
+
+.descriptionContainer{
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    height: 100px;
+    background-color: white;
+    border: 1px solid black;
 }
 

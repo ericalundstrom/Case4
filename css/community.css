@@ -763,3 +763,8 @@ form {
     z-index: 2;
     right: 0px;
 }
+
+
+.communityContainerSort>div:hover {
+    color: white;
+}

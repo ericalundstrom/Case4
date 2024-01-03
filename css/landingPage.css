@@ -307,14 +307,15 @@ nav>div>div>#cover {
 .description .filters {
     display: flex;
     flex-wrap: wrap;
+    margin-left: 5px;
 }
 
 .tags {
     border: 1px solid black;
     border-radius: 5px;
     text-align: center;
-    padding: 2px 4px 2px 4px;
-    margin: 5px;
+    padding: 2px 2px 2px 4px;
+    margin: 2px;
     width: auto;
     background-color: #F6B8D3;
     font-size: 12px;
@@ -443,7 +444,7 @@ nav>div>div>#cover {
 }
 
 #infoDiv #authorInfo img {
-    height: 2vw;
+    height: 3vw;
     position: unset;
 }
 

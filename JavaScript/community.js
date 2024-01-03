@@ -27,11 +27,6 @@ async function RenderCommunity() {
         <div id="calender"></div>
     `;
 
-    wrapper.querySelector("#filterComments").addEventListener("click", () => {
-        let parent = document.querySelector("#filterComments > p");
-
-        sortComicsCommunity(parent);
-    })
     let user = localStorage.getItem("user");
     let responseUser = await getUser(user);
 
@@ -50,6 +45,39 @@ async function RenderCommunity() {
 
     let response = await fetch("api/data/community.json");
     let resourse = await response.json();
+
+    let parent = document.querySelector("#filterComments > p");
+
+    let sortBox = document.createElement("div");
+    sortBox.classList.add("communityContainerSort");
+    sortBox.classList.add("hidden");
+    parent.append(sortBox);
+    const SortOptions = ["A to Z", "Z to A", "Most recently added", "Oldest first"];
+
+    SortOptions.forEach(sort => {
+        let divDom = document.createElement("div");
+        divDom.textContent = sort;
+        divDom.setAttribute("id", sort);
+        // divDom.classList.add("hidden");
+        sortBox.append(divDom);
+    })
+
+
+    wrapper.querySelector("#filterComments").addEventListener("click", (e) => {
+        sortBox.classList.toggle("hidden");
+
+        let id = e.target.id;
+
+        for (let i = 0; i < SortOptions.length; i++) {
+
+            if (SortOptions[i] === id) {
+
+                console.log(e.target.id);
+                sortComicsCommunity(sortBox, resourse, id);
+            }
+
+        }
+    })
 
     tipsBox(tips);
 
@@ -686,25 +714,23 @@ async function addComment(resourse) {
 async function getUserPic(user) {
     let userpro = await fetch(`api/data/users.json?userPic=${user}`);
     let userPic = await userpro.json();
-    // // console.log(userPic);
 
     return userPic;
 }
 
 function sortComicsByTitle(comics, ascending) {
-    // console.log(comics);
+    console.log(comics);
     // Assuming comics is an array of objects with a 'title' property
     let sortedComics = comics.slice().sort((a, b) => {
         const compareResult = a.title.localeCompare(b.title);
         return ascending ? compareResult : -compareResult;
     });
-    // displayComics(sortedComics, true);
 
-    document.querySelector(".communityContainerSort").remove();
     let comments = document.querySelector("#commentBox");
 
     RenderComment(comments, sortedComics, true);
 }
+
 
 function sortComicsByDate(comics, newestFirst) {
     // Assuming comics is an array of objects with a 'date' property in the format "DD-MM-YYYY HH:mm"
@@ -720,13 +746,9 @@ function sortComicsByDate(comics, newestFirst) {
         return newestFirst ? dateB - dateA : dateA - dateB;
     });
 
-    document.querySelector(".communityContainerSort").remove();
     let comments = document.querySelector("#commentBox");
-    sortBox.remove();
     RenderComment(comments, sortedComics, true);
 }
-
-
 
 
 function parseDate(dateString) {
@@ -735,65 +757,29 @@ function parseDate(dateString) {
     }
 
     const [dayMonth, yearTime] = dateString.split(" ");
-    const [day, month] = dayMonth.split("-");
-    const [year, time] = yearTime.split("-");
-    const [hours, minutes] = time.split(":");
+    const [day, month, year] = dayMonth.split("-");
+    const dateWithoutTime = new Date(year, month - 1, day);
 
-    return new Date(year, month - 1, day, hours, minutes);
+    return dateWithoutTime;
+
 }
 
 
-async function sortComicsCommunity(parent) {
-    // Remove existing sort container if it exists
-    const existingSortContainer = document.querySelector(".communityContainerSort");
-    if (existingSortContainer) {
-        existingSortContainer.remove();
-        return; // Stop the function to avoid creating a new container immediately
+function sortComicsCommunity(parent, data, id) {
+    console.log(parent);
+
+    switch (id) {
+        case "A to Z":
+            sortComicsByTitle(data, true);
+            break;
+        case "Z to A":
+            sortComicsByTitle(data, false);
+            break;
+        case "Most recently added":
+            sortComicsByDate(data, true);
+            break;
+        case "Oldest first":
+            sortComicsByDate(data, false);
+            break;
     }
-
-    let sortBox = document.createElement("div");
-    sortBox.classList.add("communityContainerSort");
-    parent.append(sortBox);
-    const SortOptions = ["A to Z", "Z to A"];
-
-    let postsArray = [];
-    let response = await fetch("api/data/community.json");
-    let resource = await response.json();
-    for (let i = 0; i < resource.length; i++) {
-        let post = resource[i];
-        postsArray.push(post);
-    }
-
-    function handleSortOptionClick(sort) {
-        // Call the appropriate sorting function based on the selected option
-        switch (sort) {
-            case "A to Z":
-                sortComicsByTitle(postsArray, true);
-                break;
-            case "Z to A":
-                sortComicsByTitle(postsArray, false);
-                break;
-            // Add more cases for additional sorting options
-        }
-
-    }
-
-    // Event listeners array
-    const clickListeners = SortOptions.map((sort, index) => {
-        const div = document.createElement("div");
-        div.textContent = sort;
-        div.setAttribute("id", `sort-${index}`);
-        sortBox.append(div);
-
-        // Add click event listener for each option
-        const clickListener = () => handleSortOptionClick(sort);
-        div.addEventListener("click", () => {
-            clickListener();
-            let divDom = div.parentNode;
-            divDom.classList.add("hidden");
-            console.log(divDom);
-        });
-
-        return clickListener;
-    });
 }

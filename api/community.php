@@ -13,7 +13,7 @@ if(!file_exists($filename)){ // if no file, create it
 $communityPost = json_decode(file_get_contents($filename), true);
 $post = json_decode(file_get_contents("php://input"), true);
 $time=time();
-$timestamp = date('d-m-Y H:i');
+$timestamp = date('d-m-Y');
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     // $uniqid()

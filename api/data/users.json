@@ -118,9 +118,7 @@
                 "added": "04-12-2023 16:27",
                 "instagram": "",
                 "following": [],
-                "followers": [
-                    "petra"
-                ]
+                "followers": []
             },
             "comics": []
         }
@@ -220,7 +218,9 @@
                 "added": "04-12-2023 16:27",
                 "instagram": "",
                 "following": [],
-                "followers": []
+                "followers": [
+                    "petra"
+                ]
             },
             "comics": [
                 {
@@ -498,8 +498,8 @@
                     "heidi",
                     "emmajones",
                     "erica",
-                    "morgan",
-                    "siri"
+                    "siri",
+                    "michaeljackson"
                 ],
                 "followers": [
                     "ingemar"
@@ -860,7 +860,7 @@
                 {
                     "title": "Minnet",
                     "author": "siri",
-                    "description": "Hur gör man med minnet av någon?",
+                    "description": "Hur g\u00f6r man med minnet av n\u00e5gon?",
                     "filters": "[\"Story-telling\",\"Fineliner\",\"IDENTITY\",\"LOVE\",\"Color pencil\",\"Pencil\",\"trip-comic\",\"Color pencil\"]",
                     "frontPage": "data\/comics\/AndreaUdd1.png",
                     "content": [

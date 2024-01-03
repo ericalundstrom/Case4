@@ -15,7 +15,6 @@ function swapStyleSheet(styleSheet) {
     document.getElementById("styles").setAttribute("href", styleSheet);
 }
 
-
 function BasicLayout() {
     document.querySelector("header").innerHTML = `
             <div id="home">
@@ -120,7 +119,6 @@ function BasicLayout() {
 }
 
 
-
 async function createCard(parent, resource, user) {
     // let cardCounter = 0;
 
@@ -168,13 +166,12 @@ async function createCard(parent, resource, user) {
             let divDom = document.createElement("div");
             // console.log(JSON.parse(data.filters));
             let tags = (data.filters);
-            console.log(data.filters);
             divDom.innerHTML = `
             <img id="delete" src="/images/delete.png">
             <div id="title">
             ${data.title}
             </div>
-            <div id="puplished"> Published ${data.time} </div>
+            <div id="published"> Published ${data.time} </div>
             <div id="userinfo">
                 <img>
                 <div id="usernameAuthor"> ${data.author} </div>
@@ -190,8 +187,7 @@ async function createCard(parent, resource, user) {
             let user = localStorage.getItem("user");
             let userPArsed = JSON.parse(user);
 
-
-            cardBox.querySelector("#delete").addEventListener("click", (event) => {
+            cardBox.querySelector("#delete").addEventListener("click", () => {
                 console.log("delete");
                 deleteComic(data);
             })
@@ -200,6 +196,9 @@ async function createCard(parent, resource, user) {
                 divDom.querySelector("#delete").remove();
             }
 
+                document.querySelector("#usernameAuthor").addEventListener("click", () => {
+                RenderProfile(user, true);
+                })
 
             for(let i = 0; i < tags.length; i++){
                 let tag = document.createElement("div");
@@ -258,7 +257,6 @@ async function createCard(parent, resource, user) {
 async function ReadComic(comic) {
 
     let user = await getUser(comic.author);
-    console.log(user);
     let userPic = user[0].personal.picture;
 
     // console.log(comic);
@@ -290,19 +288,21 @@ async function ReadComic(comic) {
         </div>
     `;
 
-    filter.forEach(filter => {
-        console.log(filter);
+    for(let i = 0; i < filter.length; i++){
         let divDom = document.createElement("div");
-        divDom.textContent = filter;
+        divDom.textContent = filter[i];
         divDom.classList.add("tags");
         readBox.querySelector("#filter").append(divDom);
-    })
+    }
 
     readBox.querySelector("#author").addEventListener("click", () => {
         RenderProfile(user, true);
         readBox.remove();
     })
-
+    
+    document.querySelector("#author").addEventListener("click", () => {
+        // Get user from hoover 
+    })
 
     readBox.querySelector("#right").style.backgroundImage = `url("api/${comic.frontPage}")`;
     readBox.querySelector("#right").style.backgroundSize = "cover";
@@ -342,13 +342,12 @@ async function ReadComic(comic) {
         readBox.querySelector("#right").style.backgroundImage = `url("api/${comic.frontPage}")`;
         currentIndex = -2;
 
-        filter.forEach(filter => {
-            console.log(filter);
+       for(let i = 0; i < filter.length; i++){
             let divDom = document.createElement("div");
-            divDom.textContent = filter;
+            divDom.textContent = filter[i];
             divDom.classList.add("tags");
             readBox.querySelector("#filter").append(divDom);
-        })
+        }
 
         readBox.querySelector("#author").addEventListener("click", () => {
             RenderProfile(user, true);

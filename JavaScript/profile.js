@@ -209,7 +209,7 @@ async function RenderProfile(data, value) {
 
         document.querySelector("#addNewComic").addEventListener("click", () => {
             renderUploadComic();
-           // renderLayoutPage()
+            // renderLayoutPage()
         })
 
         document.querySelector("#follows > #name").addEventListener("click", async (event) => {
@@ -489,7 +489,7 @@ function RenderFollowersCard(parent, resourceUsers, value) {
                 <div id="backgroundButton">
                     <button> Remove </button>
                 </div>
-                `;
+            `;
 
             // divDom.querySelector("#artistIcon").style.backgroundImage = `url('${part.personal.picture}')`;
             // divDom.querySelector("#artistIcon").style.backgroundSize = "cover";
@@ -678,14 +678,15 @@ async function deleteComic(comic) {
 
         if (resourse) {
             document.querySelector("#popUp").style.height = "auto";
+            document.querySelector("#popUp").style.top = "40%";
 
 
             popUpWindow.innerHTML = `
-                <div id="close"> X </div>
+                <div id="DeleteCross"> X </div>
                         <h3> Your comic ${comic.title} is now deleted</h3>
                 </div>
             `;
-            popUpWindow.querySelector("#close").addEventListener("click", () => {
+            popUpWindow.querySelector("#DeleteCross").addEventListener("click", () => {
                 popUp.classList.add("hidden");
                 document.querySelector("#popUp").style.height = "600px";
                 document.querySelector("#popUp").style.width = "60%";
@@ -698,8 +699,4 @@ async function deleteComic(comic) {
         }
     })
 
-    // popUp.querySelector("#no").addEventListener("click", () => {
-    //     popUp.classList.add("hidden");
-    //     popUp.querySelector("#popUpBox").removeAttribute("id", "deleteReq");
-    // })
 }

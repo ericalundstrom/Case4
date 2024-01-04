@@ -545,7 +545,7 @@ main {
 .imgDiv {
     height: 95%;
     background-size: contain;
-    width: 100%;
+    width: 90%;
     background-repeat: no-repeat;
     position: absolute;
     left: 0;
@@ -675,7 +675,7 @@ main {
     gap: 10px;
     justify-items: center;
     /* overflow: scroll; */
-    z-index: 2;
+    z-index: 4;
     position: relative;
     background-color: #F7C488;
     border-radius: 10px;
@@ -935,7 +935,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 2;
+    z-index: 4;
 }
 
 .readBox img {
@@ -1204,4 +1204,14 @@ body {
     z-index: 1;
     /* Ensure it's below other pop-up elements */
 
+}
+
+
+#DeleteCross {
+    text-align: end;
+    margin: 5px 10px;
+}
+
+#popUpWindow h3 {
+    text-align: center;
 }

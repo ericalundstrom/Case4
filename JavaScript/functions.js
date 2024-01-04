@@ -313,6 +313,9 @@ async function ReadComic(comic) {
 
     readBox.querySelector("#close").addEventListener("click", () => {
         readBox.remove();
+        document.querySelector("#popUp").classList.add("hidden");
+        document.querySelector("#popUpBackground").style.height = "0px";
+        document.querySelector("#popUpWindow").classList.add("hidden");
     });
 
     let content = comic.content;

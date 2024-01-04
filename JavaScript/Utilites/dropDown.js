@@ -284,6 +284,8 @@ function toggleDropdown(event) {
 
 function createFilterPage(value, container) {
 
+    let count = 0;
+
     document.querySelector("body").style.overflow = "hidden";
 
     let containerFilter = document.createElement("div");
@@ -381,31 +383,50 @@ function createFilterPage(value, container) {
                             });
                         }
                     });
-
-
-                    let boxCards = document.querySelector("#cards");
-                    boxCards.innerHTML = ``;
-                    createCard(boxCards, matchingComics);
-
                     let localFilter = localStorage.getItem("filters");
                     let parse = JSON.parse(localFilter)
-                    // console.log(JSON.parse(localFilter));
 
                     let filtersInComic = parse.replace(/[\[\]"]+/g, ' ').trim();
-                    let filtersInComicArray = filtersInComic.split(',').map(filter => filter.trim());
-                    console.log(filtersInComicArray);
-                    let count = 0;
+                    let filtersInComicCorrectArray = filtersInComic.split(',').map(filter => filter.trim());
 
-                    if (filtersInComicArray.length >= 1) {
+                    if (filtersInComicCorrectArray.length >= 1) {
                         document.querySelector("#filter").textContent = "FILTERS";
 
-                        for (let i = 0; i < filtersInComicArray.length; i++) {
+                        for (let i = 0; i < filtersInComicCorrectArray.length; i++) {
 
                             count++
                         }
                     }
 
-                    document.querySelector("#filter").textContent += `(${count})`;
+                    console.log(filtersInComicCorrectArray);
+                    document.querySelector("#filter").textContent = `FILTERS (${filtersInComicCorrectArray.length})`;
+
+
+                    // document.querySelector("#filter").textContent += `(${matchingComics.length})`;
+
+                    let boxCards = document.querySelector("#cards");
+                    boxCards.innerHTML = ``;
+                    createCard(boxCards, matchingComics);
+
+                    // let localFilter = localStorage.getItem("filters");
+                    // let parse = JSON.parse(localFilter)
+                    // // console.log(JSON.parse(localFilter));
+
+                    // let filtersInComic = parse.replace(/[\[\]"]+/g, ' ').trim();
+                    // let filtersInComicArray = filtersInComic.split(',').map(filter => filter.trim());
+                    // console.log(filtersInComicArray);
+
+
+                    // if (filtersInComicArray.length >= 1) {
+                    //     document.querySelector("#filter").textContent = "FILTERS";
+
+                    //     for (let i = 0; i < filtersInComicArray.length; i++) {
+
+                    //         count++
+                    //     }
+                    // }
+
+
 
 
                 }
@@ -453,7 +474,9 @@ function createFilterPage(value, container) {
         divDom.setAttribute("id", filter);
         divDom.addEventListener("click", async (event) => {
             event.target.classList.toggle("selected");
-            createFilterDOM(event.target.innerText, container);
+            if (container) {
+                createFilterDOM(event.target.innerText, container);
+            }
 
             if (value === true) {
                 let filter = filterFunction(event);
@@ -483,6 +506,25 @@ function createFilterPage(value, container) {
                     }
                 });
 
+
+                let localFilter = localStorage.getItem("filters");
+                let parse = JSON.parse(localFilter)
+
+                let filtersInComic = parse.replace(/[\[\]"]+/g, ' ').trim();
+                let filtersInComicCorrectArray = filtersInComic.split(',').map(filter => filter.trim());
+
+                if (filtersInComicCorrectArray.length >= 1) {
+                    document.querySelector("#filter").textContent = "FILTERS";
+
+                    for (let i = 0; i < filtersInComicCorrectArray.length; i++) {
+
+                        count++
+                    }
+                }
+
+                document.querySelector("#filter").textContent = `FILTERS (${filtersInComicCorrectArray.length})`;
+
+                // document.querySelector("#filter").textContent += `(${matchingComics.length})`;
                 // console.log(matchingComics.length);
                 let boxCards = document.querySelector("#cards");
                 boxCards.innerHTML = ``;
@@ -534,10 +576,7 @@ function createFilterPage(value, container) {
                         let comics = [...user[0].comics];
 
                         comics.forEach(comic => {
-                            console.log(comic.filters);
                             let filtersInComicArray = comic.filters.map(filter => filter.trim().toLowerCase());
-
-                            console.log(filtersInComicArray);
 
                             // Check if there's an intersection between filtersInComicArray and the selected filters
                             if (filter.some(filterItem => filtersInComicArray.includes(filterItem.toLowerCase()))) {
@@ -550,11 +589,27 @@ function createFilterPage(value, container) {
                     }
                 });
 
-                // console.log(matchingComics.length);
+                let localFilter = localStorage.getItem("filters");
+                let parse = JSON.parse(localFilter)
+
+                let filtersInComic = parse.replace(/[\[\]"]+/g, ' ').trim();
+                let filtersInComicCorrectArray = filtersInComic.split(',').map(filter => filter.trim());
+
+                if (filtersInComicCorrectArray.length >= 1) {
+                    document.querySelector("#filter").textContent = "FILTERS";
+
+                    for (let i = 0; i < filtersInComicCorrectArray.length; i++) {
+
+                        count++
+                    }
+                }
+
+                document.querySelector("#filter").textContent = `FILTERS (${filtersInComicCorrectArray.length})`;
+
                 let boxCards = document.querySelector("#cards");
                 boxCards.innerHTML = ``;
                 createCard(boxCards, matchingComics);
-                // console.log("Matching Comics:", matchingComics);
+
             }
         });
 

@@ -286,9 +286,11 @@ async function ReadComic(comic) {
         </div>
     `;
 
-    for (let i = 0; i < filter.length; i++) {
+    console.log(comic.filters);
+
+    for (let i = 0; i < comic.filters.length; i++) {
         let divDom = document.createElement("div");
-        divDom.textContent = filter[i];
+        divDom.textContent = comic.filters[i];
         divDom.classList.add("tags");
         readBox.querySelector("#filter").append(divDom);
     }
@@ -339,9 +341,9 @@ async function ReadComic(comic) {
         readBox.querySelector("#right").style.backgroundImage = `url("api/${comic.frontPage}")`;
         currentIndex = -2;
 
-        for (let i = 0; i < filter.length; i++) {
+        for (let i = 0; i < comic.filters.length; i++) {
             let divDom = document.createElement("div");
-            divDom.textContent = filter[i];
+            divDom.textContent = comic.filters[i];
             divDom.classList.add("tags");
             readBox.querySelector("#filter").append(divDom);
         }

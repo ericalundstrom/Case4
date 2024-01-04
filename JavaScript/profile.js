@@ -695,6 +695,8 @@ async function deleteComic(comic) {
                 // popUp.querySelector("#popUpBox").removeAttribute("id", "deleteReq");
                 // popUp.querySelector("#popUpBox").removeAttribute("id", "info");
                 // popUp.classList.remove("deleteReq");
+                window.location.reload();
+
             })
         }
     })

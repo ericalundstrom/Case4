@@ -643,7 +643,7 @@ function createFilterDOM(target, container) {
     filterP.textContent = uppercaseStr;
     chosenFilter.append(filterP)
     chosenFilter.append(cross);
-    document.querySelector("#filters").append(chosenFilter);
+    document.querySelector("#filterContainerDOM").append(chosenFilter);
     // container.append(chosenFilter);
 
     cross.addEventListener("click", () => {

@@ -768,6 +768,10 @@ form {
 }
 
 
+.communityContainerSort>div {
+    padding: 5px;
+}
+
 .communityContainerSort>div:hover {
     color: white;
 }

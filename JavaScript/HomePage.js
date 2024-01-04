@@ -22,7 +22,7 @@ async function RenderHomePage() {
         <h1>Welcome to Rita! </h1>
         <h2> Explore and upload comics </h2>
       </div>
-      <img src="/images/welcomeLogo.png">
+      <img src="./images/welcomeLogo.png">
     </div>
 
     <div id="filters"> </div>

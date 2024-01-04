@@ -25,7 +25,7 @@ function BasicLayout() {
             <div class="stroke"></div>
             <div id="profile"> PROFILE</div>
             <div class="stroke"></div>
-            <img id="notifications" src="../images/alertBell.svg"> </>
+            <img id="notifications" src="./images/alertBell.svg">
             </div>
             `
 
@@ -59,7 +59,7 @@ function BasicLayout() {
         notificationsContainer.innerHTML = `  
         <div class="notificationContainer"> 
         <div class="topNotification">
-            <img src="../images/cross.svg"></img> 
+            <img src="./images/cross.svg">
         </div>        
             <div class="notification">
                 <p>Elin liked your comment</p> 
@@ -166,7 +166,7 @@ async function createCard(parent, resource, user) {
             let tags = (data.filters);
 
             divDom.innerHTML = `
-            <img id="delete" src="/images/delete.png">
+            <img id="delete" src="./images/delete.png">
             <div id="divDomTop">
                 <div id="title">${data.title} </div>
                 <div id="published"> Published: ${data.time} </div>
@@ -219,9 +219,9 @@ async function createCard(parent, resource, user) {
         });
 
         if (data.frontPage !== "") {
-            cardBox.querySelector(".imgDiv").style.backgroundImage = `url("api/${data.frontPage}")`;
+            cardBox.querySelector(".imgDiv").style.backgroundImage = `url("./api/${data.frontPage}")`;
         } else {
-            cardBox.querySelector(".imgDiv").style.backgroundImage = `url("/images/unnamed.png")`;
+            cardBox.querySelector(".imgDiv").style.backgroundImage = `url("./images/unnamed.png")`;
         }
 
         parent.appendChild(cardBox);
@@ -266,8 +266,8 @@ async function ReadComic(comic) {
         <div id="close"> X </div>
         <div id="left" class="comic"></div>
         <div id="right" class="comic"></div>
-        <img id="leftArrow" src="images/downArrow.png"> 
-        <img id="rightArrow" src="images/downArrow.png">
+        <img id="leftArrow" src="./images/downArrow.png"> 
+        <img id="rightArrow" src="./images/downArrow.png">
     `;
 
     readBox.querySelector("#rightArrow").style.transform = "rotate(270deg)";

@@ -13,7 +13,7 @@ async function RenderCommunity() {
             <h2> COMMUNITY </h2>
             <div id="filterComments">
                 <p> Sort By </p>
-                <img src="../images/downArrow.png">
+                <img src="./images/downArrow.png">
             </div>
             <div id="commentBox"></div>
         </div>
@@ -34,7 +34,7 @@ async function RenderCommunity() {
 
     if (userPic === "") {
 
-        document.querySelector("#profile").style.backgroundImage = "url(images/userpic.webp)";
+        document.querySelector("#profile").style.backgroundImage = "url(../images/userpic.webp)";
     } else {
         document.querySelector("#profile").style.backgroundImage = `url(${userPic})`;
     };
@@ -409,7 +409,7 @@ async function RenderComment(parent, resourse, value) {
             
                         <div id="comments">
                             <div id="commentsCount">Comments</div>
-                            <img id="icon" src="/images/commentIcon.png">
+                            <img id="icon" src="./images/commentIcon.png">
                             <div id="count">${numberOfComments}</div>
                         </div>
                 </div>
@@ -448,7 +448,7 @@ async function RenderComment(parent, resourse, value) {
 
                         <div id="comments">
                             <div id="commentsCount">Comments</div>
-                            <img id="icon" src="/images/commentIcon.png">
+                            <img id="icon" src="./images/commentIcon.png">
                             <div id="count">${numberOfComments}</div>
                         </div>
                 </div>
@@ -467,7 +467,7 @@ async function RenderComment(parent, resourse, value) {
             <div id="divForComments"></div>
             <form id="addComment" action="api/community.php" method="POST">
                 <input type="text" id="comment" name="comment"placeholder="Skriv en kommentar här..."/>
-                <img id="submitIcon" src="/images/SendComment.jpg">
+                <img id="submitIcon" src="./images/SendComment.jpg">
             </form>
         `;
         document.querySelector("#goBack").addEventListener("click", RenderCommunity);
@@ -691,12 +691,16 @@ async function addComment(resourse) {
     let id = resourse.id;
 
     let profilePic = localStorage.getItem("profilePic");
-    // // console.log(comment, userParse, id, profilePic);
+    let parsePic = JSON.parse(profilePic);
+
+
+    console.log(parsePic);
+    console.log(comment, userParse, id, profilePic);
 
 
     let body = {
         "author": userParse,
-        "picture": profilePic,
+        "picture": parsePic,
         "comment": comment,
         "id": id
     };

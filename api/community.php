@@ -1,6 +1,6 @@
 <?php
 require_once("functions.php");
-$filename = "data/community.json";
+$filename = "/data/community.json";
 
 $directory = "data";
 if(!file_exists("data")){ // if no directory, create it
@@ -61,7 +61,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
     
         // It's a good practice to unset the reference to avoid potential side effects
-        unset($comment);
+        // unset($comment);
     }
     
 

@@ -8,8 +8,8 @@ async function dragAndDropFirst(fileContainers) {
             let placeholder = fileContainer.querySelector("#placeholderUpload")
             console.log(placeholder);
             startFunction(fileContainer, placeholder)
-    })
-    ;
+        })
+            ;
     } else {
         let placeholder = fileContainers.querySelector("#placeholderUpload")
         startFunction(fileContainers, placeholder);
@@ -27,7 +27,7 @@ async function dragAndDropFirst(fileContainers) {
 
             if (files.length > 0) {
                 for (const file of files) {
-                   let comic = await initiateFileUploadDragAndDrop(file, e.target, placeholder)
+                    let comic = await initiateFileUploadDragAndDrop(file, e.target, placeholder)
                     if (comic) {
                         comicURL.push(comic)
                     }
@@ -59,7 +59,7 @@ async function initiateFileUploadDragAndDrop(file, container, placeholder) {
             console.error(data.error);
         } else {
             const img = document.createElement("img");
-            img.src = `../api/${data}`;
+            img.src = `./api/${data}`;
             console.log(container);
             container.appendChild(img);
             return data;

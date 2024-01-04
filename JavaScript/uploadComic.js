@@ -5,7 +5,7 @@ let dataToPublish = {};
 async function renderUploadComic() {
     BasicLayout()
     swapStyleSheet("css/uploadComic.css");
-    document.querySelector("body").style.backgroundImage = "url(/images/bkg/bkg/upload.svg)";
+    document.querySelector("body").style.backgroundImage = "url(./images/bkg/bkg/upload.svg)";
 
     document.querySelector("#wrapper").innerHTML = `
     <div id="headerUpload">
@@ -15,20 +15,18 @@ async function renderUploadComic() {
         <div id="leftSide">
             <div id="frontPage">
                 <div id="placeholderUpload">
-                <img src="../images/UploadIcon.svg">
+                <img src="./images/UploadIcon.svg">
                     <p> Drag and drop to upload</p>   
                 </div>    
             </div> 
         </div>
-    <div id="rightSide"> 
-
-        <input name="title" placeholder="Add title">
-        <button id="filters"> Tags + </button>
-        
-        <div id="filterContainerDOM"></div>
-        <label for="description"> Add description </label>
-        <textarea name="description" required="required" id="description"></textarea>
-        <div id="wordCounter">0/250</div>   
+        <div id="rightSide"> 
+            <input name="title" placeholder="Add title">
+            <button id="filters"> Tags + </button>
+            <div id="filterContainerDOM"></div>
+            <label for="description"> Add description </label>
+            <textarea name="description" required="required" id="description"></textarea>
+            <div id="wordCounter">0/250</div>   
         </div>
     </div>
     <p class="errorMessage"></p>
@@ -65,33 +63,33 @@ async function renderUploadComic() {
     //});
 
     let comicFrontPage = await dragAndDropFirst(frontPage);
-        dataToPublish["img1"] = comicFrontPage;
+    dataToPublish["img1"] = comicFrontPage;
 
-        document.querySelector("#buttonPublish").addEventListener("click", () => {
+    document.querySelector("#buttonPublish").addEventListener("click", () => {
 
-            if (dataToPublish["img1"].length === 0) {
-                errorM.textContent = "Add a image to continue";
-                setTimeout(() => {
+        if (dataToPublish["img1"].length === 0) {
+            errorM.textContent = "Add a image to continue";
+            setTimeout(() => {
                 errorM.textContent = "";
             }, 2000);
 
-            } else if (title.value === "") {
-                errorM.textContent = "Add a title";
-                setTimeout(() => {
-                errorM.textContent = ""; 
+        } else if (title.value === "") {
+            errorM.textContent = "Add a title";
+            setTimeout(() => {
+                errorM.textContent = "";
             }, 2000);
 
-            } else {
-                dataToPublish["user"] = localStorager.get_item("user");
-                dataToPublish["title"] = title.value;
-                dataToPublish["filters"] = localStorager.get_item("newComicFilters");
-                localStorager.remove_item("newComicFilters");
-                if (description.value !== "") {
-                    dataToPublish["description"] = description.value;
-                }
-                 
-                renderPublishComic(dataToPublish)
+        } else {
+            dataToPublish["user"] = localStorager.get_item("user");
+            dataToPublish["title"] = title.value;
+            dataToPublish["filters"] = localStorager.get_item("newComicFilters");
+            localStorager.remove_item("newComicFilters");
+            if (description.value !== "") {
+                dataToPublish["description"] = description.value;
             }
+
+            renderPublishComic(dataToPublish)
+        }
     })
 
 
@@ -102,14 +100,14 @@ async function renderUploadComic() {
         if (dataToPublish["img1"].length === 0) {
             errorM.textContent = "Add a image to continue";
             setTimeout(() => {
-            errorM.textContent = "";
-        }, 2000);
+                errorM.textContent = "";
+            }, 2000);
 
         } else if (title.value === "") {
             errorM.textContent = "Add a title";
             setTimeout(() => {
-            errorM.textContent = ""; 
-        }, 2000);
+                errorM.textContent = "";
+            }, 2000);
 
         } else {
             dataToPublish["user"] = localStorager.get_item("user");
@@ -125,7 +123,7 @@ async function renderUploadComic() {
 }
 
 async function renderLayoutPage(dataToPublish) {
-     console.log(dataToPublish);
+    console.log(dataToPublish);
 
     swapStyleSheet("css/uploadComicsLayout.css");
     document.querySelector("body").style.backgroundImage = "url(/images/bkg/bkg/upload.svg)";
@@ -216,7 +214,7 @@ async function renderLayoutPage(dataToPublish) {
         </div>
             <div id="popUpcontent">
                 <div id="leftSide">
-                    <img class="headerIMG" src="../api/${dataToPublish.img1}">
+                    <img class="headerIMG" src="./api/${dataToPublish.img1}">
                 </div>
                 <div id="rightSide">
                     <h2>${dataToPublish.title}</h2>
@@ -229,16 +227,16 @@ async function renderLayoutPage(dataToPublish) {
                 </div>
             </div>`;
 
-           let filterContainer = document.querySelector("#displayFilters");
-                if(dataToPublish.filter){
-                    dataToPublish.filters.forEach(filter => {
-                    let filterDiv = document.createElement("div");
-                    let capitalLetter = filter.toUpperCase();
-                    filterDiv.textContent = capitalLetter;
-                    filterDiv.classList.add("selectedDOM");
-                    filterContainer.append(filterDiv);  
-                    })
-                }
+        let filterContainer = document.querySelector("#displayFilters");
+        if (dataToPublish.filter) {
+            dataToPublish.filters.forEach(filter => {
+                let filterDiv = document.createElement("div");
+                let capitalLetter = filter.toUpperCase();
+                filterDiv.textContent = capitalLetter;
+                filterDiv.classList.add("selectedDOM");
+                filterContainer.append(filterDiv);
+            })
+        }
 
         document.querySelector(".end").addEventListener("click", () => {
             popUp.classList.add("hidden");
@@ -276,7 +274,7 @@ async function renderPublishComic(dataToPublish) {
             popUp.innerHTML = `<h2>A new comic has been uploaded!</h2>`;
 
             setTimeout(() => {
-                popUp.close(); 
+                popUp.close();
                 RenderProfile();
             }, 2000);
 
@@ -288,7 +286,7 @@ async function renderPublishComic(dataToPublish) {
         popUp.classList.add("messagePop");
         popUp.innerHTML = `<h2>${error}</h2>`;
         setTimeout(() => {
-            popUp.close(); 
+            popUp.close();
             RenderProfile();
         }, 2000);
     }

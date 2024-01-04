@@ -106,11 +106,11 @@ async function createFilterDropdowns(container, value) {
         <div id="themes"></div>
         <div id="rightHandSide">
         <input type="text" id="searchField" class="hiddenSearch" placeholder="SEARCH...">
-            <img id="search" src="../images/searchIcon.svg"></img>
+            <img id="search" src="./images/searchIcon.svg"></img>
             <div id="filter">FILTERS</div>
             <div id=sortComicContainer>
                 <div id="sortComics">SORT BY</div>
-                <img src="../images/sortArrows.svg"></img>            
+                <img src="./images/sortArrows.svg"></img>            
             </div>
         </div>
 `;
@@ -303,7 +303,7 @@ function createFilterPage(value, container) {
     containerFilter.innerHTML = `
     <div id="containerFilterBigTop">
         <p> Clear filters </p> 
-        <img src="../images/cross.svg" class="close">
+        <img src="./images/cross.svg" class="close">
     </div>
     <div id="allFilters">
     <h1>Format</h1>
@@ -326,7 +326,7 @@ function createFilterPage(value, container) {
         const mainTextDOM = document.createElement("p");
         mainTextDOM.textContent = `${key}`;
         const mainImgDOM = document.createElement("img");
-        mainImgDOM.src = "../images/Arrow.svg";
+        mainImgDOM.src = "./images/Arrow.svg";
         mainImgDOM.classList.add("rotate-icon")
         mainCategoryDivContent.append(mainTextDOM);
         mainCategoryDivContent.append(mainImgDOM);
@@ -637,7 +637,7 @@ function createFilterDOM(target, container) {
     let chosenFilter = document.createElement("div");
     let filterP = document.createElement("p");
     let cross = document.createElement("img");
-    cross.src = "../images/cross.svg";
+    cross.src = "./images/cross.svg";
     chosenFilter.classList.add("selectedDOM");
     let uppercaseStr = target.toUpperCase();
     filterP.textContent = uppercaseStr;

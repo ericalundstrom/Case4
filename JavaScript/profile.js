@@ -12,7 +12,7 @@ async function RenderProfile(data, value) {
     let userPic = response[0].personal.picture;
 
     if (userPic === "") {
-        document.querySelector("#profile").style.backgroundImage = "url(images/userpic.webp)";
+        document.querySelector("#profile").style.backgroundImage = "url(./images/userpic.webp)";
     } else {
         document.querySelector("#profile").style.backgroundImage = `url(${userPic})`;
     };
@@ -20,7 +20,7 @@ async function RenderProfile(data, value) {
 
     if (data) {
 
-        document.querySelector("body").style.backgroundImage = "url(images/background2.png)";
+        document.querySelector("body").style.backgroundImage = "url(../images/background2.png)";
         // document.querySelector("body").style.background = "url(images/background2.png)";
         document.querySelector("body").style.backgroundSize = "cover";
         document.querySelector("body").style.backgroundRepeat = "no-repeat";
@@ -33,13 +33,13 @@ async function RenderProfile(data, value) {
                     <div id="userContainerTop"> 
                         <div id="profileHeader">
                         <div id="profileIcon">
-                        <img src="${data[0].personal.picture}">
+                        <img src="./${data[0].personal.picture}">
                         </div>
                         <div id="edit"></div>
                             <div id="profileHeaderContent"> 
                                 <div id="username">${data[0].personal.username}</div>
                                 <div id="follows">
-                                    <img id="followIcon" src="/images/follow.png">
+                                    <img id="followIcon" src="../images/follow.png">
                                     <div id="followers">${data[0].personal.followers.length} followers </div>
                                 </div>
                             </div>   
@@ -71,7 +71,7 @@ async function RenderProfile(data, value) {
 
         if (data[0].personal.instagram !== "") {
             document.querySelector("#instagram").innerHTML = `
-            <img src="/images/insta.png">
+            <img src="./images/insta.png">
             <div>@${data[0].personal.instagram}</div>`;
         }
 
@@ -111,7 +111,6 @@ async function RenderProfile(data, value) {
             let card = document.querySelector("#cards");
             card.innerHTML = ``;
 
-            console.log("på rad 112");
             createCard(card, data);
 
             toggleClass(event.target.id)
@@ -142,7 +141,7 @@ async function RenderProfile(data, value) {
 
         BasicLayout();
 
-        document.querySelector("body").style.backgroundImage = "url(/images/profileBackground.png)";
+        document.querySelector("body").style.backgroundImage = "url(./images/profileBackground.png)";
 
         let user = localStorage.getItem("user");
         let response = await getUser(user);
@@ -154,13 +153,13 @@ async function RenderProfile(data, value) {
                     <div id="userContainerTop"> 
                         <div id="profileHeader">
                             <div id="profileIcon">
-                                <img src="${response[0].personal.picture}">
+                                <img src="./${response[0].personal.picture}">
                                 </div>
                                 <div id="edit"></div>
                                     <div id="profileHeaderContent"> 
                                         <div id="username">${response[0].personal.username}</div>
                                         <div id="follows">
-                                            <img id="followIcon" src="/images/follow.png">
+                                            <img id="followIcon" src="./images/follow.png">
                                             <div id="name">${response[0].personal.followers.length} followers </div>
                                         </div>
                                 </div>   
@@ -172,8 +171,7 @@ async function RenderProfile(data, value) {
                     <div id="topRightProfile">   
                         <div id="description">${response[0].personal.description}</div>  
                         <div id="settingsAndEdit">  
-                            <img id="settings" src="/images/settings.png">
-                            <img id="editPng" src="/images/editicon.svg">
+                            <img id="settings" src="./images/settings.png">
                         </div>
                 </div>
             </div>
@@ -232,11 +230,11 @@ async function RenderProfile(data, value) {
 
             document.querySelector("#bottomMiddleMenu").innerHTML = `
             <div id="menuSearchFilter">
-                <img src="../images/SearchIcon.svg">
+                <img src="./images/SearchIcon.svg">
                 <div class="strokeFilter"></div>
                 <div id="filterProfile">
                     <p> Filter By </p>
-                    <img src="../images/sortArrows.svg">
+                    <img src="./images/sortArrows.svg">
                 </div>
             </div>`;
 
@@ -363,7 +361,7 @@ async function RenderArtistCard(parent, data, value) {
             let divDom = document.createElement("div");
             divDom.classList.add("artistBox");
             divDom.innerHTML = `
-            <img id="artistIcon" src="${user[0].personal.picture}">
+            <img id="artistIcon" src="./${user[0].personal.picture}">
             <h3> ${user[0].personal.username} </h3>
             <div id="uploadedComicsBox">
             <div class="number"> ${user[0].comics.length} </div>
@@ -387,7 +385,7 @@ async function RenderArtistCard(parent, data, value) {
             let divDom = document.createElement("div");
             divDom.classList.add("artistBox");
             divDom.innerHTML = `
-                <img id="artistIcon" src="${user.personal.picture}">
+                <img id="artistIcon" src="./${user.personal.picture}">
                 <h3> ${user.personal.username} </h3>
                 <div id="uploadedComicsBox">
                     <div class="number"> ${user.comics.length} </div>
@@ -428,10 +426,10 @@ async function RenderFollowers(popUp, resourceUsers) {
         <h2> FOLLOW <br> ERS </h2>
         <div id="searchAndSort">
             <input type="text" id="searchFollower" name="searchFollower" </input>
-            <img id="search" src="../images/searchIcon.svg">
+            <img id="search" src="./images/searchIcon.svg">
             <div id="stroke"> </div>
             <p> Sort By </p>
-            <img src="../images/downArrow.png">
+            <img src="./images/downArrow.png">
         </div>
         <div id="followers"> </div>
         <div id="background">
@@ -484,7 +482,7 @@ function RenderFollowersCard(parent, resourceUsers, value) {
             background.classList.add("background");
             divDom.classList.add("artistBox");
             divDom.innerHTML = `
-                <img id="artistIcon" src="${part.personal.picture}">
+                <img id="artistIcon" src="./${part.personal.picture}">
                 <h3> ${part.personal.username} </h3>
                 <div id="backgroundButton">
                     <button> Remove </button>

@@ -22,12 +22,13 @@ async function renderUploadComic() {
         </div>
     <div id="rightSide"> 
 
-         <input name="title" placeholder="Add title">
-            <button id="filters"> Tags + </button>
-            <div id="filterContainerDOM"></div>
-            <label for="description"> Add description </label>
-            <textarea name="description" required="required" id="description"></textarea>
-            <div id="wordCounter">0/250</div>   
+        <input name="title" placeholder="Add title">
+        <button id="filters"> Tags + </button>
+        
+        <div id="filterContainerDOM"></div>
+        <label for="description"> Add description </label>
+        <textarea name="description" required="required" id="description"></textarea>
+        <div id="wordCounter">0/250</div>   
         </div>
     </div>
     <p class="errorMessage"></p>

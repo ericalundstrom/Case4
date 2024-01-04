@@ -1108,6 +1108,23 @@
                     ],
                     "time": "03\/01\/2024",
                     "likes": []
+                },
+                {
+                    "title": "H\u00e4r st\u00e5r en titel",
+                    "author": "un",
+                    "description": "Descript",
+                    "filters": [
+                        "Webcomic",
+                        "Story-telling",
+                        "Strip-comic"
+                    ],
+                    "frontPage": "data\/comics\/Ska\u0308rmavbild 2024-01-03 kl. 19.51.05.png",
+                    "content": [
+                        "data\/comics\/Ska\u0308rmavbild 2024-01-03 kl. 19.51.05.png",
+                        "data\/comics\/Ska\u0308rmavbild 2024-01-03 kl. 19.51.05.png"
+                    ],
+                    "time": "04\/01\/2024",
+                    "likes": []
                 }
             ]
         }

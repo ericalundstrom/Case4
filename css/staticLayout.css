@@ -195,6 +195,7 @@ footer>* {
 .topNotification {
     display: flex;
     justify-content: flex-end;
+    cursor: pointer;
 }
 
 .topNotification>img {

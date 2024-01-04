@@ -138,6 +138,11 @@ main {
 #settings {
     /* margin-left: 18vw; */
     height: 22px;
+    cursor: pointer;
+}
+
+#myComics, #artist{
+    cursor: pointer;
 }
 
 #popUp h2 {
